@@ -1,0 +1,11 @@
+---
+import { getDocPaths } from "../utils/get_paths";
+
+const posts = await getDocPaths();
+---
+
+{
+  posts.map((p) => (
+    <a href={"docs/" + p.params.slug}>{p.props.entry.data.title}</a>
+  ))
+}

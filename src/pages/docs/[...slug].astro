@@ -5,15 +5,17 @@ import DocPageLayout from "../../layouts/DocPageLayout.astro";
 export async function getStaticPaths() {
   const blogEntries = await getCollection("docs");
   return blogEntries.map((entry) => ({
-    params: { slug: [entry.data.parent, entry.slug].join("/") },
+    params: {
+      slug: [entry.data.parent?.toLowerCase() ?? "", entry.slug].join("/"),
+    },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content, headings } = await entry.render();
 ---
 
-<DocPageLayout frontmatter={entry.data}>
+<DocPageLayout frontmatter={entry.data} headings={headings}>
   <Content />
 </DocPageLayout>

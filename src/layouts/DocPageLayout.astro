@@ -1,10 +1,35 @@
 ---
+import type { MarkdownHeading } from "astro";
 import Layout from "./Base.astro";
-const { frontmatter } = Astro.props;
+
+export interface Props {
+  headings: MarkdownHeading[];
+  frontmatter: any;
+}
+
+const { frontmatter, headings } = Astro.props;
 ---
 
 <Layout title={frontmatter.title} description={frontmatter.description}>
-  <div class="prose dark:prose-invert">
-    <slot />
-  </div>
+  <main class="relative xl:grid xl:grid-cols-[1fr_300px]">
+    <div class="prose dark:prose-invert">
+      <slot />
+    </div>
+    <div
+      class="hidden xl:block text-sm sticky top-16 h-[calc(100vh-4rem)] pt-4"
+    >
+      <p class="font-semibold">On this page</p>
+      <ul class="list-none">
+        {
+          headings.map((heading) => (
+            <li class="pt-2">
+              <a class="text-muted-foreground" href={`#${heading.slug}`}>
+                {heading.text}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </main>
 </Layout>

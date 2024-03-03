@@ -29,7 +29,7 @@ const navItems = [
           navItems.map((navItem) => (
             <a
               href={navItem.href}
-              class="navitem hover:text-foreground/80 transition-colors"
+              class={`navitem hover:text-foreground/80 transition-colors ${Astro.url.pathname.includes(navItem.href) ? "text-foreground" : "text-muted-foreground"}`}
             >
               {navItem.name}
             </a>
@@ -60,28 +60,3 @@ const navItems = [
     --pagefind-ui-tag: #152028;
   }
 </style>
-
-<script>
-  function updateNavStyles() {
-    const currentPath = window.location.pathname;
-    const navItems = document.querySelectorAll(".navitem");
-
-    navItems.forEach((navItem) => {
-      const href = navItem.getAttribute("href");
-
-      if (currentPath.includes(href ?? "")) {
-        navItem.classList.add("text-foreground");
-        navItem.classList.remove("text-foreground/40");
-      } else {
-        navItem.classList.remove("text-foreground");
-        navItem.classList.add("text-foreground/40");
-      }
-    });
-  }
-
-  // Initial call to set styles based on the current path
-  updateNavStyles();
-
-  // Listen for changes in the window location
-  window.addEventListener("popstate", updateNavStyles);
-</script>

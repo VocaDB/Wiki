@@ -1,6 +1,7 @@
 ---
 import Navbar from "../components/Navbar.astro";
 import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
 import {
   SITE_TITLE,
   SITE_DESCRIPTION,
@@ -39,7 +40,7 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/public/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -55,27 +56,6 @@ const {
   </head>
 
   <body class="bg-background scroll-smooth dark:[color-scheme:dark]">
-    <script is:inline>
-      const theme = (() => {
-        if (
-          typeof localStorage !== "undefined" &&
-          localStorage.getItem("theme")
-        ) {
-          return localStorage.getItem("theme");
-        }
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          return "dark";
-        }
-        return "light";
-      })();
-
-      if (theme === "light") {
-        document.documentElement.classList.remove("dark");
-      } else {
-        document.documentElement.classList.add("dark");
-      }
-      window.localStorage.setItem("theme", theme);
-    </script>
     <Navigation />
     <div
       class="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-1"
@@ -89,6 +69,7 @@ const {
         <slot />
       </div>
     </div>
+    <Footer />
   </body>
 </html>
 
@@ -153,3 +134,22 @@ const {
     }
   }
 </style>
+
+<script>
+  const theme = (() => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark";
+    }
+    return "light";
+  })();
+
+  if (theme === "light") {
+    document.documentElement.classList.remove("dark");
+  } else {
+    document.documentElement.classList.add("dark");
+  }
+  window.localStorage.setItem("theme", theme ?? "light");
+</script>

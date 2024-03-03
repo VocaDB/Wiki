@@ -16,29 +16,42 @@ const groupBy = <T,>(
     {} as { [key: string]: T[] }
   );
 
-const grouped = groupBy(posts, (post) => post.props.entry.data.parent);
+const getParent = (p: { params?: { slug: string }; props: any }) =>
+  p.props.entry.data.parent;
+
+const grouped = groupBy(
+  posts.filter((p) => getParent(p) !== undefined),
+  (post) => getParent(post)!
+);
 ---
 
 <div class="py-6 pr-6">
   {
-    Object.entries(grouped).map(([parent, posts]) => (
-      <div class="pb-4">
-        <h4 class="text-sm font-semibold py-1">{parent}</h4>
-        <div class="grid grid-flow-row auto-rows-max text-sm">
-          {posts.map((post) => (
-            <a
-              class="text-muted-foreground hover:underline py-1"
-              href={[
-                "/docs",
-                post.props.entry.data.parent,
-                post.params.slug,
-              ].join("/")}
-            >
-              {post.props.entry.data.title}
-            </a>
-          ))}
+    posts
+      .filter((post) => getParent(post) === undefined)
+      .map((parentEntry) => (
+        <div class="pb-4">
+          <a
+            href={["/docs", parentEntry.params.slug].join("/")}
+            class="text-sm font-semibold hover:underline"
+          >
+            {parentEntry.props.entry.data.title}
+          </a>
+          <div class="grid grid-flow-row auto-rows-max text-sm mt-1">
+            {grouped[parentEntry.props.entry.data.title]?.map((post) => (
+              <a
+                class="text-muted-foreground hover:underline py-1"
+                href={[
+                  "/docs",
+                  getParent(post)!.toLowerCase(),
+                  post.params.slug,
+                ].join("/")}
+              >
+                {post.props.entry.data.title}
+              </a>
+            ))}
+          </div>
         </div>
-      </div>
-    ))
+      ))
   }
 </div>

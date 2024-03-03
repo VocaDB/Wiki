@@ -1,0 +1,39 @@
+---
+const footerItems = [
+  {
+    name: "Terms of service",
+    href: "/docs/other/terms",
+  },
+  {
+    name: "Privacy & cookie policy",
+    href: "/docs/other/privacy",
+  },
+  {
+    name: "License",
+    href: "/docs/other/license",
+  },
+  {
+    name: "About VocaDB",
+    href: "/docs/other/about",
+  },
+  {
+    name: "Staff",
+    href: "/docs/other/staff",
+  },
+];
+---
+
+<div
+  class="h-16 flex items-center space-x-4 px-4 justify-center border-t border-border"
+>
+  {
+    footerItems.map((footerItem) => (
+      <a
+        class="text-sm hover:underline text-foreground/60 hover:text-foreground/80"
+        href={footerItem.href}
+      >
+        {footerItem.name}
+      </a>
+    ))
+  }
+</div>

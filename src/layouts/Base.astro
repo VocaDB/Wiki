@@ -1,4 +1,5 @@
 ---
+import Navbar from "../components/Navbar.astro";
 import Navigation from "../components/Navigation.astro";
 import {
   SITE_TITLE,
@@ -38,7 +39,7 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/public/favicon.ico" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -53,7 +54,7 @@ const {
     <meta name="twitter:card" content="summary_large_image" />
   </head>
 
-  <body class="dark:bg-zinc-900 scroll-smooth dark:[color-scheme:dark]">
+  <body class="bg-background scroll-smooth dark:[color-scheme:dark]">
     <script is:inline>
       const theme = (() => {
         if (
@@ -76,6 +77,79 @@ const {
       window.localStorage.setItem("theme", theme);
     </script>
     <Navigation />
-    <slot />
+    <div
+      class="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-1"
+    >
+      <aside
+        class="fixed hidden top-16 h-[calc(100vh-4rem)] w-full md:sticky md:block"
+      >
+        <Navbar />
+      </aside>
+      <div class="relative py-6 lg:py-8">
+        <slot />
+      </div>
+    </div>
   </body>
 </html>
+
+<style>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  @layer base {
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 240 10% 3.9%;
+      --card: 0 0% 100%;
+      --card-foreground: 240 10% 3.9%;
+      --popover: 0 0% 100%;
+      --popover-foreground: 240 10% 3.9%;
+      --primary: 240 5.9% 10%;
+      --primary-foreground: 0 0% 98%;
+      --secondary: 240 4.8% 95.9%;
+      --secondary-foreground: 240 5.9% 10%;
+      --muted: 240 4.8% 95.9%;
+      --muted-foreground: 240 3.8% 46.1%;
+      --accent: 240 4.8% 95.9%;
+      --accent-foreground: 240 5.9% 10%;
+      --destructive: 0 72.22% 50.59%;
+      --destructive-foreground: 0 0% 98%;
+      --border: 240 5.9% 90%;
+      --input: 240 5.9% 90%;
+      --ring: 240 5% 64.9%;
+      --radius: 0.5rem;
+    }
+
+    .dark {
+      --background: 240 10% 3.9%;
+      --foreground: 0 0% 98%;
+      --card: 240 10% 3.9%;
+      --card-foreground: 0 0% 98%;
+      --popover: 240 10% 3.9%;
+      --popover-foreground: 0 0% 98%;
+      --primary: 0 0% 98%;
+      --primary-foreground: 240 5.9% 10%;
+      --secondary: 240 3.7% 15.9%;
+      --secondary-foreground: 0 0% 98%;
+      --muted: 240 3.7% 15.9%;
+      --muted-foreground: 240 5% 64.9%;
+      --accent: 240 3.7% 15.9%;
+      --accent-foreground: 0 0% 98%;
+      --destructive: 0 62.8% 30.6%;
+      --destructive-foreground: 0 85.7% 97.3%;
+      --border: 240 3.7% 15.9%;
+      --input: 240 3.7% 15.9%;
+      --ring: 240 4.9% 83.9%;
+    }
+  }
+
+  @layer base {
+    body {
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+      font-synthesis-weight: none;
+      text-rendering: optimizeLegibility;
+    }
+  }
+</style>

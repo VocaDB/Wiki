@@ -1,0 +1,16 @@
+<button id="themetoggle"> Click Me</button>
+
+<script>
+  const button = document.querySelector("button#themetoggle");
+  console.log(button);
+
+  button?.addEventListener("click", () => {
+    const theme = localStorage.getItem("theme") ?? "light";
+    if (theme === "dark") {
+      document.documentElement.classList.remove("dark");
+    } else {
+      document.documentElement.classList.add("dark");
+    }
+    localStorage.setItem("theme", theme === "dark" ? "light" : "dark");
+  });
+</script>

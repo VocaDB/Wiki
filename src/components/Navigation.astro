@@ -1,12 +1,57 @@
 ---
 import Search from "astro-pagefind/components/Search";
-import Navbar from "./Navbar.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+
+const navItems = [
+  {
+    name: "Docs",
+    href: "/docs/starting",
+  },
+  {
+    name: "Guides",
+    href: "/docs/guides",
+  },
+  {
+    name: "For Developers",
+    href: "/docs/developers",
+  },
+];
 ---
 
-<Navbar />
-<Search id="search" className="pagefind-ui" uiOptions={{ showImages: false }} />
+<header
+  class="sticky top-0 z-50 w-full border-b border-border/40 g-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+>
+  <div class="h-16 container flex items-center">
+    <div class="md:flex">
+      <a class="hover:underline mr-6" href="/">VocaDB Wiki</a>
+      <nav class="flex items-center gap-6 text-sm">
+        {
+          navItems.map((navItem) => (
+            <a
+              href={navItem.href}
+              class="navitem hover:text-foreground/80 transition-colors"
+            >
+              {navItem.name}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+    <div class="flex flex-1 justify-end">
+      <Search
+        id="search"
+        className="pagefind-ui"
+        uiOptions={{ showImages: false, outerHeight: 20 }}
+      />
+      <ThemeToggle />
+    </div>
+  </div>
+</header>
 
 <style>
+  html {
+    --pagefind-ui-scale: 0.6 !important;
+  }
   html.dark {
     --pagefind-ui-primary: #eeeeee;
     --pagefind-ui-text: #eeeeee;
@@ -15,3 +60,28 @@ import Navbar from "./Navbar.astro";
     --pagefind-ui-tag: #152028;
   }
 </style>
+
+<script>
+  function updateNavStyles() {
+    const currentPath = window.location.pathname;
+    const navItems = document.querySelectorAll(".navitem");
+
+    navItems.forEach((navItem) => {
+      const href = navItem.getAttribute("href");
+
+      if (currentPath.includes(href ?? "")) {
+        navItem.classList.add("text-foreground");
+        navItem.classList.remove("text-foreground/40");
+      } else {
+        navItem.classList.remove("text-foreground");
+        navItem.classList.add("text-foreground/40");
+      }
+    });
+  }
+
+  // Initial call to set styles based on the current path
+  updateNavStyles();
+
+  // Listen for changes in the window location
+  window.addEventListener("popstate", updateNavStyles);
+</script>

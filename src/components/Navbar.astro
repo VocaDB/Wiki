@@ -2,10 +2,43 @@
 import { getDocPaths } from "../utils/get_paths";
 
 const posts = await getDocPaths();
+
+// https://stackoverflow.com/questions/14446511/most-efficient-method-to-groupby-on-an-array-of-objects
+const groupBy = <T,>(
+  array: T[],
+  predicate: (value: T, index: number, array: T[]) => string
+) =>
+  array.reduce(
+    (acc, value, index, array) => {
+      (acc[predicate(value, index, array)] ||= []).push(value);
+      return acc;
+    },
+    {} as { [key: string]: T[] }
+  );
+
+const grouped = groupBy(posts, (post) => post.props.entry.data.parent);
 ---
 
-{
-  posts.map((p) => (
-    <a href={"docs/" + p.params.slug}>{p.props.entry.data.title}</a>
-  ))
-}
+<div class="py-6 pr-6">
+  {
+    Object.entries(grouped).map(([parent, posts]) => (
+      <div class="pb-4">
+        <h4 class="text-sm font-semibold py-1">{parent}</h4>
+        <div class="grid grid-flow-row auto-rows-max text-sm">
+          {posts.map((post) => (
+            <a
+              class="text-muted-foreground hover:underline py-1"
+              href={[
+                "/docs",
+                post.props.entry.data.parent,
+                post.params.slug,
+              ].join("/")}
+            >
+              {post.props.entry.data.title}
+            </a>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</div>

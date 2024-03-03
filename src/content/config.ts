@@ -5,6 +5,7 @@ const docsCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    parent: z.string(),
   }),
 });
 

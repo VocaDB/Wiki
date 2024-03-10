@@ -1,0 +1,318 @@
+---
+title: Song entry page
+description: Song entry page
+parent: Starting
+---
+
+Navigation:
+
+[Song entry creation](https://wiki.vocadb.net/wiki/88/song-entry-creation) > [Song entry editing](https://wiki.vocadb.net/wiki/89/song-entry-editing) > **[Song entry page](https://wiki.vocadb.net/wiki/90/song-entry-page)**
+
+[Artist entry creation](https://wiki.vocadb.net/wiki/82/artist-entry-creation) > [Artist entry editing](https://wiki.vocadb.net/wiki/83/artist-entry-editing) > [Artist entry page](https://wiki.vocadb.net/wiki/84/artist-entry-page)
+
+[Album entry creation](https://wiki.vocadb.net/wiki/85/album-entry-creation) > [Album entry editing](https://wiki.vocadb.net/wiki/86/album-entry-editing) > [Album entry page](https://wiki.vocadb.net/wiki/87/album-entry-page)
+
+----
+
+This page explains the fields and features for the song entry page.
+
+//Rollin' Girl by wowaka// for example: https://vocadb.net/S/1501
+
+## Available user actions
+
+[The song entry status](https://wiki.vocadb.net/wiki/89/song-entry-editing#Status) is shown with an icon on this line.
+
+### Like
+
+Rating a song adds it to your song collection (rated songs): https://vocadb.net/Profile/{username}/songs
+
+The song entry page statistics for "favorite(s) and like(s)" will include your username, unless the the "Allow everyone to see my song and album ratings." -setting is disabled. All of the ratings will stay visible for moderators, and for anyone who visits your rated songs through your profile page.
+
+//Liking// a song increases its score by 2.
+
+### Favorite
+
+//Favoriting// a song increases its score by 3.
+
+### Add to custom list
+
+The song can be added to a new or existing song list with this button.
+
+#### Personal lists
+
+All of the custom lists by the user are displayed: https://vocadb.net/Profile/{username}/lists
+
+The "description" -field refers to the song list song notes, not the song list description.
+
+#### Featured
+
+Trusted users can add new songs to the [featured songlists](https://vocadb.net/SongList/Featured?categoryName=Pools)
+
+#### New list
+
+//New list name// can safely be a duplicate, since song lists are saved by song list ids.
+
+### Edit
+
+The "Edit" -button opens [the edit-page](https://wiki.vocadb.net/wiki/89/song-entry-editing) for the song entry.
+
+### View modifications
+
+The "View modifications" -button opens the version history for the song entry:
+https://vocadb.net/Song/Versions/{artist_id}
+
+The version history table uses 5 columns: //Version//, //Created//, //Author//, //Changes//, //Notes//.
+
+The specific version can be viewed when clicking one of the version numbers in the Version-column:
+
+https://vocadb.net/Song/ViewVersion/{version_id}
+
+The version page has two user actions available (four for [moderators](https://wiki.vocadb.net/wiki/27/user-groups)).
+
+#### Revert to this version (moderators)
+
+* Reverts the song entry to this version. Used for countering vandalism and fixing edit mistakes.
+
+#### Download XML
+
+* Downloads the version information in [XML format](https://en.wikipedia.org/wiki/XML).
+
+#### Report an error
+
+* Reports the specific entry version. Using this, a notification will be sent to the relevant editor.
+
+#### Hide this version (moderators)
+
+* Hides the specific entry version. The version link will still be visible on the entry history -page, but the link will be inaccessible to users that are not moderators.
+
+### Report an error
+
+Creates an [entry report](https://wiki.vocadb.net/wiki/58/entry-reports) and adds it to the [entry report -list](https://vocadb.net/Admin/ViewEntryReports) that is visible to trusted users and above.
+
+For songs, five report types are available. The notes -field is required for report types 1, 2 & 5.
+
+#### 1. Broken PV
+
+Used for reporting deleted or privated PVs.
+
+This report type communicates that a PV needs to be marked as //Unavailable// or deleted if the link type is "Reprint" or "Other". If possible, prefer doing it yourself instead of creating an entry report.
+
+Keep in mind that if the PV is [region blocked](https://vocadb.net/T/8226/region-blocked), it should not be marked as unavailable.
+
+#### 2. Invalid or missing information
+
+Used for reporting 
+*invalid or incorrect information
+**Always provide reasoning and proofs unless already obvious.
+*missing information
+**A missing artist credit for example. If possible, always prefer adding the information yourself instead of leaving a report.
+
+#### 3. Duplicate entry
+
+Song entry is a duplicate and should be [merged](https://wiki.vocadb.net/wiki/46/merging-entries). A link to the duplicate song entry is required along with proof.
+
+#### 4. Inappropriate content
+
+For song entries that [do not belong to VocaDB](https://wiki.vocadb.net/wiki/59/content-policy#Songs).
+
+#### 5. Other (specify in notes)
+
+- 
+
+### Maintenance actions
+
+These are available only to the moderators.
+
+#### Refresh artist string
+
+Generates a new artist string: "Rollin' Girl  wowaka feat. Hatsune Miku (Original song)"
+
+Useful in cases where the artist name has been changed.
+
+#### Refresh thumbnail
+
+Refresh the song thumbnail based on the existing PV links.
+
+#### Refresh PV metadata
+
+Refreshes the PV metadata (Name, Length, Date, Author).
+
+## Visible data
+
+Fields that are empty or unavailable will not be visible.
+
+### tab: Basic info
+
+The fields from the basic info -tab on the edit-page are displayed here along with some additional sections.
+
+#### Name
+
+* The first line shows the name based on the "Preferred display language" - user setting.
+
+* The other primary names and aliases are shown on the second line.
+
+#### Song artists
+
+Song artists are listed as four different sections.
+
+On each section, artists are listed alphabetically, and the supporting artists are listed at the end enclosed within parentheses.
+
+The same artist can be listed in multiple sections.
+
+##### Vocalists
+
+Vocalists of the entry. Artist that belong to the category "Vocalist" (10 artist types) or credited with the "Vocalist" role.
+
+##### Producers
+
+Producers of the entry. Artists that belong to the category "Producer" (artist types "Music producer" & "cover Artists") or credited with any of the roles "Arranger", "Composer" or "Voice manipulator".
+
+##### Animators
+
+Animators of the entry. Artists with the artist type "Animation producer" or credited with the role "Animator".
+
+##### Other artists
+
+All the other artist types and roles.
+
+#### [Type](https://wiki.vocadb.net/wiki/89/song-entry-editing#Song-type)
+#### [Duration](https://wiki.vocadb.net/wiki/89/song-entry-editing#Duration)
+#### [Language(s)](https://wiki.vocadb.net/wiki/89/song-entry-editing#Languages)
+#### [BPM](https://wiki.vocadb.net/wiki/89/song-entry-editing#BPM)
+#### Albums
+
+Album entries in which the song is included in.
+
+#### Tags
+
+Four most voted tags are displayed by default. The "Show all" -button displays all of the tags grouped by the tag category.
+
+One or two buttons (depending on the user group) are displayed next to the tags:
+
+1) Edit tags
+
+Existing tags are shown as blue boxes. The box highlighting (orange) can be toggled by clicking.
+
+Your tag votes will be added to the highlighted tags when clicking "Save".
+
+Tag suggestions (max 3) are automatically displayed based on [multiple sources](https://github.com/VocaDB/vocadb/blob/2ed84595288c2e41e63f7423086a6b94ca64f76b/VocaDbModel/Database/Queries/SongQueries.cs#L745):
+
+* Mapped Niconico tags
+* [short version](https://vocadb.net/T/4717), if the song is 30 seconds longer than the original version.
+* [instrumental](https://vocadb.net/T/208), if the (original) song has no vocalists.
+
+Always verify the specific tag usage guidelines. All tags have an option of hiding them from suggestions.
+
+You can remove tags that you added yourself by removing your tag vote (toggling the highlight). Tags with 0 votes are removed when clicking "Save".
+
+2) Manage tags (Trusted users)
+
+https://vocadb.net/Song/ManageTagUsages/{song_id}
+
+The entry tags are displayed as a table with columns //Tag//, //Count//, //Votes// (Visible to [moderators](https://wiki.vocadb.net/wiki/27/user-groups) only), //Date//.
+
+Tags can be removed by any trusted user, regardless who added and voted for the tag.
+
+#### Pools and song lists
+
+Song lists that include this song entry.
+
+Only the [pools](https://vocadb.net/SongList/Featured?categoryName=Pools) are visible by default. Rest of the song lists can be viewed in a small window/dialog, when the "View all lists (x)" is clicked.
+
+#### Original media
+
+[Original](https://wiki.vocadb.net/wiki/89/song-entry-editing#Original) media/PV links of the song.
+
+#### Other media
+
+Media/PV links that are [Reprint](https://wiki.vocadb.net/wiki/89/song-entry-editing#Reprint) or [Other](https://wiki.vocadb.net/wiki/89/song-entry-editing#Other-3).
+
+#### Official links
+
+[External links of the song entry](https://wiki.vocadb.net/wiki/89/song-entry-editing#External-links) that are "Official" or "Commercial".
+
+#### Unofficial links
+
+External links that are "Reference" or "Other".
+
+#### [Original version](https://wiki.vocadb.net/wiki/89/song-entry-editing#Original-version)
+
+#### Alternate versions
+Song entries that have this entry set as the "Original version".
+
+#### [Description](https://wiki.vocadb.net/wiki/89/song-entry-editing#Song-description)
+
+The song entry description truncated to the first ~~400 characters. If longer than this, a "Show full description" -button is provided.
+
+The English translation (if available) is shown by default, regardless of user language preferences.
+
+#### Statistics
+
+The following statistics are included:
+
+* [Favorites](https://wiki.vocadb.net/wiki/90/song-entry-page#Favorite) (F)
+* [Likes](https://wiki.vocadb.net/wiki/90/song-entry-page#Like) (L)
+* Hits (H)
+* Total score (T) = 3F + 2L
+
+"F favorite(s), L like(s), H hit(s) T total score"
+
+"Song ratings" for the entry (opened by clicking the "F favorite(s) L like(s)") lists the users who have rated the song and whose ratings are public.
+
+Hidden ratings are included in the score.
+
+#### Release event
+
+[Release event(s)](https://wiki.vocadb.net/wiki/86/album-entry-editing#Release-event) of the song.
+
+If the song publish date is outside the event date range by more than 7 days, the difference is displayed with "(x days)" where x is the amount of days to the event start (or end) date:
+
+"(+10 days)": Event starts in 10 days, song published 10 days earlier than the event start date.
+
+"(-12 days)": Event ended 12 days ago, song published 12 days later than the event end date.
+
+#### Published
+
+[Publish date](https://wiki.vocadb.net/wiki/89/song-entry-editing#Publish-date) of the song. Displayed based on the user setting "Date and number formatting".
+
+#### Addition date
+
+* Entry creation date. Corresponds to the last row in [the entry history -table](https://wiki.vocadb.net/wiki/90/song-entry-page#View-modifications), except with the most earliest entries.
+
+#### Users who liked this also liked
+
+-
+
+#### Artist's personal description
+
+This field is for artist's personal introduction of the entry. Unlike the description field, this is considered a subjective opinion, possibly written in first person, and may include a limited amount of "marketing speech". Select the author of the description - who wrote it? For entries with multiple involved artists, only one description may be provided, but whenever possible the circle/group can be selected as the author.
+
+#### Latest comments
+
+Section for leaving new comments. The latest 3 comments are shown.
+
+As with the entry description, [GitHub-flavored Markdown](https://docs.github.com/en/get-started/writing-on-github) is supported for formatting.
+
+Usernames prepended with the symbol @ will get notified when the comment is sent.
+
+Always follow the [discussion rules](https://wiki.vocadb.net/wiki/78/discussion-rules). Any comments can be edited and removed by [Moderators](https://wiki.vocadb.net/wiki/27/user-groups).
+
+### tab: [Lyrics](https://wiki.vocadb.net/wiki/89/song-entry-editing#tab-Lyrics)
+
+### tab: Discussion
+All entry comments split to pages consisting of 10 comments.
+
+### tab: Related songs
+
+Related songs split to 3 sections: Matching artists, likes and tags.
+
+Each section has 12 songs listed, which are not duplicated between the other sections.
+
+### tab: Share
+
+Includes a link to the song entry and a second one with [markdown](https://daringfireball.net/projects/markdown/).
+
+* https://vocadb.net/Ar/{artist_id}
+* [{artist_name}](https://vocadb.net/Ar/{artist_id})
+
+Code for iframe-embed is also included along with some social media share links.

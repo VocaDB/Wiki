@@ -1,0 +1,53 @@
+---
+title: VocaDB API and Embeds
+description: VocaDB API and Embeds
+parent: Starting
+---
+
+Public API overview, usage rules & examples: https://github.com/VocaDB/vocadb/wiki/Public-API
+
+* [Services that make use of VocaDB APIs](https://wiki.vocadb.net/wiki/37/services-that-make-use-of-vocadb-apis)
+
+This page provides information on how to **embed** VocaDB pages and info on other websites with the help of [VocaDB's API](https://vocadb.net/swagger/index.html) and specific parameters.
+
+## Tooltips API
+
+### Overview
+
+VocaDB offers an API for qtip2-based tooltips for artists, albums and songs. This API can be used on external sites such as blogs to dynamically provide additional information for visitors. Below is an example of an album tooltip.
+
+![VocaDB album tooltip](public/images/tooltips3.png)
+
+### Usage for webmasters
+
+In order to use the tooltips, you need to include jQuery (recommended version 1.8 or higher), qtip2 and VocaDB tooltips library on the site. 
+
+* Make sure [jQuery](http://code.jquery.com) is included on your pages. 
+* Add the [qtip2 JavaScript](https://static.vocadb.net/ext/jquery.qtip.min.js) at the end of the page (after the jQuery reference).
+* Add the [qtip2 CSS](https://static.vocadb.net/ext/jquery.qtip.min.css) at the beginning of the page, inside the head tag.
+* Add the [VocaDB tooltips library JavaScript](https://static.vocadb.net/ext/VocaDBTooltips.js) after the JQuery and qtip JavaScript references.
+
+You may also use a CDN for qtip, or download the scripts to your server.
+
+Once these three libraries are included, the tooltip should automatically be added to all VocaDB links.
+
+## Song embeds
+
+### Overview
+
+VocaDB allows PVs in the database to be embedded on other sites. Compared to embedding the video directly, for example from Youtube, this provides the following benefits:
+* Translated title and artist information
+* Allows the user to choose between all available video services. VocaDB supports NND, Youtube, Piapro, SoundCloud, Bilibili and Vimeo. All these can be included with a single embed.
+* A link to VocaDB is included automatically for additional information.
+
+Below is an example of a song embed.
+
+![VocaDB song embed](public/images/songembed.png)
+
+### Usage guide
+
+The endpoint for embedding a song is at http://vocadb.net/Ext/EmbedSong . At least, you need to provide the song parameter, for example http://vocadb.net/Ext/EmbedSong?songId=25430 . Additionally, you can specify a language for the translations with the "lang" parameter, for example &lang=English.
+
+### OEmbed support
+
+VocaDB song embeds support OEmbed, including OEmbed discovery. If the site supports OEmbed discovery, all you need to do is post a link to the song page, for example http://vocadb.net/S/25430 . Endpoint for the OEmbed API is at http://vocadb.net/Ext/OEmbed , for example http://vocadb.net/Ext/OEmbed?url=http://vocadb.net/S/25430 . Both JSON and XML formats are supported.

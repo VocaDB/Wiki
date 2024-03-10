@@ -1,0 +1,56 @@
+---
+title: Album types and artist participation
+description: Album types and artist participation
+parent: Starting
+---
+
+## Overview
+This page attempts to clarify the most important variables that affect how the albums appear on artist pages, and how they should be used.
+
+Vocaloid artists collaborate a lot more than average "normal" artists. Thus there is need to display the artists' "main" albums separate from these collaboration albums (of which there is a lot).
+
+## Some terms
+* Artist string: the list of artists for a specific album or song, for example "Tripshots feat. Hatsune Miku". Currently, if the number of producers exceeds 3, the artist string will be "Various artists", indicating that there are too many artists to list, with none of them being the "main" one.
+* Split album: album with 2 or 3 main producers, each with a roughly equal number of songs.
+* Compilation: generally has two primary meanings: 1) "best of" collections, meaning a collection of previously released songs, usually by a single artist, and 2) collaboration albums with multiple artists, each with one or two tracks. On VocaDB we mainly use the first meaning.
+
+## Album type (disc type)
+Album type is the single most obvious variable affecting the album classification. One problem with album types is that there's a certain level of **overlap**, and only one album type can be specified per album. Thus, multiple album types might apply, but the most significant must be **chosen**. For example, the "Split album" type usually overrides "Single" or "EP". The second problem is that the terms are more or less informal and might be understood differently by different people. 
+
+"Compilation" is especially problematic, because [according to Wikipedia](http://en.wikipedia.org/wiki/Compilation_album), it can mean both a collection of artist's old songs (also called a retrospective album or "best of" compilation), as well as collaboration of multiple artists, consisting of entirely new songs. On VocaDB the Compilation type was intended to represent the retrospective variation, because that seems to be more common. The only album type which is clearly meant for collaboration is the Split Album, which means a collaboration of a small number of artists with roughly the equal number of songs on the album. Usually this means split singles or EPs with two artists having one or two songs. Other collaborative albums were intended to use the "Original album" type, which is reserved for full albums consisting mostly of new songs, whether it's by one or more artists. 
+
+Currently album type has NO effect on how the album is **displayed** on artist's entry page. There has been suggestions of adding a new type for collaboration compilations. The "Split Album" type has limited use currently, so it could also be redefined for this purpose. In fact, [Musicbrainz](http://musicbrainz.org/doc/Split_Release) seems to use the term "Split release" for all albums where there is no clear main artist.
+
+## Artist support status
+For albums, the support status is intended to indicate that this artist had a minor role on this album compared to other artists of the same category. Usually this is the case when the album has multiple songs by one artists and 1 or 2 remixes by a handful of other artists. In this case, the remix artists should be marked as support, because the artist who produced the most songs is clearly the main artist.
+
+Support status has a number of effects: 
+* Artists with the support status never appear in the "artist string" of the album. This has been "abused" to make the circles not appear in the artist string, which isn't completely wrong, but there might be more correct ways to work around that.
+* On the album entry page, support artists are shown in parenthesis, and after all the other artists.
+* Albums or songs where the artist has support status never appear on the first tab of artist's entry page, under recent or popular albums.
+* These albums also never appear on the artist's "main albums" tab.
+
+Thus, support status can be used to determine artists who are NOT one of the main artists of an album. However, for collaboration albums, none of the artists can be marked as support, because otherwise all of them would be marked a such.
+
+## Artist roles
+By default, artist's role on an album is defined by the artist type. However, there are cases where a producer has only provided lyrics or perhaps vocals on an album. Conversely, a person who mainly does vocals might act in a music producing role on some album. Thus, the roles can be customized per-album basis. Based on these roles, it is determined who is a music producer for an album and who is not.
+
+## Artist string
+Artist string cannot be edited directly. It is constructed automatically based on the list of artists through rather complex rules. When determining an album's main artists, what matters is the number of artists considered to be in the music producing role.
+
+Currently, if this number exceeds 3, the artist string will be "Various artists" and the album is considered to be a collaboration compilation.
+
+## Determining main albums for an artist
+Based on rules presented above, for music producing roles, the main albums for an artist are those where he or she is not supporting, has a role considered to be involved with music production, and the album's artist string isn't "Various artists". For all other artist roles, the "main album" status is determined solely by the artist support status (all albums where the artist is not in a supporting role are his or her main albums).
+
+Here are some examples of problematic albums:
+### Another Dimensions by Tripshots
+http://vocadb.net/Album/Details/3 
+
+Technically Tripshots' album, but the album has exactly one original song by him, others being covers of his songs. Therefore it could also be considered a compilation album. The other artists could be marked as support role, but that also feels wrong considering they all produced roughly the same number of songs. Generally, crediting albums consisting mostly of remixes or covers is problematic. Should the remix artists be credited, or just the original composer?
+
+### DanceDanceDance by Vanguard Sound
+http://vocadb.net/Album/Details/2174
+
+This is a special case of collaboration - collaboration within a circle.
+Circles are considered to be involved with music production (they are groups of people producing music). In this case, the most natural way would be to have Vanguard Sound as a circle as the main producer. The individual members of the circle could also be considered main artists, or be collaborating together. The term "main artist/album" isn't clear enough for this. Either way, there would need to be a way to indicate that at the album is a main album at least for the circle. One way to solve this would be changing the definition of "Original album" to exclude collaborations, in which case all artists on Original Albums such as this would be considered main artists.

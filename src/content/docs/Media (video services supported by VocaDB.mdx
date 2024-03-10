@@ -1,0 +1,42 @@
+---
+title: Media (video services supported by VocaDB
+description: Media (video services supported by VocaDB
+parent: Starting
+---
+
+Media streaming service support on VocaDB is very extendable. 
+
+New services can be added as long as there's a way to get the embeddable video ID. Other information such as video duration and author information is optional:
+
+|=Service|=ID format|=ID source|=API for media info|=Embed format|=Library|
+|YouTube|kKjtPMktA3Q|URL|Full|HTML5 (iframe)||
+|Vimeo|1234567|URL|Full|HTML5 (iframe)||
+|SoundCloud|244504967 hightrancesea/mirror-song|API|Full|HTML5 (iframe)||
+|NicoNicoDouga|sm28107817|URL|Limited|HTML5 (iframe)|[NicoApiClient](https://github.com/riipah/nicovideo-apiclient-dotnet)|
+|BiliBili|4176277|URL|[Limited](https://github.com/VocaDB/vocadb/wiki/Bilibili-API-documentation)|HTML5 (iframe)||
+|Piapro|qmlyzf3njdljhayx|HTML||HTML5 (audio)|[PiaproClient](https://github.com/riipah/piapro-dotnet)|
+|Creofuga|1234567|URL||HTML5 (iframe)||
+|Bandcamp|379042|HTML||HTML5 (iframe)|[NYoutubeDL](https://gitlab.com/BrianAllred/NYoutubeDL)|
+
+Ideally the PV ID and other metadata can be parsed from the URL and metadata (such as video title) can be parsed from the API.
+
+API calls are generally cheap, while downloading and parsing HTML is more costly.
+
+For SoundCloud we're saving both the internal media ID and the URL, because conversion between those would not be possible without additional API calls. There is no easy way to navigate to SoundCloud by knowing just the media ID.
+
+----
+
+In order to add support for a new service to be embedded, we need a reliable way to get the embed code from the media URL. Usually the URL contains the ID that is also required by the embed code. 
+
+For example, YouTube URLs look like this https://youtu.be/AAABBBCCC
+
+The embed code is https://www.youtube.com/embed/AAABBBCCC
+
+This is the only mandatory thing. Additionally, VocaDB supports loading metadata for the media:
+* Title
+* Thumbnail
+* Upload date
+* Length
+* Author
+
+This metadata is preferable, but not mandatory. In the optimal case, the service has a programmatic API for loading that metadata. HTML parsing may work if the HTML structure is simple enough, but there is always a risk of the parser breaking when the layout changes.

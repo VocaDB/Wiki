@@ -1,0 +1,179 @@
+---
+title: Artist entry editing
+description: Artist entry editing
+parent: Starting
+---
+
+Navigation:
+
+[Song entry creation](https://wiki.vocadb.net/wiki/88/song-entry-creation) > [Song entry editing](https://wiki.vocadb.net/wiki/89/song-entry-editing) > [Song entry page](https://wiki.vocadb.net/wiki/90/song-entry-page)
+
+[Artist entry creation](https://wiki.vocadb.net/wiki/82/artist-entry-creation) > **[Artist entry editing](https://wiki.vocadb.net/wiki/83/artist-entry-editing)** > [Artist entry page](https://wiki.vocadb.net/wiki/84/artist-entry-page)
+
+[Album entry creation](https://wiki.vocadb.net/wiki/85/album-entry-creation) > [Album entry editing](https://wiki.vocadb.net/wiki/86/album-entry-editing) > [Album entry page](https://wiki.vocadb.net/wiki/87/album-entry-page)
+
+----
+
+This page explains how existing artist entries are edited.
+
+URL: https://vocadb.net/Artist/Edit/x (replace x with some artist id)
+
+[Deleting artist entries](https://wiki.vocadb.net/wiki/54/content-removal-guidelines) | [Merging artist entries](https://wiki.vocadb.net/wiki/46/merging-entries)
+
+## tab: Basic info
+
+### Names
+
+For general entry instructions regarding fields "Original language", "Primary name", "Non-English", "Romanized", "English", "Aliases":
+
+* [Entry names and aliases](https://wiki.vocadb.net/wiki/81/entry-names-and-aliases)
+
+#### Artist entry -specific name instructions
+
+Real-life names should not be added as aliases, if they're not used by other artists/sources. Real-life names can still be added, if that's the main artist name.
+
+When artists collaborate, it's common to see artists credited with additional [honorifics](https://en.wikipedia.org/wiki/Japanese_honorifics). These should be emitted on VocaDB, unless the artist uses those when referring to themselves: [Gedou-san](https://vocadb.net/Ar/1823) for example.
+
+If the artist name is not available, the [anonymous artist -tag](https://vocadb.net/T/6403/anonymous-artist) can be used along with some placeholder name.
+
+Generally (with some exceptions), there is no need to add composite names, and those names should be broken into separate fields:
+
+* "cosMo@Bousou-P(暴走P)" is incorrect: every field should contain only one name.
+
+If there is no separate entry for the artist's solo circle, the circle name can be included as an alias for that artist. In that case, it would be advisable to mention this in the description/notes.
+
+### Main picture
+
+Source 1: [https://vocadb.net/Help/guidelines](https://vocadb.net/Help/guidelines):
+
+When adding pictures to artists, keep in mind all the pictures should be related to the artist himself, not his works. Do not upload album covers for artist entries.
+
+That said, there is no common rule for choosing the main picture of an artist. Photos of the artist himself as well as official logos are preferred. You may upload any number of these pictures as additional pictures for the artist, provided that they're relevant enough. Copyrighted pictures or pictures of artists may be taken down if the copyright holder requests it.
+
+If no better picture is provided, any picture found on one of the artist's official profiles, for example on Twitter, is acceptable as well.
+
+Watch out for pictures that look like avatars but are actually part of the default avatar collection for the website. These should not be added. (TODO list of default avatars per site)
+
+Source 2: [VocaDB Wiki: Choosing the main picture for artist entries](https://wiki.vocadb.net/wiki/41/choosing-the-main-picture-for-artist-entries)
+
+### Artist description
+
+For general entry description and/or various other details that do not belong to any other fields.
+
+[GitHub-flavored Markdown](https://docs.github.com/en/get-started/writing-on-github) is supported for formatting.
+
+English translation can be added/moved to a separate field below, if the original description exists in a non-English language.
+
+### Artist type
+
+Artist type specifies the //most common// role that the artist participates in. Additional roles can be specified with [tags](https://vocadb.net/T/7372/artists).
+
+Be careful when changing artist's type when that artist already has songs/albums added. If you do this, generally you need to make sure that artist's roles are still correct, because **changing the type changes the default role for all those existing entries.**
+
+Different artist types are described at [Artist types](https://wiki.vocadb.net/wiki/23/artist-types).
+
+### Associated artists
+
+These fields are available for voicebanks and are displayed when a suitable artist type is selected.
+
+These are inherited to any derived voicebank and can be overwritten where needed.
+
+Multiple associated artists can be added with the same role (multiple illustrators for example).
+
+#### Illustrator
+* Illustrator of the official character/voicebank art.
+
+#### Character designer
+* Only needs to be specified if it's different from the illustrator.
+
+#### Manager
+* Manager of the character/voicebank.
+
+#### Voice provider
+* Only needs to be specified if it's different from the voice provider.
+
+### Groups and circles
+For grouping related artists under a shared group/circle.
+
+If an artist leaves a group/circle, generally it's best to mention this in the artist & circle description instead of emptying this field.
+
+Solo circles can be added as artist aliases (with explanations in the entry description or edit notes) instead creating a separate entry.
+
+### Base voicebank
+
+Base voicebank if available.
+
+For example, the base voicebank for [Megpoid Talk](https://vocadb.net/Ar/21629) is [GUMI](https://vocadb.net/Ar/3).
+
+Derived voicebank listings are generated automatically.
+
+### Voicebank release date
+
+The release date of the voicebank.
+
+### External links
+
+External links relevant to this entry. Illegal/direct download links are forbidden.
+
+The link description and category will be guessed automatically based on the URL if the domain is known: [github/VocaDB/web-link-matcher](https://github.com/VocaDB/web-link-matcher)
+
+Link category:
+* Official: Artist's official websites and social media handles and other public links.
+* Commercial: Authorized sales such as Amazon and CDJapan.
+* Reference: Fansites with useful information such as wikis.
+* Other: Links that do not fit into anything above.
+
+More on the [External links -page](https://wiki.vocadb.net/wiki/5/external-links).
+
+### Language(s)
+
+Supported voice synth languages.
+
+These are inherited to any derived voicebank and can be overwritten where needed.
+
+### Status
+
+Entry status communicates the level of completeness of the current data.
+
+* Draft = Entry is missing crucial information. This status indicates that you're requesting additional information to be added or corrected.
+* Finished = The entry has all the necessary information, but it hasn't been inspected by a trusted user yet.
+* Approved = The entry has been inspected and approved by a trusted user. Approved entries can only be edited by trusted users.
+* Locked = Locked entries can only be edited by moderators.
+
+#### Finished artist entry requirements
+
+##### Artist entry validation errors
+
+[source](https://github.com/VocaDB/vocadb/blob/3497505d430cb724eadbda06c37fa49f0f314219/VocaDbModel/Service/EntryValidators/ArtistValidator.cs#L16)
+
+* ARV1: NeedType
+* ARV2: UnspecifiedNames
+* ARV3: NeedReferences
+
+Finished artist entries should meet the following criteria:
+
+* Artist type is specified (ARV1)
+* [Name](https://wiki.vocadb.net/wiki/83/artist-entry-editing#tab-Basic-info) (ARV2)
+* [Description](https://wiki.vocadb.net/wiki/83/artist-entry-editing#Artist-description) OR [External link](https://wiki.vocadb.net/wiki/83/artist-entry-editing#External-links) (ARV3)
+
+TODO Artist type -specific requirements (voice synths)
+
+#### Criteria for approving artists
+
+-
+
+##### Mandatory criteria
+
+##### Recommended criteria
+
+## tab: Additional pics
+
+Additional (official) pictures for the artist. Most useful for voice synth entries.
+
+Allowed types: .bmp, .gif, .jpg, .jpeg, .png. Maximum size is 8 MB.
+
+## Update notes
+
+Entry update notes are optional, but should **always** be used if the edit reason or the information source is not obvious.
+
+In some cases, the entry description or the comment section might be more suitable to use.

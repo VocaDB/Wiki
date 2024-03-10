@@ -13,4 +13,8 @@ export default defineConfig({
     format: "file",
   },
   integrations: [react(), tailwind(), sitemap(), mdx(), pagefind()],
+  redirects: {
+    "/wiki/40": "/docs/starting/artist_verification",
+    "/wiki/40/artist-verification": "/docs/starting/artist_verification",
+  },
 });

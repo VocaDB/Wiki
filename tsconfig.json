@@ -5,9 +5,10 @@
     "jsxImportSource": "react",
     "strictNullChecks": true,
     "allowJs": true,
+    "baseUrl": ".",
     "paths": {
       "@/*": [
-        "./src/"
+        "src/*"
       ]
     }
   }

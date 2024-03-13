@@ -1,0 +1,16 @@
+---
+import SearchMenu from "./SearchMenu";
+---
+
+<div id="hey">
+  <SearchMenu client:idle />
+</div>
+
+<script is:inline type="module">
+  console.log("hey");
+  const pagefind = await import("/pagefind/pagefind.js");
+
+  pagefind.init();
+
+  console.log(await pagefind.search("Shiroizu"));
+</script>

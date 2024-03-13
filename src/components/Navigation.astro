@@ -1,5 +1,5 @@
 ---
-import Search from "astro-pagefind/components/Search";
+import Search from "./Search.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 
 const navItems = [
@@ -38,11 +38,12 @@ const navItems = [
       </nav>
     </div>
     <div class="flex flex-1 justify-end">
-      <Search
+      <Search />
+      <!-- <Search
         id="search"
         className="pagefind-ui"
         uiOptions={{ showImages: false, outerHeight: 20 }}
-      />
+      /> -->
       <ThemeToggle />
     </div>
   </div>

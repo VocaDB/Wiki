@@ -12,7 +12,7 @@ Navigation:
 
 [Album entry creation](https://wiki.vocadb.net/wiki/85/album-entry-creation) > [Album entry editing](https://wiki.vocadb.net/wiki/86/album-entry-editing) > [Album entry page](https://wiki.vocadb.net/wiki/87/album-entry-page)
 
-----
+---
 
 This page explains the fields and features for the song entry page.
 
@@ -24,7 +24,7 @@ This page explains the fields and features for the song entry page.
 
 ### Like
 
-Rating a song adds it to your song collection (rated songs): https://vocadb.net/Profile/{username}/songs
+Rating a song adds it to your song collection (rated songs): https://vocadb.net/Profile/\{username\}/songs
 
 The song entry page statistics for "favorite(s) and like(s)" will include your username, unless the the "Allow everyone to see my song and album ratings." -setting is disabled. All of the ratings will stay visible for moderators, and for anyone who visits your rated songs through your profile page.
 
@@ -40,7 +40,7 @@ The song can be added to a new or existing song list with this button.
 
 #### Personal lists
 
-All of the custom lists by the user are displayed: https://vocadb.net/Profile/{username}/lists
+All of the custom lists by the user are displayed: https://vocadb.net/Profile/\{username\}/lists
 
 The "description" -field refers to the song list song notes, not the song list description.
 
@@ -59,31 +59,31 @@ The "Edit" -button opens [the edit-page](https://wiki.vocadb.net/wiki/89/song-en
 ### View modifications
 
 The "View modifications" -button opens the version history for the song entry:
-https://vocadb.net/Song/Versions/{artist_id}
+https://vocadb.net/Song/Versions/\{artist_id\}
 
 The version history table uses 5 columns: //Version//, //Created//, //Author//, //Changes//, //Notes//.
 
 The specific version can be viewed when clicking one of the version numbers in the Version-column:
 
-https://vocadb.net/Song/ViewVersion/{version_id}
+https://vocadb.net/Song/ViewVersion/\{version_id\}
 
 The version page has two user actions available (four for [moderators](https://wiki.vocadb.net/wiki/27/user-groups)).
 
 #### Revert to this version (moderators)
 
-* Reverts the song entry to this version. Used for countering vandalism and fixing edit mistakes.
+- Reverts the song entry to this version. Used for countering vandalism and fixing edit mistakes.
 
 #### Download XML
 
-* Downloads the version information in [XML format](https://en.wikipedia.org/wiki/XML).
+- Downloads the version information in [XML format](https://en.wikipedia.org/wiki/XML).
 
 #### Report an error
 
-* Reports the specific entry version. Using this, a notification will be sent to the relevant editor.
+- Reports the specific entry version. Using this, a notification will be sent to the relevant editor.
 
 #### Hide this version (moderators)
 
-* Hides the specific entry version. The version link will still be visible on the entry history -page, but the link will be inaccessible to users that are not moderators.
+- Hides the specific entry version. The version link will still be visible on the entry history -page, but the link will be inaccessible to users that are not moderators.
 
 ### Report an error
 
@@ -101,11 +101,11 @@ Keep in mind that if the PV is [region blocked](https://vocadb.net/T/8226/region
 
 #### 2. Invalid or missing information
 
-Used for reporting 
+Used for reporting
 *invalid or incorrect information
-**Always provide reasoning and proofs unless already obvious.
+\*\*Always provide reasoning and proofs unless already obvious.
 *missing information
-**A missing artist credit for example. If possible, always prefer adding the information yourself instead of leaving a report.
+\*\*A missing artist credit for example. If possible, always prefer adding the information yourself instead of leaving a report.
 
 #### 3. Duplicate entry
 
@@ -117,7 +117,7 @@ For song entries that [do not belong to VocaDB](https://wiki.vocadb.net/wiki/59/
 
 #### 5. Other (specify in notes)
 
-- 
+-
 
 ### Maintenance actions
 
@@ -125,7 +125,7 @@ These are available only to the moderators.
 
 #### Refresh artist string
 
-Generates a new artist string: "Rollin' Girl  wowaka feat. Hatsune Miku (Original song)"
+Generates a new artist string: "Rollin' Girl wowaka feat. Hatsune Miku (Original song)"
 
 Useful in cases where the artist name has been changed.
 
@@ -147,9 +147,9 @@ The fields from the basic info -tab on the edit-page are displayed here along wi
 
 #### Name
 
-* The first line shows the name based on the "Preferred display language" - user setting.
+- The first line shows the name based on the "Preferred display language" - user setting.
 
-* The other primary names and aliases are shown on the second line.
+- The other primary names and aliases are shown on the second line.
 
 #### Song artists
 
@@ -176,9 +176,13 @@ Animators of the entry. Artists with the artist type "Animation producer" or cre
 All the other artist types and roles.
 
 #### [Type](https://wiki.vocadb.net/wiki/89/song-entry-editing#Song-type)
+
 #### [Duration](https://wiki.vocadb.net/wiki/89/song-entry-editing#Duration)
+
 #### [Language(s)](https://wiki.vocadb.net/wiki/89/song-entry-editing#Languages)
+
 #### [BPM](https://wiki.vocadb.net/wiki/89/song-entry-editing#BPM)
+
 #### Albums
 
 Album entries in which the song is included in.
@@ -189,7 +193,7 @@ Four most voted tags are displayed by default. The "Show all" -button displays a
 
 One or two buttons (depending on the user group) are displayed next to the tags:
 
-1) Edit tags
+1. Edit tags
 
 Existing tags are shown as blue boxes. The box highlighting (orange) can be toggled by clicking.
 
@@ -197,17 +201,17 @@ Your tag votes will be added to the highlighted tags when clicking "Save".
 
 Tag suggestions (max 3) are automatically displayed based on [multiple sources](https://github.com/VocaDB/vocadb/blob/2ed84595288c2e41e63f7423086a6b94ca64f76b/VocaDbModel/Database/Queries/SongQueries.cs#L745):
 
-* Mapped Niconico tags
-* [short version](https://vocadb.net/T/4717), if the song is 30 seconds longer than the original version.
-* [instrumental](https://vocadb.net/T/208), if the (original) song has no vocalists.
+- Mapped Niconico tags
+- [short version](https://vocadb.net/T/4717), if the song is 30 seconds longer than the original version.
+- [instrumental](https://vocadb.net/T/208), if the (original) song has no vocalists.
 
 Always verify the specific tag usage guidelines. All tags have an option of hiding them from suggestions.
 
 You can remove tags that you added yourself by removing your tag vote (toggling the highlight). Tags with 0 votes are removed when clicking "Save".
 
-2) Manage tags (Trusted users)
+2. Manage tags (Trusted users)
 
-https://vocadb.net/Song/ManageTagUsages/{song_id}
+https://vocadb.net/Song/ManageTagUsages/\{song_id\}
 
 The entry tags are displayed as a table with columns //Tag//, //Count//, //Votes// (Visible to [moderators](https://wiki.vocadb.net/wiki/27/user-groups) only), //Date//.
 
@@ -238,6 +242,7 @@ External links that are "Reference" or "Other".
 #### [Original version](https://wiki.vocadb.net/wiki/89/song-entry-editing#Original-version)
 
 #### Alternate versions
+
 Song entries that have this entry set as the "Original version".
 
 #### [Description](https://wiki.vocadb.net/wiki/89/song-entry-editing#Song-description)
@@ -250,10 +255,10 @@ The English translation (if available) is shown by default, regardless of user l
 
 The following statistics are included:
 
-* [Favorites](https://wiki.vocadb.net/wiki/90/song-entry-page#Favorite) (F)
-* [Likes](https://wiki.vocadb.net/wiki/90/song-entry-page#Like) (L)
-* Hits (H)
-* Total score (T) = 3F + 2L
+- [Favorites](https://wiki.vocadb.net/wiki/90/song-entry-page#Favorite) (F)
+- [Likes](https://wiki.vocadb.net/wiki/90/song-entry-page#Like) (L)
+- Hits (H)
+- Total score (T) = 3F + 2L
 
 "F favorite(s), L like(s), H hit(s) T total score"
 
@@ -277,7 +282,7 @@ If the song publish date is outside the event date range by more than 7 days, th
 
 #### Addition date
 
-* Entry creation date. Corresponds to the last row in [the entry history -table](https://wiki.vocadb.net/wiki/90/song-entry-page#View-modifications), except with the most earliest entries.
+- Entry creation date. Corresponds to the last row in [the entry history -table](https://wiki.vocadb.net/wiki/90/song-entry-page#View-modifications), except with the most earliest entries.
 
 #### Users who liked this also liked
 
@@ -300,6 +305,7 @@ Always follow the [discussion rules](https://wiki.vocadb.net/wiki/78/discussion-
 ### tab: [Lyrics](https://wiki.vocadb.net/wiki/89/song-entry-editing#tab-Lyrics)
 
 ### tab: Discussion
+
 All entry comments split to pages consisting of 10 comments.
 
 ### tab: Related songs
@@ -312,7 +318,7 @@ Each section has 12 songs listed, which are not duplicated between the other sec
 
 Includes a link to the song entry and a second one with [markdown](https://daringfireball.net/projects/markdown/).
 
-* https://vocadb.net/Ar/{artist_id}
-* [{artist_name}](https://vocadb.net/Ar/{artist_id})
+- https://vocadb.net/Ar/\{artist_id\}
+- [\{artist_name\}](https://vocadb.net/Ar/{artist_id})
 
 Code for iframe-embed is also included along with some social media share links.

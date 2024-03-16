@@ -25,7 +25,9 @@ const grouped = groupBy(
 );
 ---
 
-<div class="py-6 pr-6 max-h-[calc(100vh-4rem)] overflow-scroll">
+<div
+  class="py-6 pr-6 h-full hover:overflow-y-auto overflow-x-hidden overflow-y-hidden scrollbar-stable"
+>
   {
     posts
       .filter((post) => getParent(post) === undefined)
@@ -37,7 +39,7 @@ const grouped = groupBy(
           >
             {parentEntry.props.entry.data.title}
           </a>
-          <div class="grid grid-flow-row auto-rows-max text-sm mt-1">
+          <div class="grid grid-flow-row auto-rows-max text-sm mt-1 w-5/6">
             {grouped[parentEntry.props.entry.data.title]?.map((post) => (
               <a
                 class="text-muted-foreground hover:underline py-1"

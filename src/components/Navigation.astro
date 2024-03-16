@@ -37,27 +37,9 @@ const navItems = [
         }
       </nav>
     </div>
-    <div class="flex flex-1 justify-end">
+    <div class="flex flex-1 justify-end items-center space-x-2">
       <Search />
-      <!-- <Search
-        id="search"
-        className="pagefind-ui"
-        uiOptions={{ showImages: false, outerHeight: 20 }}
-      /> -->
       <ThemeToggle />
     </div>
   </div>
 </header>
-
-<style>
-  html {
-    --pagefind-ui-scale: 0.6 !important;
-  }
-  html.dark {
-    --pagefind-ui-primary: #eeeeee;
-    --pagefind-ui-text: #eeeeee;
-    --pagefind-ui-background: #152028;
-    --pagefind-ui-border: #152028;
-    --pagefind-ui-tag: #152028;
-  }
-</style>

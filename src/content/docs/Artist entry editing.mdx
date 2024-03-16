@@ -4,15 +4,9 @@ description: Artist entry editing
 parent: Artists
 ---
 
-Navigation:
+import Navigation from "@/components/markdown/Navigation.astro";
 
-[Song entry creation](https://wiki.vocadb.net/wiki/88/song-entry-creation) > [Song entry editing](https://wiki.vocadb.net/wiki/89/song-entry-editing) > [Song entry page](https://wiki.vocadb.net/wiki/90/song-entry-page)
-
-[Artist entry creation](https://wiki.vocadb.net/wiki/82/artist-entry-creation) > **[Artist entry editing](https://wiki.vocadb.net/wiki/83/artist-entry-editing)** > [Artist entry page](https://wiki.vocadb.net/wiki/84/artist-entry-page)
-
-[Album entry creation](https://wiki.vocadb.net/wiki/85/album-entry-creation) > [Album entry editing](https://wiki.vocadb.net/wiki/86/album-entry-editing) > [Album entry page](https://wiki.vocadb.net/wiki/87/album-entry-page)
-
-----
+<Navigation />
 
 This page explains how existing artist entries are edited.
 
@@ -26,7 +20,7 @@ URL: https://vocadb.net/Artist/Edit/x (replace x with some artist id)
 
 For general entry instructions regarding fields "Original language", "Primary name", "Non-English", "Romanized", "English", "Aliases":
 
-* [Entry names and aliases](https://wiki.vocadb.net/wiki/81/entry-names-and-aliases)
+- [Entry names and aliases](https://wiki.vocadb.net/wiki/81/entry-names-and-aliases)
 
 #### Artist entry -specific name instructions
 
@@ -38,7 +32,7 @@ If the artist name is not available, the [anonymous artist -tag](https://vocadb.
 
 Generally (with some exceptions), there is no need to add composite names, and those names should be broken into separate fields:
 
-* "cosMo@Bousou-P(暴走P)" is incorrect: every field should contain only one name.
+- "cosMo@Bousou-P(暴走 P)" is incorrect: every field should contain only one name.
 
 If there is no separate entry for the artist's solo circle, the circle name can be included as an alias for that artist. In that case, it would be advisable to mention this in the description/notes.
 
@@ -81,18 +75,23 @@ These are inherited to any derived voicebank and can be overwritten where needed
 Multiple associated artists can be added with the same role (multiple illustrators for example).
 
 #### Illustrator
-* Illustrator of the official character/voicebank art.
+
+- Illustrator of the official character/voicebank art.
 
 #### Character designer
-* Only needs to be specified if it's different from the illustrator.
+
+- Only needs to be specified if it's different from the illustrator.
 
 #### Manager
-* Manager of the character/voicebank.
+
+- Manager of the character/voicebank.
 
 #### Voice provider
-* Only needs to be specified if it's different from the voice provider.
+
+- Only needs to be specified if it's different from the voice provider.
 
 ### Groups and circles
+
 For grouping related artists under a shared group/circle.
 
 If an artist leaves a group/circle, generally it's best to mention this in the artist & circle description instead of emptying this field.
@@ -118,10 +117,11 @@ External links relevant to this entry. Illegal/direct download links are forbidd
 The link description and category will be guessed automatically based on the URL if the domain is known: [github/VocaDB/web-link-matcher](https://github.com/VocaDB/web-link-matcher)
 
 Link category:
-* Official: Artist's official websites and social media handles and other public links.
-* Commercial: Authorized sales such as Amazon and CDJapan.
-* Reference: Fansites with useful information such as wikis.
-* Other: Links that do not fit into anything above.
+
+- Official: Artist's official websites and social media handles and other public links.
+- Commercial: Authorized sales such as Amazon and CDJapan.
+- Reference: Fansites with useful information such as wikis.
+- Other: Links that do not fit into anything above.
 
 More on the [External links -page](https://wiki.vocadb.net/wiki/5/external-links).
 
@@ -135,10 +135,10 @@ These are inherited to any derived voicebank and can be overwritten where needed
 
 Entry status communicates the level of completeness of the current data.
 
-* Draft = Entry is missing crucial information. This status indicates that you're requesting additional information to be added or corrected.
-* Finished = The entry has all the necessary information, but it hasn't been inspected by a trusted user yet.
-* Approved = The entry has been inspected and approved by a trusted user. Approved entries can only be edited by trusted users.
-* Locked = Locked entries can only be edited by moderators.
+- Draft = Entry is missing crucial information. This status indicates that you're requesting additional information to be added or corrected.
+- Finished = The entry has all the necessary information, but it hasn't been inspected by a trusted user yet.
+- Approved = The entry has been inspected and approved by a trusted user. Approved entries can only be edited by trusted users.
+- Locked = Locked entries can only be edited by moderators.
 
 #### Finished artist entry requirements
 
@@ -146,15 +146,15 @@ Entry status communicates the level of completeness of the current data.
 
 [source](https://github.com/VocaDB/vocadb/blob/3497505d430cb724eadbda06c37fa49f0f314219/VocaDbModel/Service/EntryValidators/ArtistValidator.cs#L16)
 
-* ARV1: NeedType
-* ARV2: UnspecifiedNames
-* ARV3: NeedReferences
+- ARV1: NeedType
+- ARV2: UnspecifiedNames
+- ARV3: NeedReferences
 
 Finished artist entries should meet the following criteria:
 
-* Artist type is specified (ARV1)
-* [Name](https://wiki.vocadb.net/wiki/83/artist-entry-editing#tab-Basic-info) (ARV2)
-* [Description](https://wiki.vocadb.net/wiki/83/artist-entry-editing#Artist-description) OR [External link](https://wiki.vocadb.net/wiki/83/artist-entry-editing#External-links) (ARV3)
+- Artist type is specified (ARV1)
+- [Name](https://wiki.vocadb.net/wiki/83/artist-entry-editing#tab-Basic-info) (ARV2)
+- [Description](https://wiki.vocadb.net/wiki/83/artist-entry-editing#Artist-description) OR [External link](https://wiki.vocadb.net/wiki/83/artist-entry-editing#External-links) (ARV3)
 
 TODO Artist type -specific requirements (voice synths)
 

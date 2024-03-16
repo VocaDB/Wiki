@@ -4,19 +4,13 @@ description: Album entry editing
 parent: Albums
 ---
 
-Navigation:
+import Navigation from "@/components/markdown/Navigation.astro";
 
-[Song entry creation](https://wiki.vocadb.net/wiki/88/song-entry-creation) > [Song entry editing](https://wiki.vocadb.net/wiki/89/song-entry-editing) > [Song entry page](https://wiki.vocadb.net/wiki/90/song-entry-page)
-
-[Artist entry creation](https://wiki.vocadb.net/wiki/82/artist-entry-creation) > [Artist entry editing](https://wiki.vocadb.net/wiki/83/artist-entry-editing) > [Artist entry page](https://wiki.vocadb.net/wiki/84/artist-entry-page)
-
-[Album entry creation](https://wiki.vocadb.net/wiki/85/album-entry-creation) > **[Album entry editing](https://wiki.vocadb.net/wiki/86/album-entry-editing)** > [Album entry page](https://wiki.vocadb.net/wiki/87/album-entry-page)
-
-----
+<Navigation />
 
 This page explains how existing album entries are edited.
 
-URL: https://vocadb.net/Album/Edit/x (replace x with some album id) 
+URL: https://vocadb.net/Album/Edit/x (replace x with some album id)
 
 [Deleting album entries](https://wiki.vocadb.net/wiki/54/content-removal-guidelines) | [Merging album entries](https://wiki.vocadb.net/wiki/46/merging-entries)
 
@@ -28,7 +22,7 @@ https://vocadb.net/Album/Edit/x
 
 For general entry instructions regarding fields "Original language", "Primary name", "Non-English", "Romanized", "English", "Aliases":
 
-* [Entry names and aliases](https://wiki.vocadb.net/wiki/81/entry-names-and-aliases)
+- [Entry names and aliases](https://wiki.vocadb.net/wiki/81/entry-names-and-aliases)
 
 #### Album entry -specific name instructions
 
@@ -41,9 +35,9 @@ If the album is split to multiple entries (tracklists differences), try to inclu
 
 A cover picture for the album.
 
-* If the album has no cover picture, use the [no cover art -tag.](https://vocadb.net/T/2811/no-cover-art)
+- If the album has no cover picture, use the [no cover art -tag.](https://vocadb.net/T/2811/no-cover-art)
 
-* If the only available cover picture is in very low quality, use the [temporary cover art -tag.](https://vocadb.net/T/429/temporary-cover-art)
+- If the only available cover picture is in very low quality, use the [temporary cover art -tag.](https://vocadb.net/T/429/temporary-cover-art)
 
 ### Album description
 
@@ -114,10 +108,11 @@ External links relevant to this entry. Illegal/direct download links are forbidd
 The link description and category will be guessed automatically based on the URL if the domain is known: [github/VocaDB/web-link-matcher](https://github.com/VocaDB/web-link-matcher)
 
 Link category:
-* Official: Artist's official websites and social media handles and other public links.
-* Commercial: Authorized sales such as Amazon and CDJapan.
-* Reference: Fansites with useful information such as wikis.
-* Other: Links that do not fit into anything above.
+
+- Official: Artist's official websites and social media handles and other public links.
+- Commercial: Authorized sales such as Amazon and CDJapan.
+- Reference: Fansites with useful information such as wikis.
+- Other: Links that do not fit into anything above.
 
 More on the [External links -page](https://wiki.vocadb.net/wiki/5/external-links).
 
@@ -125,10 +120,10 @@ More on the [External links -page](https://wiki.vocadb.net/wiki/5/external-links
 
 Entry status communicates the level of completeness.
 
-* Draft = Entry is missing crucial information. This status indicates that you're requesting additional information to be added or corrected.
-* Finished = The entry has all the necessary information, but it hasn't been inspected by a trusted user yet.
-* Approved = The entry has been inspected and approved by a trusted user. Approved entries can only be edited by trusted users.
-* Locked = Locked entries can only be edited by moderators.
+- Draft = Entry is missing crucial information. This status indicates that you're requesting additional information to be added or corrected.
+- Finished = The entry has all the necessary information, but it hasn't been inspected by a trusted user yet.
+- Approved = The entry has been inspected and approved by a trusted user. Approved entries can only be edited by trusted users.
+- Locked = Locked entries can only be edited by moderators.
 
 #### Finished album entry requirements
 
@@ -136,23 +131,24 @@ Entry status communicates the level of completeness.
 
 [source](https://github.com/VocaDB/vocadb/blob/3497505d430cb724eadbda06c37fa49f0f314219/VocaDbWeb/Views/Album/Edit.cshtml#L20C15-L20C15)
 
-* ALV1: DuplicateArtist (automatically fixed)
-* ALV2: UnspecifiedNames
-* ALV3: NeedArtist
-* ALV4: NeedCover
-* ALV5: NeedReferences
-* ALV6: NeedReleaseYear
-* ALV7: NeedTracks
-* ALV8: NeedType
+- ALV1: DuplicateArtist (automatically fixed)
+- ALV2: UnspecifiedNames
+- ALV3: NeedArtist
+- ALV4: NeedCover
+- ALV5: NeedReferences
+- ALV6: NeedReleaseYear
+- ALV7: NeedTracks
+- ALV8: NeedType
 
 Finished album entries should meet the following criteria:
-*  The album has at least one name and the original language can't be unspecified. (ALEW2)
-* All artists (including vocalists) responsible for the album are specified. Whenever it makes sense, each of those artists should also have an artist entry. (partially ALEW3)
-* Album has a cover picture (or [temporary cover art -tag](https://vocadb.net/T/429) or [no cover art -tag](https://vocadb.net/T/2811/no-cover-art)). (ALEW4)
-* Album needs one of the following: description, external link, media link  (ALEW5)
-* The album's release date (at least the year) is specified. (ALEW6)
-* The album has a complete tracklist . (ALEW7)
-* Album type isn't "Unspecified". (ALEW8)
+
+- The album has at least one name and the original language can't be unspecified. (ALEW2)
+- All artists (including vocalists) responsible for the album are specified. Whenever it makes sense, each of those artists should also have an artist entry. (partially ALEW3)
+- Album has a cover picture (or [temporary cover art -tag](https://vocadb.net/T/429) or [no cover art -tag](https://vocadb.net/T/2811/no-cover-art)). (ALEW4)
+- Album needs one of the following: description, external link, media link (ALEW5)
+- The album's release date (at least the year) is specified. (ALEW6)
+- The album has a complete tracklist . (ALEW7)
+- Album type isn't "Unspecified". (ALEW8)
 
 #### Criteria for approving albums
 
@@ -160,7 +156,7 @@ Finished album entries should meet the following criteria:
 
 ## tab: Artists
 
-In this tab, you can add and delete artists that have participated in the album. 
+In this tab, you can add and delete artists that have participated in the album.
 
 Vocaloids, UTAUs and other singing synthesizer voicebanks are added as artists as well: [Choosing the correct voicebank credit](https://wiki.vocadb.net/wiki/79/choosing-the-correct-voicebank-credit)
 
@@ -175,11 +171,12 @@ If the vocalist is uncredited, the artist entry [Unknown vocalist(s)](https://vo
 Support status is a special setting for a particular artist credit. The support status should be used when the song or album has a clear separation of main artists and support artists.
 
 Usage examples (albums & songs):
-* Backing vocals, for example singing chorus when the main vocals are sung by another vocalist.
-* Background illustrators (to distinguish them from the main illustrator)
-* Guest artists on albums. An artist might invite other guest artists to produce remixes, released together with the original songs. Those guest artists should be marked as support.
-** For example, album [electroll by 8#Prince](http://vocadb.net/Al/3572)
-** The same applies if the album is titled for example "feat. Hatsune Miku" and there's 1 or 2 songs with other Vocaloids: those supporting Vocaloids should be marked support.
+
+- Backing vocals, for example singing chorus when the main vocals are sung by another vocalist.
+- Background illustrators (to distinguish them from the main illustrator)
+- Guest artists on albums. An artist might invite other guest artists to produce remixes, released together with the original songs. Those guest artists should be marked as support.
+  ** For example, album [electroll by 8#Prince](http://vocadb.net/Al/3572)
+  ** The same applies if the album is titled for example "feat. Hatsune Miku" and there's 1 or 2 songs with other Vocaloids: those supporting Vocaloids should be marked support.
 
 Support status removes the artist(s) from the artist string (the one that says "producers feat. vocalists). The search is affected as well through the "Only main songs" -filter (also with albums).
 
@@ -197,7 +194,7 @@ Songs entries can be linked to the album using this tab.
 
 New song entries can also be directly created from here.
 
-Clicking a track by its name opens the "Track properties" -window, which can be used to add artists to the song (track) entry. Only the artists which are added in the ["Artists"-tab](https://wiki.vocadb.net/wiki/86/album-entry-editing#tab-Artists) are visible. 
+Clicking a track by its name opens the "Track properties" -window, which can be used to add artists to the song (track) entry. Only the artists which are added in the ["Artists"-tab](https://wiki.vocadb.net/wiki/86/album-entry-editing#tab-Artists) are visible.
 
 If the artist participates in most of the songs, it's efficient to select all of the tracks first instead of adding the artist to the tracks one by one.
 
@@ -211,7 +208,7 @@ Note that the main picture is edited on the "Basic Info" tab. Please only upload
 
 You can use this page to add advertisements or crossfades related to this album.
 
-* [Media (video) services supported by VocaDB](https://wiki.vocadb.net/wiki/31/media-video-services-supported-by-vocadb)
+- [Media (video) services supported by VocaDB](https://wiki.vocadb.net/wiki/31/media-video-services-supported-by-vocadb)
 
 ## Update notes
 

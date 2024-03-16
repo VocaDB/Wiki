@@ -13,6 +13,7 @@ const { frontmatter, headings } = Astro.props;
 <Layout title={frontmatter.title} description={frontmatter.description}>
   <main class="relative xl:grid xl:grid-cols-[1fr_300px]">
     <div data-pagefind-body class="prose dark:prose-invert">
+      <h1>{frontmatter.title}</h1>
       <slot />
     </div>
     <div

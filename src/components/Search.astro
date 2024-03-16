@@ -2,12 +2,11 @@
 import SearchMenu from "./SearchMenu";
 ---
 
-<div id="hey">
+<div class="flex flex-1 md:justify-end">
   <SearchMenu client:idle />
 </div>
 
 <script is:inline type="module">
-  console.log("hey");
   const pagefind = await import("/pagefind/pagefind.js");
 
   pagefind.init();

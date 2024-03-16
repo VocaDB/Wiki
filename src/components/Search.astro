@@ -9,7 +9,5 @@ import SearchMenu from "./SearchMenu";
 <script is:inline type="module">
   const pagefind = await import("/pagefind/pagefind.js");
 
-  pagefind.init();
-
-  console.log(await pagefind.search("Shiroizu"));
+  window.pagefind = pagefind;
 </script>

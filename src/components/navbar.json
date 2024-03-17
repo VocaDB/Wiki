@@ -1,0 +1,10 @@
+[
+  { "title": "Starting" },
+  { "title": "Guidelines", "subcategories": ["Songs", "Albums", "Artists"] },
+  { "title": "Documentation" },
+  { "title": "Other" },
+  { "title": "UtaiteDB" },
+  { "title": "TouhouDB" },
+  { "title": "Japanese" },
+  { "title": "Chinese" }
+]

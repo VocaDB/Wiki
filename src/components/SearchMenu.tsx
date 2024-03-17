@@ -34,7 +34,9 @@ function ResultItem({ result }: { result: SearchResult }) {
   }, []);
 
   return (
-    <CommandItem onSelect={() => navigate(data?.url ?? "/")}>
+    <CommandItem
+      onSelect={() => navigate(data?.url.replace(".html", "") ?? "/")}
+    >
       {data !== undefined && data.meta.title}
     </CommandItem>
   );

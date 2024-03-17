@@ -92,7 +92,7 @@ export default function SearchMenu() {
   return (
     <>
       <Button
-        className="relative h-8 text-muted-foreground sm:pr-12 w-full justify-start md:w-40 lg:w-64 px-4 transition-none hover:transition-colors"
+        className="relative h-8 text-muted-foreground sm:pr-12 w-full justify-start md:w-40 lg:w-64 px-4 hover:transition-colors"
         variant="outline"
         onClick={() => setOpen(true)}
       >

@@ -18,7 +18,7 @@ import { headerNavItems } from "./navigationConfig";
             <a
               href={navItem.href}
               target={navItem.href.startsWith("//") ? "_blank" : "_self"}
-              class={`navitem flex flex-row items-center gap-1 hover:text-foreground/80 transition-none hover:transition-colors ${Astro.url.pathname.includes(navItem.href) ? "text-foreground" : "text-muted-foreground"}`}
+              class={`navitem flex flex-row items-center gap-1 hover:text-foreground/80 hover:transition-colors ${Astro.url.pathname.includes(navItem.href) ? "text-foreground" : "text-muted-foreground"}`}
             >
               {navItem.name}
               {navItem.href.startsWith("//") && (

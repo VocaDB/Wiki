@@ -5,22 +5,25 @@ import BreadCrumbs from "./BreadCrumbs.astro";
 <div
   class="rounded-xl border bg-card text-card-foreground shadow w-full not-prose"
 >
-  <div class="p-6">
-    <h3 class="font-semibold leading-none tracking-tight">Entry Navigation</h3>
+  <div class="sm:p-6 p-4">
+    <h3 class="font-semibold leading-none tracking-tight">Entry guidelines</h3>
   </div>
-  <div class="p-6 pt-0">
+  <div class="sm:p-6 p-4 !pt-0">
     <BreadCrumbs
       links={[
         {
           title: "Song entry creation",
+          shortTitle: "Song creation",
           url: "/docs/songs/song-entry-creation",
         },
         {
           title: "Song entry editing",
+          shortTitle: "Song editing",
           url: "/docs/songs/song-entry-editing",
         },
         {
           title: "Song entry page",
+          shortTitle: "Song page",
           url: "/docs/songs/song-entry-page",
         },
       ]}
@@ -29,14 +32,17 @@ import BreadCrumbs from "./BreadCrumbs.astro";
       links={[
         {
           title: "Artist entry creation",
+          shortTitle: "Artist creation",
           url: "/docs/artists/artist-entry-creation",
         },
         {
           title: "Artist entry editing",
+          shortTitle: "Artist editing",
           url: "/docs/artists/artist-entry-editing",
         },
         {
           title: "Artist entry page",
+          shortTitle: "Artist page",
           url: "/docs/artists/artist-entry-page",
         },
       ]}
@@ -45,14 +51,17 @@ import BreadCrumbs from "./BreadCrumbs.astro";
       links={[
         {
           title: "Album entry creation",
+          shortTitle: "Album creation",
           url: "/docs/albums/album-entry-creation",
         },
         {
           title: "Album entry editing",
+          shortTitle: "Album editing",
           url: "/docs/albums/album-entry-editing",
         },
         {
           title: "Album entry page",
+          shortTitle: "Album page",
           url: "/docs/albums/album-entry-page",
         },
       ]}

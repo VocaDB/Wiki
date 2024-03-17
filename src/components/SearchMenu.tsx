@@ -8,6 +8,7 @@ import {
 } from "@/ui/command";
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
+import { navigate } from "astro:transitions/client";
 
 interface ArticleData {
   url: string;
@@ -33,11 +34,7 @@ function ResultItem({ result }: { result: SearchResult }) {
   }, []);
 
   return (
-    <CommandItem
-      onSelect={() =>
-        (window.location.href = data?.url || window.location.href)
-      }
-    >
+    <CommandItem onSelect={() => navigate(data?.url ?? "/")}>
       {data !== undefined && data.meta.title}
     </CommandItem>
   );

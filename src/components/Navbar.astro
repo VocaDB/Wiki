@@ -126,18 +126,20 @@ const grouped = groupBy(
 </div>
 
 <script>
-  const collapsibleButtons = document.querySelectorAll(".collapsibleNav");
-  for (const button of collapsibleButtons) {
-    const key = `expanded:${button.textContent}`;
-    const lastState = localStorage.getItem(key);
-    if (lastState === "open") {
-      button.setAttribute("data-state", "open");
+  document.addEventListener("astro:page-load", () => {
+    const collapsibleButtons = document.querySelectorAll(".collapsibleNav");
+    for (const button of collapsibleButtons) {
+      const key = `expanded:${button.textContent}`;
+      const lastState = localStorage.getItem(key);
+      if (lastState === "open") {
+        button.setAttribute("data-state", "open");
+      }
+      button.addEventListener("click", () => {
+        const newState =
+          button.getAttribute("data-state") === "closed" ? "open" : "closed";
+        button.setAttribute("data-state", newState);
+        localStorage.setItem(key, newState);
+      });
     }
-    button.addEventListener("click", () => {
-      const newState =
-        button.getAttribute("data-state") === "closed" ? "open" : "closed";
-      button.setAttribute("data-state", newState);
-      localStorage.setItem(key, newState);
-    });
-  }
+  });
 </script>

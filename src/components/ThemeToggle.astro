@@ -34,15 +34,25 @@
 </button>
 
 <script>
-  const button = document.querySelector("button#themetoggle");
+  document.addEventListener("astro:page-load", () => {
+    const button = document.querySelector("button#themetoggle");
 
-  button?.addEventListener("click", () => {
-    const theme = localStorage.getItem("theme") ?? "light";
-    if (theme === "dark") {
-      document.documentElement.classList.remove("dark");
-    } else {
-      document.documentElement.classList.add("dark");
-    }
-    localStorage.setItem("theme", theme === "dark" ? "light" : "dark");
+    button?.addEventListener("click", () => {
+      const theme = localStorage.getItem("theme") ?? "light";
+      if (theme === "dark") {
+        document.documentElement.classList.remove("dark");
+      } else {
+        document.documentElement.classList.add("dark");
+      }
+      localStorage.setItem("theme", theme === "dark" ? "light" : "dark");
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener("astro:after-swap", () => {
+    localStorage.getItem("theme") === "dark"
+      ? document.documentElement.classList.add("dark")
+      : document.documentElement.classList.remove("dark");
   });
 </script>

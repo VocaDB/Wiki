@@ -24,12 +24,13 @@ export default defineConfig({
     "/wiki/40/artist-verification": "/docs/starting/artist_verification",
     "/wiki/6": "/docs/starting/song-entry-editing",
     // TODO add links with url slugs
-    "/wiki/62": "/docs/starting/merging-entries",
+    "/wiki/62": "/docs/guidelines/merging-entries",
+    "/wiki/62/merging-entries": "/docs/guidelines/merging-entries",
     "/wiki/55": "/docs/starting/albums",
     "/wiki/56": "/docs/starting/artist-entry-page",
     "/wiki/57": "/docs/starting/song-entry-page",
     "/wiki/47": "/docs/starting/song-entry-editing",
     "/wiki/32": "/docs/starting/song-entry-editing",
-    "/wiki/21": "/docs/starting/song-entry-editing"
+    "/wiki/21": "/docs/starting/song-entry-editing",
   },
 });

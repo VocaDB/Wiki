@@ -8,7 +8,7 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://wiki.vocadb.net/",
+  site: "https://vocadb-wiki.onrender.com/",
   build: {
     format: "file",
   },

@@ -10,7 +10,10 @@ import {
 export default function MobileNavbar() {
   return (
     <Sheet>
-      <SheetTrigger className="mr-6 md:hidden">
+      <SheetTrigger
+        aria-label="Open navigation menu"
+        className="mr-6 md:hidden"
+      >
         <svg
           width="15"
           height="15"

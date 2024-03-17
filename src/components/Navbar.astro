@@ -6,11 +6,10 @@ import {
   groupedNavbarParents,
   navbarParents,
 } from "./navigationConfig";
+import { ScrollArea } from "./ui/scroll-area";
 ---
 
-<div
-  class="py-6 pr-6 h-full hover:overflow-y-auto overflow-x-hidden overflow-y-hidden scrollbar-stable"
->
+<ScrollArea client:load className="py-6 pr-6 h-full">
   {
     navbarParents
       .map((i) => {
@@ -79,7 +78,7 @@ import {
         </div>
       ))
   }
-</div>
+</ScrollArea>
 
 <script>
   document.addEventListener("astro:page-load", () => {

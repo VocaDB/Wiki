@@ -1,36 +1,17 @@
 ---
-import { getDocPaths } from "../utils/get_paths";
-import navbar from "./navbar.json";
-
-const posts = await getDocPaths();
-
-// https://stackoverflow.com/questions/14446511/most-efficient-method-to-groupby-on-an-array-of-objects
-const groupBy = <T,>(
-  array: T[],
-  predicate: (value: T, index: number, array: T[]) => string
-) =>
-  array.reduce(
-    (acc, value, index, array) => {
-      (acc[predicate(value, index, array)] ||= []).push(value);
-      return acc;
-    },
-    {} as { [key: string]: T[] }
-  );
-
-const getParent = (p: { params?: { slug: string }; props: any }) =>
-  p.props.entry.data.parent;
-
-const grouped = groupBy(
-  posts.filter((p) => getParent(p) !== undefined),
-  (post) => getParent(post)!
-);
+import {
+  posts,
+  getParent,
+  groupedNavbarParents,
+  navbarParents,
+} from "./navigationConfig";
 ---
 
 <div
   class="py-6 pr-6 h-full hover:overflow-y-auto overflow-x-hidden overflow-y-hidden scrollbar-stable"
 >
   {
-    navbar
+    navbarParents
       .map((i) => {
         return {
           navbarItem: i,
@@ -90,7 +71,7 @@ const grouped = groupBy(
                         </svg>
                       </div>
                       <div class="peer-data-[state=open]:grid hidden text-muted-foreground py-1 ml-4">
-                        {grouped[c]?.map((post) => (
+                        {groupedNavbarParents[c]?.map((post) => (
                           <a
                             class="hover:underline py-1"
                             href={[
@@ -107,18 +88,20 @@ const grouped = groupBy(
                   ))}
                 </>
               )}
-            {grouped[parentEntry.props.entry.data.title]?.map((post) => (
-              <a
-                class="text-muted-foreground hover:underline py-1"
-                href={[
-                  "/docs",
-                  getParent(post)!.toLowerCase(),
-                  post.params.slug,
-                ].join("/")}
-              >
-                {post.props.entry.data.title}
-              </a>
-            ))}
+            {groupedNavbarParents[parentEntry.props.entry.data.title]?.map(
+              (post) => (
+                <a
+                  class="text-muted-foreground hover:underline py-1"
+                  href={[
+                    "/docs",
+                    getParent(post)!.toLowerCase(),
+                    post.params.slug,
+                  ].join("/")}
+                >
+                  {post.props.entry.data.title}
+                </a>
+              )
+            )}
           </div>
         </div>
       ))

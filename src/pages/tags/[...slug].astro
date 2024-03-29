@@ -1,0 +1,43 @@
+---
+import { getCollection } from "astro:content";
+import Base from "@/layouts/Base.astro";
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("docs");
+  const tags = [...new Set(blogEntries.flatMap((entry) => entry.data.tags))];
+  return tags.map((tag) => ({
+    params: {
+      slug: tag,
+    },
+    props: { tag },
+  }));
+}
+const { tag } = Astro.props;
+const taggedEntries = (await getCollection("docs")).filter((entry) =>
+  entry.data.tags.includes(tag)
+);
+---
+
+<Base>
+  <h1 class="text-4xl font-extrabold mb-4">All pages for tag "{tag}"</h1>
+
+  <ul class="list-disc list-inside">
+    {
+      taggedEntries.map((entry) => (
+        <li>
+          <a
+            class="underline"
+            href={[
+              "/docs",
+              entry.data.parent?.toLowerCase(),
+              entry.slug.toLowerCase(),
+            ].join("/")}
+          >
+            {entry.data.title}
+          </a>
+        </li>
+      ))
+    }
+    <ul></ul>
+  </ul>
+</Base>

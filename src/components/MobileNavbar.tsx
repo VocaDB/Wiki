@@ -58,6 +58,7 @@ export default function MobileNavbar() {
                             {groupedNavbarParents[c]?.map((post) => (
                               <a
                                 className="hover:underline pt-2"
+                                key={post.params.slug}
                                 href={[
                                   "/docs",
                                   c.toLowerCase(),
@@ -79,6 +80,7 @@ export default function MobileNavbar() {
                       parentEntry.params.slug,
                       post.params.slug,
                     ].join("/")}
+                    key={post.params.slug}
                     className="text-muted-foreground"
                   >
                     {post.props.entry.data.title}

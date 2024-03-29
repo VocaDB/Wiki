@@ -6,6 +6,7 @@ const docsCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     parent: z.string().optional(),
+    tags: z.array(z.string()).default([]),
   }),
 });
 

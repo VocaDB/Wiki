@@ -1,6 +1,7 @@
 ---
 import type { MarkdownHeading } from "astro";
 import Layout from "./Base.astro";
+import { TagsDisplay } from "@/components/TagsDisplay";
 
 export interface Props {
   headings: MarkdownHeading[];
@@ -14,6 +15,7 @@ const { frontmatter, headings } = Astro.props;
   <main class="relative xl:grid xl:grid-cols-[1fr_300px]">
     <div data-pagefind-body class="prose dark:prose-invert">
       <h1>{frontmatter.title}</h1>
+      <TagsDisplay tags={frontmatter.tags} />
       <slot />
     </div>
     <div

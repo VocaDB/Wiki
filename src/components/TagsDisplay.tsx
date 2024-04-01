@@ -11,6 +11,7 @@ export const TagsDisplay: React.FC<TagsDisplayProps> = ({ tags }) => {
       {tags.map((tag) => (
         <a
           href={["/tags", tag].join("/")}
+          key={tag}
           className={cn(badgeVariants(), "no-underline")}
         >
           {tag}

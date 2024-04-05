@@ -2,7 +2,6 @@ import { groupBy } from "@/lib/utils";
 import { getDocPaths } from "@/utils/get_paths";
 
 export const navbarParents = [
-  { title: "Starting" },
   { title: "Guidelines", subcategories: ["Pinned", "Songs", "Albums", "Artists"] },
   { title: "Documentation" },
   { title: "Other" },

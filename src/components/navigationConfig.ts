@@ -2,7 +2,7 @@ import { groupBy } from "@/lib/utils";
 import { getDocPaths } from "@/utils/get_paths";
 
 export const navbarParents = [
-  { title: "Guidelines", subcategories: ["Pinned", "Songs", "Albums", "Artists", "Secondary entry types"] },
+  { title: "Guidelines", subcategories: ["Pinned", "Songs", "Albums", "Artists", "Secondary entry types", "Other guidelines"] },
   { title: "Documentation" },
   { title: "Other" },
   { title: "UtaiteDB" },

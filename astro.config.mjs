@@ -96,12 +96,12 @@ export default defineConfig({
     "/wiki/60": "/docs/guidelines/quick-guide-for-new-editors",
     "/wiki/60/quick-guide-for-new-editors":
       "/docs/guidelines/quick-guide-for-new-editors",
-    "/wiki/1": "/docs/guidelines/romanization-guidelines",
+    "/wiki/1": "/docs/other guidelines/romanization-guidelines",
     "/wiki/1/romanization-guidelines":
-      "/docs/guidelines/romanization-guidelines",
-    "/wiki/20": "/docs/guidelines/romanization-walkthrough",
+      "/docs/other guidelines/romanization-guidelines",
+    "/wiki/20": "/docs/other guidelines/romanization-walkthrough",
     "/wiki/20/romanization-walkthrough":
-      "/docs/guidelines/romanization-walkthrough",
+      "/docs/other guidelines/romanization-walkthrough",
     "/wiki/91": "/docs/guidelines/rule-changelog",
     "/wiki/91/ruleguideline-changelog": "/docs/guidelines/rule-changelog",
     "/wiki/67": "/docs/documentation/search-terms-cheat-sheet",

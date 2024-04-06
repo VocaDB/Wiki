@@ -83,9 +83,9 @@ export default defineConfig({
     "/wiki/53": "/docs/guidelines/management-guidelines",
     "/wiki/53/management-guidelines-golden-rules":
       "/docs/guidelines/management-guidelines",
-    "/wiki/31": "/docs/documentation/media-video-services-supported-by-vocadb",
+    "/wiki/31": "/docs/other-guidelines/supported-streaming-services",
     "/wiki/31/media-video-services-supported-by-vocadb":
-      "/docs/documentation/media-video-services-supported-by-vocadb",
+      "/docs/other-guidelines/supported-streaming-services",
     "/wiki/46": "/docs/guidelines/merging-entries",
     "/wiki/46/merging-entries": "/docs/guidelines/merging-entries",
     "/wiki/50": "/docs/documentation/privacy-and-cookie-policy",

@@ -65,13 +65,13 @@ export default defineConfig({
     "/wiki/47": "/docs/songs/song-entry-editing#criteria-for-approving-songs",
     "/wiki/47/criteria-for-approving-songs":
       "/docs/songs/song-entry-editing#criteria-for-approving-songs",
-    "/wiki/78": "/docs/guidelines/discussion-rules",
-    "/wiki/78/discussion-rules": "/docs/guidelines/discussion-rules",
+    "/wiki/78": "/docs/pinned/discussion-rules",
+    "/wiki/78/discussion-rules": "/docs/pinned/discussion-rules",
     "/wiki/81": "/docs/guidelines/entry-names-and-aliases",
     "/wiki/81/entry-names-and-aliases":
       "/docs/guidelines/entry-names-and-aliases",
-    "/wiki/58": "/docs/guidelines/entry-reports",
-    "/wiki/58/entry-reports": "/docs/guidelines/entry-reports",
+    "/wiki/58": "/docs/pinned/entry-reports",
+    "/wiki/58/entry-reports": "/docs/pinned/entry-reports",
     "/wiki/36": "/docs/guidelines/events",
     "/wiki/36/events": "/docs/guidelines/events",
     "/wiki/5": "/docs/guidelines/external-links",
@@ -93,17 +93,17 @@ export default defineConfig({
       "/docs/documentation/privacy-and-cookie-policy",
     "/wiki/32": "/docs/songs/song-entry-editing#pv-types",
     "/wiki/32/pv-types": "/docs/songs/song-entry-editing#pv-types",
-    "/wiki/60": "/docs/guidelines/quick-guide-for-new-editors",
+    "/wiki/60": "/docs/pinned/quick-guide-for-new-editors",
     "/wiki/60/quick-guide-for-new-editors":
-      "/docs/guidelines/quick-guide-for-new-editors",
+      "/docs/pinned/quick-guide-for-new-editors",
     "/wiki/1": "/docs/other guidelines/romanization-guidelines",
     "/wiki/1/romanization-guidelines":
       "/docs/other guidelines/romanization-guidelines",
     "/wiki/20": "/docs/other guidelines/romanization-walkthrough",
     "/wiki/20/romanization-walkthrough":
       "/docs/other guidelines/romanization-walkthrough",
-    "/wiki/91": "/docs/guidelines/rule-changelog",
-    "/wiki/91/ruleguideline-changelog": "/docs/guidelines/rule-changelog",
+    "/wiki/91": "/docs/pinned/rule-changelog",
+    "/wiki/91/ruleguideline-changelog": "/docs/pinned/rule-changelog",
     "/wiki/67": "/docs/documentation/search-terms-cheat-sheet",
     "/wiki/67/search": "/docs/documentation/search-terms-cheat-sheet",
     "/wiki/33": "/docs/documentation/search-terms-cheat-sheet",
@@ -172,8 +172,8 @@ export default defineConfig({
     "/wiki/22": "/docs/documentation/vocadb-domains-and-login-process",
     "/wiki/22/vocadb-domains-login-process":
       "/docs/documentation/vocadb-domains-and-login-process",
-    "/wiki/39": "/docs/guidelines/vocadb-editing-faq",
-    "/wiki/39/vocadb-editing-faq": "/docs/guidelines/vocadb-editing-faq",
+    "/wiki/39": "/docs/pinned/vocadb-editing-faq",
+    "/wiki/39/vocadb-editing-faq": "/docs/pinned/vocadb-editing-faq",
     "/wiki/51": "/docs/documentation/vocadb-feature-requests",
     "/wiki/51/vocadb-feature-requests":
       "/docs/documentation/vocadb-feature-requests",

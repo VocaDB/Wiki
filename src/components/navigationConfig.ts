@@ -12,14 +12,6 @@ export const navbarParents = [
 ];
 
 export const headerNavItems = [
-  {
-    name: "Guidelines",
-    href: "/docs/guidelines",
-  },
-  {
-    name: "Documentation",
-    href: "/docs/documentation",
-  },
   { name: "VocaDB", href: "//vocadb.net" },
   { name: "GitHub", href: "//github.com/VocaDB/Wiki" },
 ];

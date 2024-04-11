@@ -14,8 +14,6 @@ URL: https://vocadb.net/Album/Edit/x (replace x with some album id)
 
 [Deleting album entries](/docs/other-guidelines/content-removal-guidelines) | [Merging album entries](/docs/other-guidelines/merging-entries)
 
-https://vocadb.net/Album/Edit/x
-
 ## tab: Basic info
 
 ### Names
@@ -26,10 +24,10 @@ For general entry instructions regarding fields "Original language", "Primary na
 
 #### Album entry -specific name instructions
 
-Include the full album name, even if the name seems to have multiple parts:
+Include the full album name, even if the name seems to have **multiple parts**:
 [#VOCALOID CAFETERIA vol.01 Chinese food](https://vocadb.net/Al/33074) for example.
 
-If the album is split to multiple entries (tracklists differences), try to include this information in the title as well "(Regular Edition)" or "Kagamine Rin version)". These album entries should then be linked together using album description and/or external links.
+If the album is split to multiple entries (tracklists differences), try to include this information in the title as well "(Regular Edition)" or "(Kagamine Rin version)", if appropriate. These album entries should then be **linked together** by using the album description and/or external links.
 
 ### Cover picture
 
@@ -37,11 +35,11 @@ A cover picture for the album.
 
 - If the album has no cover picture, use the [no cover art -tag.](https://vocadb.net/T/2811/no-cover-art)
 
-- If the only available cover picture is in very low quality, use the [temporary cover art -tag.](https://vocadb.net/T/429/temporary-cover-art)
+- If the only available cover picture is low quality, use the [temporary cover art -tag.](https://vocadb.net/T/429/temporary-cover-art)
 
 ### Album description
 
-For general entry description and/or various other details that do not belong to any other fields.
+For other information that does not belong to any other field.
 
 [GitHub-flavored Markdown](https://docs.github.com/en/get-started/writing-on-github) is supported for formatting.
 
@@ -49,7 +47,7 @@ English translation can be added/moved to a separate field below, if the origina
 
 ### Record type
 
-Use common sense when determining the album type (record type). For example, an album with a single song that by itself is as long as a regular album (the definition on Wikipedia says over 25 minutes) can be counted as "original album" instead of single. If unsure of which type to use, try to find out how the artists themselves call the album. For more elaborate descriptions, please refer to Wikipedia, Discogs or Musicbrainz.
+If unsure of which type to use, try to find out how the artists themselves call the album. For more elaborate descriptions, please refer to Wikipedia, Discogs or Musicbrainz.
 
 More on the page [Album types and artist participation](/docs/albums/album-types-and-artist-participation).
 
@@ -57,17 +55,19 @@ More on the page [Album types and artist participation](/docs/albums/album-types
 
 Album that consists mostly of previously unpublished songs.
 
+**original track** = Alternate versions (instrumentals and remixes) are usually not counted.
+
 #### Single
 
-Contains one or two individual tracks. Alternate versions (instrumentals and remixes) are usually not counted.
+Contains one or two **original** tracks. 
 
 #### EP
 
-Meaning extended play. Contains 3-4 individual tracks. Alternate versions (instrumentals and remixes) are usually not counted.
+Meaning extended play. Contains 3-4 **original** tracks.
 
 #### Split album
 
-Collaboration between two or more (but usually just two) equal artists, where all artists have roughly the same number of songs.
+Collaboration between two or more (but usually just two) **equal** artists, where all artists have roughly the same number of songs.
 
 #### Compilation
 
@@ -83,7 +83,7 @@ For albums that don't fit into anything above.
 
 ### Release event
 
-The first [release event](/docs/secondary-entry-types/events) that the album was released in.
+The [release events](/docs/secondary-entry-types/events) of the album.
 
 ### Release date
 
@@ -93,9 +93,8 @@ The earliest release date of the album.
 
 A catalog number typically in a format "ABCD-1234"
 
-"Most releases that aren't self-released have a quasi-unique catalog number, assigned to them by the record label releasing them. Generally, this number will include alphanumeric characters, often letters followed by numbers, perhaps separated by a dash, space or other punctuation."
-
-- definition from [MusicBrainz](https://musicbrainz.org/doc/Release/Catalog_Number)
+Definition (shortened) from [MusicBrainz](https://musicbrainz.org/doc/Release/Catalog_Number):
+> "A quasi-unique number, assigned by the record label. Includes alphanumeric characters, often letters followed by numbers, perhaps separated by a dash, space or other punctuation."
 
 ### Barcode
 
@@ -109,7 +108,7 @@ The link description and category will be guessed automatically based on the URL
 
 Link category:
 
-- Official: Artist's official websites and social media handles and other public links.
+- Official: Official album websites.
 - Commercial: Authorized sales such as Amazon and CDJapan.
 - Reference: Fansites with useful information such as wikis.
 - Other: Links that do not fit into anything above.
@@ -127,11 +126,21 @@ Entry status communicates the level of completeness.
 
 #### Finished album entry requirements
 
+Finished album entries should meet the following criteria:
+
+- The album has at least one name and the original language can't be "Unspecified". (ALV2)
+- All artists (including vocalists) responsible for the album are specified. Whenever it makes sense, each of those artists should also have an artist entry. (partially ALV3)
+- Album has a cover picture (or [temporary cover art -tag](https://vocadb.net/T/429) or [no cover art -tag](https://vocadb.net/T/2811/no-cover-art)). (ALV4)
+- Album needs one of the following: description, external link, media link (ALV5)
+- The album's release date (at least the year) is specified. (ALV6)
+- The album has a complete tracklist. (ALV7)
+- Album type isn't "Unspecified". (ALV8)
+
 ##### Album entry validation errors
 
 [source](https://github.com/VocaDB/vocadb/blob/3497505d430cb724eadbda06c37fa49f0f314219/VocaDbWeb/Views/Album/Edit.cshtml#L20C15-L20C15)
 
-- ALV1: DuplicateArtist (automatically fixed)
+- ALV1: DuplicateArtist (automatically fixed when entry is saved)
 - ALV2: UnspecifiedNames
 - ALV3: NeedArtist
 - ALV4: NeedCover
@@ -140,73 +149,62 @@ Entry status communicates the level of completeness.
 - ALV7: NeedTracks
 - ALV8: NeedType
 
-Finished album entries should meet the following criteria:
-
-- The album has at least one name and the original language can't be unspecified. (ALEW2)
-- All artists (including vocalists) responsible for the album are specified. Whenever it makes sense, each of those artists should also have an artist entry. (partially ALEW3)
-- Album has a cover picture (or [temporary cover art -tag](https://vocadb.net/T/429) or [no cover art -tag](https://vocadb.net/T/2811/no-cover-art)). (ALEW4)
-- Album needs one of the following: description, external link, media link (ALEW5)
-- The album's release date (at least the year) is specified. (ALEW6)
-- The album has a complete tracklist . (ALEW7)
-- Album type isn't "Unspecified". (ALEW8)
-
 #### Criteria for approving albums
 
--
+TODO
 
 ## tab: Artists
 
-In this tab, you can add and delete artists that have participated in the album.
+In this tab, you can add and delete artists that have participated in the album. These changes do not affect the tracklist (song entries).
 
 Vocaloids, UTAUs and other singing synthesizer voicebanks are added as artists as well: [Choosing the correct voicebank credit](/docs/other-guidelines/choosing-the-correct-voicebank-credit)
 
 You can also add an artist to the album by creating a **custom artist**, which adds an artist credit to the album entry as a text (no artist entry is created).
 
-If the album has no known artists credits available: use the [entry missing artists -tag](https://vocadb.net/T/2808/entry-missing-artists).
+If the album has no known artist credits available, use the [entry missing artists -tag](https://vocadb.net/T/2808/entry-missing-artists).
 
 If the vocalist is uncredited, the artist entry [Unknown vocalist(s)](https://vocadb.net/Ar/23554) can be used. The entry [Unknown vocal synth(s)](https://vocadb.net/Ar/128519) or any of its derived artist entries can also be used to further narrow down the vocalist.
 
 ### Support status
 
-Support status is a special setting for a particular artist credit. The support status should be used when the song or album has a clear separation of main artists and support artists.
+Support status is a special setting for a particular artist credit. The support status should be used when the album has a clear separation of main artists and support artists.
 
-Usage examples (albums & songs):
+Usage examples (albums):
 
-- Backing vocals, for example singing chorus when the main vocals are sung by another vocalist.
 - Background illustrators (to distinguish them from the main illustrator)
-- Guest artists on albums. An artist might invite other guest artists to produce remixes, released together with the original songs. Those guest artists should be marked as support.
-  ** For example, album [electroll by 8#Prince](http://vocadb.net/Al/3572)
-  ** The same applies if the album is titled for example "feat. Hatsune Miku" and there's 1 or 2 songs with other Vocaloids: those supporting Vocaloids should be marked support.
+- Guest artists.
+  - For example, album [electroll by 8#Prince](http://vocadb.net/Al/3572) includes 5 guest remixers.
+  - The same applies for vocalists: album named with "feat. Hatsune Miku" should have other vocalists marked as support. 
 
-Support status removes the artist(s) from the artist string (the one that says "producers feat. vocalists). The search is affected as well through the "Only main songs" -filter (also with albums).
+Support status removes the artist(s) from the artist string and affects the search through the ["Only main songs" -filter](https://vocadb.net/Search?searchType=Album&artistId[0]=175&artistParticipationStatus=OnlyMainAlbums).
 
 ### Artist roles
 
-Same rules as with the songs: [wiki/89/song-entry-editing#Artist-roles](/docs/songs/song-entry-editing#Artist-roles)
+Same rules as with songs: [wiki/89/song-entry-editing#Artist-roles](/docs/songs/song-entry-editing#Artist-roles).
 
 ## tab: Discs
 
-If the album contains multiple discs you may define extra properties for those discs here. You may specify disc name and type (Audio or Video). Name is optional - if not specified, the default "Disc #" will be used, where "#" is the disc number.
+If the album contains multiple discs you may define extra properties for those discs here. You may specify disc **name** and **type** (Audio or Video). Name is optional: if not specified, the default "Disc #" will be used, where "#" is the disc number.
 
 ## tab: Tracks
 
 Songs entries can be linked to the album using this tab.
 
-New song entries can also be directly created from here.
+Clicking a track by its name opens the "Track properties" -window, which can be used to add artists to the song entry (track). Only the artists which are added in the ["Artists"-tab](/docs/albums/album-entry-editing#tab-Artists) are visible here.
 
-Clicking a track by its name opens the "Track properties" -window, which can be used to add artists to the song (track) entry. Only the artists which are added in the ["Artists"-tab](/docs/albums/album-entry-editing#tab-Artists) are visible.
+TODO - which artists should be copied from song entries?
 
-If the artist participates in most of the songs, it's efficient to select all of the tracks first instead of adding the artist to the tracks one by one.
+If the artist participates in most of the songs, it's efficient to select all the tracks and update them instead of adding the artist to the tracks one by one.
 
 The new tracks are created as song entries and the track artists get updated when the album entry is saved.
 
 ## tab: Additional pictures
 
-Note that the main picture is edited on the "Basic Info" tab. Please only upload pictures relevant to this album, nothing else.
+Note that the main picture is edited on the "Basic Info" tab. Only upload pictures relevant to this album.
 
 ## tab: Media
 
-You can use this page to add advertisements or crossfades related to this album.
+Crossfades and other advertisements related to the album.
 
 - [Media (video) services supported by VocaDB](/docs/other-guidelines/supported-streaming-services)
 

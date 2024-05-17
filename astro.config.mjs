@@ -8,7 +8,7 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://vocadb-wiki.onrender.com/",
+  site: "https://wiki.vocadb.net/",
   build: {
     format: "file",
   },
@@ -162,8 +162,7 @@ export default defineConfig({
     "/wiki/34": "/docs/documentation/vocadb-help-wanted",
     "/wiki/34/vocadb-help-wanted": "/docs/documentation/vocadb-help-wanted",
     "/wiki/13": "/docs/footer/vocadb-what-is-it-for",
-    "/wiki/13/vocadb-what-is-it-for":
-      "/docs/footer/vocadb-what-is-it-for",
+    "/wiki/13/vocadb-what-is-it-for": "/docs/footer/vocadb-what-is-it-for",
     "/wiki/3": "/docs/documentation/vocadb-api-and-embeds",
     "/wiki/3/vocadb-api-and-embeds":
       "/docs/documentation/vocadb-api-and-embeds",

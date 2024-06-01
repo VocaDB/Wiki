@@ -2,58 +2,74 @@
 title: Entry reports
 description: Entry reports
 parent: Pinned
-tags: ["draft", "editing", "guidelines", "moderation", "user", "vocadb"]
+tags: ["draft", "editing", "guidelines", "moderation", "report", "user", "vocadb"]
 ---
 
-Entry reports are mainly a way of communicating **edit-related mistakes**.
+Entry reports are a way of communicating **edit-related mistakes**. Two main reasons for reports are: 
+* Making a note that there's an issue that should be fixed.
+* Giving the previous editor a chance to correct their mistake and hopefully **learn from it** .
 
 The list of [open entry reports](https://vocadb.net/Admin/ViewEntryReports) is visible to all [trusted users](/docs/documentation/user-groups) and above.
 
     * Trusted users should ignore moderation-related reports such as [artist verification](/docs/artists/artist-verification) and [content removal](/docs/other-guidelines/content-removal-guidelines) requests.
 
-Reporting an entry also sends a notification to the editor. If the entry has **more than one editor**, notifications are **not sent**.
+Reporting an entry also sends a notification to the editor, but if the entry has been edited by **more than one person**, notifications are **not sent**.
 
-Reporting a specific **version** should be preferred for entries by multiple editors, since it **always sends a message** to the relevant editor. This can be done by selecting the specific version within the ["View Modifications"](https://wiki.vocadb.net/docs/songs/song-entry-page#view-modifications) page on any entry. 
+To send a notification in this case, you can report a specific **version**. You can do this by using the ["View Modifications"](/docs/songs/song-entry-page#view-modifications) menu, going to the version where the error was first present, and clicking "Report an Error". This should be preferred for entries by multiple editors, since it **always sends a message** to the relevant editor.
+
+Entry reports should **NOT** be made for the following reasons:
+
+- Requesting for a tag to be added (unless on an approved article)
+- Requesting for lyrics to be added (use the "[lyric transcript needed](https://vocadb.net/T/6362/lyric-transcript-needed)" tag instead)
+- Asking questions, such as "Why was x changed?". (The comments should be used for this purpose)
+- Any other reasons not involving an error being present in the article.
 
 ### Report an error
 
 This is the main method of submitting entry reports. It appears on all page types.
 
-Albums and artists have four report types, while songs have five.
+Albums and artists have four report types, while songs have the additional "Broken PV" type.
 
-#### Broken PV (Song entries)
+### Broken PV
 Used for reporting deleted or privated PVs.
 
 This report type communicates that a PV needs to be marked as _Unavailable_ or deleted if the link type is "Reprint" or "Other". If possible, prefer doing it yourself instead of creating an entry report.
 
 Keep in mind that if the PV is [region blocked](https://vocadb.net/T/8226/region-blocked), it should not be marked as unavailable.
 
-#### Invalid or missing information (all entries)
+### Invalid or missing information
 
-Used for reporting
-* invalid or incorrect information
-    * Always provide reasoning and proof unless already obvious.
-* missing information
+Used for reporting:
+* **Invalid or incorrect information**
+    * Always provide **reasoning and proof** unless already obvious.
+
+    Examples:
+        * Incorrect tag(s) applied to the entry
+        * Incorrect artists credited
+        * Romanizations/translations that do not follow the [Romanization Guidelines](/docs/other-guidelines/romanization-guidelines)
+* **Missing information**
+
     Examples:
     * A missing alias or circle.
     * A missing artist credit. 
-    If possible, **always prefer adding the information yourself** instead of leaving a report.
 
-#### Duplicate entry (all entries)
 
-Entry is a duplicate and should be [merged](/docs/other-guidelines/merging-entries). A link to the duplicate entry is required along with proof.
+    If possible, it's preferable to add missing information yourself instead of leaving a report, as it's usually not necessarily an error.
 
-#### Inappropriate content (all entries)
+
+
+
+
+### Duplicate entry
+
+Entry is a duplicate and should be [merged](/docs/other-guidelines/merging-entries). A link to the duplicate entry is **required**, along with proof.
+
+### Inappropriate content
 
 For entries that [do not belong in VocaDB](/docs/other-guidelines/content-policy#Albums).
 
-#### Other (specify in notes) (all entries)
-
+### Other (specify in notes)
 - For errors not already covered within the existing report types.
-
-## Visible data
-
-Fields that are empty or unavailable will not be visible.
 
 ----
 
@@ -63,15 +79,9 @@ This list shows suggestions that should be followed to prevent **unclear situati
 
 If the same report applies to multiple entries, list those entries under one report or in a comment under one of the relevant entries, or message a moderator.
 
-## DON'T ask questions using reports
-
-If you're asking a question, such as why did the previous editor change something, and you're expecting an answer, you should **post a comment** instead of report. Reports are for making a note that there's something wrong that should be fixed.
-
-If you know that something should be changed, but you also need to ask for details, it's ok to post your question in the comments and **also post a report** for fixing the mistake.
-
 ## DO prefer reporting a specific version
 
-Unless there's only one editor for the entry, the editor **won't get a notification**, and if they're not a trusted user, they **can't even see your report**. For entries with multiple editors, it's better to report a specific edit. That makes it more obvious what the problem is, and makes it so the editor will get a direct notification.
+Unless there's only one editor for that entry, the editor **won't get a notification**, and if they're not a trusted user, they can't see your report outside of the inital notification. For entries with multiple editors, it's better to report a specific edit. This makes it more obvious what the problem is, and also the previous editor will get a direct notification.
 
 ## DON'T report edits that are very old if you can take care of the issue yourself
 
@@ -79,10 +89,8 @@ If the mistake was made months, even years ago, there's not much point in report
 
 ## DO prefer taking care of your own reports if no one else responds
 
-Two main reasons for reports are: 1) giving the previous editor a chance to correct their mistake and hopefully **learn from it**, and 2) making a note that there's an issue that should be fixed. 
-
 The expectation is that the previous editor who made the mistake would be the one to correct it, but assuming they don't, the best thing you as the reporter can do is to correct the mistake yourself when you get the chance. Some people don't check the site very often, or maybe they didn't even get the notification.
 
 ## As a trusted user / moderator, DON'T let reports lie there for weeks
 
-Usually when the report is over a week old, it should be taken care of somehow. If you can, fix the problem. Or if it's a small issue, post **a comment** instead and **delete the report**. In the worst case, if the entry isn't useful as it is, it will need to be deleted.
+When a report is over a week old, it should be taken care of somehow. If you can, please fix the problem.

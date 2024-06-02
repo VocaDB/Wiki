@@ -8,28 +8,27 @@ import Navigation from "@/components/markdown/Navigation.astro";
 
 <Navigation />
 
-This page explains how existing album entries are edited.
-
-URL: https://vocadb.net/Album/Edit/x (replace x with some album id)
+This page explains how to edit existing album entries.
 
 [Deleting album entries](/docs/other-guidelines/content-removal-guidelines) | [Merging album entries](/docs/other-guidelines/merging-entries)
 
-Handling albums with multiple editions is documented on [the FAQ-page](/docs/pinned/vocadb-editing-faq#if-an-album-was-released-as-multiple-editions-such-as-regularlimited-is-there-need-to-create-separate-entries).
+Handling albums with multiple editions is documented on [the FAQ page](/docs/pinned/vocadb-editing-faq#if-an-album-was-released-as-multiple-editions-such-as-regularlimited-is-there-need-to-create-separate-entries).
 
 ## tab: Basic info
 
 ### Names
 
-For general entry instructions regarding fields "Original language", "Primary name", "Non-English", "Romanized", "English", "Aliases":
+For general instructions on fields like "Original language," "Primary name," "Non-English," "Romanized," "English," and "Aliases," refer to [Entry names and aliases](/docs/other-guidelines/entry-names-and-aliases).
 
-- [Entry names and aliases](/docs/other-guidelines/entry-names-and-aliases)
 
-#### Album entry -specific name instructions
 
-Include the full album name, even if the name seems to have **multiple parts**:
+#### Album entry-specific name instructions
+
+Unlike songs, albums should include the **full album name**, even if the name seems to have **multiple parts**:
 [#VOCALOID CAFETERIA vol.01 Chinese food](https://vocadb.net/Al/33074) for example.
 
-If the album is split to multiple entries (tracklists differences), try to include this information in the title as well "(Regular Edition)" or "(Kagamine Rin version)", if appropriate. These album entries should then be **linked together** by using the album description and/or external links.
+If an album has multiple entries due to differences in tracklists, include this information in the title, such as "(Regular Edition)" or "(Kagamine Rin version)," if appropriate. Link these album entries using the album description and/or external links.
+
 
 ### Cover picture
 
@@ -45,11 +44,11 @@ For other information that does not belong to any other field.
 
 [GitHub-flavored Markdown](https://docs.github.com/en/get-started/writing-on-github) is supported for formatting.
 
-English translation can be added/moved to a separate field below, if the original description exists in a non-English language.
+If the original description is in a non-English language, an English translation can be added/moved to a separate field below.
 
 ### Record type
 
-If unsure of which type to use, try to find out how the artists themselves call the album. For more elaborate descriptions, please refer to Wikipedia, Discogs or Musicbrainz.
+If unsure which type to use, try to find out how the artists themselves categorize the album. For more elaborate descriptions, refer to Wikipedia, Discogs, or Musicbrainz. More details are available on the [Album types and artist participation](/docs/albums/album-types-and-artist-participation) page.
 
 More on the page [Album types and artist participation](/docs/albums/album-types-and-artist-participation).
 
@@ -93,61 +92,57 @@ The earliest release date of the album.
 
 ### Catalog number
 
-A catalog number typically in a format "ABCD-1234"
-
-Definition (shortened) from [MusicBrainz](https://musicbrainz.org/doc/Release/Catalog_Number):
-> "A quasi-unique number, assigned by the record label. Includes alphanumeric characters, often letters followed by numbers, perhaps separated by a dash, space or other punctuation."
+A catalog number typically follows the format "ABCD-1234." According to [MusicBrainz](https://musicbrainz.org/doc/Release/Catalog_Number):
+> "A quasi-unique number assigned by the record label, including alphanumeric characters, often letters followed by numbers, possibly separated by a dash, space, or other punctuation."
 
 ### Barcode
 
-Barcodes are usually plain numbers, for example 01234567. They can be scanned from the product package.
+Barcodes are usually plain numbers, e.g., 01234567, and can be scanned from the product package.
 
 ### External links
 
-External links relevant to this entry. Illegal/direct download links are forbidden.
+External links relevant to the entry. Illegal/direct download links are forbidden.
 
-Link category:
+Link categories:
 
-- Official: Official album websites.
-- Commercial: Authorized sales such as Amazon and CDJapan.
-- Reference: Fansites with useful information such as wikis.
-- Other: Links that do not fit into anything above.
+- **Official**: Official album websites.
+- **Commercial**: Authorized sales sites like Amazon and CDJapan.
+- **Reference**: Fansites with useful information such as wikis.
+- **Other**: Links that don't fit into the above categories.
 
-More on the [External links -page](/docs/other-guidelines/external-links).
+More details are available on the [External links page](/docs/other-guidelines/external-links).
 
 ### Status
 
-Entry status communicates the level of completeness.
+Entry status communicates the level of completeness:
 
-- Draft = Entry is missing crucial information. This status indicates that you're requesting additional information to be added or corrected.
-- Finished = The entry has all the necessary information, but it hasn't been inspected by a trusted user yet.
-- Approved = The entry has been inspected and approved by a trusted user. Approved entries can only be edited by trusted users.
-- Locked = Locked entries can only be edited by moderators.
+- **Draft**: Entry is missing crucial information. Indicates a request for additional information or corrections.
+- **Finished**: The entry has all necessary information but hasn't been inspected by a trusted user yet.
+- **Approved**: The entry has been inspected and approved by a trusted user. Approved entries can only be edited by trusted users.
+- **Locked**: Locked entries can only be edited by moderators.
 
-#### Finished album entry requirements
+#### Finished Album Entry Requirements
 
 Finished album entries should meet the following criteria:
 
-- The album has at least one name and the original language can't be "Unspecified". (ALV2)
-- All artists (including vocalists) responsible for the album are specified. Whenever it makes sense, each of those artists should also have an artist entry. (partially ALV3)
-- Album has a cover picture (or [temporary cover art -tag](https://vocadb.net/T/429) or [no cover art -tag](https://vocadb.net/T/2811/no-cover-art)). (ALV4)
-- Album needs one of the following: description, external link, media link (ALV5)
+- The album has at least one name and the original language is specified. (ALV2)
+- All artists (including vocalists) responsible for the album are specified. Whenever possible, each of those artists should also have an artist entry. (partially ALV3)
+- The album has a cover picture, [temporary cover art tag](https://vocadb.net/T/429), or [no cover art tag](https://vocadb.net/T/2811/no-cover-art). (ALV4)
+- The album includes one of the following: description, external link, or media link. (ALV5)
 - The album's release date (at least the year) is specified. (ALV6)
 - The album has a complete tracklist. (ALV7)
-- Album type isn't "Unspecified". (ALV8)
+- The album type is specified. (ALV8)
 
 ##### Album entry validation errors
 
-[source](https://github.com/VocaDB/vocadb/blob/3497505d430cb724eadbda06c37fa49f0f314219/VocaDbWeb/Views/Album/Edit.cshtml#L20C15-L20C15)
-
-- ALV1: DuplicateArtist (automatically fixed when entry is saved)
-- ALV2: UnspecifiedNames
-- ALV3: NeedArtist
-- ALV4: NeedCover
-- ALV5: NeedReferences
-- ALV6: NeedReleaseYear
-- ALV7: NeedTracks
-- ALV8: NeedType
+- **ALV1**: DuplicateArtist (automatically fixed when the entry is saved)
+- **ALV2**: UnspecifiedNames
+- **ALV3**: NeedArtist
+- **ALV4**: NeedCover
+- **ALV5**: NeedReferences
+- **ALV6**: NeedReleaseYear
+- **ALV7**: NeedTracks
+- **ALV8**: NeedType
 
 #### Criteria for approving albums
 
@@ -155,31 +150,31 @@ TODO
 
 ## tab: Artists
 
-In this tab, you can add and delete artists that have participated in the album. These changes do not affect the tracklist (song entries).
+In this tab, you can add and delete artists who have participated in the album. These changes do not affect the tracklist (song entries).
 
-Vocaloids, UTAUs and other singing synthesizer voicebanks are added as artists as well: [Choosing the correct voicebank credit](/docs/other-guidelines/choosing-the-correct-voicebank-credit)
+Vocaloids, UTAUs, and other singing synthesizer voicebanks are added as artists as well. Refer to [Choosing the correct voicebank credit](/docs/other-guidelines/choosing-the-correct-voicebank-credit).
 
-You can also add an artist to the album by creating a **custom artist**, which adds an artist credit to the album entry as a text (no artist entry is created).
+You can also add an artist to the album by creating a **custom artist**, which adds an artist credit to the album entry as text (no artist entry is created).
 
-If the album has no known artist credits available, use the [entry missing artists -tag](https://vocadb.net/T/2808/entry-missing-artists).
+If the album has no known artist credits available, use the [entry missing artists tag](https://vocadb.net/T/2808/entry-missing-artists).
 
 If the vocalist is uncredited, the artist entry [Unknown vocalist(s)](https://vocadb.net/Ar/23554) can be used. The entry [Unknown vocal synth(s)](https://vocadb.net/Ar/128519) or any of its derived artist entries can also be used to further narrow down the vocalist.
 
 ### Support status
 
-For albums, the support status is intended to indicate that an artist had a minor role on compared to other artists **of the same category**. Usually this is the case when the album has multiple songs by one artists and 1 or 2 remixes by a handful of other artists. In this case, the remix artists should be marked as support, because the artist who produced the most songs is clearly the main artist.
+For albums, the support status indicates that an artist had a minor role compared to other artists **of the same category**. For example, if the album has multiple songs by one artist and 1 or 2 remixes by other artists, the remix artists should be marked as support.
 
-Support status has a number of effects: 
-* Artists with the support status never appear in the "artist string" of the album. 
-* On the album entry page, support artists are shown in parenthesis, and after all the other artists.
-* Albums or songs where the artist has support status never appear on the first tab of artist's entry page, under recent or popular albums.
-* These albums also never appear on the artist's "main albums" tab.
+Effects of support status:
+- Artists with support status never appear in the "artist string" of the album.
+- On the album entry page, support artists are shown in parentheses and after all other artists.
+- Albums or songs where the artist has support status never appear on the first tab of the artist's entry page, under recent or popular albums.
+- These albums also never appear on the artist's "main albums" tab.
 
-For collaboration albums, none of the artists can be marked as support, because otherwise all of them would be marked a such.
+For collaboration albums, none of the artists can be marked as support.
 
 ### Artist roles
 
-Same rules as with songs: [wiki/89/song-entry-editing#Artist-roles](/docs/songs/song-entry-editing#Artist-roles).
+Same rules as with songs. Refer to the [Artist roles section](/docs/songs/song-entry-editing#Artist-roles).
 
 ## tab: Discs
 
@@ -207,8 +202,3 @@ Crossfades and other advertisements related to the album.
 
 - [Media (video) services supported by VocaDB](/docs/other-guidelines/supported-streaming-services)
 
-## Update notes
-
-Entry update notes are optional, but should **always** be used if the edit reason or the information source is not obvious.
-
-In some cases, the entry description or the comment section might be more suitable to use.

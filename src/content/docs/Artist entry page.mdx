@@ -8,11 +8,11 @@ import Navigation from "@/components/markdown/Navigation.astro";
 
 <Navigation />
 
-This page explains the artist entry page features.
+This page explains what features VocaDB offers on artist entry pages.
 
-Hatsune Miku for example: https://vocadb.net/Ar/1
+Take Hatsune Miku for example: https://vocadb.net/Ar/1
 
-This page displays the entry data and provides some of the website features through user actions.
+This page displays the entry's data and provides several of VocaDB's features through user actions.
 
 ## Available user actions
 
@@ -32,16 +32,16 @@ Follower lists for artists are not available, but followed artists for users are
 
 ### Edit
 
-The "Edit" -button opens [the edit-page](/docs/artists/artist-entry-editing#Artist-entry-editing) for the artist entry.
+The "Edit" button opens [the edit-page](/docs/artists/artist-entry-editing#Artist-entry-editing) for the artist entry.
 
 ### View modifications
 
-The "View modifications" -button opens the version history for the artist entry:
+The "View modifications" button opens the version history for the artist entry:
 https://vocadb.net/Artist/Versions/{artist_id}
 
 The version history table uses 5 columns: _Version_, _Created_, _Author_, _Changes_, _Notes_.
 
-The specific version can be viewed when clicking one of the version numbers in the Version-column:
+The specific version can be viewed when clicking one of the version numbers in the "Version" column:
 
 https://vocadb.net/Artist/ViewVersion/{version_id}
 
@@ -61,11 +61,11 @@ The version page has two user actions available (four for [moderators](/docs/doc
 
 #### Hide this version (moderators)
 
-- Hides the specific entry version. The version link will still be visible on the entry history -page, but the link will be inaccessible to users that are not moderators.
+- Hides the specific entry version. The version link will still be visible on the entry history page, but the link will be inaccessible to users that are not moderators.
 
 ### Report an error
 
-Creates an [entry report](/docs/pinned/entry-reports) and adds it to the [entry report -list](https://vocadb.net/Admin/ViewEntryReports) that is visible to trusted users+
+Creates an [entry report](/docs/pinned/entry-reports) and adds it to the [entry report list](https://vocadb.net/Admin/ViewEntryReports) that is visible to trusted users+
 
 ## Visible data
 
@@ -73,17 +73,17 @@ Fields that are empty or unavailable will not be visible.
 
 ### tab: Basic info
 
-The fields from the basic info -tab on the edit-page are displayed here along with some additional sections.
+The fields from the basic info tab on the "edit" page are displayed here along with some additional sections.
 
 #### Name
 
-- The first line shows the name based on the "Preferred display language" - user setting.
+- The first line shows the name based on the user's "Preferred display language" setting.
 
 - The other primary names and aliases are shown on the second line.
 
 #### Description
 
-The [artist entry description](/docs/artists/artist-entry-editing#Artist-description) truncated to the first ~~400 characters. If longer than this, a "Show full description" -button is provided.
+The [artist entry description](/docs/artists/artist-entry-editing#Artist-description) truncated to the first ~~400 characters. If longer than this, a "Show full description" button is provided.
 
 The English translation (if available) is shown by default, regardless of user language preferences.
 
@@ -117,7 +117,7 @@ The English translation (if available) is shown by default, regardless of user l
 
 #### Tags
 
-Four most voted tags are displayed by default. The "Show all" -button displays all of the tags grouped by the tag category.
+Four most voted tags are displayed by default. The "Show all" button displays all of the tags grouped by the tag category.
 
 One or two buttons (depending on the user group) are displayed next to the tags:
 
@@ -177,7 +177,7 @@ The following statistics are included:
 
 #### Addition date
 
-Entry creation date. Corresponds to the last row in [the entry history -table](/docs/artists/artist-entry-editing#View-modifications), except with the most earliest entries.
+Entry creation date. Corresponds to the last row in [the entry history table](/docs/artists/artist-entry-editing#View-modifications), except with the most earliest entries.
 
 #### Recent albums
 

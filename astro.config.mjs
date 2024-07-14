@@ -5,6 +5,8 @@ import sitemap from "@astrojs/sitemap";
 import pagefind from "astro-pagefind";
 
 import mdx from "@astrojs/mdx";
+import remarkSectionize from "remark-sectionize";
+import rehypePluginMoveIdToSection from "./src/rehype-sectionize";
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,7 +18,10 @@ export default defineConfig({
     react(),
     tailwind({ applyBaseStyles: false }),
     sitemap(),
-    mdx(),
+    mdx({
+      remarkPlugins: [remarkSectionize],
+      rehypePlugins: [rehypePluginMoveIdToSection],
+    }),
     pagefind(),
   ],
   redirects: {

@@ -27,13 +27,15 @@ const { frontmatter, headings } = Astro.props;
           <ScrollArea className="h-full pb-4" client:visible>
             <p class="font-semibold">On this page</p>
             <ul class="list-none">
-              {headings.map((heading) => (
-                <li class="pt-2">
-                  <a class="text-muted-foreground" href={`#${heading.slug}`}>
-                    {heading.text}
-                  </a>
-                </li>
-              ))}
+              {headings
+                .filter((h) => h.depth < 4)
+                .map((heading) => (
+                  <li class="pt-2">
+                    <a class="text-muted-foreground" href={`#${heading.slug}`}>
+                      {heading.text}
+                    </a>
+                  </li>
+                ))}
             </ul>
           </ScrollArea>
         )
@@ -41,3 +43,30 @@ const { frontmatter, headings } = Astro.props;
     </div>
   </main>
 </Layout>
+
+<script is:inline>
+  document.addEventListener("astro:page-load", () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.id;
+        const header = document.querySelector(`a[href="#${id}"]`);
+        if (header === null) {
+          console.log(id);
+          return;
+        }
+
+        if (entry.intersectionRatio > 0) {
+          header.classList.add("text-foreground");
+          header.classList.remove("text-muted-foreground");
+        } else {
+          header.classList.remove("text-foreground");
+          header.classList.add("text-muted-foreground");
+        }
+      });
+    });
+
+    document.querySelectorAll("section").forEach((section) => {
+      observer.observe(section);
+    });
+  });
+</script>

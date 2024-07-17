@@ -1,0 +1,107 @@
+---
+title: VocaDB development environment (Windows)
+description: Guide for setting up a VocaDB development environemnt on Windows
+parent: Development
+tags: ["development", "github"]
+---
+
+## Requirements
+
+- OS: Windows 10, Windows Server 2012 R2 or newer.
+- RAM: 1GB for the site, 4GB or so for the database.
+- Microsoft SQL Server 2012 or newer (can be made to run on 2010 with some code changes). SQL Server 2012 SP2 or newer recommended. SQL Server Express and LocalDB should work too.
+- Visual Studio 2019 (free Community version is enough).
+  - 16.9 or newer.
+  - ASP.NET web development and .NET Core workloads.
+- Visual Studio Code.
+  - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) by [Dirk Baeumer](https://marketplace.visualstudio.com/publishers/dbaeumer).
+  - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) by [Prettier](https://marketplace.visualstudio.com/publishers/esbenp).
+- IIS or IIS Express.
+  - Static files support.
+- .NET 7 SDK. or higher
+- [Node.js](https://nodejs.org/) v12.18.3 (or latest LTS) with NPM.
+
+## Formatting
+
+Line endings and indentation are configured by [EditorConfig](http://editorconfig.org/). There's a plugin for almost any major IDE/text editor. Please install that plugin before editing the code files.
+
+## web.config
+
+The main web.config refers to additional configuration files which contain sensitive settings such as passwords and connection strings. These files are: appsettings.config, connections.config (connection strings), machinekey.config (can be an empty machinekey element) and smtp.config (for SMTP settings). These configuration files are NOT in the version control because of their sensitive contents. You'll have to create them yourself, with the relevant settings.
+
+### Minimal configuration
+
+#### appsettings.config
+
+```xml
+<?xml version='1.0' encoding='utf-8'?>
+<appSettings>
+    <add key="ConnectionStringName" value="Local" />
+    <!-- Host address of the site. Appended to absolute URLs. May be HTTP or HTTPS -->
+    <add key="HostAddress" value="http://localhost:39390" />
+    <!-- Host address used for login or otherwise when SSL should be used. -->
+    <add key="HostAddressSecure" value="http://localhost:39390" />
+    <add key="StaticContentPath" value="C:\VocaDB-data\" />
+    <add key="StaticContentHost" value="http://localhost:39392/vdbstatic" />
+    <add key="StaticContentHostSSL" value="http://localhost:39392/vdbstatic" />
+    <add key="TwitterConsumerKey" value="(Your Twitter Consumer Key goes here)" />
+    <add key="TwitterConsumerSecret" value="(Your Twitter Consumer Secret goes here)" />
+    <!-- Test recaptcha key so that the /User/Create page works properly. -->
+    <add key="ReCAPTCHAPublicKey" value="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" />
+    <add key="ReCAPTCHAKey" value="6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe" />
+</appSettings>
+```
+
+#### connections.config
+
+```xml
+<?xml version='1.0' encoding='utf-8'?>
+<connectionStrings>
+    <!-- Use IIS AppPool -->
+    <add name="Local" connectionString="Data Source=.; Initial Catalog=VocaloidSite; Trusted_Connection=True;" />
+</connectionStrings>
+```
+
+#### machinekey.config
+
+```xml
+<?xml version='1.0' encoding='utf-8'?>
+<machineKey />
+```
+
+#### smtp.config
+
+```xml
+<?xml version='1.0' encoding='utf-8'?>
+<smtp />
+```
+
+## Web server (IIS) configuration
+
+Make sure you give write permissions to the web folder for whatever account you're using for running the site (such as your own user account or IIS AppPool (recommended if running in IIS)).
+
+You'll need to enable the DELETE and OPTIONS (for CORS) verbs for IIS/IIS express: see [here](http://geekswithblogs.net/michelotti/archive/2011/05/28/resolve-404-in-iis-express-for-put-and-delete-verbs.aspx) how.
+
+## Database configuration
+
+You'll need to create an empty database, by default called "VocaloidSite", but can be anything. Compatibility level at least SQL Server 2012 (110) and collation anything case insensitive (CI).
+
+Then download the [schema creation script](http://vocaloid.eu/vocadb/empty-mssql.sql) and run it against that database.
+
+Finally, run migrations from the VocaDb.Migrations assembly using FluentMigrator.
+
+## VSCode
+
+Open **Settings** from the **Preferences** menu on the **File** menu. Enter `format` into the search box, set **Default Formatter** to **esbenp.prettier-vscode** and enable **Format on Save**.
+
+## Compiling assets
+
+First, make sure node with npm is installed and registered for command line.
+
+To install the frontend dependencies for VocaDbWeb, make sure you are in the VocaDbWeb source code directory and run the following:
+
+    npm install
+
+The npm run watch command will continue running in your terminal and watch all relevant files for changes. Vite will then automatically recompile your assets when it detects a change:
+
+    npm run dev

@@ -1,0 +1,62 @@
+---
+title: Public API
+description: General information about VocaDB's public API
+parent: Development
+tags: ["development"]
+---
+
+## Overview
+
+VocaDB provides a public REST API for accessing artist, album and song information, and more.
+The Endpoint for the most recent version of the API is `https://vocadb.net/api/`. A HTTPS (encrypted connection) is required. The API supports only JSON, and we no longer support XML and the HTTP "Accept" header.
+
+## Cross-domain support
+
+The recommended method for cross-domain JavaScript calls is to use [CORS (Cross-origin resource sharing)](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
+[JSONP](http://en.wikipedia.org/wiki/JSONP) is also supported by specifying the `callback` query parameter. For GET requests you may use either JSONP or CORS. POST requests require the use of CORS.
+
+### Authenticated APIs
+
+Some APIs require authentication. This includes APIs that modify information (POST requests). These APIs must be called using CORS. **For security purposes, authenticated APIs are restricted to specific origins.** If you need to use the authenticated APIs from your client side (JavaScript) applications, you need to message us to whitelist your domain name. If you get an error about missing Access-Control-Allow-Origin header, this means you're trying to make a CORS request and your origin isn't whitelisted.
+
+## API usage rules
+
+Using the VocaDB is free, regardless of your purpose. However, we ask that if you're making a large number of requests to our API you'd consider the strain you're causing on the server, as well as the time and effort spent by those people who maintain the database. Therefore, please consider caching the responses on your side so that you don't need to request the same data repeatedly. It would also be nice if you could use a custom user agent string so that we can easily identify the source of traffic. Finally, you could consider mentioning on your site that you're getting the information from our site. Excessive number of queries (thousands per day) without a prior permission will be considered a denial of service attack and may cause your IP to be banned from using the API.
+
+[More information about our license](http://wiki.vocadb.net/wiki/29/license).
+
+## Commonly used parameters
+
+- lang: content language preference (possible values are Default, Japanese, Romaji, English).
+- start: first entry index, starting from 0 (defaults to 0)
+- maxEntries: number of entries to return (defaults to 10, maximum value depends on the type of request).
+- getTotalCount: whether total number of entries matching the filter should be returned. This causes some extra overhead, so specify this as true only if you need it.
+- nameMatchMode: mode for matching names. Possible values are Auto, Partial, Exact, StartsWith, Words (defaults to Auto). [See the blog for more info](http://blog.vocadb.net/vocadb-search/).
+
+Some queries allow you to filter which components are to be included. By default none of the optional components are included. You can specify the optional components with the "fields" parameter. This parameter contains a list of comma-separated field names, for example `/api/songs/1?fields=artists,names`. It's preferable to only include the components that you need, as this can make the query a lot faster, and also reduces the data transfer need.
+
+See the [API description](http://vocadb.net/api) and [API demo](http://vocaloid.eu/vocadb/AlbumApiDemo.html) for further information.
+
+## Names and translations
+
+All artists, albums and songs may have a number of names in different languages. Currently there are 4 language options: Non-English (Japanese in the API), Romaji, English and Unspecified. Aliases are Unspecified language, generally entries have at most 1 name for each of the other languages, representing translations of the primary display name.
+
+When you request entries from the API, the response contains the following fields:
+
+- `DefaultName` is the entry name in the default language.
+- `DefaultNameLanguage` specifies the language option of the `DefaultName` field.
+- `Name` is the localized entry name, as specified by the _lang_ query parameter. If the _lang_ query parameter is not specified, or it has the value `Default`, this will be the same as `DefaultName`.
+
+Additionally, a comma-separated list of the other names can be provided in the optional `AdditionalNames` field. These fields should be enough for most cases, so you don't need to request the full list of names (the `Names` optional field). Usually you only need to request the full list of names if you need language options for each name.
+
+The `DefaultName` and `DefaultNameLanguage` fields are provided for all root entities, but not necessarily for all child entities.
+
+For more information about the names and translations on VocaDB, see the [blog entry](http://blog.vocadb.net/names-and-translations-on-vocadb/).
+
+## Examples
+
+[Services that make use of VocaDB APIs](/docs/documentation/services-that-make-use-of-vocadb-apis).
+
+## See also
+
+- [Documentation for API Endpoints](https://github.com/VocaDB/vocadb-openapi-client-java/blob/main/README%20Original.md#documentation-for-api-endpoints)

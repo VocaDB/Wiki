@@ -183,3 +183,70 @@ For information on the feature requests and bug reports, see the [VocaDB feature
 * before and since parameters use the correct timezone for api/activityEntries
 * CSV import skips deleted entries ([#1495](https://github.com/VocaDB/vocadb/issues/1495))
 * Fixed song revert crashes on empty lyric URL fields ([#976](https://github.com/VocaDB/vocadb/issues/976))
+
+## 29. February 2024
+
+**Improvements:**
+* New additions to the sidebar: "Rewind 2023" and "Statistics"
+* Removed "Rewind 2023" button from the frontpage (transferred into the sidebar)
+* Removed "Help/About" page from the sidebar (replaced by the Wiki)
+* New web link matchers and favicons
+* New translations
+
+**Fixes:**
+* Fixed various timezone issues with the release date suggestion button
+* Restored Wayback Machine URL functionality ([#1679]https://github.com/VocaDB/vocadb/issues/1679)
+* Adding Piapro PVs works again ([#1684]https://github.com/VocaDB/vocadb/issues/1684) ([#1685]https://github.com/VocaDB/vocadb/issues/1685)
+* Restored Piapro embed functionality ([#1684]https://github.com/VocaDB/vocadb/issues/1684) ([#1685]https://github.com/VocaDB/vocadb/issues/1685)
+* Tags transfer now correctly after merging ([#1678]https://github.com/VocaDB/vocadb/issues/1678)
+
+## 8. March 2024
+
+**Fixes:**
+* Release/Publish dates do not differentiate between users anymore -> set default UTC timezone ([#1702]https://github.com/VocaDB/vocadb/issues/1702)
+* Multiple character designers show up correctly now ([#1699]https://github.com/VocaDB/vocadb/issues/1699)
+* Adding Piapro PVs works again ([#1704]https://github.com/VocaDB/vocadb/issues/1704)
+* Restored Piapro embed functionality ([#1704]https://github.com/VocaDB/vocadb/issues/1704)
+
+## 11. April 2024
+
+**Improvements:**
+* Increased the event description length to 4000 characters ([#1732]https://github.com/VocaDB/vocadb/issues/1732)
+* Added Kazakh and Old English
+* New web link matchers (including ([#1721]https://github.com/VocaDB/vocadb/issues/1721))
+* New translations
+
+**Fixes:**
+* Old NND PVs are now using the new thumbnails URLs ([#1722]https://github.com/VocaDB/vocadb/issues/1722)
+* All release date fields now use UTC
+
+## 15. May 2024
+
+**Improvements:**
+* New artist types: VOICEVOX, A.I.VOICE and ACE Virtual Singer
+* New and updated translations (including ([#1738]https://github.com/VocaDB/vocadb/issues/1738) and ([#1743]https://github.com/VocaDB/vocadb/issues/1743))
+* New web link matchers
+* Performance improvements
+
+**Fixes:**
+* Fixed SoundCloud integration ([#1745]https://github.com/VocaDB/vocadb/issues/1745)
+* NND playlist import works as expected again
+
+**API Improvements:**
+* New /pvs/thumbnail endpoint for retrieving thumbnails based on OpenGraph tags
+
+## 13. August 2024
+
+**Improvements:**
+* Finer tag target controls ([#1387]https://github.com/VocaDB/vocadb/issues/1387)
+* User group is now indicated by the color of the user link ([#1712]https://github.com/VocaDB/vocadb/issues/1712)
+* All trusted users are now able to see tag usage authors ([#1681]https://github.com/VocaDB/vocadb/issues/1681)
+* New translations
+
+**Fixes:**
+* Bilibili videos with large AIDs are properly recognized and parsed again ([#1772]https://github.com/VocaDB/vocadb/issues/1772)
+* Piapro PVs are properly recognized and parsed again ([#1798]https://github.com/VocaDB/vocadb/issues/1798)
+* Deleted tags won't show up in the favorite tags section anymore ([#1782]https://github.com/VocaDB/vocadb/issues/1782)
+* Fixed the language code assignment for Tagalog and Taijik ([#1784]https://github.com/VocaDB/vocadb/issues/1784)
+* Website previews now show the site title ([#1761]https://github.com/VocaDB/vocadb/issues/1761)
+* The NicoData extractor (https://nicodata.vocaloid.eu/) works as expected again

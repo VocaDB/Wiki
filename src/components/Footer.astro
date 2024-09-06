@@ -3,14 +3,17 @@ const footerItems = [
   {
     name: "Terms of service",
     href: "/docs/footer/terms-of-service",
+    hide: true,
   },
   {
     name: "Privacy & cookie policy",
     href: "/docs/footer/privacy-and-cookie-policy",
+    hide: true,
   },
   {
     name: "License",
     href: "/docs/footer/license",
+    hide: true,
   },
   {
     name: "About VocaDB",
@@ -23,7 +26,7 @@ const footerItems = [
   {
     name: "Contact",
     href: "/docs/footer/contact",
-  }
+  },
 ];
 ---
 
@@ -33,7 +36,7 @@ const footerItems = [
   {
     footerItems.map((footerItem) => (
       <a
-        class="text-sm hover:underline text-foreground/60 hover:text-foreground/80"
+        class={`text-sm hover:underline text-foreground/60 hover:text-foreground/80 ${footerItem.hide ? "sm:block hidden" : ""}`}
         href={footerItem.href}
       >
         {footerItem.name}

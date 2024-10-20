@@ -5,67 +5,178 @@ parent: TouhouDB
 tags: ["editing", "guidelines", "documentation", "touhoudb"]
 ---
 
-**Note: these guidelines are suggestions at this phase**
+----
 
-## General rules
+Since TouhouDB shares infrastructure with VocaDB, most of the policies and guidelines for VocaDB also apply to TouhouDB. However, since TouhouDB has some unique features, some unique guidelines are also necessary where applicable. If your question isn't answered below, please see the [VocaDB Wiki](https://wiki.vocadb.net/) or the TouhouDB [FAQ](https://wiki.vocadb.net/docs/touhoudb/touhoudb-editing-faq).
 
-### Entry statuses
+----
 
-## Language
+## General Rules
 
-### Names and translations
+* Make sure that the content you’re about to add belongs to TouhouDB (see question one of the [FAQs](https://wiki.vocadb.net/docs/touhoudb/touhoudb-editing-faq)).
 
-### Romanization
+* Make sure to read the automatic infoboxes and edit warnings for potential edit mistakes.
+
+* If an entry doesn't contain all required information, please save it as a "Draft". If an entry *does* contain all required information, please make sure to change the status to "Finished".
+
+* Do NOT romanize or translate titles if you do not know the language well enough. **Machine translations are strictly forbidden.** It’s better to leave the field empty than have it incorrect.
+
+* If you are romanizing a title, please check the [Romanization Guidelines](https://wiki.vocadb.net/docs/other-guidelines/romanization-guidelines) and [Romanization Walkthrough](https://wiki.vocadb.net/docs/other-guidelines/romanization-walkthrough) for examples.
+
+* Entries created should look roughly similar to those created by trusted users.
+
+* If you’re unsure about something, try searching the wiki or leave a comment or an edit note.
+
+----
+
+## Editing Entries
 
 ## Artists
 
+### Required information to mark as "finished"
+
+* Primary name
+* Artist type (see below)
+* At least one official link *if available*. If you're absolutely positive no official links are available, you may add reference links (MusicBrainz, VGMdb, etc.) or a short description, and tag with [limited artist information](https://touhoudb.com/T/1203). If you aren't sure whether more information is available, please leave the entry as a draft.
+
+### Names
+
+If the artist has a common name, you may add a disambiguation in the "aliases" section (eg. "[HIRO (黒板クリーナー)](https://touhoudb.com/Ar/9648)") to distinguish the artist from other artists with the same name.
+
 ### Artist types
 
-* Music producer: artists that regularly compose or arrange music. When multiple roles apply, this type takes preference over everything else.
-* Vocalist: artists that regularly provide vocals.
-* Illustrator: artists who create illustrations.
-* Lyricist: artists who write lyrics.
-* Circle: groups of people who publish their own albums, usually at events such as Comiket and Reitaisai.
-* Label: commercial companies that publish albums for others but generally don't take part in song creation themselves.
-* Other group: for all other groups of people, including more conventional bands.
-* Other individual: for individuals who participate in other ways. Most commonly this means instrumentalists.
+* Music producer: Artists who regularly compose or arrange music. When multiple roles apply, this type takes preference over everything else.
+* Vocalist: Artists who regularly provide vocals.
+* Animation producer: Artists who animate or compile videos.
+* Illustrator: Artists who create illustrations.
+* Designer: Artists who contribute graphic design work, typically to albums.
+* Circle: Units that publish albums, usually at events such as Comiket and Reitaisai.
+* Label: Entities (often commercial) that publish albums for others but generally don't take part in song creation themselves.
+* Other group: For all other groups of people who aren't circles or labels.
+* Instrumentalist: Artists who are mainly credited for playing instruments.
+* Lyricist: Artists who write lyrics.
+* Other individual: For individuals who participate in other ways (staff members, photographers, DJs, etc.).
 
 **Note: when multiple roles apply, use the most common role, except for music producer, which usually takes higher preference.**
 
+There is also a special "Character" category for characters from the Touhou series. These entries act differently than other artist entries, and new character entries are generally only needed when a new game is released. **Please do not add entries for fan characters.**
+
 ### Artist pictures
+
+Artist pictures are not required, but can be useful to make clear that an artist's entry is complete, or to easily distinguish artists with the same name. Artist logos or mascots are preferred, but other profile pictures may be used as well. Be careful when using photographs; only use photographs that the artist themself has made publicly available.
 
 ## Albums
 
+### Required information to mark as "finished"
+
+* Primary name
+* Album cover (if available, see below)
+* Album type (see below)
+* Release date
+* Release event (if applicable)
+* At least one external link or PV
+* All artists who worked on the album (including characters depicted on the cover)
+
 ### Album types
 
-* Original album: music albums with only original songs. This mainly consists of official music albums by ZUN/Team Shanghai Alice.
-* Game: for Touhou games.
-* Fanmade/doujin: music albums with arrangements of Touhou songs, either on-vocal or off-vocal.
-    * Off-vocal albums should be tagged with the instrumental tag.
-* Other: for all other albums.
+* Album: Albums with 6+ tracks, or with a length of 40+ minutes.
+* E.P.: Albums with around 3~5 tracks, and any other album described by the artist as an "E.P."
+* Single: Albums with 1~2 tracks (excluding instrumental versions of vocal songs), and any other album described by the artist as a "single".
+* Game: Games, whether official or fangames.
+* Drama: Albums focused on in-character spoken word content rather than music.
+* Other: Any album that doesn't fit into one of the above categories.
 
 ### Album pictures
 
+Please provide the highest quality image of the album cover that you can find for the main image. The "additional images" tag can be used for pictures of the booklet, CD label, or other supplementary materials. **Please do not include multiple versions of the same image (e.g. multiple cover images of varying quality).**
+
+### Description
+
+TBD
+
+### Release events
+
+TBD
+
+### External links
+
+TBD
+
 ## Songs
+
+### Required information to mark as "finished"
+
+* Primary name
+* Song type (see below)
+* Original (if applicable)
+* Release date
+* All artists who worked on the song (including characters depicted in the PV, if applicable)
 
 ### Song types
 
 * Original song: songs that are not derivatives. This includes original songs from games (by ZUN), and original songs on doujin albums (those that are not based on any Touhou song).
-* Arrangement: modified songs based on Touhou originals. These may be either on-vocal or off-vocal.
-    * For off-vocal songs, the instrumental tag is optional.
-* Instrumental: instrumental versions of original songs or arrangements. Instrumental should be identical to the parent version of the song, except for lacking vocals.
-* Music PV: for music videos that are significant enough to have their own entry.
-* Drama PV: for videos without music.
-* Other: for everything else.
+* Arrangement: Songs based on original songs.
+* Rearrangement: Songs based on arrangements.
+* Cover: Songs where only the vocals are changed. If a song is a cover *and* an arrangement or rearrangement, please use the arrangement or rearrangement song type and tag the song with [vocal cover](https://touhoudb.com/T/76).
+* Instrumental: Instrumental versions of songs. Instrumentals should be identical to the parent version of the song, except for lacking vocals.
+* Remaster: Remastered versions of songs with minimal significant changes.
+* Short version: Short versions of songs where the only difference is the length. Common for songs used in rhythm games, and songs included in [nonstop](https://touhoudb.com/T/614) albums.
+* Music PV: Music videos that are significant enough to have their own entry.
+* Drama PV: For dramatic works where music is secondary or non-existent. Despite the name, this also includes voice dramas with no video.
+* Other: Any other entry that doesn't fall into a category above (includes [megamixes](https://touhoudb.com/T/846), [talk tracks](https://touhoudb.com/T/959), [blank tracks](https://touhoudb.com/T/1610), etc.).
+
+### Description
+
+TBD
+
+### Original
+
+TBD
+
+### Length
+
+TBD
+
+### BPM
+
+TBD
 
 ### Song embeds and PVs
 
-## Events
+TBD
 
-## Song lists
+### Lyrics
+
+TBD
 
 ## Tags
 
-## Users
+### Required information to mark as "finished"
 
-### User types
+* Description
+* Category
+* Links (if applicable; most useful for genre tags)
+
+### Description
+
+TBD
+
+### Category
+
+TBD
+
+### Links
+
+TBD
+
+### Tag relationships
+
+TBD
+
+## Events
+
+TBD
+
+## Song Lists
+
+TBD

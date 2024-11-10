@@ -16,7 +16,7 @@ import { ScrollArea } from "./ui/scroll-area";
         return {
           navbarItem: i,
           parentEntry: posts.find(
-            (p) => p.props.entry.data.title === i.title
+            (p) => p.props.entry.slug === i.slug
           )!,
         };
       })

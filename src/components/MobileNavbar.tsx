@@ -26,7 +26,7 @@ export default function MobileNavbar() {
               return {
                 navbarItem: i,
                 parentEntry: posts.find(
-                  (p) => p.props.entry.data.title === i.title
+                  (p) => p.params.slug === i.slug
                 )!,
               };
             })

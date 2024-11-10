@@ -4,6 +4,7 @@ import { getDocPaths } from "@/utils/get_paths";
 export const navbarParents = [
   {
     title: "Guidelines",
+    slug: "guidelines",
     subcategories: [
       "Pinned",
       "Songs",
@@ -13,13 +14,34 @@ export const navbarParents = [
       "Other guidelines",
     ],
   },
-  { title: "Documentation" },
-  { title: "Development" },
-  { title: "Other" },
-  { title: "UtaiteDB" },
-  { title: "TouhouDB" },
-  { title: "Japanese" },
-  { title: "Chinese" },
+  {
+    title: "Documentation",
+    slug: "documentation",
+  },
+  {
+    title: "Development",
+    slug: "development",
+  },
+  {
+    title: "Other",
+    slug: "other",
+  },
+  {
+    title: "UtaiteDB",
+    slug: "utaitedb",
+  },
+  {
+    title: "TouhouDB",
+    slug: "touhoudb",
+  },
+  {
+    title: "Japanese",
+    slug: "japanese",
+  },
+  {
+    title: "Chinese",
+    slug: "chinese",
+  },
 ];
 
 export const headerNavItems = [

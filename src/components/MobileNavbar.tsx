@@ -26,7 +26,7 @@ export default function MobileNavbar() {
               return {
                 navbarItem: i,
                 parentEntry: posts.find(
-                  (p) => p.params.slug === i.title.toLowerCase()
+                  (p) => p.props.entry.data.title === i.title
                 )!,
               };
             })
@@ -61,7 +61,7 @@ export default function MobileNavbar() {
                                 key={post.params.slug}
                                 href={[
                                   "/docs",
-                                  c.toLowerCase(),
+                                  // c.toLowerCase(),
                                   post.params.slug,
                                 ].join("/")}
                               >
@@ -77,7 +77,7 @@ export default function MobileNavbar() {
                   <a
                     href={[
                       "/docs",
-                      parentEntry.params.slug,
+                      // parentEntry.params.slug,
                       post.params.slug,
                     ].join("/")}
                     key={post.params.slug}

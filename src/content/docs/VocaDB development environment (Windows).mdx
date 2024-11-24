@@ -7,23 +7,99 @@ tags: ["development", "github", "documentation", "vocadb"]
 
 ## Requirements
 
-- OS: Windows 10, Windows Server 2012 R2 or newer.
-- RAM: 1GB for the site, 4GB or so for the database.
+- OS: Windows 10, Windows Server 2012 R2 or newer
+- RAM: 1GB for the site, 4GB or so for the database
 - Microsoft SQL Server 2012 or newer (can be made to run on 2010 with some code changes). SQL Server 2012 SP2 or newer recommended. SQL Server Express and LocalDB should work too.
-- Visual Studio 2019 (free Community version is enough).
-  - 16.9 or newer.
-  - ASP.NET web development and .NET Core workloads.
-- Visual Studio Code.
-  - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) by [Dirk Baeumer](https://marketplace.visualstudio.com/publishers/dbaeumer).
-  - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) by [Prettier](https://marketplace.visualstudio.com/publishers/esbenp).
-- IIS or IIS Express.
-  - Static files support.
+- Visual Studio 2019 (free Community version is enough)
+  - 16.9 or newer
+  - Workloads:
+    - ASP.NET and web development 
+    - .NET desktop development
+- Visual Studio Code
+  - Extensions:
+    - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+    - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) 
+- IIS or IIS Express
+  - Static files support
 - .NET 7 SDK. or higher
 - [Node.js](https://nodejs.org/) v12.18.3 (or latest LTS) with NPM.
+
+## Step-by-step first setup
+
+1. Ensure you have all the requirements installed.
+2. Clone the repository and its submodules.
+
+   ```bash
+   git clone https://github.com/vocadb/vocadb.git --recurse-submodules
+   cd vocadb
+   ```
+
+3. Open the VocaDB project on Visual Studio.
+4. Prepare the configuration files. See [web.config](#webconfig) section for more information.
+5. Prepare the database. See [Database configuration](#database-configuration) section for more information.
+
+   1. Open SQL Server Management Studio and log in to your SQL Server instance.
+   2. Create a database with the name `VocaloidSite`.
+      
+      1. Right click <kbd>Databases</kbd> on the Object Explorer and press <kbd>New Database...</kbd>.
+      2. On <kbd>Databse name:</kbd>, write `VocaloidSite`.
+      3. Switch to the General page by clicking <kbd>🔧 Options</kbd> on the right.
+      4. On <kbd>Collation:</kbd>, ensure that it has <kbd>CI</kbd> on it. The <kbd>\<default\></kbd> may be appropriate should your default collation has <kbd>CI</kbd> on it ([how to check it](https://learn.microsoft.com/en-us/sql/relational-databases/collations/view-collation-information?view=sql-server-ver16)). If it isn't, you can choose either `SQL_Latin1_General_CP1_CI_AS` or `Latin1_General_CI_AS`.
+      5. On <kbd>Compabillity level:</kbd>, ensure that is <kbd>SQL Server 2012 (110)</kbd> or higher (on the number in the brackets).
+      6. Press <kbd>OK</kbd> on the bottom to create the database.
+      
+   3. Run the [schema creation script](http://vocaloid.eu/vocadb/empty-mssql.sql) against the database.
+
+      1. Either download open the file on SQL Server Management Studio, or right click <kbd>VocaloidSite</kbd>, select <kbd>New Query</kbd>, and paste the whole file to it.
+      2. Ensure <kbd>VocaloidSite</kbd> is selected on the Available Databases dropdown.
+      3. Press the <kbd>▶ Execute</kbd> button.
+
+   4. Back to Visual Studio, build/compile the migrations by building `VocaDb.Migrations` (right click <kbd>VocaDb.Migrations</kbd> and press <kbd>Build</kbd>)
+   5. Run the Package Manager console using the menu bar: <kbd>Tools</kbd> > <kbd>NuGet Package Manager</kbd> > <kbd>Package Manager Console</kbd>
+   6. Using the Package Manager Console, install the `dotnet-fm` tool.
+
+      ```powershell
+      dotnet tool install -g FluentMigrator.DotNet.Cli
+      ```
+
+   7. Using the Package Manager Console, execute the migration.
+
+      ```powershell
+      dotnet-fm migrate -p sqlserver -c "Data Source=.; Initial Catalog=VocaloidSite; Trusted_Connection=True; Encrypt=False;" -a "VocaDb.Migrations/bin/debug/net472/vocadb.migrations.dll"
+      ```
+
+      You may adjust the connection strings so what is written here and on `\VocaDbWeb\connections.config` is the same.
+
+      For more information, see [Starting with FluentMigrator](https://fluentmigrator.github.io/articles/quickstart.html?tabs=runner-dotnet-fm).
+
+6. Build the frontend using Node.js. See [Compiling frontend assets](#compiling-frontend-assets) section for more information.
+
+   1. Right click `VocaDbWeb` on the Solution Explorer in the right and select the <kbd>Open in Terminal</kbd> option.
+   2. Install dependencies by running `npm install` on the Terminal.
+   3. Build assets by running `npm run production` on the Terminal.
+
+7. Run the server using Visual Studio.
+
+   1. Select the `VocaDbWeb` startup item. Locate the <kbd>⚙ VocaDb...</kbd> button on the top part of the window, and press the dropdown on the right of the button.
+   2. Press <kbd>▶ IIS Express</kbd> right beside the previous button to build/compile and run the server.
 
 ## Formatting
 
 Line endings and indentation are configured by [EditorConfig](http://editorconfig.org/). There's a plugin for almost any major IDE/text editor. Please install that plugin before editing the code files.
+
+For the frontend located on `VocaDbWeb`, Prettier and ESLint is used to ensure code quality. You can use plugins to enhance the use of them.
+
+### Visual Studio Code
+
+The following extensions are recommended in the `VocaDbWeb` folder.
+
+  - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) by [Dirk Baeumer](https://marketplace.visualstudio.com/publishers/dbaeumer)
+  - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) by [Prettier](https://marketplace.visualstudio.com/publishers/esbenp)
+
+These configuration is recommended for better formatting on Visual Studio Code. Open the Settings screen (by pressing <kbd>F1</kbd> and press <kbd>Preferences: Open Settings (UI)</kbd> or <kbd>File</kbd> (on the top left) > <kbd>Preferences</kbd> > <kbd>Settings</kbd>) and change these settings.
+
+- **Editor: Default Formatter**: <kbd>Prettier - Code formatter <small>esbenp.prettier-vscode</small></kbd>
+- **Editor: Format on Save**: *checked*
 
 ## web.config
 
@@ -32,6 +108,8 @@ The main web.config refers to additional configuration files which contain sensi
 ### Minimal configuration
 
 #### appsettings.config
+
+This file should be on `VocaDbWeb\appsettings.config`.
 
 ```xml
 <?xml version='1.0' encoding='utf-8'?>
@@ -54,6 +132,8 @@ The main web.config refers to additional configuration files which contain sensi
 
 #### connections.config
 
+This file should be on `VocaDbWeb\connections.config`.
+
 ```xml
 <?xml version='1.0' encoding='utf-8'?>
 <connectionStrings>
@@ -64,12 +144,16 @@ The main web.config refers to additional configuration files which contain sensi
 
 #### machinekey.config
 
+This file should be on `VocaDbWeb\machinekey.config`.
+
 ```xml
 <?xml version='1.0' encoding='utf-8'?>
 <machineKey />
 ```
 
 #### smtp.config
+
+This file should be on `VocaDbWeb\smtp.config`.
 
 ```xml
 <?xml version='1.0' encoding='utf-8'?>
@@ -84,24 +168,30 @@ You'll need to enable the DELETE and OPTIONS (for CORS) verbs for IIS/IIS expres
 
 ## Database configuration
 
-You'll need to create an empty database, by default called "VocaloidSite", but can be anything. Compatibility level at least SQL Server 2012 (110) and collation anything case insensitive (CI).
+You'll need to create an empty database called `VocaloidSite` by default, but the name can be anything. For the compability level, it should be should be at least SQL Server 2012 (110). For the collation, it could be anything that is case insensitive (has `CI` on the name).
 
-Then download the [schema creation script](http://vocaloid.eu/vocadb/empty-mssql.sql) and run it against that database.
+Then, download the [schema creation script](http://vocaloid.eu/vocadb/empty-mssql.sql) and run it against that database.
 
-Finally, run migrations from the VocaDb.Migrations assembly using FluentMigrator.
+Finally, run migrations from the `VocaDb.Migrations` assembly using FluentMigrator.
 
-## VSCode
+## Compiling frontend assets
 
-Open **Settings** from the **Preferences** menu on the **File** menu. Enter `format` into the search box, set **Default Formatter** to **esbenp.prettier-vscode** and enable **Format on Save**.
+Ensure Node.js is installed and `VocaDbWeb` is opened on the Terminal of Visual Studio Code (or Visual Studio) before running these commands.
 
-## Compiling assets
+Install the frontend dependencies by running this command.
 
-First, make sure node with npm is installed and registered for command line.
+```bash
+npm install
+```
 
-To install the frontend dependencies for VocaDbWeb, make sure you are in the VocaDbWeb source code directory and run the following:
+Run this command so that Vite will automatically recompile your assets when it detects a change.
 
-    npm install
+```bash
+npm run dev
+```
 
-The npm run watch command will continue running in your terminal and watch all relevant files for changes. Vite will then automatically recompile your assets when it detects a change:
+In some cases, you need to build it first so that the changes will be reflected on the website.
 
-    npm run dev
+```bash
+npm run build
+```

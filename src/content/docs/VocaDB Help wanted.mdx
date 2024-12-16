@@ -5,100 +5,78 @@ parent: Documentation
 tags: ["development", "documentation", "feature requests", "github", "translation", "vocadb"]
 ---
 
-"*How can I help?*"
+VocaDB is fully a volunteer-based organization. If you're interested in contributing in various ways, please read ahead.
 
-This is a general TODO / task list for VocaDB (besides adding/editing entries and moderating).
-If you want to help with the points mentioned below, please reach out to us ([the admins](https://vocadb.net/User?disabledUsers=false&filter=&groupId=Admin&knowsLanguage=&onlyVerifiedArtists=false&page=1&pageSize=20&sort=RegisterDate)) on [VocaDB](https://vocadb.net/), [Twitter](https://twitter.com/VocaDB) or [Discord](https://discord.com/invite/3bwXQNXKCz).
+## General ways to help
 
-**Please note that this is, was and will be volunteer work**.
+### Editing entries
 
-----
+VocaDB aims to be the most accurate and complete source of voice synth content (albums, artists, songs, etc.). You can help with this by adding new and/or improving the existing entries.
 
-## Translations
+It's helpful to also send [entry reports](/docs/pinned/entry-reports) when noticing errors. Anyone can remind and educate other editors about the guidelines, as long as the tone of the message or the comment is diplomatic and appropriate.
+
+Some shared *entry lists* have also been made that focus on certain tasks: -upcoming- 
+
+### Improving rules and guidelines
+
+Our guidelines and rules sharpen and evolve as edge cases emerge and new trends appear.
+
+Guideline discussion and debate is currently mostly limited to a non-public [discord](https://discord.com/invite/3bwXQNXKCz) channel (#mods-and-trusted), but thoughtful guideline suggestions and clarification requests are always welcome.
+
+The wiki content (including this text) is hosted on [Github](https://github.com/VocaDB/Wiki), which accepts change proposals through [pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request). Rule and guideline changes should always be discussed first, but PRs that fix typos or clarify sentences for example are always accepted and quickly merged.
+
+### Promoting the website
+
+As a collaborative project, we benefit from having a large and diverse userbase.
+
+VocaDB api enables the development of [external services](/docs/documentation/services-that-make-use-of-vocadb-apis).
+
+## If you're a programmer (C#, ASP.NET Core, TypeScript, React)
+
+See the instructions in [the README](https://github.com/VocaDB/vocadb#readme).
+
+For fixing bugs and implementing feature requests, fork and create a pull request to the main repository. Participating in a non-public [discord](https://discord.com/invite/3bwXQNXKCz) channel (#dev-talk) is recommended.
+
+## If you're a programmer (Mobile, Dart)
+
+VocaDB also exists as a native Android + Apple mobile app, created by [up2code](https://vocadb.net/Profile/up2up). The app code repository can be found on [GitHub/VocaDB/VocaDB-App](https://github.com/VocaDB/VocaDB-App).
+
+## If you're a programmer (any language)
+
+GitHub issues labeled with [external solution possible](https://github.com/VocaDB/vocadb/issues?q=is%3Aissue+is%3Aopen+label%3A%22external+solution+possible%22) can be implemented or workaround-ed in some form with any language.
+
+If you manage to create/find a working solution or workaround for these issues, please mention it on the relevant github issue.
+
+The public [#api-projects](https://discord.com/channels/309072240639737866/1039922389301072014) -channel can be used as a relevant discussion area.
+
+## If you know non-English languages
 
 We need people who know specific languages, especially Japanese and Chinese.
 
-* Communicating with users to solve their reports and questions regarding the website is very important, that is why we need help translating messages to/from users.
+Please update your "known languages" in your [profile settings](https://vocadb.net/User/MySettings) and let us know if we can contact you if/when help is needed.
 
-* Some translations on the website are not completed and also need fixes, for example: The Chinese translations, started by user "[szg28](https://vocadb.net/Profile/szg28)", are missing some parts ([Thread on VocaDB](http://vocadb.net/discussion/topics/42)).
+The relevant discussion area for translation-related topics is [#translate -channel](https://discord.com/channels/309072240639737866/808128811056889886) on Discord.
 
-* The VocaDB Wiki also needs translations for the main and important pages.
-
-* Additionally to the translations, we also need help proofreading the existing translations. Let us know of any mistakes in language or spellings, if you find any.
-
-Please update your "known languages" list in your [profile settings](https://vocadb.net/User/MySettings) and let us know if we can contact you when we need translations done.
-
-**Translations are now managed through [Crowdin](https://crowdin.com/project/vocadb), a localization management platform.**
+Website translations are managed through [Crowdin](https://crowdin.com/project/vocadb), a localization management platform.
 
 -> [Project invite link](https://crowdin.com/project/vocadb/invite?h=8d85a8e422a7f8a6ea089630935c7fd61702299)
 
 -> [Guide: Translating VocaDB](/docs/documentation/translating-vocadb/translating-vocadb)
 
-## Website development
-
-We currently have a dev who takes care of most things but anyone who helps with fixing bugs and implementing or updating features is very appreciated.
-
-VocaDB's feature development is tracked as GitHub issues on the [VocaDB GitHub](https://github.com/VocaDB).
-The software is based on [ASP.NET Core](https://en.wikipedia.org/wiki/ASP.NET_Core) ([.NET](https://en.wikipedia.org/wiki/.NET) 7), [jQuery](https://en.wikipedia.org/wiki/JQuery), [jQuery UI](https://en.wikipedia.org/wiki/JQuery_UI), [Bootstrap](https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)), [React](https://en.wikipedia.org/wiki/React_(software)), [MobX](https://mobx.js.org/README.html), and it uses a [SQL](https://en.wikipedia.org/wiki/SQL) database through the [NHibernate](https://en.wikipedia.org/wiki/NHibernate) [ORM](https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping). Server side code is written in [C#](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)), most of the client side is [TypeScript](https://en.wikipedia.org/wiki/TypeScript).
-
-If you know how to program or someone else who does and would like to help, let us know.
-
--> [Guide: VocaDB feature requests](/docs/documentation/vocadb-feature-requests)
-
-### Fixes to the front page
-
-* The social media and external links menu needs to be cleaned: Some logos are outdated and should be replaced and some partner websites need to be removed and added.
-
-* The general menus, header, logo etc. need to be aligned to achieve a proper symmetry to make everything visually more appealing.
-
-* The "Highlighted PVs" section could be styled/reworked to look better.
-
-* When viewing the front page on a larger resolution/screen, a lot of whitespace is visible besides the "Highlighted PVs" section, perhaps a specific text or section could be shown there. An idea would be to display the "Featured song list/s" or "Random popular Artist/s" as a section there.
-
--> [Overhaul of the front page](https://github.com/VocaDB/vocadb/issues/1384)
-
-### Fixes to the mobile layout
-
-Currently some pages don't fit the phone screen very well, for example: The highlighted PVs list on the front page. If someone could do some testing and CSS tuning, we can import the fixes to the website.
-
-### Interface theme additions
-
-It would be nice to feature more and better themes for the website (also fixes to the current ones). Many people wished for that and especially a proper, good designed dark theme is needed.
-
-**Ideas:**
-
-* dark theme (black)
-* light theme (white)
-* monochrome/gray theme (wowaka tribute)
-
-* spring theme (sakura miku)
-* summer theme
-* fall/autumn theme
-* winter theme (winter miku)
-
-* valentines day theme
-* easter theme
-* april fools theme (teto)
-* hanabi/fireworks theme
-* halloween theme
-* christmas theme (santa miku)
-
-* water theme (bottle miku/deep sea girl)
-* universe/space theme
-* sports theme (racing miku)
-* fantasy/middle ages theme
-* metal/rock theme (hagane miku)
-* calne ca theme
-* black rock shooter theme
-
-## App development
-
-Besides the actual mobile website, VocaDB also exists as an app. The app was created by user "[up2code](https://vocadb.net/Profile/up2up)" and works on Android and iOs devices. The development is tracked via GitHub on the [VocaDB-App GitHub](https://github.com/VocaDB/VocaDB-App).
-
-Help is always appreciated so if you know how to program Apps or someone else who does and would like to help, let us know.
+Translations for the VocaDB wiki pages are also welcome. These are currently implemented as separate wiki pages. 
 
 ## Donations
 
-VocaDB is free to use for everyone and does not display any sort of ads. However, running a website is not free. VocaDB, UtaiteDB and TouhouDB are running on servers that need to be paid monthly ([more detailed on our Patreon page](https://www.patreon.com/vocadb)). We use Patreon to fund those running costs, so if you want to help with that, please visit our [Patreon page](https://www.patreon.com/vocadb).
+VocaDB is free to use for everyone and does not display any sort of ads. However, running a website is not free. VocaDB, UtaiteDB and TouhouDB are running on servers that need to be paid monthly. 
 
-Additionally, if you want to donate to the [VocaDB-App](https://github.com/VocaDB/VocaDB-App) hosted by "[up2code](https://vocadb.net/Profile/up2up)", please visit the dedicated [Ko-fi page](https://ko-fi.com/up2up039).
+[Patreon](https://www.patreon.com/vocadb) is our main source of funding.
+
+Additionally, if you want to donate to the [VocaDB-App](https://github.com/VocaDB/VocaDB-App) hosted by [up2code](https://vocadb.net/Profile/up2up), please visit the dedicated [Ko-fi page](https://ko-fi.com/up2up039).
+
+## Other
+
+For any improvement ideas or feature requests for the website, please first search through [the issue tracker](https://github.com/VocaDB/vocadb/issues) before creating a new issue (="ticket"). High-quality proposals are especially appreciated. Voting and commenting on the existing proposals can be helpful as well. 
+
+Our community is mostly gathered up in our [discord server](https://discord.com/invite/3bwXQNXKCz). We try to maintain a mature and friendly atmosphere. 
+
+If you think you could be of help in any other way that wasn't mentioned in this page, please join the discord server or [contact us](/docs/footer/contact) in some other way. 

@@ -205,5 +205,6 @@ export default defineConfig({
       "/docs/japanese/artist-verification-japanese",
     "/wiki/75": "/docs/chinese/artist-verification-chinese",
     "/wiki/75/艺术家验证": "/docs/chinese/artist-verification-chinese",
+    "/docs/documentation/vocadb-help-wanted": "/docs/pinned/vocadb-how-to-help"
   },
 });

@@ -23,7 +23,9 @@ In addition to regular user features, trusted users have access to the following
 * Removing tags from entries
 * Creating and editing "[featured songlists](https://vocadb.net/SongList/Featured)"
 * Managing [entry reports](/docs/pinned/entry-reports)
-* Limiting user accounts (removing editing permissions)
+* Limiting user accounts (removing editing permissions)*
+
+* Generally, trusted users should only limit users in cases of spam or vandalism. Besides those cases, limiting is handled by mods and above.
 
 ## Moderator
 
@@ -35,12 +37,12 @@ In addition to **trusted user features**, moderators have access to the followin
 * Locking entries (and editing them)
 * Managing tag mappings (NND tag -> VocaDB tag)
 * Bulk-deleting PVs by uploader
-* Deleting and editing comments
+* [Moderating comments](https://wiki.vocadb.net/docs/pinned/discussion-rules)
 * Accessing the manage menu
 * Accessing the audit log
 * Managing IP rules
-* Flagging spammers, posting them to StopForumSpam
-* Disabling user accounts
+* Flagging spammers and posting them to StopForumSpam
+* Banning user accounts
 * Managing user account permissions
 * Promoting user accounts (regular -> trusted)
 * Handling DMCA, GDPR, user account deletions, other requests
@@ -55,17 +57,17 @@ For a staff list, visit [this page](/docs/footer/staff-roles).
 
 ## Limited user
 
-Occasionally we have to reduce an account from regular to limited. Limited users have no editing permissions at all, they are able to **log in** and **edit their profile**. This is intended to be only temporary and is usually the result of multiple ignored warnings.
+Occasionally we have to reduce an account from regular to limited. Limited users have no editing permissions at all, and are only able to **log in** and **edit their profile**. This is intended to be only temporary and is usually the result of multiple ignored warnings.
 
 ## Special permissions and labels
 
 ### Email verification
 
-Users with verified email are able to log in to VocaDB by using their email address instead of username.
+Users with verified email can log in by using their email address instead of their username.
 
 ### Verified artists
 
-[Verified artists](/docs/artists/artist-verification) are able to approve their assigned artist entry, restricting editing for that entry. Additionally, they are able to use VocaDB to host their songs, by uploading mp3 files that can be played on site.
+[Verified artists](/docs/artists/artist-verification) are able to approve their assigned artist entry, which restricts editing. Additionally, they are also able to directly upload mp3 files to their song entries, which act like a PV.
 
 ### Staff
 
@@ -73,8 +75,8 @@ Label for administrators and moderators. Also displayed for users with the "Desi
 
 ### VocaDB veteran
 
-[Automatically calculated](https://github.com/VocaDB/vocadb/blob/dc352077711421e5d2c07a196aa427cc401b2841/VocaDbModel/Helpers/UserHelper.cs#L36-L44) label based on account age and activity.
+[Automatically calculated](https://github.com/VocaDB/vocadb/blob/dc352077711421e5d2c07a196aa427cc401b2841/VocaDbModel/Helpers/UserHelper.cs#L36-L44) label based on account age and activity. The most notable prerequisites are that you must have an account over 1 year old and over 1000 edits.
 
 ### VocaDB supporter
 
-Displayed for users that have financially contributed to VocaDB, through [Patreon](https://www.patreon.com/vocadb) for example.
+Isers that have financially contributed to VocaDB, through [Patreon](https://www.patreon.com/vocadb) for example.

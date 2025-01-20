@@ -61,11 +61,65 @@ English translations can be added in a separate field if the original descriptio
 
 ### Song Type
 
+Song type (`Original song`, `Remix`, `Cover`, ...) is the main categorization of the entry.
+
+#### Original Version
+
+Song entries can be roughly classified as "original" or "derived". "Original" entries are the "root nodes" of the [entry tree structure](https://en.wikipedia.org/wiki/Tree_structure).
+
+The `Original Version` -field is used for creating this entry tree structure. **If the original version exists as a song entry**, use this field **in the derived entry** to link to the original version. 
+
+- The song type `Original song` should **not** have any `original versions` specified. The field is hidden when this song type is selected.
+
+- Song types `Remaster`, `Remix`, `Cover`, `Instrumental`, `Mashup`, `Music PV` **should always** specify the `original version`. 
+
+- Song types `Drama PV` and `Other` **can** specify an `original version`, if the entry is not "original".
+
+**If the original version does not exist as an entry** (being out-of-scope for example):
+
+- If the entry is on UtaiteDB, connect it by adding it **as an external link**. This will display it as the "Original version" along with automatic metadata.
+
+- If the original song is out-of-scope, use the [original-out-of-scope](https://vocadb.net/T/3282/original-out-of-scope) -tag along with **a link to the original song** or **a reference in the song description**.
+
+  - For out-of-scope songs, the original artists *can* be credited in the song description ([example](https://vocadb.net/S/604363)). Direct artist credits through the artist tab **should not be used**, regardless if the original artists have artist entries or not.
+
+- If the out-of-scope original song has **5 or more derived** (remix or cover) song entries on VocaDB, it can be created as a [cover unifier entry](https://vocadb.net/T/6751/out-of-scope-cover-unifier). 
+
+  - The original (out-of-scope) artists should be credited as "custom artists" on the cover unifier entry. If the entry has no related (in-scope) artist entries, it can be created with the [temporary artist entry](https://vocadb.net/Ar/139625). Note that out-of-scope cover unifier entries should not be created for songs that already have a UtaiteDB entry.
+
+Original song can be selected by:
+- A) searching by the song title
+- B) by the VocaDB URL
+- C) with "id:\{song id\}".
+
+The "Find originals" button attempts to find original songs based on the song title. The exact logic is available on [GitHub](https://github.com/VocaDB/vocadb/blob/19012a3971bb96d103901bc7ffc4656b0ea10763/VocaDbWeb/Scripts/Stores/Song/SongEditStore.ts#L386).
+
+If a song C is derived from song B, which in turn is derived from song A, you can **link C to A directly if B has no song entry** (B is out of scope). The skipped version B should be mentioned in entry C. The relevant tag [out-of-scope arrangement](https://vocadb.net/T/10594/out-of-scope-arrangement) should also be added. 
+
+In most cases, the `original version` should be the entry with the **earlist** `publish date`.
+
+If multiple versions of a song are uploaded **simultaneously**, it doesn't generally matter which is picked as the `original version`.
+
+If multiple original versions apply, choose the most relevant entry and mention the rest in the entry description.
+
+Sometimes the entry tree structure grows unintuitive due to conflicting details. Correct entry tree structure can be formed with the following process:
+
+Example: 10 related entries with various different song types by different artists.
+
+- 1) Order the entries by **publish date**
+- 2) Pick the first entry as the original
+- 3) Pick the next entry and connect it to the current entry tree (by appending it)
+- 4) Repeat steps 2-3 until all of the entries have been added to the entry tree
+
+This means that the `original version` of any entry should not be modified later, assuming no mistakes or missing information. 
+
+#### Song type classification
+
 If multiple song types apply, add them as tags: https://vocadb.net/T/7374/song-types
 
-Song type priorities:
+Song type should be chosen based on:
 
-- Remix/Remaster > Music PV > Cover
+- `Mashup`/`Remix`/`Remaster` > `Cover` > `Music PV`
 
 Guidelines for classification:
 - If **vocals are different** but the instrumental is similar, it's likely a **cover**.
@@ -76,19 +130,17 @@ Guidelines for classification:
 
 https://vocadb.net/T/6479/original-song
 
-Original songs ("オリジナル曲" in Japanese) are songs that have completely original content and aren't based on other songs. The original song is the version of the song that was published first. Later versions are considered derivatives **regardless of who made them**.
+`Original song`s ("オリジナル曲" in Japanese) are songs that have completely original content and aren't based on other songs. The `original song` is the version of the song that was published first. Later versions are considered derivatives **regardless of who made them**.
 
-Sometimes the producer might publish multiple different versions of a song, usually with different vocals or different lengths, **calling all of them originals**. On VocaDB these self-covers and self-remixes are classified as covers and remixes, not "original songs".
+Sometimes the producer might publish multiple different versions of a song, usually with different vocals or different lengths, **calling all of them originals**. On VocaDB these `self-covers` and `self-remixes` are classified as `covers` and `remixes`, not `original songs`.
 
-Sometimes the artist might release multiple versions of the song **simultaneously**. If both are in-scope, it doesn't generally matter which is picked for the "original version".
-
-For (original) instrumental album songs, use the **original song type** with the [instrumental-tag](https://vocadb.net/T/208). The instrumental song type is for **instrumental versions** of original songs.
+For (original) instrumental album songs, use the `original song` -type with the [instrumental-tag](https://vocadb.net/T/208). The `instrumental` song type is for **instrumental versions** of original songs.
 
 #### Remaster
 
 https://vocadb.net/T/1519/remaster
 
-A remaster or remake ("修正版" or "リマスター版" in Japanese) is an improved version of a song. If the original is replaced by the remaster, it's unnecessary to create a separate entry for the original. The remaster can use the "original song" type.
+A `remaster` or remake ("修正版" or "リマスター版" in Japanese) is an improved version of a song. If the original is replaced by the remaster, it's unnecessary to create a separate entry for the original. The remaster can use the "original song" type.
 
 If a remastered version is made for an album and is not playable online, using the original song entry is acceptable.
 
@@ -109,6 +161,7 @@ A [remix](http://www.merriam-webster.com/dictionary/remix) is a variant of an or
 - Live versions should be classified as remixes with the [live recording tag](http://vocadb.net/T/240/live-recording). Use the original song entry for setlists.
 
 #### [Cover](https://vocadb.net/T/74/cover)
+
 A Cover (カバー曲) is a re-recorded version of a song, usually by a different artist. In the Vocaloid/UTAU world, covers often use a different voicebank while keeping the instrumentals intact.
 
 Outside of the Vocaloid world, a cover implies re-recording of the song, but in the context of Vocaloid, the "cover" term is used when adding Vocaloid vocals to an existing instrumental recording.
@@ -167,33 +220,26 @@ Focus on quality when adding medleys. Only add those that are remarkable in some
 
 https://vocadb.net/T/7378/music-pv
 
-The music PV type is used for **remarkable** PVs of original songs, whether created by the song's producer or someone else.
+Terminology:
+- Music PV = "Music video" (PV = Promotional Video)
 
-Remember to also credit the vocalists for Music PVs. Silent characters (that have no vocals in the PV) should not be credited as artists. Model tags (such as [CHAN x CO Miku](https://vocadb.net/T/1641/chan-x-co-miku)) can be used if applicable, regardless whether the character has vocals or not.
+The `music PV` type is used for **remarkable** PVs of original songs, whether created by the original producer or someone else.
 
-Music PVs should always be derived from an original entry. If the song was originally published with the PV, then include the PV in the original song entry rather than making a separate page.
+If the music PV has the **same length** as the original: 
+- If the music PV is "official" AND if the original entry has no official upload (album track for example), **use the original entry**.
+- Low-effort PVs (made with a single static image for example) can be added as "Other" media to the **original entry**. If the length does not match, it should not be added to the entry. New `Music PV` -entries **should not be created in either case for low-effort PVs**.
+- In all the other cases, create a new `Music PV` -entry. Note that music PVs with only out-of-scope characters are allowed if the video has **at least 100k** views.
 
-Only the official PV should be added to the original song entry. Major derivative PVs by unrelated artists should have their own entries. Additional official PVs with major differences should also have separate entries.
-
-If the song was published without a PV and an official PV is released later, add the PV to the original song entry. Minor differences like model changes can be included in the original entry with the "other" type.
-
-**Rules for Music PVs**:
-
-- PVs with voice synth characters are generally allowed.
-- PVs that **consist entirely of a single still image or that are otherwise low-effort** are not to be added as separate entries; those that match the length of the original song can be added as "Other" media to the original entry if needed.
-- If an unofficial PV is not noteworthy, and it doesn't match the length of the original song, it should not be added.
-- PVs with out-of-scope characters/fandoms are only allowed if they hit **at least 100k** views on a platform.
+Remember to also credit the vocalists for Music PVs. Silent characters (that have no vocals in the PV) **should not be credited as artists**. Model tags (such as [CHAN x CO Miku](https://vocadb.net/T/1641/chan-x-co-miku)) can be used if applicable, regardless whether the character has vocals or not.
 
 #### Drama PV
 
 https://vocadb.net/T/104/drama-pv
 
-
 Drama PVs focus on story instead of music, often made with [MMD software](http://vocadb.net/T/275/mmd). They should feature a Vocaloid character or be strongly related to Vocaloid/UTAU to be accepted on VocaDB.
 
 - Drama PVs should be self-made/self-directed stories.
 - Copying memes, TV shows or movie scenes are usually not considered drama PVs.
-
 
 #### [Other](https://vocadb.net/T/10159/other-song-type)
 
@@ -201,28 +247,6 @@ https://vocadb.net/T/10159/other-song-type
 
 For entries that do not belong to any categories above. For example, [Commentary](https://vocadb.net/T/422/commentary).
 
-### Original Version
-
-If the original version of the song exists on the site, use this field to link the derived version to the original. 
-
-If the original song entry only exists on UtaiteDB, you can connect it to the VocaDB entry by adding the UtaiteDB entry as an external link. This will display as the "Original version" along with automatic metadata.
-
-If the original song is out-of-scope, use the [tag original-out-of-scope](https://vocadb.net/T/3282/original-out-of-scope) along with **a link to the original song** or **a reference in the song description**.
-
-For out-of-scope songs, the original artists *can* be credited in the song description ([example](https://vocadb.net/S/604363)). Direct artist credits through the artist tab should not be used, regardless if the original artists have artist entries or not.
-
-If the out-of-scope original song has **5 or more derived** (remix or cover) song entries on VocaDB, it can be created as a [cover unifier entry](https://vocadb.net/T/6751/out-of-scope-cover-unifier). The original (out-of-scope) artists should be credited as "custom artists" on the cover unifier entry. If the entry has no related (in-scope) artist entries, it can be created with the [temporary artist entry](https://vocadb.net/Ar/139625). Note that out-of-scope cover unifier entries should not be created for songs that already have a UtaiteDB entry.
-
-Original song can be selected by:
-- A) searching by the song title
-- B) by the VocaDB URL
-- C) with "id:\{song id\}".
-
-The "Find originals" button attempts to find original songs based on the song title. The exact logic is available on [GitHub](https://github.com/VocaDB/vocadb/blob/19012a3971bb96d103901bc7ffc4656b0ea10763/VocaDbWeb/Scripts/Stores/Song/SongEditStore.ts#L386).
-
-(A > B > C)
-
-**Note:** If a song C is derived from song B, which in turn is derived from song A, you can **link C to A directly if B has no song entry** (B is out of scope). The skipped version B should be mentioned in entry C. The relevant tag [out-of-scope arrangement](https://vocadb.net/T/10594/out-of-scope-arrangement) should also be added. 
 
 ### Duration
 
@@ -320,7 +344,7 @@ If the original version has no entry, the original artists **can** be credited i
 
 - If the original version has an entry, the original artist **should** be credited if they worked **directly** with the derived version.
 
-- If the original artist is not involved with the derived version, the artist credit **should not** be duplicated from the original entry.
+- If the original artist is not involved with the "unofficial" derived version, the artist credit **should not** be duplicated from the original entry. "Official" derived versions such as self-covers, self-remixes and remasters should credit the original artists (including non-producer artists such as lyricists) where applicable.
 
 - The circle/group entry can also be added, if all the members are participating or if the circle/group is credited directly.
 

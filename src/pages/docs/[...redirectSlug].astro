@@ -1,0 +1,16 @@
+---
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("docs");
+  return blogEntries.flatMap((entry) => entry.data.redirectFrom.map(url => ({
+    params: {
+      redirectSlug: url,
+    },
+    props: { slug: entry.slug },
+  })));
+}
+
+const { slug } = Astro.props;
+return Astro.redirect("/docs/" + slug)
+---

@@ -7,6 +7,7 @@ const docsCollection = defineCollection({
     description: z.string(),
     parent: z.string().optional(),
     tags: z.array(z.string()).default([]),
+    redirectFrom: z.array(z.string()).default([])
   }),
 });
 

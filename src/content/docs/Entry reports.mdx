@@ -5,92 +5,154 @@ parent: Pinned
 tags: ["draft", "editing", "guidelines", "moderation", "report", "user", "documentation", "vocadb"]
 ---
 
-Entry reports are a way of communicating **edit-related mistakes**. Two main reasons for reports are: 
-* Making a note that there's an issue that should be fixed.
-* Giving the previous editor a chance to correct their mistake and hopefully **learn from it** .
+Entry reports are a way of keeping track and communicating various issues to moderators and relevant editors. 
 
-The list of [open entry reports](https://vocadb.net/Admin/ViewEntryReports) is visible to all [trusted users](/docs/documentation/user-groups) and above.
+[The list of entry reports](https://vocadb.net/Admin/ViewEntryReports) is visible to [trusted users](/docs/documentation/user-groups) and above.
 
-    * Trusted users should ignore moderation-related reports such as [artist verification](/docs/artists/artist-verification) and [content removal](/docs/other-guidelines/content-removal-guidelines) requests.
+- Trusted users should **ignore moderation-related reports** such as [artist verification](/docs/artists/artist-verification) and [content removal](/docs/other-guidelines/content-removal-guidelines) requests. These are handled by moderators and above.
 
-Reporting an entry also sends a notification to the editor, but if the entry has been edited by **more than one person**, notifications are **not sent**.
+Entry reports can be sent anonymously – a user account is not required.
 
-To send a notification in this case, you can report a specific **version**. You can do this by using the ["View Modifications"](/docs/songs/song-entry-page#view-modifications) menu, going to the version where the error was first present, and clicking "Report an Error". This should be preferred for entries by multiple editors, since it **always sends a message** to the relevant editor.
+Reporting an entry sends a notification to the original editor. If the entry has been edited by **more than one person**, notifications are **not sent**.
 
-Entry reports should **NOT** be made for the following reasons:
+For entries edited by multiple users, a **specific entry version** should be reported instead: 
+- Click ["View Modifications"](/docs/songs/song-entry-page#view-modifications).
+- Locate the version where the error was first present.
+- Click "Report an Error". 
 
-- Requesting for a tag to be added (unless on an approved article)
-- Requesting for lyrics to be added (use the "[lyric transcript needed](https://vocadb.net/T/6362/lyric-transcript-needed)" tag instead)
-- Asking questions, such as "Why was x changed?". (The comments should be used for this purpose)
-- Any other reasons not involving an error being present in the article.
+Always include **relevant evidence** in your report when appropriate. For example, unless plainly obvious, evidence should always be provided when reporting duplicate entries.  
 
-### Report an error
+When reporting mistakes, it's recommended to provide **relevant context** by linking to the wiki. This is helpful to everyone involved, and helps the relevant editor more clearly identify and learn from their mistake
 
-This is the main method of submitting entry reports. It appears on all page types.
+## Goals of entry reports
 
-Albums and artists have four report types, while songs have the additional "Broken PV" type.
+Entry reports can have multiple goals:
+- 1) **Tracking** issues that should be fixed.
+- 2) **Educating** the original editor about the mistake.
+- 3) **Alerting** moderators about various issues.
 
-### Broken PV
-Used for reporting deleted or privated PVs.
+If **none** of these goals are relevant, an entry report **should not be sent**.
 
-This report type communicates that a PV needs to be marked as _Unavailable_ or deleted if the link type is "Reprint" or "Other". If possible, prefer doing it yourself instead of creating an entry report.
+### Goal: Tracking
 
-Keep in mind that if the PV is [region blocked](https://vocadb.net/T/8226/region-blocked), it should not be marked as unavailable.
+Entry reports can be used to **track issues** that should be fixed.
+
+If an entry with mistakes is already **tracked somewhere else** (with [tags](/docs/secondary-entry-types/tags#editor-notes) for example), the entry report is probably redundant.
+
+### Goal: Educating
+
+It's preferable that edit mistakes are fixed by the editor who made them for:
+- 1) Fairness, "picking up after yourself"
+- 2) More effective rule **learning**
+
+After an entry report has been sent, it's recommended that you wait **at least 24 hours** before fixing the report. Trusted users should not handle the entry report before this if there is a **possibility** that the original editor will fix the issue and **learn** from it.
+
+### Goal: Alerting
+
+Entry reports can also be used to send **alerts** to moderators.
+
+ For urgent cases (vandalism, spamming, etc.), it's recommended to also/instead ping "@VocaDB moderator" on the [discord server](https://discord.com/invite/3bwXQNXKCz).
+
+## Entry report types
+
+Using the correct entry report type is helpful. 
+
+Albums and artist entries have five report types, while songs have an additional "Broken PV" type.
+
+Entry reports sent for a **specific entry version** automatically use the "Other" report type.
+
+### Broken PV (for songs)
+
+For reporting deleted or privated PVs.
+
+[Region blocked](https://vocadb.net/T/8226) PVs should not be reported as broken PVs.
 
 ### Invalid or missing information
 
-Used for reporting:
-* **Invalid or incorrect information**
-    * Always provide **reasoning and proof** unless already obvious.
+For reporting invalid or missing information in the entry. For example:
+- Incorrect artist credits
+- Romanizations/translations that do not follow the [Romanization Guidelines](/docs/other-guidelines/romanization-guidelines)
 
-    Examples:
-        * Incorrect tag(s) applied to the entry
-        * Incorrect artists credited
-        * Romanizations/translations that do not follow the [Romanization Guidelines](/docs/other-guidelines/romanization-guidelines)
-* **Missing information**
+### Invalid tag usage
 
-    Examples:
-    * A missing alias or circle.
-    * A missing artist credit. 
-
-
-    If possible, it's preferable to add missing information yourself instead of leaving a report, as it's usually not necessarily an error.
-
-
-
-
+For entries that include incorrect tags. Remember to clarify the incorrect tags with the report.
 
 ### Duplicate entry
 
-Entry is a duplicate and should be [merged](/docs/other-guidelines/merging-entries). A link to the duplicate entry is **required**, along with proof.
+For duplicate entries that should be [merged](/docs/other-guidelines/merging-entries). A link to the duplicate entry is **required**, along with proof.
+
+Note that artist entries **should not be automatically merged**, even if it can be proven that they are the [same person/individual](/docs/other-guidelines/merging-entries#splitting-artist-entries). The situation needs to be discussed first.
 
 ### Inappropriate content
 
-For entries that [do not belong in VocaDB](/docs/other-guidelines/content-policy#Albums).
+For entries [against the content policy](/docs/other-guidelines/content-policy) that do not belong in VocaDB.
 
 ### Other (specify in notes)
-- For errors not already covered within the existing report types.
 
-----
+For errors not already covered by the other report types.
 
-This list shows suggestions that should be followed to prevent **unclear situations** and **unnecessary work**.
+## Unacceptable entry reports
 
-## DON'T spam entry reports of the same type
+### Questions
 
-If the same report applies to multiple entries, list those entries under one report or in a comment under one of the relevant entries, or message a moderator.
+**Do not use entry reports for questions or discussions**. Use the entry comments, [discussions](https://vocadb.net/discussion), or Discord for these purposes. 
 
-## DO prefer reporting a specific version
+### Requests to add new albums/songs 
 
-Unless there's only one editor for that entry, the editor **won't get a notification**, and if they're not a trusted user, they can't see your report outside of the inital notification. For entries with multiple editors, it's better to report a specific edit. This makes it more obvious what the problem is, and also the previous editor will get a direct notification.
+VocaDB is a volunteer-based collaboration project. The editor who created the artist entry is not responsible for keeping the artist discography up-to-date if/when new songs and albums get published. 
 
-## DON'T report edits that are very old if you can take care of the issue yourself
+If you don't want to wait, it's best to make an account and add the new entries yourself.  
 
-If the mistake was made months, even years ago, there's not much point in reporting it, assuming you can take care of it yourself. In many cases the previous editor isn't even around anymore.
+### Improvement requests on existing entries
 
-## DO prefer taking care of your own reports if no one else responds
+Entries that fulfill the [finished entry criteria](/docs/songs/song-entry-editing#finished-song-entry-requirements) should not be reported to request additional information in most cases.
 
-The expectation is that the previous editor who made the mistake would be the one to correct it, but assuming they don't, the best thing you as the reporter can do is to correct the mistake yourself when you get the chance. Some people don't check the site very often, or maybe they didn't even get the notification.
+Lyric requests, for example should be made with the [lyric transcript needed tag](https://vocadb.net/T/6362/lyric-transcript-needed).
 
-## As a trusted user / moderator, DON'T let reports lie there for weeks
+**Do not request tagging** on entries unless they are approved or locked.
 
-When a report is over a week old, it should be taken care of somehow. If you can, please fix the problem.
+### Multiple entry reports of the same type
+
+Spamming multiple similar reports is distracting and unproductive. Instead, consider one of the following options:
+- A) List and mention the other entries within one report.
+- B) Mention the other entries under the reported entry as a comment.
+- C) Message a moderator with a list of entries.
+
+## Handling entry reports
+
+Invalid entry reports can be safely closed. Asking for proof and further clarifications under the reported entry is **recommended, but optional**.
+
+### Handling Broken PV reports
+
+Entries tagged with [region blocked](https://vocadb.net/T/8226) should be ignored and its associated report closed.
+
+- *Original* PVs should be marked as *Unavailable*.
+- If the PV type is *Reprint* or *Other*, the link should be deleted. 
+
+### Handling Invalid or missing information reports
+
+If the report is valid (and 24 hours have passed), the issue can be simply fixed.
+
+For reports requiring further investigation (e.g., hard-to-verify album information), move the discussion to the entry's comment section.
+
+### Handling Duplicate entry reports
+
+Simple song entry duplicates can be merged.
+
+Leave complex duplicate artist reports to moderators.
+
+### Handling Inappropriate content reports
+
+If the report is invalid (common with [cover unifier entries](https://vocadb.net/T/6751/out-of-scope-cover-unifier)), the content policy should be linked/explained in the comment section.
+
+If the report is valid, it's a good idea to also leave a comment under the deleted entry to notify the entry creator.
+
+### Handling content removal requests (mods)
+
+If the [content removal request](/docs/other-guidelines/content-removal-guidelines) does not fulfill the necessary requirements, the entry report should be closed. 
+
+If the report came from a user account, a message should be sent. Otherwise a message should be left under the reported entry.
+
+### Handling artist verification request (mods)
+
+If the proof is insufficient, close the report and send a message to the user.

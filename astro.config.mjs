@@ -1,8 +1,8 @@
-import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
-import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
+import tailwind from "@astrojs/tailwind";
 import pagefind from "astro-pagefind";
+import { defineConfig } from "astro/config";
 
 import mdx from "@astrojs/mdx";
 import remarkSectionize from "remark-sectionize";
@@ -164,8 +164,8 @@ export default defineConfig({
     "/wiki/76": "/docs/utaitedb/utaitedb-what-is-it-for",
     "/wiki/76/utaitedb-what-is-it-for":
       "/docs/utaitedb/utaitedb-what-is-it-for",
-    "/wiki/34": "/docs/documentation/vocadb-help-wanted",
-    "/wiki/34/vocadb-help-wanted": "/docs/documentation/vocadb-help-wanted",
+    "/wiki/34": "/docs/pinned/vocadb-how-to-help",
+    "/wiki/34/vocadb-how-to-help": "/docs/pinned/vocadb-how-to-help",
     "/wiki/13": "/docs/footer/vocadb-what-is-it-for",
     "/wiki/13/vocadb-what-is-it-for": "/docs/footer/vocadb-what-is-it-for",
     "/wiki/3": "/docs/documentation/vocadb-api-and-embeds",
@@ -205,5 +205,6 @@ export default defineConfig({
       "/docs/japanese/artist-verification-japanese",
     "/wiki/75": "/docs/chinese/artist-verification-chinese",
     "/wiki/75/艺术家验证": "/docs/chinese/artist-verification-chinese",
+    "/docs/documentation/vocadb-help-wanted": "/docs/pinned/vocadb-how-to-help"
   },
 });

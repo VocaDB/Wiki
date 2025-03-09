@@ -11,10 +11,7 @@ import Navigation from "@/components/markdown/Navigation.astro";
 
 This page explains how to edit existing album entries.
 
-[Deleting album entries](/docs/other-guidelines/content-removal-guidelines) | [Merging album entries](/docs/other-guidelines/merging-entries)
-
-- [Albums FAQ](/docs/pinned/vocadb-editing-faq#albums)
-
+[Albums FAQ](/docs/pinned/vocadb-editing-faq#albums) | [Deleting album entries](/docs/other-guidelines/content-removal-guidelines) | [Merging album entries](/docs/other-guidelines/merging-entries) |
 ## Tab: Basic info
 
 ### Names
@@ -25,7 +22,7 @@ For general instructions on fields like "Original language," "Primary name," "No
 
 #### Album entry-specific name instructions
 
-Unlike songs, albums should include the **full album name**, even if the name seems to have **multiple parts**:
+Unlike songs, albums should include the **full album name**, even if the name seems to have **multiple parts**.
 [#VOCALOID CAFETERIA vol.01 Chinese food](https://vocadb.net/Al/33074) for example.
 
 If an album has multiple entries due to differences in tracklists, include this information in the title, such as "(Regular Edition)" or "(Kagamine Rin version)," if appropriate. Link these album entries using the album description and/or external links. Also include the [multiple editions](http://vocadb.net/T/4877/multiple-editions) tag.
@@ -35,9 +32,9 @@ If an album has multiple entries due to differences in tracklists, include this 
 
 A cover picture for the album.
 
-- If the album has no cover picture, use the [no cover art -tag.](https://vocadb.net/T/2811/no-cover-art)
+- If the album has no cover picture, use the [no cover art tag.](https://vocadb.net/T/2811/no-cover-art)
 
-- If the only available cover picture is low quality, use the [temporary cover art -tag.](https://vocadb.net/T/429/temporary-cover-art)
+- If the only available cover picture is low quality, use the [temporary cover art tag.](https://vocadb.net/T/429/temporary-cover-art)
 
 ### Album description
 
@@ -61,7 +58,7 @@ Album that consists mostly of previously unpublished songs.
 
 #### Single
 
-Contains one or two **original** tracks. 
+Contains one or two **original** tracks.
 
 #### EP
 
@@ -147,7 +144,13 @@ Finished album entries should meet the following criteria:
 
 #### Criteria for approving albums
 
-TODO
+- Entry is finished (no edit warnings)
+- Title is present in the original language, and is romanized/translated (if applicable)
+- All participating artists are properly credited, including lyricist, illustrator, mastering, etc.
+- A non-temporary cover art has been added to the entry
+- Catalog number is added (if applicable)
+- Official external links (including crossfades) have been added (if applicable)
+
 
 ## Tab: Artists
 
@@ -155,7 +158,7 @@ In this tab, you can add and delete artists who have participated in the album. 
 
 Artists can also be added as **custom artists**, which adds an artist credit to the song entry as text without creating an artist entry.
 
-- For [finished album entries](/docs/other-guidelines/required-entry-fields#album-fields), artist credits in the "producer"-category (composers, arrangers, voice manipulators, ...) **must be made with artist entries** (as opposed to crediting them as custom artists).
+- For [finished album entries](/docs/other-guidelines/required-entry-fields#album-fields), artist credits in the "producer" category (composers, arrangers, voice manipulators, ...) **must be made with artist entries**, as opposed to crediting them as custom artists.
 
 - Album entries with no known producers should include the artist entry [Unknown producer(s)](https://vocadb.net/Ar/23966).
 
@@ -189,21 +192,20 @@ If the album contains multiple discs you may define extra properties for those d
 
 Songs entries can be connected to the album entry here.
 
-Clicking a track by its name opens the "Track properties" -window, which can be used to add artists to the song entry (track). Only the artists which are added in the ["Artists"-tab](/docs/albums/album-entry-editing#tab-Artists) are visible here.
+Clicking a track by its name opens the "Track properties" window, which can be used to add artists to the song entry (track). Only the artists which are added in the ["Artists"-tab](/docs/albums/album-entry-editing#tab-Artists) are visible here.
 
     * If the artist participates in most of the songs, it's efficient to select all the tracks and update them instead of adding the artist to the tracks one by one.
 
-The "custom track" -feature (no song entry) is intended for tracks made by out-of-scope artists. [Secret Sky 2020 (DJ Mix)](https://vocadb.net/Al/32323) for example.
+The "custom track" feature (no song entry) is intended for tracks made by out-of-scope artists. [Secret Sky 2020 (DJ Mix)](https://vocadb.net/Al/32323) for example.
 
 When the album entry is saved, the new tracks are created as song entries.
 
 ## Tab: Additional pictures
 
-Note that the main picture is edited on the "Basic Info" tab. Only upload pictures relevant to this album.
+Note that the main picture (cover) is edited on the "Basic Info" tab. Only upload pictures relevant to this album.
 
 ## Tab: Media
 
 Crossfades and other advertisements related to the album.
 
 - [Media (video) services supported by VocaDB](/docs/other-guidelines/supported-streaming-services)
-

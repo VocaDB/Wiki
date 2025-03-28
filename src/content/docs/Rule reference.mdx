@@ -613,7 +613,7 @@ Work in progress (WIP) songs/trailers should not be added, except voicebank demo
 
 ## Rule: No prompt vocal songs
 
-“Prompt vocal” song entries (AI generative music synthesis with uncontrolled vocals) are not allowed. Songs made with [Suno](https://suno.com/home) for example.
+"Prompt vocal" song entries (AI generative music synthesis with uncontrolled vocals) are not allowed. Songs made with [Suno](https://suno.com/home) for example.
 
 - Applies to: All `Song` entries
 
@@ -657,7 +657,7 @@ The title section should only contain the name of the song, except for `Remix` e
 Remixer names should remain in the song title:
 
 - Remove clear non-title parts (e.g., original artist credit).
-- Remove the vocalist’s name if it is separate from the rest of the title.
+- Remove the vocalist's name if it is separate from the rest of the title.
 - Remove the song type if it is separate from the rest of the title.
 
 - Applies to: All `Finished` `Song` entries
@@ -706,7 +706,7 @@ If multiple song types apply, add them as tags: https://vocadb.net/T/7374/song-t
 
 ## Rule: Original song classification
 
-Original songs (“オリジナル曲” in Japanese) are songs that have completely original content and aren’t based on other songs. 
+Original songs ("オリジナル曲" in Japanese) are songs that have completely original content and aren't based on other songs. 
 
 The original song is the version of the song that was published first. Later versions are considered derivatives **regardless of who made them**.
 
@@ -762,7 +762,7 @@ Note that entries with the [out of scope arrangement](https://vocadb.net/T/10594
 
 ## Rule: Remaster classification
 
-A remaster or remake (“修正版” or “リマスター版” in Japanese) is an improved version of a song. 
+A remaster or remake ("修正版" or "リマスター版" in Japanese) is an improved version of a song. 
 
 A remaster should differ from the original only in terms of mastering, though this term is interpreted loosely in the Vocaloid world. If the new version is significantly different, the remaster song type should not be used.
 
@@ -770,7 +770,7 @@ A remaster should differ from the original only in terms of mastering, though th
 
 ## Rule: Remaster entry reuse
 
-If the original is replaced by the remaster, it’s unnecessary to create a separate entry for the original if the original audio is unavailable and the remaster is uploaded within a month. The remaster can use the “original song” type.
+If the original is replaced by the remaster, it's unnecessary to create a separate entry for the original if the original audio is unavailable and the remaster is uploaded within a month. The remaster can use the "original song" type.
 
 - Applies to: All `Song` entries
 
@@ -904,7 +904,7 @@ Premieres (mostly on YouTube) that are not fully available should not be added t
 
 ## Rule: Region-blocked
 
-Do not mark [region-blocked](https://vocadb.net/T/8226) PVs as “Unavailable”, unless the PV is region blocked everywhere.
+Do not mark [region-blocked](https://vocadb.net/T/8226) PVs as "Unavailable", unless the PV is region blocked everywhere.
 
 - Applies to: All `Song` entries
 
@@ -924,7 +924,7 @@ Always leave a source for the lyrics. If transcribed/translated by yourself, men
 
 Lyrics can be modified without creating new lyrics, as long as the modification is mentioned in the source:
 
-- External source: “From MikuWiki” -> “From MikuWiki (edited by user2)“
+- External source: "From MikuWiki" -> "From MikuWiki (edited by user2)"
 
 - Applies to: All `Finished` `Song` entries
 
@@ -971,4 +971,64 @@ When crediting a derived voicebank **based on hearing**, [Hatsune Miku Append (S
 When the vocalist sounds different from the base-version but no further guess exists, the [unspecified voicebank](https://vocadb.net/T/2982) -tag can be used.
 
 - Applies to: All `Finished` `Song` entries
+
+## Rule: Tag usage requirements
+
+Tags should be included in at least one entry.
+
+Tags in the `Copyrights` category require 5 relevant entries.
+
+Abstract grouping tags do not require any connected non-tag entries.
+
+- Applies to: All `Tag` entries
+
+## Rule: Tag category required
+
+All tags should specify the tag cateogry.
+
+- Applies to: All `Tag` entries
+
+## Rule: Tag purpose
+
+All tags should have at least one valid [purpose](/docs/secondary-entry-types/tags#tag-purposes).
+
+- Applies to: All `Tag` entries
+
+## Rule: Tag description required
+
+All tags should include a valid description.
+
+- Applies to: All `Tag` entries
+
+## Rule: No tag romanizations
+
+It is not required (or recommended) to add romanizations for the tags.
+
+Exceptions to this are tags such as [sakura](https://vocadb.net/T/54/cherry-blossom), that are simple, well-known, and more searchable with the added romanization.
+
+- Applies to: All `Tag` entries
+
+## Rule: No visual tags
+
+Generally tags should not be created or used for tracking visual details.
+
+- Applies to: All `Tag` entries
+
+## Rule: Parent tags
+
+In most cases, child tags should **describe a subset** of the parent tag.
+
+- There are cases where the subset relationship isn't as clear. Genre tags for example utilize the tag hierarchy for historical and stylistic origins.
+
+- Additionally, fusion tags such as [folk metal](https://vocadb.net/T/1568/folk-metal) are neither subsets of [metal](https://vocadb.net/T/262/metal) or [folk music](https://vocadb.net/T/159/folk-song). 
+
+For tags with multiple separate parent tag candidates, pick the one that makes the most sense.
+
+- Applies to: All `Finished` `Tag` entries
+
+## Rule: Related tags
+
+Immediate parent/child tags should not be set as related tags.
+
+- Applies to: All `Finished` `Tag` entries
 

@@ -5,13 +5,9 @@ parent: Pinned
 tags: ["guidelines", "documentation", "vocadb"]
 ---
 
-**Work in progress**
-
 All the edit-related VocaDB rules are described here in an atomic and structured form.
 
-A corresponding spreadsheet with additional details is currently hosted on [google docs](https://docs.google.com/spreadsheets/d/1Nl-n4_EoM8SggTDrKfr5-q6uQmwLHAsnKsM1fK4nzbs).
-
-Numeric rule IDs will be included later.
+(Numeric rule IDs will be included later.)
 
 ## Rule: Source non-obvious
 
@@ -353,12 +349,6 @@ Approved album and song entries should include the translated title if possible.
 
 - Applies to: All `Approved` `Album` and `Song` entries
 
-## Rule: Known artist credits required
-
-Approved album and song entries should include all the credited artists in accordance with other crediting rules.
-
-- Applies to: All `Approved` `Album` and `Song` entries
-
 ## Rule: Valid support status
 
 Support status is for crediting artists who play a minor role compared to the main artists. It should only be used when there's a clear separation of main and support artists.
@@ -371,15 +361,39 @@ If all the primary names are whitespace, add https://vocadb.net/T/6335
 
 - Applies to: All `Finished` `Album` and `Song` entries
 
+## Rule: Limited artist information
+
+If only the name of the artist is known, use the tag [limited artist information](https://vocadb.net/T/3034/limited-artist-information) on the artist entry.
+
+- Applies to: All `Finished` `Artist` entries
+
+## Rule: Anonymous artist
+
+If the artist is credited with some placeholder name, use the [anonymous artist](https://vocadb.net/T/6403) -tag on the artist entry.
+
+- Applies to: All `Finished` `Artist` entries
+
+## Rule: Artist credit required
+
+All album and song entries require at least one artist credit (custom or a proper entry). 
+
+- If the name of the producer is unknown, use the entry [Unknown producer(s)](https://vocadb.net/Ar/23966)
+
+- Applies to: All `Album` and `Song` entries
+
 ## Rule: Producer entry credits required
 
 Artist credits in the "producer"-category must be made with artist entries. 
 
 - If the name of the producer is unknown, use the entry [Unknown producer(s)](https://vocadb.net/Ar/23966)
-- If the artist is credited with some placeholder name, use the [anonymous artist](https://vocadb.net/T/6403) -tag on the artist entry.
-- If only the name of the producer is known, use the tag [limited artist information](https://vocadb.net/T/3034/limited-artist-information) on the artist entry.
 
-- Applies to: All `Finished` `Album`, `Artist` and `Song` entries
+- Applies to: All `Finished` `Album` and `Song` entries
+
+## Rule: Known artist credits required
+
+Approved album and song entries should include all the credited artists in accordance with other crediting rules.
+
+- Applies to: All `Approved` `Album` and `Song` entries
 
 ## Rule: No entryless artists
 
@@ -582,3 +596,379 @@ Event entries require a date.
 Event entries require a category.
 
 - Applies to: All `Finished` `Event` entries
+
+## Rule: Lyrics required
+
+Approved song entries should include lyrics if available.
+
+[no lyrics](https://vocadb.net/T/310/) -tag can be included instead.
+
+- Applies to: All `Approved` `Song` entries
+
+## Rule: No WIPs
+
+Work in progress (WIP) songs/trailers should not be added, except voicebank demos.
+
+- Applies to: All `Song` entries
+
+## Rule: No prompt vocal songs
+
+“Prompt vocal” song entries (AI generative music synthesis with uncontrolled vocals) are not allowed. Songs made with [Suno](https://suno.com/home) for example.
+
+- Applies to: All `Song` entries
+
+## Rule: No out-of-scope song entries
+
+Songs without voice-synth vocals (vocaloid/utau/cevio/etc.) should not be added
+
+1) Song is part of an album entry 
+2) Song has at least 5 voice-synth covers (these can be added as cover unifier entries)
+
+- Applies to: All `Song` entries
+
+## Rule: No song entries by forbidden artists
+
+Song entries where the main producer is listed under [forbidden artists](/docs/artists/forbidden-artists) should not be added.
+
+- Applies to: All `Song` entries
+
+## Rule: Song source required
+
+Song entries should include a PVs, external link, description or be part of an album entry.
+
+- Applies to: All `Song` entries
+
+## Rule: Publish date required
+
+Song entries should include the song publish date.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Clean title
+
+The title section should only contain the name of the song, except for `Remix` entries.
+
+- Vocalists, song type, producers, etc. should all be removed.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Keep remix titles
+
+Remixer names should remain in the song title:
+
+- Remove clear non-title parts (e.g., original artist credit).
+- Remove the vocalist’s name if it is separate from the rest of the title.
+- Remove the song type if it is separate from the rest of the title.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Valid BPM
+
+The specified BPM should be within the valid range (20-1050)
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: No video descriptions
+
+Video descriptions should not be added in the description field.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Specify original
+
+Derived songs should either:
+- Specify the `original version` field, OR
+- Refer (as an external link) to the original entry on [UtaiteDB](https://utaitedb.net/S/), if available, AND/OR
+- Include the [original out of scope](https://vocadb.net/T/3282) tag, AND/OR
+- Include the [original version unknown](https://vocadb.net/T/4631) tag.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Specify out-of-scope original
+
+If [original out of scope](https://vocadb.net/T/3282) tag is included, the original version should be:
+- specified in the song description AND/OR
+- included as an external link (required for UtaiteDB originals). 
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Matching language
+
+Song language should match the language of the original lyrics.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Specify multiple song types
+
+If multiple song types apply, add them as tags: https://vocadb.net/T/7374/song-types
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Original song classification
+
+Original songs (“オリジナル曲” in Japanese) are songs that have completely original content and aren’t based on other songs. 
+
+The original song is the version of the song that was published first. Later versions are considered derivatives **regardless of who made them**.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: instrumental-tag
+
+Original songs without vocals require the instrumental-tag
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: No vocalists if instrumental
+
+Exclude vocalist credits for off-vocal/karaoke songs that have background/harmony vocals, as these are already credited in the original entry.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Remix classification
+
+A remix is a variant of an original recording, often in a different genre. 
+
+`Remix` = Different instrumentals. 
+
+[Self-remix](https://vocadb.net/T/392/self-remix) tag is for songs where the original artist remixed their own song.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Live versions as remixes
+
+If tagged with [live recording](https://vocadb.net/T/240) tag, use remix song type.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Extended versions as remixes
+
+If tagged with [extended](https://vocadb.net/T/3068) or [short](https://vocadb.net/T/4717/) version, use the `remix` song type.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Cover classification
+
+A Cover (カバー曲) is a re-recorded version of a song, usually by a different artist. In the voice synth world, covers often use a different voicebank while keeping the instrumentals intact.
+
+`Cover` = Different vocals.
+
+[Self-cover](https://vocadb.net/T/391) tag is for songs where the original artist covered their own song.
+
+Songs with (only) [changed lyrics](https://vocadb.net/T/2866) should be marked as covers.
+
+Note that entries with the [out of scope arrangement](https://vocadb.net/T/10594/) -tag sound instrumentally different from the base entry.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Remaster classification
+
+A remaster or remake (“修正版” or “リマスター版” in Japanese) is an improved version of a song. 
+
+A remaster should differ from the original only in terms of mastering, though this term is interpreted loosely in the Vocaloid world. If the new version is significantly different, the remaster song type should not be used.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Remaster entry reuse
+
+If the original is replaced by the remaster, it’s unnecessary to create a separate entry for the original if the original audio is unavailable and the remaster is uploaded within a month. The remaster can use the “original song” type.
+
+- Applies to: All `Song` entries
+
+## Rule: Music PV classification
+
+Terminology:
+- Music PV = "Music video" (PV = Promotional Video)
+
+The `music PV` type is used for **remarkable** PVs of (usually original) songs, whether created by the original producer or someone else.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Music PV entry reuse
+
+If the remarkable official music PV has the same length as the original entry AND if the original entry has no official upload (album track for example), reuse the original entry.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Low-effort Music PVs
+
+New Music PV -entries should not be created for unofficial low-effort PVs. These can be added as `Other` PVs to the original entry instead, if the song length matches.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Mashup classification
+
+Mashups are songs made by blending two or more songs together. 
+
+Songs that mix multiple covers of the same song together (joining multiple vocal tracks) should be labeled as covers.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Specify mashup sources
+
+Specify all the original versions in the song description.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Medley classification
+
+A medley is a special case of mashup where songs are played one after another, possibly with overlap.
+
+Use the `Mashup` type for songs tagged with [medley](https://vocadb.net/T/3093), unless the medley is an original song.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Other song type classification
+
+The `Other` song type is for album tracks that do not belong to any other song type.
+
+- For example, [Commentary](https://vocadb.net/T/422/commentary).
+
+## Rule: Song type priority
+
+Remix/Remaster > Cover > Music PV
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Prioritize VocaDB song type classifications
+
+VocaDB song type classifications should be prioritized over official labels.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Simultaneous uploads
+
+Voice synth songs that include both a voice synth version and a human-sung version (no entry) should be tagged with [simultaneous upload](https://vocadb.net/T/4946) if the publish dates are less than **a week** apart. 
+
+- In this case the entry should be marked as `Original` song.
+
+- Specify the human-sung version in the song description AND/OR in the external links with its publish date.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: First published as original
+
+Original version should be the entry with the earliest publish date.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Most relevant original version
+
+If multiple original versions apply, choose the most relevant entry and mention the rest in the entry description.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Entry tree structure
+
+Entry tree structure should be immutable and sorted by publish date:
+
+- 1) Order the relevant entries by publish date.
+- 2) Pick the first entry as the original.
+- 3) Pick the next entry and connect it to the current entry tree (by appending it).
+- 4) Repeat steps 2-3 until all of the entries have been added to the entry tree.
+
+- Applies to: All `Song` entries
+
+## Rule: Cover unifiers
+
+If the out-of-scope original song has 5 or more derived song entries (remix or cover) on VocaDB, it can be created as a [cover unifier](https://vocadb.net/T/6751) entry, unless it exists on UtaiteDB.
+
+- Applies to: All `Song` entries
+
+## Rule: Same audio
+
+All PVs in the song entry should have the same audio and roughly the same song length.
+
+[Unrelated intros](https://vocadb.net/T/6334) and [outros](https://vocadb.net/T/6494/unrelated-outro) are an exception to this.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Skip original artist credits for derived songs
+
+If the original artist is not directly involved with the derived version, the artist credit should not be duplicated from the original entry. 
+
+If the original entry can not be specified, credit the original artists in the song description. 
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Specify producers roles if multiple producers
+
+If the song has multiple producers, specify the roles if available: `Composer`, `Arranger` & `Voice Manipulator`.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: No premieres
+
+Premieres (mostly on YouTube) that are not fully available should not be added to song entries, unless the song entry has some other PV that is available.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Region-blocked
+
+Do not mark [region-blocked](https://vocadb.net/T/8226) PVs as “Unavailable”, unless the PV is region blocked everywhere.
+
+- Applies to: All `Song` entries
+
+## Rule: Multilingual lyrics
+
+The general minimum criteria for marking additional languages is to count whether there are two or more full lines in the additional language.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Source lyrics
+
+Always leave a source for the lyrics. If transcribed/translated by yourself, mention that instead.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Source lyric modifications
+
+Lyrics can be modified without creating new lyrics, as long as the modification is mentioned in the source:
+
+- External source: “From MikuWiki” -> “From MikuWiki (edited by user2)“
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: No significant lyric modifications
+
+Large lyric edits require creating new lyrics.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Circle crediting
+
+Circle can be credited if credited directly OR if all the active members participate in the song.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Vocalist entry credit required
+
+If the song includes in-scope vocals, and if the vocalist is uncredited, the artist entry [Unknown vocalist(s)](https://vocadb.net/Ar/23554) can be used. 
+
+    - The entry [Unknown vocal synth(s)](https://vocadb.net/Ar/128519) or any of its derived artist entries can also be used to further narrow down the vocalist.
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Credit earliest voicebank version
+
+If the specific voicebank is only partially credited, always credit the **earliest** voicebank. For example with "Gakupo Power", credit [V3 Camui Gackpo (Power)](https://vocadb.net/Ar/1763) instead of [V4 Camui Gackpo (Power)](https://vocadb.net/Ar/34531 ). [unspecified voicebank version](https://vocadb.net/T/4862/unspecified-voicebank-version) tag should also be added.
+
+- Applies to: All `Finished` `Song` entriesv
+
+## Rule: Matching voicebank language
+
+Song language should match one of the voicebank languages, unless the song is tagged with [unsupported language](https://vocadb.net/T/7059).
+
+- Applies to: All `Finished` `Song` entries
+
+## Rule: Unconfirmed vocalists tag
+
+When crediting a derived voicebank **based on hearing**, [Hatsune Miku Append (Soft)](https://vocadb.net/Ar/78) for example, tag the entry with ["unconfirmed vocalists"](https://vocadb.net/T/6416) or document the source in the edit notes.
+
+- Applies to: All `Song` entries
+
+## Rule: Unspecified voicebank tag
+
+When the vocalist sounds different from the base-version but no further guess exists, the [unspecified voicebank](https://vocadb.net/T/2982) -tag can be used.
+
+- Applies to: All `Finished` `Song` entries
+

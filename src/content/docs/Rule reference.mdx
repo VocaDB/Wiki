@@ -346,11 +346,13 @@ Parent tags are accepted when song entries are tagged with more specific child t
 Approved album and song entries should include the romanized title if possible.
 
 - Applies to: All `Approved` `Album` and `Song` entries
+
 ## Rule: Translation required
 
 Approved album and song entries should include the translated title if possible.
 
 - Applies to: All `Approved` `Album` and `Song` entries
+
 ## Rule: Known artist credits required
 
 Approved album and song entries should include all the credited artists in accordance with other crediting rules.
@@ -371,9 +373,180 @@ If all the primary names are whitespace, add https://vocadb.net/T/6335
 
 ## Rule: Producer entry credits required
 
-Artist credits in the “producer”-category must be made with artist entries. 
+Artist credits in the "producer"-category must be made with artist entries. 
 
 - If the name of the producer is unknown, use the entry [Unknown producer(s)](https://vocadb.net/Ar/23966)
+- If the artist is credited with some placeholder name, use the [anonymous artist](https://vocadb.net/T/6403) -tag on the artist entry.
 - If only the name of the producer is known, use the tag [limited artist information](https://vocadb.net/T/3034/limited-artist-information) on the artist entry.
 
-- Applies to: All `Finished` `Album` and `Song` entries
+- Applies to: All `Finished` `Album`, `Artist` and `Song` entries
+
+## Rule: No entryless artists
+
+Each artist entry should be included in at least one song or album.
+
+Exceptions:
+
+1) Base ("Unknown") voicebank entries. 
+2) People who play a large role in a vocal-synth event (e.g. DJ). 
+3) [Associated artists](/docs/artists/artist-entry-editing#Associated-artists) for voicebanks.
+
+- Applies to: All `Artist` entries
+
+## Rule: No out-of-scope artist entries
+
+Artists that are not voice-synth-related should not be added to the database.
+
+## Rule: No forbidden artists
+
+Do not add entries for [forbidden artists](https://wiki.vocadb.net/docs/artists/forbidden-artists). 
+
+- Applies to: All `Artist` entries
+
+## Rule: No unconsented unofficial voicebanks
+
+Artist entries for unofficial voicebanks, generated from existing singing voices without consent are not allowed. Song credits should be added with "custom artist" feature along with the [unofficial voicebank](https://vocadb.net/T/7095/) tag.
+
+- Applies to: All `Artist` entries
+
+## Rule: No entries for fan-made derivative VBs
+
+Fan-made derivatives such as pitchbends and genderswaps such as Hagane Miku, should not be added as artist entries.
+
+- Corresponding tags should be used instead: https://vocadb.net/T/92/derivative.
+
+- Applies to: All `Artist` entries
+
+## Rule: Correct Youtube link
+
+If artist entries include Youtube URLs, at least one non-handle version must be included.
+
+- Handle URL: https://www.youtube.com/@YouTube
+- Default URL: https://www.youtube.com/channel/YouTube
+- Custom URL: https://www.youtube.com/c/YouTube
+- Legacy URL: https://www.youtube.com/user/YouTube
+
+Adding links with different URL formats is encouraged because they can be useful for recognition and archival purposes
+
+- Applies to: All `Finished` `Artist` entries
+
+## Rule: No real-life names
+
+Real-life names should not be added as aliases.
+
+Real-life names can still be added, if that's the main artist name.
+
+- Applies to: All `Artist` entries
+
+## Rule: No honorifics
+
+It's common to see artists credited with additional honorifics. These should not be added, unless the artist uses those themselves: [Gedou-san](https://vocadb.net/Ar/1823) for example.
+
+- Applies to: All `Finished` `Artist` entries
+
+## Rule: Separate artist personas
+
+Respect artists' wishes to keep artist personas separate.
+
+Elaborated on [this page](/docs/other-guidelines/merging-entries)
+
+- Applies to: All `Artist` entries
+
+## Rule: No composite names
+
+Composite names consisting of parts that are pronounced the same way in different writing systems should generally be avoided (with some exceptions).
+
+Every field should contain only one version of the name:
+
+- "Giga(ギガ)" is incorrect → should be separated into two names: Giga and ギガ
+- "Bumpyうるし(Urushi)" is incorrect → should be separated into two names: Bumpyうるし and BumpyUrushi
+
+- Applies to: All `Finished` `Artist` entries
+
+## Rule: Correct artist type
+
+Artist type specifies the most common role that the artist participates in, with some overrides.
+
+- Music producer overrides cover artist if they have at least one composed/arranged song entry. 
+- Verified artists can request changing the chosen artist type.
+
+The available artist roles are limited and serve as approximations. 
+    - For example, the person responsible for the song image should be credited with the "illustrator" role, even if it's technically something else (e.g., photographer).
+
+- Applies to: All `Finished` `Artist` entries
+
+## Rule: Mention solo circle
+
+If solo circle is added as an artist alias instead creating a separate entry, mention the circle alias in the artist entry description.
+
+- Applies to: All `Finished` `Artist` entries
+
+## Rule: No circle name duplication
+
+Do not unnecessarily duplicate (solo) circle names between the artist and the circle entry.
+
+- Applies to: All `Artist` entries
+
+## Rule: Valid artist image
+
+Artist image should be related to the artist.
+
+- Do not add avatars that are part of the default avatar collection of the profile website.
+
+- The main picture should be chosen based on [the relevant guidelines](/docs/artists/choosing-the-main-picture-for-artist-entries).
+
+- Applies to: All `Artist` entries
+
+## Rule: Character designer ~ illustrator.
+
+Character designer only needs to be specified if it's different from the illustrator.
+
+- Applies to: All `Finished` `Artist` entries
+
+## Rule: Manager ~ Voice provider
+
+Manager Only needs to be specified if it's different from the voice provider.
+
+- Applies to: All `Finished` `Artist` entries
+
+## Rule: Keep previous members
+
+If an artist leaves a group/circle, generally it's best to mention this in the entry description(s) instead of unlinking the entries.
+
+Verified artists can request unlinking from the circle/group in any case.
+
+- Applies to: All `Finished` `Artist` entries
+
+## Rule: Label other voice synths
+
+Engines for `Other voice synthesizer` (if available) need to be added as a tag and included in the voicebank entry name.
+
+- If the voicebank has no separate engine, use the [voicebank-as-engine -tag](https://vocadb.net/T/10630/voicebank-as-engine). 
+- If engine is not known, use the [unknown engine -tag](https://vocadb.net/T/7036). 
+- Multiengine synths that have no clear or safe-to-assume base voicebanks usually have a corresponding "unknown"-entry. These are grouped under the ["unspecified voicebank engine"](https://vocadb.net/T/9027/unspecified-voicebank-engine) -tag.
+
+- Applies to: All `Finished` `Artist` entries
+
+## Rule: Voicebank language required
+
+Voicebank language, if available, needs to be specified.
+
+- Applies to: All `Finished` `Artist` entries
+
+## Rule: Voicebank picture required
+
+Voicebank picture, if available, needs to be specified.
+
+- Applies to: All `Finished` `Artist` entries
+
+## Rule: Base voicebank required
+
+Base voicebank, if available, needs to be specified.
+
+- Applies to: All `Finished` `Artist` entries
+
+## Rule: Voicebank release date required
+
+Voicebank release date needs to be specified.
+
+- Applies to: All `Finished` `Artist` entries

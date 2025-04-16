@@ -314,15 +314,18 @@ Finished song entries should meet the following criteria:
 
 ##### Song entry validation errors
 
-[source](https://github.com/VocaDB/vocadb/blob/3497505d430cb724eadbda06c37fa49f0f314219/VocaDbModel/Service/EntryValidators/SongValidator.cs)
+From [VocaDb.Model.Resources.json](https://github.com/VocaDB/vocadb/blob/60325c247287e2f0ca2e22a2604ac5a4c5e56898/VocaDbWeb/public/locales/quc/VocaDb.Model.Resources.json#L64):
 
-- SV1: DuplicateArtist (automatically fixed when entry is saved)
-- SV2: UnspecifiedNames
-- SV3: NeedArtist
-- SV4: NeedOriginal
-- SV5: NonInstrumentalSongNeedsVocalists
-- SV6: NeedProducer
-- SV7: NeedType
+- DuplicateArtist (automatically fixed when the entry is saved), corresponds to [Rule: No duplicate information](/docs/pinned/rule-reference#rule-no-duplicate-information).
+- NeedArtist, corresponds to [Rule: Artist credit required](/docs/pinned/rule-reference#rule-artist-credit-required).
+- NeedOriginal, corresponds to [Rule: Specify original](/docs/pinned/rule-reference#rule-specify-original).
+- NeedProducer, corresponds to [Rule: Producer entry credits required](/docs/pinned/rule-reference#rule-producer-entry-credits-required).
+- NeedReferences, corresponds to [Rule: Song content policy: Song source required](/docs/pinned/rule-reference#rule-song-content-policy-song-source-required).
+- NeedType, corresponds to [Rule: Correct entry subtype required](/docs/pinned/rule-reference#rule-correct-entry-subtype-required).
+- NonInstrumentalSongNeedsVocalists, corresponds to [Rule: Vocalist entry credit required](/docs/pinned/rule-reference#rule-vocalist-entry-credit-required).
+- RedundantEvent, corresponds to [Rule: No redundant events](/docs/pinned/rule-reference#rule-no-redundant-events)
+- RedundantRoles (deprecated rule)
+- UnspecifiedNames, corresponds to [Rule: Original language required](/docs/pinned/rule-reference#rule-original-language-required).
 
 #### Criteria for Approving Songs
 

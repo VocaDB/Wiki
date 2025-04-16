@@ -133,14 +133,16 @@ Finished album entries should meet the following criteria:
 
 ##### Album entry validation errors
 
-- **ALV1**: DuplicateArtist (automatically fixed when the entry is saved)
-- **ALV2**: UnspecifiedNames
-- **ALV3**: NeedArtist
-- **ALV4**: NeedCover
-- **ALV5**: NeedReferences
-- **ALV6**: NeedReleaseYear
-- **ALV7**: NeedTracks
-- **ALV8**: NeedType
+From [VocaDb.Model.Resources.json](https://github.com/VocaDB/vocadb/blob/60325c247287e2f0ca2e22a2604ac5a4c5e56898/VocaDbWeb/public/locales/quc/VocaDb.Model.Resources.json#L2):
+
+- DuplicateArtist (automatically fixed when the entry is saved), corresponds to [Rule: No duplicate information](/docs/pinned/rule-reference#rule-no-duplicate-information).
+- NeedArtist, corresponds to [Rule: Artist credit required](/docs/pinned/rule-reference#rule-artist-credit-required).
+- NeedCover, corresponds to [Rule: Cover art required](/docs/pinned/rule-reference#rule-cover-art-required).
+- NeedReferences, corresponds to [Rule: Album source required](/docs/pinned/rule-reference#rule-album-source-required).
+- NeedReleaseYear, corresponds to [Rule: Publish year required](/docs/pinned/rule-reference#rule-publish-year-required).
+- NeedTracks, corresponds to [Rule: Rule: Tracklist status](/docs/pinned/rule-reference#rule-tracklist-status).
+- NeedType, corresponds to [Rule: Correct entry subtype required](/docs/pinned/rule-reference#rule-correct-entry-subtype-required).
+- UnspecifiedNames, corresponds to [Rule: Original language required](/docs/pinned/rule-reference#rule-original-language-required).
 
 #### Criteria for approving albums
 

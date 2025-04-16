@@ -45,6 +45,8 @@ Some data duplication is allowed, if there are significant upsides in usability 
 
 - Applies to: All entries
 
+- Relevant validation errors: `DuplicateArtist`
+
 ## Rule: Use correct fields	
 
 Use the correct entry fields when adding information. Lyrics do not belong in the entry description for example.
@@ -94,6 +96,8 @@ Song entries where the main producer is listed under [forbidden artists](/docs/a
 
 Song entries should include a PVs, external link, description or be part of an album entry.
 
+- Relevant validation errors: `NeedReferences`
+
 ## Rule: External links
 
 Follow the external link rules described below.
@@ -142,6 +146,8 @@ Original language -field should not be "unspecified".
 
 - Applies to: All `Finished` entries
 
+- Relevant validation errors: `UnspecifiedNames`
+
 ## Rule: Corresponding primary name
 
 Primary name corresponding to the original language should not be empty.
@@ -159,6 +165,8 @@ The official romanization and/or translation should be prioritized.
 Include the correct album/artist/song type.
 
 - Applies to: All `Finished` entries
+
+- Relevant validation errors: `NeedType`
 
 ## Rule: Merge correctly
 
@@ -304,6 +312,8 @@ Album entry should have an empty tracklist, complete tracklist or "tracklist inc
 
 - Applies to: All `Album` entries
 
+- Relevant validation errors: `NeedTracks`
+
 ## Rule: Full tracklist required
 
 Finished albums should include the full tracklist.
@@ -315,6 +325,8 @@ Finished albums should include the full tracklist.
 Include a PV link, external link or description.
 
 - Applies to: All `Album` entries
+
+- Relevant validation errors: `NeedReferences`
 
 ## Rule: Full album name
 
@@ -338,6 +350,8 @@ If the album has no cover picture, use the [no cover art](https://vocadb.net/T/2
 
 - Applies to: All `Finished` `Album` entries
 
+- Relevant validation errors: `NeedCover`
+
 ## Rule: Temporary cover art
 
 If the only available cover picture is lower quality, use the [temporary cover art](https://vocadb.net/T/429/temporary-cover-art) -tag.
@@ -355,6 +369,8 @@ The "custom track" -feature (no song entry) should (only) be used for tracks mad
 Finished albums should specify the publish year.
 
 - Applies to: All `Finished` `Album` entries
+
+- Relevant validation errors: `NeedReleaseYear`
 
 ## Rule: Content tags
 
@@ -408,6 +424,8 @@ All album and song entries require at least one artist credit (custom or a prope
 
 - Applies to: All `Album` and `Song` entries
 
+- Relevant validation errors: `NeedArtist`
+
 ## Rule: Producer entry credits required
 
 Artist credits in the "producer"-category must be made with artist entries. 
@@ -415,6 +433,8 @@ Artist credits in the "producer"-category must be made with artist entries.
 - If the name of the producer is unknown, use the entry [Unknown producer(s)](https://vocadb.net/Ar/23966)
 
 - Applies to: All `Finished` `Album` and `Song` entries
+
+- Relevant validation errors: `NeedProducer`
 
 ## Rule: Known artist credits required
 
@@ -644,6 +664,8 @@ Duplicating the album event(s) on its song entries is redundant.
 
 - Applies to: All `Song` entries
 
+- Relevant validation errors: `RedundantEvent`
+
 ## Rule: Lyrics required
 
 Approved song entries should include lyrics if available.
@@ -697,6 +719,8 @@ Derived songs should either:
 - Include the [original version unknown](https://vocadb.net/T/4631) tag.
 
 - Applies to: All `Finished` `Song` entries
+
+- Relevant validation errors: `NeedOriginal`
 
 ## Rule: Specify out-of-scope original
 
@@ -954,6 +978,8 @@ If the song includes in-scope vocals, and if the vocalist is uncredited, the art
     - The entry [Unknown vocal synth(s)](https://vocadb.net/Ar/128519) or any of its derived artist entries can also be used to further narrow down the vocalist.
 
 - Applies to: All `Finished` `Song` entries
+
+- Relevant validation errors: `NonInstrumentalSongNeedsVocalists`
 
 ## Rule: Credit earliest voicebank version
 

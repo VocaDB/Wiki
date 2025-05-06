@@ -7,8 +7,6 @@ tags: ["wikipage", "guidelines", "documentation", "vocadb"]
 
 All the edit-related VocaDB rules are described here in an atomic and structured form.
 
-(Numeric rule IDs will be included later.)
-
 ## Rule: Source non-obvious
 
 Include sources for non-obvious additions or changes. Edits by verified artists are considered authoritative information and do not need to be further sourced.
@@ -45,6 +43,8 @@ Do not duplicate information between fields or different entries.
 
 - Applies to: All entries
 
+- Relevant validation errors: `DuplicateArtist`
+
 ## Rule: Use correct fields	
 
 Use the correct entry fields when adding information. For example, do not put Lyrics in the entry description 
@@ -73,7 +73,7 @@ Follow the song content policy rules described below.
 
 ### Rule: Song content policy: No WIPs
 
-Work in progress (WIP) songs/trailers should not be added, except [voicebank demos](https://vocadb.net/T/89).
+[Demo](https://vocadb.net/T/9896) songs and work in progress (WIP) songs/trailers should not be added, except [voicebank demos](https://vocadb.net/T/89) and song entries that are part of album entries.
 
 ### Rule: Song content policy: No prompt vocal songs
 
@@ -93,6 +93,8 @@ Song entries where the main producer is listed under [forbidden artists](/docs/a
 ### Rule: Song content policy: Song source required
 
 Song entries should include a PVs, external link, description or be part of an album entry.
+
+- Relevant validation errors: `NeedReferences`
 
 ## Rule: External links
 
@@ -142,9 +144,11 @@ Original language field should not be "unspecified".
 
 - Applies to: All `Finished` entries
 
+- Relevant validation errors: `UnspecifiedNames`
+
 ## Rule: Corresponding primary name
 
-Primary name corresponding to the original language should not be empty.
+Primary name corresponding to the original language should not be empty, unless tagged with [untitled](https://vocadb.net/T/6335/).
 
 - Applies to: All `Finished` entries
 
@@ -159,6 +163,8 @@ The official romanization and/or translation should be prioritized.
 Include the correct album/artist/song type.
 
 - Applies to: All `Finished` entries
+
+- Relevant validation errors: `NeedType`
 
 ## Rule: Merge correctly
 
@@ -304,6 +310,8 @@ Album entry should have an empty tracklist, complete tracklist or "tracklist inc
 
 - Applies to: All `Album` entries
 
+- Relevant validation errors: `NeedTracks`
+
 ## Rule: Full tracklist required
 
 Finished albums should include the full tracklist.
@@ -315,6 +323,8 @@ Finished albums should include the full tracklist.
 Include a PV link, external link or description.
 
 - Applies to: All `Album` entries
+
+- Relevant validation errors: `NeedReferences`
 
 ## Rule: Full album name
 
@@ -338,6 +348,8 @@ If the album has no cover picture, use the [no cover art](https://vocadb.net/T/2
 
 - Applies to: All `Finished` `Album` entries
 
+- Relevant validation errors: `NeedCover`
+
 ## Rule: Temporary cover art
 
 If the only available cover picture is lower quality, use the [temporary cover art](https://vocadb.net/T/429/temporary-cover-art) tag.
@@ -355,6 +367,8 @@ The "custom track" feature (no song entry) should only be used for out-of-scope 
 Finished albums should specify the publish year.
 
 - Applies to: All `Finished` `Album` entries
+
+- Relevant validation errors: `NeedReleaseYear`
 
 ## Rule: Content tags
 
@@ -408,6 +422,8 @@ All album and song entries require at least one artist credit (custom or a prope
 
 - Applies to: All `Album` and `Song` entries
 
+- Relevant validation errors: `NeedArtist`
+
 ## Rule: Producer entry credits required
 
 Artist credits in the "producer" category must be made with artist entries. 
@@ -415,6 +431,8 @@ Artist credits in the "producer" category must be made with artist entries.
 - If the name of the producer is unknown, use the entry [Unknown producer(s)](https://vocadb.net/Ar/23966)
 
 - Applies to: All `Finished` `Album` and `Song` entries
+
+- Relevant validation errors: `NeedProducer`
 
 ## Rule: Known artist credits required
 
@@ -437,6 +455,16 @@ Exceptions:
 ## Rule: No out-of-scope artist entries
 
 Artists that are not voice-synth-related should not be added to the database.
+
+- Applies to: All `Artist` entries
+
+## Rule: Artist source required
+
+Artist entries require at least one external link or description.
+
+- Applies to: All `Artist` entries
+
+- Relevant validation errors: `NeedReferences`
 
 ## Rule: No forbidden artists
 
@@ -484,6 +512,14 @@ Real-life names can still be added, if that's the main artist name.
 It's common to see artists credited with additional honorifics. These should not be added, unless the artist uses those themselves: [Gedou-san](https://vocadb.net/Ar/1823) for example.
 
 - Applies to: All `Finished` `Artist` entries
+
+## Rule: No producer name duplication
+
+If the artist name includes the "producer" suffix (P or -P), do not duplicate a version without it as an alias.
+
+- Applies to: All `Finished` `Artist` entries
+
+- Relevant validation errors: `UnnecessaryPName`
 
 ## Rule: Separate artist personas
 
@@ -624,6 +660,14 @@ Event entries require a category.
 
 - Applies to: All `Finished` `Event` entries
 
+## Rule: No redundant events
+
+Duplicating the album event(s) on its song entries is redundant.
+
+- Applies to: All `Song` entries
+
+- Relevant validation errors: `RedundantEvent`
+
 ## Rule: Lyrics required
 
 Approved song entries should include lyrics if available.
@@ -678,6 +722,8 @@ Derived songs should either:
 
 - Applies to: All `Finished` `Song` entries
 
+- Relevant validation errors: `NeedOriginal`
+
 ## Rule: Specify out-of-scope original
 
 If [original out of scope](https://vocadb.net/T/3282) tag is included, the original version should be:
@@ -711,6 +757,8 @@ The original song is the version of the song that was published first. Later ver
 Original songs without vocals require the instrumental tag
 
 - Applies to: All `Finished` `Song` entries
+
+- Relevant validation errors: `NonInstrumentalSongNeedsVocalists`
 
 ## Rule: No vocalists if instrumental
 
@@ -843,6 +891,8 @@ Voice synth songs that include both a voice synth version and a human-sung versi
 
 Original version should be the entry with the earliest publish date.
 
+If multiple versions of a song are uploaded simultaneously, it doesn't generally matter which is picked as the original version.
+
 - Applies to: All `Finished` `Song` entries
 
 ## Rule: Most relevant original version
@@ -932,6 +982,8 @@ If the song includes in-scope vocals, and if the vocalist is uncredited, the art
     - The entry [Unknown vocal synth(s)](https://vocadb.net/Ar/128519) or any of its derived artist entries can also be used to further narrow down the vocalist.
 
 - Applies to: All `Finished` `Song` entries
+
+- Relevant validation errors: `NonInstrumentalSongNeedsVocalists`
 
 ## Rule: Credit earliest voicebank version
 

@@ -1,7 +1,6 @@
-const {
-  scrollbarWidth,
-  scrollbarGutter,
-} = require("tailwind-scrollbar-utilities");
+import { scrollbarWidth, scrollbarGutter } from "tailwind-scrollbar-utilities";
+import typography from "@tailwindcss/typography";
+import animate from "tailwindcss-animate";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -72,10 +71,5 @@ export default {
       },
     },
   },
-  plugins: [
-    require("@tailwindcss/typography"),
-    require("tailwindcss-animate"),
-    scrollbarWidth(),
-    scrollbarGutter(),
-  ],
+  plugins: [typography, animate, scrollbarWidth(), scrollbarGutter()],
 };

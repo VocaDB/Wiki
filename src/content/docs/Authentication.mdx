@@ -1,0 +1,63 @@
+---
+title: Authentication
+description: General information about authentication requests to  VocaDB's public API
+parent: Development
+tags: ["wikipage", "api", "development", "documentation", "vocadb"]
+---
+
+## Frontend authentication
+
+The VocaDB API utilizes PASETO (Platform-Agnostic Security Tokens) for authentication. These tokens are similiar in structure
+and function to JWT (JSON web token) and limit the available cryptographic options to safe configurations.
+
+The general authentication workflow is as follows
+
+1. POST request to `/api/auth/login` with the authentication details in the body as JSON. The server returns a refresh token and a PASETO token as cookies with the following structure.
+
+```json
+{
+  "iss": "be-fra-1.0", // Issuer: Backend Frankfurt v1.0
+  "sub": "1", // Subject: <user id>
+  "aud": "vocadb.net", // Audience: <domain>
+  "iat": "2025-01-01T00:00:00+00:00", // Issued at: <time of creation>
+  "nbf": "2025-01-01T00:00:00+00:00", // Not before: <time of creation>
+  "exp": "2025-01-01T01:00:00+00:00", // Expires at: <expire time>
+  "jti": "yqpaOjvgKLOl", // JWT ID: <jwt id>
+  "permissions": "AccessManageMenu,CreateComments,DeleteComments" // List of VocaDB permissions
+}
+```
+
+2. The main token expires quickly. The refresh token is valid for up to 2 weeks and calling `/api/auth/refresh` will return a new auth token.
+
+## Token revocation
+
+One of the main drawbacks of stateless tokens is the difficulty of revoking a token. This is solved in VocaDB using a blacklist approach with multiple fallbacks.
+
+1. All backend servers listen to a redis channel for new token revocations. Once a message has been received the local blacklist is updated accordingly. (Time to revocation: < 1 second)
+2. Backend servers synchronize their local blacklist every 30 seconds with the database. (Time to revocation: < 30 seconds)
+3. Auth tokens must be refreshed every hour. This also revalidates the available permissions. (Time to revocation: < 1 hour)
+
+The backend automatically checks for necessary token revocations (identified by the `jti` claim) if user roles/permissions have been changed.
+
+## API Tokens
+
+> This is currently not implemented and the design might change in the future
+
+API tokens can be created with a POST request to `/api/auth/token` and the following request schema.
+
+```json
+{
+  "permissions": ["DeleteComments"],
+  "expires_at": "2026-01-01T00:00:00+00:0",
+  "caveats": {
+    "source_ip": "192.168.1.1" // More caveats will be introduced in the future
+  }
+}
+```
+
+The claims `permissions`, `expires_at` and `caveats` can be used to restrict the token scope and reduce impact in the case of token hijacking.
+It is recommended to use restricted API tokens for all automated scripts and applications.
+
+## Security
+
+TODO: List cookie security controls and discuss various attacks such as CSRF

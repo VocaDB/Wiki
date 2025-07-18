@@ -171,8 +171,9 @@ export default defineConfig({
     "/wiki/3": "/docs/documentation/vocadb-api-and-embeds",
     "/wiki/3/vocadb-api-and-embeds":
       "/docs/documentation/vocadb-api-and-embeds",
-    "/wiki/77": "/docs/documentation/vocadb-changelog",
-    "/wiki/77/vocadb-changelog": "/docs/documentation/vocadb-changelog",
+    "/wiki/77": "/docs/documentation/website-changelog",
+    "/wiki/77/vocadb-changelog": "/docs/documentation/website-changelog",
+    "/docs/documentation/vocadb-changelog": "/docs/documentation/website-changelog",
     "/wiki/22": "/docs/documentation/vocadb-domains-and-login-process",
     "/wiki/22/vocadb-domains-login-process":
       "/docs/documentation/vocadb-domains-and-login-process",

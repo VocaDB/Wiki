@@ -1,0 +1,32 @@
+---
+import { getEntry } from 'astro:content';
+
+interface Props {
+  rule: string;
+  showFull?: boolean;
+}
+
+const { rule: ruleName, showFull = false } = Astro.props;
+
+const ruleEntry = await getEntry('rules', ruleName);
+
+let Content = null;
+if (ruleEntry) {
+  const rendered = await ruleEntry.render();
+  Content = rendered.Content;
+}
+---
+
+{ruleEntry && Content ? (
+  <div class="rounded-xl border shadow px-10">
+    <div>
+        <h3><a href={`/rules/${ruleEntry.slug}`}>Rule {ruleEntry.data.id}: {ruleEntry.data.name}</a></h3>
+        {showFull && <p>{ruleEntry.data.description}</p>}
+    </div>
+
+  </div>
+) : (
+  <div class=" text-red-500">
+    <p>⚠️ Rule "{ruleName}" not found or could not be rendered</p>
+  </div>
+)}

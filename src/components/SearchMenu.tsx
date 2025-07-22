@@ -29,6 +29,17 @@ interface SearchResult {
   excerpt: string;
 }
 
+declare global {
+  interface Window {
+    pagefind?: {
+      init(): void;
+      debouncedSearch(term: string): Promise<{
+        results: SearchResult[];
+      }>;
+    };
+  }
+}
+
 const extractSearchWords = (searchTerm: string): string[] => {
   return searchTerm
     .toLowerCase()
@@ -97,7 +108,7 @@ function ResultItem({
   result,
   searchTerm
 }: {
-  result: SearchResult;
+  result: SearchResult & { titleScore?: number };
   searchTerm: string;
 }) {
   const [data, setData] = useState<ArticleData | null>(null);
@@ -168,37 +179,88 @@ function ResultItem({
 export default function SearchMenu() {
   const [searchTerm, setSearchTerm] = useState("");
   const [open, setOpen] = useState(false);
-  const [results, setResults] = useState<SearchResult[]>([]);
+  const [results, setResults] = useState<
+    (SearchResult & { titleScore?: number })[]
+  >([]);
   const [isSearching, setIsSearching] = useState(false);
 
   const MAX_RESULT_COUNT = 15;
 
   const performSearch = useCallback(async (term: string) => {
     // @ts-ignore
-    if (window.pagefind === undefined || !term) {
-      setResults([]);
-      return;
-    }
-
-    setIsSearching(true);
-
-    try {
-      // @ts-ignore
-      const searchResults = await window.pagefind.debouncedSearch(term);
-
-      if (!searchResults || !searchResults.results) {
+      if (window.pagefind === undefined || !term) {
         setResults([]);
         return;
       }
 
-      setResults(searchResults.results);
-    } catch (err) {
-      console.error("Search error:", err);
-      setResults([]);
-    } finally {
-      setIsSearching(false);
-    }
-  }, []);
+      setIsSearching(true);
+
+      try {
+        const searchResults = await window.pagefind.debouncedSearch(term);
+
+        if (!searchResults || !searchResults.results) {
+          setResults([]);
+          return;
+        }
+
+        const resultsWithTitleScoring = await Promise.all(
+          searchResults.results.map(async result => {
+            try {
+              const data = await result.data();
+              const title = data.meta?.title || "";
+
+              let titleScore = 0;
+              const lowerTitle = title.toLowerCase();
+              const lowerTerm = term.toLowerCase();
+
+              if (lowerTitle === lowerTerm) {
+                titleScore = 10;
+              }
+              else if (lowerTitle.startsWith(lowerTerm)) {
+                titleScore = 8;
+              }
+              else if (lowerTitle.includes(lowerTerm)) {
+                titleScore = 5;
+              }
+              else {
+                const searchWords = extractSearchWords(term);
+                const titleWords = title.toLowerCase().split(/\s+/);
+
+                for (const searchWord of searchWords) {
+                  if (
+                    titleWords.some(titleWord => titleWord.includes(searchWord))
+                  ) {
+                    titleScore += 2;
+                  }
+                }
+              }
+
+              return { ...result, titleScore };
+            } catch (err) {
+              console.error("Error loading result data for scoring:", err);
+              return { ...result, titleScore: 0 };
+            }
+          })
+        );
+
+        // Prioritize title match
+        resultsWithTitleScoring.sort((a, b) => {
+          if ((b.titleScore || 0) !== (a.titleScore || 0)) {
+            return (b.titleScore || 0) - (a.titleScore || 0);
+          }
+          return b.score - a.score;
+        });
+
+        setResults(resultsWithTitleScoring.slice(0, MAX_RESULT_COUNT));
+      } catch (err) {
+        console.error("Search error:", err);
+        setResults([]);
+      } finally {
+        setIsSearching(false);
+      }
+    },
+    [MAX_RESULT_COUNT]
+  );
 
   // Effect for search term changes
   useEffect(() => {
@@ -211,9 +273,8 @@ export default function SearchMenu() {
 
   // Initialize pagefind when dialog opens
   useEffect(() => {
-    if (open) {
-      // @ts-ignore
-      window.pagefind?.init();
+    if (open && window.pagefind) {
+      window.pagefind.init();
     }
   }, [open]);
 
@@ -272,7 +333,7 @@ export default function SearchMenu() {
             <CommandEmpty>Type something to search</CommandEmpty>
           ) : (
             <CommandGroup>
-              {results.slice(0, MAX_RESULT_COUNT).map(res => (
+              {results.map(res => (
                 <ResultItem
                   key={res.id}
                   result={res}

@@ -29,7 +29,7 @@ const ruleCollection = defineCollection({
     date_checked: z.string().nullable().optional(),
     date_created: z.string().nullable().optional(),
     date_modified: z.string().nullable().optional(),
-    parent_id: z.number().nullable().optional(),
+    parent_rule: z.string().nullable().optional(),
     rationale: z.string().nullable().optional(),
     status: z.enum(["Active", "Deprecated"]).default("Active"),
   })

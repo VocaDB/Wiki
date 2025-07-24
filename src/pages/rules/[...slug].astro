@@ -1,4 +1,5 @@
 ---
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 import { getCollection } from "astro:content";
 import DocPageLayout from "../../layouts/DocPageLayout.astro";
 
@@ -39,7 +40,13 @@ function formatFieldValue(key: string, value: any): string {
 
 <DocPageLayout frontmatter={entry.data} headings={headings}>
   <div class="rule-metadata">
-    <h1>Rule {entry.data.id}: {entry.data.name}</h1>
+    <h1>Rule: {entry.data.name}</h1>
+    <RuleEmbed rule="name-required" showFull={true} />
+
+    <div class="rule-content">
+      <Content />
+    </div>
+
     <table class="metadata-table">
       <tbody>
         {Object.entries(entry.data).map(([fieldKey, fieldValue]) => (
@@ -51,8 +58,5 @@ function formatFieldValue(key: string, value: any): string {
       </tbody>
     </table>
   </div>
-
-  <div class="rule-content">
-    <Content />
-  </div>
+  
 </DocPageLayout>

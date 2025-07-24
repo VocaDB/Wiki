@@ -1,5 +1,5 @@
 ---
-import { getEntry } from 'astro:content';
+import { getEntry } from "astro:content";
 
 interface Props {
   rule: string;
@@ -8,7 +8,9 @@ interface Props {
 
 const { rule: ruleName, showFull = false } = Astro.props;
 
-const ruleEntry = await getEntry('rules', ruleName);
+const ruleEntry = await getEntry("rules", ruleName);
+const ruleData = ruleEntry?.data;
+if (!ruleData) return;
 
 let Content = null;
 if (ruleEntry) {
@@ -17,16 +19,69 @@ if (ruleEntry) {
 }
 ---
 
-{ruleEntry && Content ? (
-  <div class="rounded-xl border shadow px-10">
-    <div>
-        <h3><a href={`/rules/${ruleEntry.slug}`}>Rule {ruleEntry.data.id}: {ruleEntry.data.name}</a></h3>
-        {showFull && <p>{ruleEntry.data.description}</p>}
+{
+  (
+    <div class="rounded-xl border shadow p-6">
+      <div>
+        <h3 class="mt-0">
+          Rule: {ruleData.parent_rule && `${ruleData.parent_rule}: `}
+          <a href={`/rules/${ruleEntry.slug}`}> {ruleData.name}</a>
+          (id={ruleData.id})
+        </h3>
+        {ruleData.status == "Deprecated" && (
+          <p class="text-red-500">
+            ⚠️ This rule has been deprecated{" "}
+            {ruleData.date_modified && `(on ${ruleData.date_modified})`}
+          </p>
+        )}
+        <p>
+          "<i>{ruleData.description}"</i>
+        </p>
+        {showFull && (
+          <>
+            <span>
+              (Applies to all{" "}
+              <em>
+                {ruleData.entry_status !== "Draft" &&
+                  ruleData.entry_status.toLowerCase()}
+              </em>{" "}
+              {ruleData.entry_type !== "All" &&
+                ruleData.entry_type
+                  .map(str => str.toLowerCase().replace(/s$/, ""))
+                  .join(" & ")}{" "}
+              entries)
+            </span>
+            {ruleData.rationale && (
+              <p>
+                Rationale: <i>{ruleData.rationale}</i>
+              </p>
+            )}
+            {ruleData.date_created && (
+              <p>Rule created on {ruleData.date_created}</p>
+            )}
+            {ruleData.fe_validations && (
+              <p>
+                Frontend validation with:{" "}
+                <a
+                  href={`https://github.com/search?type=code&q=repo%3AVocaDB%2Fvocadb+Validation+${ruleData.fe_validations}`}>
+                  {ruleData.fe_validations}
+                </a>
+              </p>
+            )}
+            {(ruleData.occurance ?? 0) > 0 && (
+              <p>
+                ~{ruleData.occurance} affected entries
+                {ruleData.edit_list && (
+                  <span>
+                    :<a href={ruleData.edit_list}>Edit list</a>
+                    generated on {ruleData.date_checked}
+                  </span>
+                )}
+              </p>
+            )}
+          </>
+        )}
+      </div>
     </div>
-
-  </div>
-) : (
-  <div class=" text-red-500">
-    <p>⚠️ Rule "{ruleName}" not found or could not be rendered</p>
-  </div>
-)}
+  )
+}

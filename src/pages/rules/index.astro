@@ -1,25 +1,21 @@
 ---
-import Base from "@/layouts/Base.astro";
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 import { getCollection } from "astro:content";
+import DocPageLayout from "../../layouts/DocPageLayout.astro";
 
 const rules = await getCollection("rules");
 ---
 
-<Base>
-  <h1 class="text-4xl font-extrabold mb-4">All rules</h1>
+<DocPageLayout
+  frontmatter={{ title: "All rules" }}
+  headings={[]}>
 
-  <ul class="list-disc list-inside">
-    {
-      rules.map(rule => (
-        <li>
-          <a
-            class="underline"
-            href={["/rules", rule.slug.toLowerCase()].join("/")}>
-            {rule.data.name}
-          </a>
-        </li>
-      ))
-    }
-    <ul></ul>
-  </ul>
-</Base>
+  {
+    rules.map(rule => (
+      <RuleEmbed
+        rule={rule.slug}
+        showFull={false}
+      />
+    ))
+  }
+</DocPageLayout>

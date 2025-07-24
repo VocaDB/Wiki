@@ -31,7 +31,7 @@ if (ruleEntry) {
         {ruleData.status == "Deprecated" && (
           <p class="text-red-500">
             ⚠️ This rule has been deprecated{" "}
-            {ruleData.date_modified && `(on ${ruleData.date_modified})`}
+            {ruleData.date_modified && `(${ruleData.date_modified})`}
           </p>
         )}
         <p>
@@ -57,7 +57,7 @@ if (ruleEntry) {
               </p>
             )}
             {ruleData.date_created && (
-              <p>Rule created on {ruleData.date_created}</p>
+              <p>Rule created {ruleData.date_created}</p>
             )}
             {ruleData.fe_validations && (
               <p>
@@ -74,7 +74,7 @@ if (ruleEntry) {
                 {ruleData.edit_list && (
                   <span>
                     : <a href={ruleData.edit_list}>Edit list</a>
-                    generated on {ruleData.date_checked}
+                    generated {ruleData.date_checked}
                   </span>
                 )}
               </p>

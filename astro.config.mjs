@@ -14,6 +14,9 @@ export default defineConfig({
   build: {
     format: "file",
   },
+  experimental: {
+    contentIntellisense: true,
+  },
   integrations: [
     react(),
     tailwind({ applyBaseStyles: false }),

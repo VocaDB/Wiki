@@ -21,7 +21,6 @@ const ruleCollection = defineCollection({
   schema: z.object({
     name: z.string(),
     id: z.number(),
-    description: z.string(),
     entry_type: z.union([
       z.literal("All"),
       z.array(z.enum(["Songs", "Albums", "Artists", "Events", "Tags", "Songlists"]))
@@ -35,7 +34,6 @@ const ruleCollection = defineCollection({
     date_checked: FlexibleDate(),
     date_created: FlexibleDate(),
     date_modified: FlexibleDate(),
-    parent_rule: z.string().nullable().optional(),
     rationale: z.string().nullable().optional(),
     status: z.enum(["Active", "Deprecated"]).default("Active"),
   })

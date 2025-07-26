@@ -12,11 +12,6 @@ const ruleEntry = await getEntry("rules", ruleName);
 const ruleData = ruleEntry?.data;
 if (!ruleData) return;
 
-let Content = null;
-if (ruleEntry) {
-  const rendered = await ruleEntry.render();
-  Content = rendered.Content;
-}
 ---
 
 {
@@ -24,7 +19,7 @@ if (ruleEntry) {
     <div class="rounded-xl border shadow p-6">
       <div>
         <h3 class="mt-0">
-          Rule: {ruleData.parent_rule && `${ruleData.parent_rule}: `}
+          Rule: 
           <a href={`/rules/${ruleEntry.slug}`}> {ruleData.name}</a>
           (id={ruleData.id})
         </h3>
@@ -34,9 +29,6 @@ if (ruleEntry) {
             {ruleData.date_modified && `(${ruleData.date_modified})`}
           </p>
         )}
-        <p>
-          "<i>{ruleData.description}"</i>
-        </p>
         {showFull && (
           <>
             <span>

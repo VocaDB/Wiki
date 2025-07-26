@@ -3,10 +3,10 @@ import RuleTable from "@/components/markdown/RuleTable.astro";
 import DocPageLayout from "@/layouts/DocPageLayout.astro";
 
 ---
-
 <DocPageLayout headings={[]}, frontmatter={{ title: "All rules" }}>
   <main>
     <RuleTable />
   </main>
 </DocPageLayout>
 
+<script src="/sorttable.js" is:inline></script>

@@ -1,0 +1,43 @@
+---
+import { getCollection } from "astro:content";
+const ruleEntries = await getCollection("rules");
+---
+
+<div class="table-container">
+  <table class="rule-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Status</th>
+        <th>Occurrence</th>
+        <th>Checked</th>
+        <th>List</th>
+      </tr>
+    </thead>
+    <tbody>
+      {ruleEntries.filter((rule) => rule.data.status === "Active").sort((a, b) => a.data.id - b.data.id).map((rule) => (
+        <tr>
+          <td>{rule.data.id}</td>
+          <td class="rule-name"><a href={`/rules/${rule.slug}`}>{rule.data.name}</a></td>
+          <td>
+            <span class="entry-type">
+              {Array.isArray(rule.data.entry_type) 
+                ? rule.data.entry_type.join(", ") 
+                : rule.data.entry_type}
+            </span>
+          </td>
+          <td>
+            <span class={`entry-status-badge entry-status-${rule.data.entry_status.toLowerCase()}`}>
+              {rule.data.entry_status}
+            </span>
+          </td>
+          <td>{rule.data.occurance || "-"}</td>
+          <td>{rule.data.date_checked || "-"}</td>
+          <td>{rule.data.edit_list || "-"}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

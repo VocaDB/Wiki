@@ -35,27 +35,27 @@ const shouldShowGroup = (groupFields: RuleFields[]): boolean => {
     <div class="rounded-xl border shadow p-6">
       <div>
         <h3 class="mt-0">
-          Rule: 
+          Rule:
           <a href={`/rules/${ruleEntry.slug}`}> {ruleData.name}</a>
           {shouldShowField("id") && ` (id=${ruleData.id})`}
         </h3>
-        
+
         {ruleData.status == "Deprecated" && (
           <p class="text-red-500">
             ⚠️ This rule has been deprecated{" "}
             {ruleData.date_modified && `(${ruleData.date_modified})`}
           </p>
         )}
-        
+
         {shouldShowGroup(["entry_status", "entry_type"]) && (
           <span>
             (Applies to all
-            {(
+            {
               <em>
                 {ruleData.entry_status !== "Draft" &&
                   ruleData.entry_status.toLowerCase()}
               </em>
-            )}{" "}
+            }{" "}
             {ruleData.entry_type !== "All" &&
               ruleData.entry_type
                 .map(str => str.toLowerCase().replace(/s$/, ""))
@@ -63,11 +63,15 @@ const shouldShowGroup = (groupFields: RuleFields[]): boolean => {
             entries)
           </span>
         )}
-        
+
         {shouldShowGroup(["date_created", "date_modified"]) && (
           <>
-            {ruleData.date_created && <p>Rule created {ruleData.date_created}</p>}
-            {ruleData.date_modified && <p>Rule modified {ruleData.date_modified}</p>}
+            {ruleData.date_created && (
+              <p>Rule created {ruleData.date_created}</p>
+            )}
+            {ruleData.date_modified && (
+              <p>Rule modified {ruleData.date_modified}</p>
+            )}
           </>
         )}
 
@@ -80,18 +84,19 @@ const shouldShowGroup = (groupFields: RuleFields[]): boolean => {
             </a>
           </p>
         )}
-        
-        {shouldShowGroup(["occurance", "edit_list", "date_checked"]) && (ruleData.occurance ?? 0) > 0 && (
-          <p>
-            {`~${ruleData.occurance} affected entries`}
-            {ruleData.edit_list && (
-              <span>
-                : <a href={ruleData.edit_list}>Edit list</a>
-                {ruleData.date_checked && ` updated ${ruleData.date_checked}`}
-              </span>
-            )}
-          </p>
-        )}
+
+        {shouldShowGroup(["occurance", "edit_list", "date_checked"]) &&
+          (ruleData.occurance ?? 0) > 0 && (
+            <p>
+              {`~${ruleData.occurance} affected entries`}
+              {ruleData.edit_list && (
+                <span>
+                  : <a href={ruleData.edit_list}>Edit list</a>
+                  {ruleData.date_checked && ` updated ${ruleData.date_checked}`}
+                </span>
+              )}
+            </p>
+          )}
       </div>
     </div>
   )

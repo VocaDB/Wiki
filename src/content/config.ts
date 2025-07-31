@@ -1,5 +1,7 @@
 import { type CollectionEntry, defineCollection, z } from "astro:content";
 
+export const EntryType = ["Songs", "Albums", "Artists", "Events", "Tags", "Songlists"] as const
+
 const docsCollection = defineCollection({
   type: "content",
   schema: z.object({
@@ -29,7 +31,7 @@ const ruleCollection = defineCollection({
       .union([
         z.literal("All"),
         z.array(
-          z.enum(["Songs", "Albums", "Artists", "Events", "Tags", "Songlists"])
+          z.enum(EntryType)
         )
       ])
       .default("All"),

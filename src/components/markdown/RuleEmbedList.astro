@@ -1,0 +1,46 @@
+---
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import { EntryType, type RuleFields } from "@/content/config";
+import { getCollection } from "astro:content";
+import DocPageLayout from "../../layouts/DocPageLayout.astro";
+
+let rules = await getCollection("rules");
+
+interface Props {
+  entry_type: typeof EntryType[number] | "All";
+  fields?: RuleFields[] | "All";
+}
+
+const { entry_type, fields } = Astro.props;
+if (entry_type !== "All") {
+  rules = rules.filter(rule => {
+  const ruleEntryType = rule.data.entry_type;
+
+  if (ruleEntryType === "All") {
+    return true;
+  }
+
+  if (Array.isArray(ruleEntryType)) {
+    return ruleEntryType.includes(entry_type);
+  }
+
+  return false;
+})}
+
+const pageTitle = entry_type === "All" ? "All rules" : `All rules for ${entry_type}`;
+
+---
+
+<DocPageLayout
+  frontmatter={{ title: pageTitle }}
+  headings={[]}>
+
+  {
+    rules.map(rule => (
+      <RuleEmbed
+        rule={rule.slug}
+        fields={fields}
+      />
+    ))
+  }
+</DocPageLayout>

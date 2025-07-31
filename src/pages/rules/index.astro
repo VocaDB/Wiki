@@ -1,21 +1,8 @@
 ---
-import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import RuleEmbedList from "@/components/markdown/RuleEmbedList.astro";
 import { getCollection } from "astro:content";
-import DocPageLayout from "../../layouts/DocPageLayout.astro";
 
 const rules = await getCollection("rules");
 ---
 
-<DocPageLayout
-  frontmatter={{ title: "Rule table" }}
-  headings={[]}>
-
-  {
-    rules.map(rule => (
-      <RuleEmbed
-        rule={rule.slug}
-        fields={"All"}
-      />
-    ))
-  }
-</DocPageLayout>
+<RuleEmbedList entry_type={"All"} fields={["entry_status"]}/>

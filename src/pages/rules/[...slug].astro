@@ -5,59 +5,61 @@ import DocPageLayout from "../../layouts/DocPageLayout.astro";
 
 export async function getStaticPaths() {
   const ruleEntries = await getCollection("rules");
-  return ruleEntries.map((entry) => ({
+  return ruleEntries.map(entry => ({
     params: {
-      slug: entry.slug,
+      slug: entry.slug
     },
-    props: { entry },
+    props: { entry }
   }));
 }
 
 const { entry } = Astro.props;
-const { Content, headings } = await entry.render();
+const { headings } = await entry.render();
 
 function formatFieldValue(key: string, value: any): string {
   if (value === null || value === undefined) {
-    return '-';
+    return "-";
   }
-  
+
   if (Array.isArray(value)) {
-    return value.join(', ');
+    return value.join(", ");
   }
-  
+
   if (value instanceof Date) {
     return value.toLocaleDateString();
   }
-  
-  if (typeof value === 'boolean') {
-    return value ? 'Yes' : 'No';
+
+  if (typeof value === "boolean") {
+    return value ? "Yes" : "No";
   }
-  
+
   return String(value);
 }
-
 ---
 
-<DocPageLayout frontmatter={entry.data} headings={headings}>
+<DocPageLayout
+  frontmatter={entry.data}
+  headings={headings}>
   <div class="rule-metadata">
     <h1>Rule: {entry.data.name}</h1>
-    <RuleEmbed rule={entry.slug} fields={"All"}/>
-
-    <div class="rule-content">
-      <Content />
-      {entry.data.rationale && <p class="rationale"><strong>Rationale:</strong> {entry.data.rationale}</p>}
-    </div>
+    <RuleEmbed
+      rule={entry.slug}
+      fields={"All"}
+    />
 
     <table class="metadata-table">
       <tbody>
-        {Object.entries(entry.data).map(([fieldKey, fieldValue]) => (
-          <tr>
-            <th class="field-name">Rule {fieldKey}:</th>
-            <td class="field-value">{formatFieldValue(fieldKey, fieldValue)}</td>
-          </tr>
-        ))}
+        {
+          Object.entries(entry.data).map(([fieldKey, fieldValue]) => (
+            <tr>
+              <th class="field-name">Rule {fieldKey}:</th>
+              <td class="field-value">
+                {formatFieldValue(fieldKey, fieldValue)}
+              </td>
+            </tr>
+          ))
+        }
       </tbody>
     </table>
   </div>
-  
 </DocPageLayout>

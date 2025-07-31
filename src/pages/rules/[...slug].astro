@@ -41,10 +41,11 @@ function formatFieldValue(key: string, value: any): string {
 <DocPageLayout frontmatter={entry.data} headings={headings}>
   <div class="rule-metadata">
     <h1>Rule: {entry.data.name}</h1>
-    <RuleEmbed rule={entry.slug} showFull={true} />
+    <RuleEmbed rule={entry.slug} fields={["id", "entry_type", "date_created"]}/>
 
     <div class="rule-content">
       <Content />
+      {entry.data.rationale && <p class="rationale"><strong>Rationale:</strong> {entry.data.rationale}</p>}
     </div>
 
     <table class="metadata-table">

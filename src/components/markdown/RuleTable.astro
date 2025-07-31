@@ -8,9 +8,10 @@ const ruleEntries = await getCollection("rules");
     <thead>
       <tr>
         <th>ID</th>
+        <th>Date</th>
         <th>Name</th>
-        <th>Type</th>
-        <th>Status</th>
+        <th>E.Type</th>
+        <th>E.Status</th>
         <th>Occurrence</th>
         <th>Checked</th>
         <th>List</th>
@@ -20,6 +21,7 @@ const ruleEntries = await getCollection("rules");
       {ruleEntries.filter((rule) => rule.data.status === "Active").sort((a, b) => a.data.id - b.data.id).map((rule) => (
         <tr>
           <td>{rule.data.id}</td>
+          <td>{rule.data.date_modified || rule.data.date_created}</td>
           <td class="rule-name"><a href={`/rules/${rule.slug}`}>{rule.data.name}</a></td>
           <td>
             <span class="entry-type">

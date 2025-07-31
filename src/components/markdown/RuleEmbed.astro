@@ -10,6 +10,7 @@ interface Props {
 const { rule: ruleName, fields = [] } = Astro.props;
 const ruleEntry = await getEntry("rules", ruleName);
 const ruleData = ruleEntry?.data;
+const content = await ruleEntry?.render();
 
 if (!ruleData) return;
 
@@ -18,7 +19,6 @@ if (!ruleData) return;
 - status (always displayed if Deprecated)
 - detection_script
 - be_validations
-- rationale
 */
 
 const shouldShowField = (fieldName: RuleFields): boolean => {
@@ -39,6 +39,10 @@ const shouldShowGroup = (groupFields: RuleFields[]): boolean => {
           <a href={`/rules/${ruleEntry.slug}`}> {ruleData.name}</a>
           {shouldShowField("id") && ` (id=${ruleData.id})`}
         </h3>
+
+        {content && <content.Content />}
+
+        {ruleData.rationale && <p>Rationale: {ruleData.rationale}</p>}
 
         {ruleData.status == "Deprecated" && (
           <p class="text-red-500">

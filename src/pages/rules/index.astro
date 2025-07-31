@@ -7,14 +7,14 @@ const rules = await getCollection("rules");
 ---
 
 <DocPageLayout
-  frontmatter={{ title: "All rules" }}
+  frontmatter={{ title: "Rule table" }}
   headings={[]}>
 
   {
     rules.map(rule => (
       <RuleEmbed
         rule={rule.slug}
-        showFull={false}
+        fields={"All"}
       />
     ))
   }

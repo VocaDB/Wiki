@@ -1,4 +1,4 @@
-import { defineCollection, z } from "astro:content";
+import { type CollectionEntry, defineCollection, z } from "astro:content";
 
 const docsCollection = defineCollection({
   type: "content",
@@ -10,22 +10,32 @@ const docsCollection = defineCollection({
   })
 });
 
-const FlexibleDate = () => z.union([
-  z.string().regex(/^\d{4}$/, 'Expected format: YYYY'),
-  z.string().regex(/^\d{4}-\d{2}$/, 'Expected format: YYYY-MM'),
-  z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Expected format: YYYY-MM-DD'),
-]).nullable().optional();
+const FlexibleDate = () =>
+  z
+    .union([
+      z.string().regex(/^\d{4}$/, "Expected format: YYYY"),
+      z.string().regex(/^\d{4}-\d{2}$/, "Expected format: YYYY-MM"),
+      z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Expected format: YYYY-MM-DD")
+    ])
+    .nullable()
+    .optional();
 
 const ruleCollection = defineCollection({
   type: "content",
   schema: z.object({
     name: z.string(),
     id: z.number(),
-    entry_type: z.union([
-      z.literal("All"),
-      z.array(z.enum(["Songs", "Albums", "Artists", "Events", "Tags", "Songlists"]))
-    ]).default("All"),
-    entry_status: z.enum(["Draft", "Finished", "Approved", "Locked"]).default("Draft"),
+    entry_type: z
+      .union([
+        z.literal("All"),
+        z.array(
+          z.enum(["Songs", "Albums", "Artists", "Events", "Tags", "Songlists"])
+        )
+      ])
+      .default("All"),
+    entry_status: z
+      .enum(["Draft", "Finished", "Approved", "Locked"])
+      .default("Draft"),
     fe_validations: z.string().nullable().optional(),
     be_validations: z.boolean().nullable().optional(),
     occurance: z.number().nullable().optional(),
@@ -35,9 +45,11 @@ const ruleCollection = defineCollection({
     date_created: FlexibleDate(),
     date_modified: FlexibleDate(),
     rationale: z.string().nullable().optional(),
-    status: z.enum(["Active", "Deprecated"]).default("Active"),
+    status: z.enum(["Active", "Deprecated"]).default("Active")
   })
 });
+
+export type RuleFields = keyof CollectionEntry<"rules">["data"];
 
 export const collections = {
   docs: docsCollection,

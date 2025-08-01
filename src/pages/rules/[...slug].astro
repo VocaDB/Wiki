@@ -1,0 +1,65 @@
+---
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import { getCollection } from "astro:content";
+import DocPageLayout from "../../layouts/DocPageLayout.astro";
+
+export async function getStaticPaths() {
+  const ruleEntries = await getCollection("rules");
+  return ruleEntries.map(entry => ({
+    params: {
+      slug: entry.slug
+    },
+    props: { entry }
+  }));
+}
+
+const { entry } = Astro.props;
+const { headings } = await entry.render();
+
+function formatFieldValue(key: string, value: any): string {
+  if (value === null || value === undefined) {
+    return "-";
+  }
+
+  if (Array.isArray(value)) {
+    return value.join(", ");
+  }
+
+  if (value instanceof Date) {
+    return value.toLocaleDateString();
+  }
+
+  if (typeof value === "boolean") {
+    return value ? "Yes" : "No";
+  }
+
+  return String(value);
+}
+---
+
+<DocPageLayout
+  frontmatter={entry.data}
+  headings={headings}>
+  <div class="rule-metadata">
+    <h1>Rule: {entry.data.name}</h1>
+    <RuleEmbed
+      rule={entry.slug}
+      fields={"All"}
+    />
+
+    <table class="metadata-table">
+      <tbody>
+        {
+          Object.entries(entry.data).map(([fieldKey, fieldValue]) => (
+            <tr>
+              <th class="field-name">Rule {fieldKey}:</th>
+              <td class="field-value">
+                {formatFieldValue(fieldKey, fieldValue)}
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+</DocPageLayout>

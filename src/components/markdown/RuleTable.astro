@@ -37,7 +37,7 @@ const ruleEntries = await getCollection("rules");
           </td>
           <td>{rule.data.occurance || "-"}</td>
           <td>{rule.data.date_checked || "-"}</td>
-          <td>{rule.data.edit_list || "-"}</td>
+          <td>{rule.data.edit_list ? <a href={rule.data.edit_list}>Link</a> :  "-"}</td>
         </tr>
       ))}
     </tbody>

@@ -7,36 +7,38 @@ import DocPageLayout from "../../layouts/DocPageLayout.astro";
 let rules = await getCollection("rules");
 
 interface Props {
-  entry_type: typeof EntryType[number] | "All";
+  entry_type: (typeof EntryType)[number] | "All";
   fields?: RuleFields[] | "All";
 }
 
 const { entry_type, fields } = Astro.props;
 if (entry_type !== "All") {
-  rules = rules.filter(rule => {
-  const ruleEntryType = rule.data.entry_type;
+  rules = rules.filter(
+    (rule) => {
+      const ruleEntryType = rule.data.entry_type;
 
-  if (ruleEntryType === "All") {
-    return true;
-  }
+      if (ruleEntryType === "All") {
+        return true;
+      }
 
-  if (Array.isArray(ruleEntryType)) {
-    return ruleEntryType.includes(entry_type);
-  }
+      if (Array.isArray(ruleEntryType)) {
+        return ruleEntryType.includes(entry_type);
+      }
 
-  return false;
-})}
+      return false;
+    }
+  );
+}
 
-const pageTitle = entry_type === "All" ? "All rules" : `All rules for ${entry_type}`;
-
+const pageTitle =
+  entry_type === "All" ? "All rules" : `All rules for ${entry_type}`;
 ---
 
 <DocPageLayout
   frontmatter={{ title: pageTitle }}
   headings={[]}>
-
   {
-    rules.map(rule => (
+    rules.sort((a, b) => a.data.id - b.data.id).map((rule: { slug: string | undefined }) => (
       <RuleEmbed
         rule={rule.slug}
         fields={fields}

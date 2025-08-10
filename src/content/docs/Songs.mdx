@@ -3,11 +3,19 @@ title: Songs
 description: Songs
 tags: ["wikipage", "songs", "vocadb"]
 ---
-import Navigation from "@/components/markdown/Navigation.astro";
-
 
 <Navigation />
 
-🚧
+Song entries are pages for individual songs. These entries include song-related metadata (as *fields*) such as title, song duration, media embeds/links and *connections* to other entry types such as artists.
 
-Next: [Artist entries](/docs/artists).
+These *connections* are in most cases one-way:
+- Song entries "include" artist entries.
+- Album entries "include" song entries.
+
+A new connection with an artist and a song entry needs to be made by editing the song entry. 
+
+A full list of song-related rules is available [here](/rules/songs)
+
+➡️ Next: [Creating song entries](/docs/songs/song-entry-creation/)
+
+Or jump to: [Artist entries](/docs/artists).

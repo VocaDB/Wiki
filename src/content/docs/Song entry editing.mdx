@@ -6,101 +6,125 @@ tags: ["wikipage", "editing", "songs", "documentation", "vocadb"]
 ---
 
 import Navigation from "@/components/markdown/Navigation.astro";
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 
 <Navigation />
 
 This page explains how to edit existing song entries.
 
-[Deleting song entries](/docs/other-guidelines/content-removal-guidelines) | [Merging song entries](/docs/other-guidelines/merging-entries)
+The edit page also includes buttons for [deleting](/docs/other-guidelines/content-removal-guidelines) and [merging](/docs/other-guidelines/merging-entries)  song entries.
 
-- [Songs FAQ](/docs/pinned/vocadb-editing-faq#songs)
+The edit page is split into 4 different tabs:
 
-## Tab: Basic info
+1) Basic info
+2) Artists
+3) Media
+4) Lyrics
+
+## Tab 1: Basic info
+
+The basic info tab includes fields for names, description, song type, original version, duration, BPM, events, publish date, external links, language(s) and the entry status.
 
 ### Names
 
-For general instructions on the "Original language," "Primary name," "Non-English," "Romanized," "English," and "Aliases" fields, refer to the [Entry names and aliases](/docs/other-guidelines/entry-names-and-aliases) page.
+General instructions for entry names (= titles) and aliases are documented [here](/docs/other-guidelines/entry-names-and-aliases).
 
-New non-English translations of song entry names should not be added without a good reason.
+Name rules that are specific to song entries only:
 
-For example, the song entry [ECHO](https://vocadb.net/S/68814) should not receive new **entry name** translations. (No translations of the word "ECHO" should be added to the name/alias fields.)
-
-Some examples of good reasons for adding a non-English translation:
-
-* Translation is used elsewhere (alias).
-    * = Improved searchability
-* Translation is related to the original name.
-    * "Матрёшка" for [Matryoshka](https://vocadb.net/S/368)
-    * = Additional context/value.
-    For example, "マトリョシカ" is from the Russian "Матрёшка", but is also known by its Romanized form "Matryoshka". Therefore, this provides the useful information of 1. the loanword being used and 2. a Romanization of the loanword.
-
-
-#### Song entry-specific name instructions
-
-The title section should only contain the name of the song. Vocalists, song types, producers, etc. should all be removed.
-
-If the song has no name, use the [untitled tag](https://vocadb.net/T/6335/untitled) with an empty placeholder name.
-
-For covers and other derived works, copying the aliases from the original entry is unnecessary.
-
-Remixer names should remain in the song title. For video title trimming:
-
-- Remove clear non-title parts (e.g., original artist credit).
-- Remove the vocalist's name if it is separate from the rest of the title.
-- Remove the song type if it is separate from the rest of the title.
+<RuleEmbed ruleId={101} fields={["id"]}/>
+<RuleEmbed ruleId={102} fields={["id"]}/>
+<RuleEmbed ruleId={29} fields={["id"]}/>
 
 ### Song Description
 
-Include information that doesn't fit into other fields here.
+The song description is for additional and useful information that doesn't fit into other fields.
 
-The description should be objective and neutral. [Verified artists](/docs/artists/artist-verification) can submit subjective comments using the [artist's personal description](/docs/songs/song-entry-page#artists-personal-description). Most of the time, video descriptions are an artist's personal description and should not be added in the description field.
+[GitHub-flavored Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) is supported for formatting.
 
-[GitHub-flavored Markdown](https://docs.github.com/en/get-started/writing-on-github) is supported for formatting.
+<RuleEmbed ruleId={23} fields={["id"]}/>
+<RuleEmbed ruleId={104} fields={["id"]}/>
 
-English translations can be added in a separate field if the original description is in another language.
+[Verified artists](/docs/artists/artist-verification) can submit subjective comments using the [artist's personal description](/docs/songs/song-entry-page#artists-personal-description).
+
+If the original description is non-English, a separate English translation can be added in the field below.
 
 ### Song Type
 
-Song type (`Original song`, `Remix`, `Cover`, ...) is the main categorization of the entry.
+Song type (`Original song`, `Remix`, `Cover`, ...) is the main categorization of the song entry.
 
-#### Original Version
+<RuleEmbed ruleId={108} fields={["id"]}/>
+<RuleEmbed ruleId={125} fields={["id"]}/>
+<RuleEmbed ruleId={126} fields={["id"]}/>
 
-Song entries can be roughly classified as "original" or "derived". "Original" entries are the "root nodes" of the [entry tree structure](https://en.wikipedia.org/wiki/Tree_structure).
+Guidelines for classification:
+- If **vocals are different** but the instrumental is identical, it's likely a **cover**.
+- If the **song structure** or **genre** is different, it's likely a **remix**.
+- If both the instrumental and vocals are changed, we mark it as a **remix**, because remixes take priority over covers.
 
-The `Original Version` field is used for creating this entry tree structure. **If the original version exists as a song entry**, use this field **in the derived entry** to link to the original version. 
+#### Original song
 
-- The song type `Original song` should **not** have any `original versions` specified. The field is hidden when this song type is selected.
+<RuleEmbed ruleId={109} fields={["id"]}/>
 
-- Song types `Remaster`, `Remix`, `Cover`, `Instrumental`, `Mashup`, `Music PV` **should always** specify the `original version`. 
+#### Remaster
 
-- Song types `Drama PV` and `Other` **can** specify an `original version`, if the entry is not "original".
+<RuleEmbed ruleId={116} fields={["id"]}/>
+<RuleEmbed ruleId={117} fields={["id"]}/>
 
-**If the original version does not exist as an entry** (being out-of-scope for example):
+#### Remix
 
-- If the entry is on UtaiteDB, connect it by adding it **as an external link**. This will display it as the "Original version" along with automatic metadata.
+<RuleEmbed ruleId={112} fields={["id"]}/>
+<RuleEmbed ruleId={102} fields={["id"]}/>
+<RuleEmbed ruleId={114} fields={["id"]}/>
+<RuleEmbed ruleId={113} fields={["id"]}/>
 
-- If the original song is out-of-scope, use the [original-out-of-scope](https://vocadb.net/T/3282/original-out-of-scope) -tag along with **a link to the original song** or **a reference in the song description**.
+#### Cover
 
-  - For out-of-scope songs, the original artists *can* be credited in the song description ([example](https://vocadb.net/S/604363)). Direct artist credits through the artist tab **should not be used**, regardless if the original artists have artist entries or not.
+<RuleEmbed ruleId={115} fields={["id"]}/>
+<RuleEmbed ruleId={127} fields={["id"]}/>
 
-- If the out-of-scope original song has **5 or more derived** (remix or cover) song entries on VocaDB, it can be created as a [cover unifier entry](https://vocadb.net/T/6751/out-of-scope-cover-unifier). 
+#### Instrumental
 
-  - The original (out-of-scope) artists should be credited as "custom artists" on the cover unifier entry. If the entry has no related (in-scope) artist entries, it can be created with the [temporary artist entry](https://vocadb.net/Ar/139625). Note that out-of-scope cover unifier entries should not be created for songs that already have a UtaiteDB entry.
+<RuleEmbed ruleId={157} fields={["id"]}/>
+<RuleEmbed ruleId={111} fields={["id"]}/>
+<RuleEmbed ruleId={110} fields={["id"]}/>
 
-Original song can be selected by:
-- A) searching by the song title
-- B) by the VocaDB URL
-- C) with "id:\{song id\}".
+#### Mashup
+
+<RuleEmbed ruleId={121} fields={["id"]}/>
+<RuleEmbed ruleId={123} fields={["id"]}/>
+
+#### Music PV
+
+<RuleEmbed ruleId={118} fields={["id"]}/>
+<RuleEmbed ruleId={119} fields={["id"]}/>
+<RuleEmbed ruleId={120} fields={["id"]}/>
+
+#### Drama PV
+
+<RuleEmbed ruleId={159} fields={["id"]}/>
+
+#### Other
+
+<RuleEmbed ruleId={124} fields={["id"]}/>
+
+### Original version
+
+If the song type is not `Original song`, a separate field will pop up for specifying the `Original version`.
+
+<RuleEmbed ruleId={105} fields={["id"]}/>
+<RuleEmbed ruleId={106} fields={["id"]}/>
+<RuleEmbed ruleId={130} fields={["id"]}/>
+
+Original song can be searched/selected by:
+- A) Song title
+- B) VocaDB URL
+- C) "id:\{song id\}".
 
 The "Find originals" button attempts to find original songs based on the song title. The exact logic is available on [GitHub](https://github.com/VocaDB/vocadb/blob/19012a3971bb96d103901bc7ffc4656b0ea10763/VocaDbWeb/Scripts/Stores/Song/SongEditStore.ts#L386).
 
-If a song C is derived from song B, which in turn is derived from song A, you can **link C to A directly if B has no song entry** (B is out of scope). The skipped version B should be mentioned in entry C. The relevant tag [out-of-scope arrangement](https://vocadb.net/T/10594/out-of-scope-arrangement) should also be added. 
-
-In most cases, the `original version` should be the entry with the **earliest** `publish date`.
-
-If multiple versions of a song are uploaded **simultaneously**, it doesn't generally matter which is picked as the `original version`.
-
-If multiple original versions apply, choose the most relevant entry and mention the rest in the entry description.
+<RuleEmbed ruleId={128} fields={["id"]}/>
+<RuleEmbed ruleId={156} fields={["id"]}/>
+<RuleEmbed ruleId={129} fields={["id"]}/>
 
 Sometimes the entry tree structure grows unintuitive due to conflicting details. Correct entry tree structure can be formed with the following process:
 
@@ -113,185 +137,50 @@ Example: 10 related entries with various different song types by different artis
 
 This means that the `original version` of any entry should not be modified later, assuming no mistakes or missing information. 
 
-#### Song type classification
-
-If multiple song types apply, add them as tags: https://vocadb.net/T/7374/song-types
-
-Song type priority:
-
-- `Mashup`/`Remix`/`Remaster` > `Cover` > `Music PV`
-
-Secondary song types can be added as tags to the entry.
-
-Guidelines for classification:
-- If **vocals are different** but the instrumental is identical, it's likely a **cover**.
-- If the **song structure** or **genre** is different, it's likely a **remix**.
-- If both the instrumental and vocals are changed, we mark it as a **remix**, because remixes take priority over covers.
-
-#### Original song
-
-https://vocadb.net/T/6479/original-song
-
-`Original songs` ("オリジナル曲" in Japanese) are songs that have completely original content and aren't based on other songs. The `original song` is the version of the song that was published first. Later versions are considered derivatives **regardless of who made them**.
-
-Sometimes the producer might publish multiple different versions of a song, usually with different vocals or different lengths, **calling all of them originals**. On VocaDB these `self-covers` and `self-remixes` are classified as `covers` and `remixes`, not `original songs`.
-
-For (original) instrumental album songs, use the `original song` type with the [instrumental tag](https://vocadb.net/T/208). The `instrumental` song type is for **instrumental versions** of original songs.
-
-#### Remaster
-
-https://vocadb.net/T/1519/remaster
-
-A `remaster` or remake ("修正版" or "リマスター版" in Japanese) is an improved version of a song. If the original is replaced by the remaster, it's unnecessary to create a separate entry for the original. The remaster can use the "original song" type.
-
-If a remastered version is made for an album and is not playable online, using the original song entry is acceptable.
-
-A remaster should differ from the original only in terms of mastering, though this term is interpreted loosely in the Vocaloid world. If the new version is significantly different, the remaster song type should not be used.
-
-#### Remix
-
-https://vocadb.net/T/371/remix
-
-A [remix](http://www.merriam-webster.com/dictionary/remix) is a variant of an original recording, often in a different genre. This type is used even for self-remixes, adding the [self-remix tag](https://vocadb.net/T/392/self-remix).
-
-- The original producer should not be added to the song entry if the remix was produced by someone else. Instead, add the [arranger](https://vocadb.net/T/2947)/[remixer](https://vocadb.net/T/371) to the song entry.
-
-- Remixes may or may not involve recording new music, often using samples from the original.
-
-- [Extended](http://vocadb.net/T/3068/extended-version) or [shortened](http://vocadb.net/T/4717/short-version) versions should be classified as remixes.
-
-- Live versions should be classified as remixes with the [live recording tag](http://vocadb.net/T/240/live-recording). Use the original song entry for setlists.
-
-#### [Cover](https://vocadb.net/T/74/cover)
-
-A Cover (カバー曲) is a re-recorded version of a song, usually by a different artist. In the Vocaloid/UTAU world, covers often use a different voicebank while keeping the instrumentals intact.
-
-Outside of the Vocaloid world, a cover implies re-recording of the song, but in the context of Vocaloid, the "cover" term is used when adding Vocaloid vocals to an existing instrumental recording.
-
-- Use the cover type if the song is re-released with new lyrics, adding the [changed lyrics tag](http://vocadb.net/T/2866/changed-lyrics).
-
-- If the original artist re-releases the song with new vocals, use the cover type with the [self-cover tag](http://vocadb.net/T/391/self-cover).
-
-- The original producer should not be added to the song entry if the cover was produced by someone else. Instead, add the [cover artist](https://vocadb.net/T/7368/cover-artist)/[voice manipulator](https://vocadb.net/T/485/voice-manipulator) to the song entry.
-
-- Voice synth songs that include both a voice synth version and a human-sung version (both official) should be tagged with [simultaneous upload](https://vocadb.net/T/4946/simultaneous-upload) if the publish dates are less than a week apart.
-
-  - Mark entries with simultaneous upload as "original songs" unless specified otherwise by the artist.
-
-  - Specify the human-sung version in the **song description** or **external links** with its **publish date**.
-
-  - If the human-sung version is published more than a week before the voice synth version, mark the song as "cover" with the self-cover tag.
-
-  - If the human-sung version is published more than a week after the voice synth version, mention it as usual, but do not add tags.
-
-  - These rules do not apply if both songs have entries on VocaDB.
-
-#### Instrumental
-
-https://vocadb.net/T/208/instrumental
-
-AKA off-vocal or karaoke.
-
-The "Instrumental" song type is used for instrumental versions of songs, where a non-instrumental version with vocals is the original.
-
-Instrumental versions of songs are accepted only as part of album entries. They should be the same as the original version, excluding vocals. If otherwise different, use the remix or cover types with the instrumental tag.
-
-Exclude vocalist credits for off-vocal/karaoke songs that have background/harmony vocals, as these are already credited in the original entry.
-
-#### Mashup
-
-https://vocadb.net/T/3392/mashup
-
-Mashups are songs made by **blending** two or more songs together.
-
-Simple mashups where two songs are simply mixed together are discouraged on VocaDB, unless they're well-known or present on an album.
-
-Songs that mix multiple covers of the same song together (joining multiple vocal tracks) should be labeled as covers.
-
-Currently, it's not possible to specify multiple songs as originals in the "original song" field. They should be mentioned in the song description and/or external links instead.
-
-##### Medley
-
-https://vocadb.net/T/3093
-
-A [medley](http://en.wikipedia.org/wiki/List_of_musical_medleys) is a special case of mashup where songs are played one after another, possibly with overlap. Use the mashup type for medleys, unless the medley is an original song. Add the [medley tag](http://vocadb.net/T/3093/medley).
-
-Focus on quality when adding medleys. Only add those that are remarkable in some way.
-
-#### Music PV
-
-https://vocadb.net/T/7378/music-pv
-
-Terminology:
-- Music PV = "Music video" (PV = Promotional Video)
-
-The `music PV` type is used for **remarkable** PVs of (usually original) songs, whether created by the original producer or someone else.
-
-For (remarkable) **official** music PVs:
-
-- If the music PV has the **same length** as the original AND if the original entry has **no official upload** (album track for example), **use the original entry**.
-
-- Otherwise, create a new entry.
-
-For **unofficial** music PVs:
-
-- Remarkable music PVs can be created as new entries.
-
-  - Note that unofficial music PVs with only out-of-scope characters are allowed if the video has at least 100k views.
-
-- Low-effort PVs (made with a single static image for example) can only be added as "Other" media to the **original entry** if the **song length matches**. New `Music PV` -entries **should not be created for unofficial low-effort PVs**.
-
-Remember to also credit the vocalists for Music PVs. Silent characters (that have no vocals in the PV) **should not be credited as artists**. Model tags (such as [CHAN x CO Miku](https://vocadb.net/T/1641/chan-x-co-miku)) can be used if applicable, regardless whether the character has vocals or not.
-
-#### Drama PV
-
-https://vocadb.net/T/104/drama-pv
-
-Drama PVs focus on story instead of music, often made with [MMD software](http://vocadb.net/T/275/mmd). They should feature a Vocaloid character or be strongly related to Vocaloid/UTAU to be accepted on VocaDB.
-
-- Drama PVs should be self-made/self-directed stories.
-- Copying memes, TV shows or movie scenes are usually not considered drama PVs.
-
-#### [Other](https://vocadb.net/T/10159/other-song-type)
-
-https://vocadb.net/T/10159/other-song-type
-
-For entries that do not belong to any categories above. For example, [Commentary](https://vocadb.net/T/422/commentary).
-
-
 ### Duration
 
-Duration of the song. If the song has multiple video/music embeds (PVs) added, their lengths must match or be within a few seconds. If different PVs have different song lengths, they should be added as separate song entries (except for unrelated [intros](https://vocadb.net/T/6334/unrelated-intro) and [outros](https://vocadb.net/T/6494/unrelated-outro)).
+Duration of the song. 
+
+<RuleEmbed ruleId={131} fields={["id"]}/>
 
 ### BPM
 
-The song [Tempo/BPM](https://en.wikipedia.org/wiki/Tempo) can be added as a specific number or as a range (within 20-1050).
+The song [Tempo/BPM](https://en.wikipedia.org/wiki/Tempo) can be added as a specific number or as a range.
 
 ### Release Event
 
 Release event(s) of the song, if available. For common [holidays](https://vocadb.net/T/6682/holiday) like Christmas, use the corresponding [tag](https://vocadb.net/T/64/christmas) instead.
 
-If the song is included in an album with the same release event, adding the event to the song entry is **redundant**.
+<RuleEmbed ruleId={98} fields={["id"]}/>
 
 ### Publish Date
 
-The earliest **public** publish date of the song (from any album/PV). If empty, the publish date is automatically suggested based on the album and PV links.
+The earliest **public** publish date of the song (from any album/PV). 
+
+If empty, the publish date is automatically suggested based on the album and PV links.
+
+<RuleEmbed ruleId={100} fields={["id"]}/>
 
 ### External Links
 
 Links to related content, for example, off-vocal/karaoke versions on Piapro. 
 
-Links to lyrics should be added to the "Lyrics" tab instead.
+Links to lyrics should be added to the [Lyrics tab](/docs/songs/song-entry-editing#tab-4-lyrics) instead.
 
 Duplicating album and artist links in song entries is **redundant**.
 
-**Direct** download links to media files (such as .mp3 or .flac) and links to file-hosting services (such as Google Drive or Dropbox) are not allowed, even if they're legal. If the content is officially distributed, link the artist's page (e.g., on Piapro or a blog) instead.
+<RuleEmbed ruleId={17} fields={["id"]}/>
+<RuleEmbed ruleId={16} fields={["id"]}/>
+<RuleEmbed ruleId={18} fields={["id"]}/>
+<RuleEmbed ruleId={19} fields={["id"]}/>
 
-- [External links](/docs/other-guidelines/external-links)
+- More on [External links](/docs/other-guidelines/external-links)
 
 ### Language(s)
 
-Song language. Changing the original lyrics language changes this field as well.
+The language of the song vocals. 
+
+Changing the language of the original lyrics updates this field as well.
 
 ### Status
 
@@ -302,47 +191,7 @@ Entry status communicates the level of completeness:
 - **Approved**: The entry has been inspected and approved by a trusted user. Approved entries can only be edited and tagged by trusted users and above.
 - **Locked**: Locked entries can only be edited by moderators and above
 
-#### Finished Song Entry Requirements
-
-Finished song entries should meet the following criteria:
-
-- The song has at least one name, and the original language can't be unspecified.
-- The song has at least one artist in the "producer" role category.
-- Derived song types need the original version specified in the original version field or the song description.
-- Songs with no vocalists need the "instrumental" tag, unless the song type is "Instrumental" or "Drama PV".
-- Song type isn't "Unspecified".
-
-##### Song entry validation errors
-
-From [VocaDb.Model.Resources.json](https://github.com/VocaDB/vocadb/blob/60325c247287e2f0ca2e22a2604ac5a4c5e56898/VocaDbWeb/public/locales/quc/VocaDb.Model.Resources.json#L64):
-
-- DuplicateArtist (automatically fixed when the entry is saved), corresponds to [Rule: No duplicate information](/docs/pinned/rule-reference#rule-no-duplicate-information).
-- NeedArtist, corresponds to [Rule: Artist credit required](/docs/pinned/rule-reference#rule-artist-credit-required).
-- NeedOriginal, corresponds to [Rule: Specify original](/docs/pinned/rule-reference#rule-specify-original).
-- NeedProducer, corresponds to [Rule: Producer entry credits required](/docs/pinned/rule-reference#rule-producer-entry-credits-required).
-- NeedReferences, corresponds to [Rule: Song content policy: Song source required](/docs/pinned/rule-reference#rule-song-content-policy-song-source-required).
-- NeedType, corresponds to [Rule: Correct entry subtype required](/docs/pinned/rule-reference#rule-correct-entry-subtype-required).
-- NonInstrumentalSongNeedsVocalists, corresponds to [Rule: Vocalist entry credit required](/docs/pinned/rule-reference#rule-vocalist-entry-credit-required) & [Rule: Instrumental-tag](/docs/pinned/rule-reference#rule-instrumental-tag).
-- RedundantEvent, corresponds to [Rule: No redundant events](/docs/pinned/rule-reference#rule-no-redundant-events)
-- RedundantRoles (deprecated rule)
-- UnspecifiedNames, corresponds to [Rule: Original language required](/docs/pinned/rule-reference#rule-original-language-required).
-
-#### Criteria for Approving Songs
-
-##### Mandatory Criteria
-
-- Entry is finished (no edit warnings).
-- Lyrics in the original language (unless instrumental or a song with [no lyrics](https://vocadb.net/T/310/no-lyrics)).
-- All participating artists are properly credited, including lyricist, illustrator, mastering, etc. (default roles can be used).
-- Title is Romanized and translated into English (if appropriate).
-
-##### Recommended Criteria
-
-- Entry is at least a week old (to ensure the artist isn't making corrections or uploading to more services).
-- Media for at least two services (counting reprints).
-- Romanized lyrics and translated lyrics in English.
-
-## Tab: Artists
+## Tab 2: Artists 🚧
 
 In this tab, you can add or remove artist entries that participated in the song.
 
@@ -485,7 +334,7 @@ Japanese: 調声
 - Use the vocal data provider role if existing vocal data from another song was used.
 - Corresponding artist types: [Cover artist](https://vocadb.net/T/7368/cover-artist) & [Music producer](https://vocadb.net/T/300/music-producer).
 
-## Tab: Media
+## Tab 3: Media
 
 Songs may contain any number of embedded media files (Promotional Videos = PVs) on Niconico (NND), YouTube, Bilibili, Vimeo, or audio streams on Piapro or SoundCloud. The supported media services are fully listed [here](/docs/other-guidelines/supported-streaming-services).
 
@@ -525,7 +374,7 @@ For some songs, only "Other" type PVs may exist, where an authorized/official PV
 
 Verified artists can use VocaDB to host their songs. Currently, only files in the .mp3 format are supported, with a 20MB file size limit. The PV type will automatically be "original".
 
-## Tab: Lyrics
+## Tab 4: Lyrics
 
 Lyrics can be added, along with romanizations and translations. Multiple translations are supported.
 

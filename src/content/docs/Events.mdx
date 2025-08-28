@@ -5,78 +5,68 @@ parent: Secondary-entry-types
 tags: ["wikipage", "editing", "events", "documentation", "vocadb"]
 ---
 
-🚧
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 
-Events: https://vocadb.net/Event
+[Event entries](https://vocadb.net/Event) are for physical or digital voice synth related events.
 
-Event creation URL:
-https://vocadb.net/Event/Edit
+Event entries can be created from: https://vocadb.net/Event/Edit
 
-Event editing URL: https://vocadb.net/Event/Edit/{event_id} ([example, '3/9 Miku day 2008'](https://vocadb.net/Event/Edit/1740))
+<RuleEmbed ruleId={95} fields={["id"]}/>
+<RuleEmbed ruleId={96} fields={["id"]}/>
+<RuleEmbed ruleId={98} fields={["id"]}/>
 
-Event page URL:
-https://vocadb.net/E/{event_id} ([example, '3/9 Miku day 2008'](https://vocadb.net/E/1740/39-miku-day-2008))
+A full list of event related rules is available [here](/rules/events)
 
----
+## Event types
 
-[Albums](/docs/albums/album-entry-editing#Release-event) and [songs](/docs/songs/song-entry-editing#Release-event) can be connected to a release event. This connection indicates that the album or song was released **during** or **for** that event. For physical events this generally means that the album was first distributed at that event, so the release event date matches album release date.
+There are two types of events:
 
-Examples of events include **physical events** such as [The Voc@loid M@ster](https://vocadb.net/Es/1) and [Comiket](https://vocadb.net/Es/3), and **virtual events** such as [APOLLO](https://vocadb.net/Es/30) and the character birthdays.
+1) Series events: Event is a part of an [event series](/docs/secondary-entry-types/event-series)
 
-For virtual events it's possible that the release date doesn't match exactly with the event date, but usually it's close. For example, for character birthdays the albums might be released a week ahead. In this case it's still **acceptable** to connect the album or song to the release event, as long as the artist or publisher **officially states** that the album or song was released for that event.
+- Series name and event category are inherited to reduce duplicate information.
 
-In case of an album song, connecting both the album and song to the same event is generally **redundant** and should be avoided.
-
-When adding an event to a song or album, you can select an existing event, or create a new event from the entry edit page. In case of a new event, the system tries to make an **intelligent guess** regarding the event series. If no series is found, the event is created as a standalone event, which can later be connected to a series if needed. Whenever **creating a new event from the entry edit page**, please make sure that the **series is selected correctly**.
-
-Events can be [tagged](/docs/secondary-entry-types/tags) and event participants can be credited through [artist entries](/docs/artists/artist-entry-page).
+2) Standalone events
 
 ## Event categories
 
-- **Album release fair** (AKA. doujin fair): For conventions with the primary intention of selling albums. This includes Comiket, The Voc@loid M@ster and M3.
-- **Character anniversary**: Character birthdays (release dates).
-- **Club**: DJ party events.
-- **Concert**: Music concerts such as [Magical Mirai](https://vocadb.net/Es/81/hatsune-miku-magical-mirai).
-- **Contest**: Song contests such as [ProSeka NEXT](https://vocadb.net/Es/260/proseka-next)
-- **Festival**: Song posting festivals such as [Song Title Unification Festival](https://vocadb.net/Es/310/kyokumei-touitsu-matsuri)
-- **Convention**: For generic conventions such as [Nico Nico Chokaigi](https://vocadb.net/Es/77/nico-nico-chokaigi).
-- **Other**: Events that do not fit into any of the categories above.
+<RuleEmbed ruleId={97} fields={["id"]}/>
 
-## Event setlists
+### Album release fair
 
-A setlist can be created by connecting a song list to an event entry. Most of the information about the concert should go to the event entry, with the song list only containing the list of songs.
+(AKA. doujin fair): For conventions with the primary intention of selling albums. This includes Comiket, The Voc@loid M@ster and M3.
 
-Generally the original version should be preferred for the setlist, regardless of any [live recording -entries](https://vocadb.net/T/240/live-recording). 
+### Character anniversary
 
-## Entry type: Event Series
+Character birthdays (release dates).
 
-(Event) series is an entry type for categorizing multiple **related** events.
+### Club
 
-Series creation URL:
-https://vocadb.net/Event/EditSeries
+DJ party events.
 
-Series editing URL:
-https://vocadb.net/Event/EditSeries/{series_id} ([example, 3/9 Miku day](https://vocadb.net/Event/EditSeries/146))
+### Concert
 
-Series page URL:
-https://vocadb.net/Es/{series_id} ([example, 3/9 Miku day](https://vocadb.net/Es/146/39-miku-day))
+Music concerts such as [Magical Mirai](https://vocadb.net/Es/81/hatsune-miku-magical-mirai).
 
-## Entry type: Venues
+A song list with a [concert setlist](https://wiki.vocadb.net/docs/secondary-entry-types/song-lists#1-concert-setlists) category can be connected to any event entry.
 
-Venue is an entry type for managing details for the (physical) event location.
+- Most of the information about the concert should go to the event entry.
 
-Venue data fields include:
+### Contest
 
-- Coordinates
-- Country/Region
-- Address
-- Name/Links/Description/etc.
+Song contests such as [ProSeka NEXT](https://vocadb.net/Es/260/proseka-next).
 
-Venue creation URL:
-https://vocadb.net/Venue/Edit
+### Festival
 
-Venue editing URL:
-https://vocadb.net/Venue/Edit/{venue_id} ([example, Makuhari Messe](https://vocadb.net/Venue/Edit/1))
+Song posting festivals such as [Song Title Unification Festival](https://vocadb.net/Es/310/### umei-touitsu-matsuri).
 
-Venue page URL:
-https://vocadb.net/Venue/Details/{venue_id} ([example, Makuhari Messe](https://vocadb.net/Venue/Details/1))
+### Convention
+
+For generic conventions such as [Nico Nico Chokaigi](https://vocadb.net/Es/77/nico-nico-chokaigi).
+
+### Other
+
+Events that do not fit into any of the categories above.
+
+Events can be [tagged](/docs/secondary-entry-types/tags) and event participants can be credited through [artist entries](/docs/artists/artist-entry-page).
+
+➡️ Next: [Event series](/docs/secondary-entry-types/event-series)

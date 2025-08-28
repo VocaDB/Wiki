@@ -5,174 +5,146 @@ parent: Secondary-entry-types
 tags: ["wikipage", "documentation", "editing", "tags", "vocadb"]
 ---
 
-## Introduction
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 
-Tags are labels that can be added to all entry types (Artists, Albums, Songs, ...). Tags allow users to link entries together by any sensible properties they can come up with. Tags can be edited more freely than other fields and some of them may even be considered [subjective](https://vocadb.net/T/3054). Therefore tags are **based on voting**. Tag votes are visible and removable to [trusted users](https://wiki.vocadb.net/docs/documentation/user-groups#trusted-user) and above. 
+[Tags](https://vocadb.net/Tag) are labels that can be added to all [entry types](/docs/other-guidelines/entry-types) (Artists, Albums, Songs, ...).
+
+Tags can be edited more freely than other fields and some of them may even be considered [subjective](https://vocadb.net/T/3054). Therefore tags are **based on voting**. Tag votes are visible and removable to [trusted users](/docs/documentation/user-groups#trusted-user) and above. 
 
 Tags are constructed by a hierarchy system: Tags are displayed as a [tree structure](https://en.wikipedia.org/wiki/Tree_structure), with the "parent" at the top and the children and siblings at the bottom.
 
-The list of tags that have mentioned somewhere on the wiki are listed at [mentioned tags](/docs/secondary-entry-types/mentioned-tags).
+An external program exists ([VocaDB-Tag-Graph](https://github.com/Shiroizu/VocaDB-Tag-Graph)) for visualizing the full tag graph.
+
+A full list of tag-related rules is available [here](/rules/tags)
 
 ## Tagging entries
 
-In most cases, child tags should **describe a subset** of the parent tag. Adding [Anime](https://vocadb.net/T/6611/anime) tag on an entry already tagged with [Sailor Moon](https://vocadb.net/T/6523/bishoujo-senshi-sailor-moon) is redundant. This doesn't impact the searchability, as the search can be performed with "Include child tags" filter.
-
-- There are cases where the subset relationship isn't as clear. Genre tags for example utilize the tag hierarchy for historical and stylistic origins.
-
-- Additionally, fusion tags such as [folk metal](https://vocadb.net/T/1568/folk-metal) are neither subsets of [metal](https://vocadb.net/T/262/metal) or [folk music](https://vocadb.net/T/159/folk-song). For tags with multiple separate parent tag candidates, pick the one that makes the most sense.
-
-Tags shouldn't be used blindly - always read the tag description in unclear cases.
-
-Generally, you should **avoid** tagging information that is **already provided by more specialized fields**. For example, tagging albums or songs with artist names is **redundant** because the artists list already handles this better. Likewise, tagging cover songs with "cover" is useless if the song type is already cover.
-
-Adding tag votes to objective tags is redundant, unless there is a need to "highlight" the tag. By default, entry pages display four most voted tags before clicking "Show all".
+<RuleEmbed ruleId={21} fields={["id"]}/>
+<RuleEmbed ruleId={22} fields={["id"]}/>
+<RuleEmbed ruleId={59} fields={["id"]}/>
+<RuleEmbed ruleId={168} fields={["id"]}/>
+<RuleEmbed ruleId={152} fields={["id"]}/>
 
 ## Creating and editing tags
 
-Every tag should reflect some well-defined concept. For this reason, tag entries **must** have:
-- A description (to clearly state the tag's purpose)
-- A category 
-- Usage on **at least one** entry (besides for tags of the "Copyright" category, whose [requirements are different](/docs/secondary-entry-types/tags#copyrights)).
+<RuleEmbed ruleId={149} fields={["id"]}/>
+<RuleEmbed ruleId={147} fields={["id"]}/>
+<RuleEmbed ruleId={150} fields={["id"]}/>
 
-Furthermore, tags applied to album or artist entries should be used on a sizable portion of the album/artist's songs. Additionally, do not add tags based solely on album art or an artist's profile picture.
-
-Tags should add **new information** to the entry. Creating "derived tags" that replicate information from the existing fields is **discouraged**, unless the tag is useful enough (see the tag purposes below) and there is no easy/reliable way to search/list the relevant information ([duet](https://vocadb.net/T/3180) for example).
-
-Generally tags should not be created or used for tracking **visual details**. This includes the creation of visual detail tags in the Vocalist category.
-
-A tag's description should explain its intended usage in clear English language. For normal tags, skip generic usage instructions such as "tag for albums/artist/songs...". Use "Valid for" restrictions instead.
-
-Including external links to objective sources, such as Wikipedia, is recommended.
-
-### Naming tags
-
-Use common English language rules for casing. For example, Final Fantasy (proper noun) vs. progressive rock. Abbreviations such as “RPG” should also be written in capital letters.
-
-Many tags are language-neutral, meaning that they're not tied to any particular language. Examples of such tags are genres (such as rock) and themes (such as summer). For these tags, the non-English name should be translated to Japanese for practical reasons.
-
-It is not required **(or recommended)** to add romanizations for the tags. Exceptions to this are tags such as [sakura](https://vocadb.net/T/54/cherry-blossom), that are simple, well-known, and more searchable with the romanization.
-
-Unlike with other entry types, tag aliases do not need to be "real" aliases of the primary name. Tag that is used for multiple similar purposes can include multiple distinct "aliases":
-
-[T/9493/teeth](https://vocadb.net/T/9493/teeth) includes:
-- toothbrush
-- toothpaste
-- tooth fairy
-
-This improves tag searchability and avoids "duplicate" tags that are conceptually very similar.
-
-### Tag purposes
-
-All tags should have at least one purpose:
-
-- Discovery: Tag is used for discovering related entries (all genre tags for example).
-
-- Search: Tag is used for searching or locating something already familiar ([animated PV](https://vocadb.net/T/3287) for example).
-
-- Statistical: Tag is used for calculating different statistics ([western producer](https://vocadb.net/T/453) for example).
-
-- Informatory: Tag is used to convey information that doesn't fit into the entry ([entry missing artists](https://vocadb.net/T/2808/entry-missing-artists) for example).
+<RuleEmbed ruleId={153} fields={["id"]}/>
+<RuleEmbed ruleId={151} fields={["id"]}/>
 
 ## Tag categories
 
-VocaDB has specific tag categories listed and explained below.
-
-They are the highest hierarchy in the tag system and every tag **must be attached** to one.
+<RuleEmbed ruleId={148} fields={["id"]}/>
 
 Ideally:
-- Tags in the same category share the same usage rules.
 
-- Tags belong to only one category.
+- Tags in the same category share the same usage rules.
+- Tags belong to only one clear category.
+
+The available tag categories are listed below.
 
 ### Genres
 
 Tags that represent a [musical genre](https://en.wikipedia.org/wiki/Music_genre).
 
-* Obscure genre tags should be avoided. 
-* Genre tags that are hard to tell apart and/or are inconsistently used by artists should be merged in most cases.
+<RuleEmbed ruleId={171} fields={["id"]}/>
+
+- [List of all genre tags](https://vocadb.net/Search?searchType=Tag&categoryName=Genres&sort=UsageCount)
 
 ### Animation
 
 Tags that describe the song's video. 
 
-Again, **avoid** creating tags for tracking purely visual details.
+<RuleEmbed ruleId={152} fields={["id"]}/>
 
-Common exceptions:
-- Tags for MMD-related ([ISAO](https://vocadb.net/T/4839/isao)-models)
-- Tags for the general PV style ([comics PV](https://vocadb.net/T/3304/comics-pv))
-- Tags for information/meta-details ([mismatching vocalist PV](https://vocadb.net/T/4879/mismatching-vocalist-pv))
-
+- [List of all animation tags](https://vocadb.net/Search?searchType=Tag&categoryName=Animation&sort=UsageCount)
 
 ### Composition
+
 Tags related to the [composition](https://en.wikipedia.org/wiki/Musical_composition) of a song.
+
+- [List of all composition tags](https://vocadb.net/Search?searchType=Tag&categoryName=composition&sort=UsageCount)
 
 ### Copyrights
 
 Tags related to any sort of intellectual property (IP).
 
-Copyright tags can be created for a few reasons:
+<RuleEmbed ruleId={170} fields={["id"]}/>
 
-* A) Official: IP utilizes voice synth music within the product (anime/game/etc).
-* B) Official: IP utilizes voice synth music to promote the product.
-* C) Unofficial: (Original) fansongs inspired by the IP ([Parody](https://vocadb.net/T/330) songs, [Image songs](https://vocadb.net/T/7989), etc).
-* D) Unofficial: Derived (remix/cover) songs of official IP music.
-
-Avoid creating tags for C and D if they do not apply to **at least 5** entries.
-
+- [List of all copyrights tags](https://vocadb.net/Search?searchType=Tag&categoryName=copyrights&sort=UsageCount)
 
 ### Derivative 
+
 Derivatives are (typically) fanmade (unofficial) voice synth voice configurations (derivatives).
 [Akita Neru](https://vocadb.net/T/7204/akita-neru) is probably the most well-known of these.
 
-By default, derivative characters (fanmade or official) **without their own voicebank** should be indicated with tags instead of artist entries.
+<RuleEmbed ruleId={74} fields={["id"]}/>
+
+- [List of all derivative tags](https://vocadb.net/Search?searchType=Tag&categoryName=derivative&sort=UsageCount)
 
 ### Distribution
 
 Tags related to how the song/album or content related to them is distributed.
 
-Do not make tags for publishers, instead add them as artist entries under the Label type.
-
 Examples:
 
-[album-exclusive song](https://vocadb.net/T/9870/album-exclusive-song): Songs only released on albums, without official media uploads.
-[free](https://vocadb.net/T/160): Songs, albums, and voicebanks that have official, free downloads available. 
-[vocal data available](https://vocadb.net/T/6326/vocal-data-available): Songs where the vocal data is available for download.
+- [album-exclusive song](https://vocadb.net/T/9870/album-exclusive-song): Songs only released on albums, without official media uploads.
+- [free](https://vocadb.net/T/160): Songs, albums, and voicebanks that have official, free downloads available. 
+- [vocal data available](https://vocadb.net/T/6326/vocal-data-available): Songs where the vocal data is available for download.
+
+Do not make tags for publishers, instead add them as artist entries under the Label type.
+
+- [List of all distribution tags](https://vocadb.net/Search?searchType=Tag&categoryName=distribution&sort=UsageCount)
 
 ### Editor notes
 
+- [List of all editor notes tags](https://vocadb.net/Search?searchType=Tag&categoryName=Editor%20notes&sort=UsageCount)
+
 Editor notes tags can generally be sorted into two categories:
-1. Tags intended to be temporary, to be replaced if more information is found. 
 
-	Examples:
-	- [possible duplicate](https://vocadb.net/T/344)
-	- [temporary cover art](https://vocadb.net/T/429)
-	- [tracklist incomplete](https://vocadb.net/T/432)
-2. Tags that convey some sort of helpful information related to the entry that does not fit in other fields.
+1) Tags intended to be temporary, to be replaced if more information is found. Examples: 
+- [possible duplicate](https://vocadb.net/T/344)
+- [temporary cover art](https://vocadb.net/T/429)
+- [tracklist incomplete](https://vocadb.net/T/432)
 
-	Examples:
-	- [confirmed original bank](https://vocadb.net/T/9786) 
-	- [out of scope (cover unifier)](https://vocadb.net/T/6751)
-	- [special purpose artist](https://vocadb.net/T/2870)
+2) Tags that convey some sort of helpful information related to the entry that does not fit in other fields. Examples:
+- [confirmed original bank](https://vocadb.net/T/9786) 
+- [out of scope (cover unifier)](https://vocadb.net/T/6751)
+- [special purpose artist](https://vocadb.net/T/2870)
 
 ### Event
 
-Tags that better fit as tag entries instead of event entries, and tags used to group events.
+Category for tags that better fit as tag entries instead of [event entries](/docs/secondary-entry-types/events).
+
+- [List of all event tags](https://vocadb.net/Search?searchType=Tag&categoryName=event&sort=UsageCount)
 
 ### Games
 
-The category is for video games that include pre-existing music in the game. For example, [Senbonzakura](https://vocadb.net/S/8394) was published on Nico Nico Douga before its inclusion in [Project Diva F](https://vocadb.net/T/358)
+Tag category for video games that include pre-existing music in the game. 
+
+- For example, [Senbonzakura](https://vocadb.net/S/8394) was published (on NND) before its inclusion in [Project Diva F](https://vocadb.net/T/358).
 
 Games that do not include any pre-existing vocal synth songs in their soundtrack should be under the Copyrights category instead.
+
+- [List of all games tags](https://vocadb.net/Search?searchType=Tag&categoryName=games&sort=UsageCount)
 
 ### Instruments
 
 Tags for tracking [musical instruments](https://en.wikipedia.org/wiki/Musical_instrument) used in songs.
 
+- [List of all instruments tags](https://vocadb.net/Search?searchType=Tag&categoryName=instruments&sort=UsageCount)
+
 ### Jobs
 
 Tags to use as secondary artist types. For example, an artist entry tagged with [lyricist](https://vocadb.net/T/246) conveys that the artist collaborated in another song in the lyricist role.
 
-### Languages [Deprecated]
+<RuleEmbed ruleId={93} fields={["id"]}/>
+
+- [List of all jobs tags](https://vocadb.net/Search?searchType=Tag&categoryName=jobs&sort=UsageCount)
+
+### Languages (Deprecated)
 
 Use the relevant language fields instead.
 
@@ -180,41 +152,44 @@ Use the relevant language fields instead.
 
 Tags related to a song's lyrics, such as [changed lyrics](https://vocadb.net/T/2866/changed-lyrics), [no lyrics](https://vocadb.net/T/310/no-lyrics), etc.
 
+- [List of all lyrics tags](https://vocadb.net/Search?searchType=Tag&categoryName=lyrics&sort=UsageCount)
+
 ### Media
 
 Album media types such as [Blu-ray](https://vocadb.net/T/42/blu-ray), [vinyl](https://vocadb.net/T/3375/vinyl), etc.
+
+- [List of all media tags](https://vocadb.net/Search?searchType=Tag&categoryName=media&sort=UsageCount)
 
 ### Series
 
 Tags are one way of representing song series.
 
-[Song lists](/docs/secondary-entry-types/song-lists#Compared-to-tags) may also be used.
+[Song lists](/docs/secondary-entry-types/song-lists#song-lists-vs-tags) may also be used.
+
+- [List of all series tags](https://vocadb.net/Search?searchType=Tag&categoryName=series&sort=UsageCount)
 
 ### Sources
 
 Information about a song's origin, like that it was produced in [FL Studio](https://vocadb.net/T/3257/fl-studio) or that it was an artist's [first work](https://vocadb.net/T/158).
 
+- [List of all sources tags](https://vocadb.net/Search?searchType=Tag&categoryName=sources&sort=UsageCount)
+
 ### Subjective
 
 Subjective theme tags, generally related to the emotional "feel" or "tone" of a song.
+
+- [List of all subjective tags](https://vocadb.net/Search?searchType=Tag&categoryName=subjective&sort=UsageCount)
 
 ### Themes
 
 Tags that convey the theme of the song/album.
 
+- [List of all themes tags](https://vocadb.net/Search?searchType=Tag&categoryName=themes&sort=UsageCount)
+
 ### Vocalists
 
 Tags that convey additional information about (synth) vocalists.
 
-## Song lists vs Tags
+- [List of all vocalists tags](https://vocadb.net/Search?searchType=Tag&categoryName=vocalists&sort=UsageCount)
 
-Trusted users are able to create public song lists called pools. Pools can be used for largely the same purpose as tags, grouping songs together based on some common theme. There are a few differences between tags and song lists.
-
-* Pools are listed on the featured song lists page.
-* Pools are not voted on, unlike tags. All pools are equal.
-* Only trusted users are able to edit pools. Any user can vote on tags. Thus tags are easier to use, but also more unreliable.
-* Pools may contain only songs. Tags can be applied to albums and artists as well.
-* Songs in a pool can be ordered. Songs with a specified tag are unordered.
-* You can add notes to songs in a pool.
-
-Next: [Events](/docs/secondary-entry-types/events).
+➡️ Next: [Events](/docs/secondary-entry-types/events).

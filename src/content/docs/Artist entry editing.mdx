@@ -6,50 +6,51 @@ tags: ["wikipage", "editing", "artists", "documentation", "vocadb"]
 ---
 
 import Navigation from "@/components/markdown/Navigation.astro";
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 
 <Navigation />
 
-This page explains how existing artist entries are edited.
+This page explains how to edit existing artist entries.
 
-URL: https://vocadb.net/Artist/Edit/x (replace x with some artist id)
+The edit page also includes buttons for [deleting](/docs/other-guidelines/content-removal-guidelines) and [merging](/docs/other-guidelines/merging-entries) artist entries.
 
-[Deleting artist entries](/docs/other-guidelines/content-removal-guidelines) | [Merging artist entries](/docs/other-guidelines/merging-entries)
+The edit page is split into 2 different tabs:
 
-- [Artists FAQ](/docs/pinned/vocadb-editing-faq#artists)
+1) [Basic info](/docs/artists/artist-entry-editing#tab-1-basic-info)
+2) [Additional pictures](/docs/artists/artist-entry-editing#tab-2-additional-pictures)
 
-## Tab: Basic info
+## Tab 1: Basic info
+
+The basic info tab includes fields for names, main picture, description, artist type, associated artists, groups and circles, base voicebank, voicebank release date, external links, language(s) and the entry status.
 
 ### Names
 
-For general entry instructions regarding fields "Original language", "Primary name", "Non-English", "Romanized", "English", "Aliases":
+General instructions for entry names (= titles) and aliases are documented [here](/docs/other-guidelines/entry-names-and-aliases).
 
-- [Entry names and aliases](/docs/other-guidelines/entry-names-and-aliases)
+Name rules that are specific to artist entries:
 
-#### Artist entry -specific name instructions
-
-Real-life names should not be added as aliases, if they're not used by other artists/sources. Real-life names can still be added, if that's the main artist name.
-
-It's common to see artists credited with additional [honorifics](https://en.wikipedia.org/wiki/Japanese_honorifics). These should not be added, unless the artist uses those themselves: [Gedou-san](https://vocadb.net/Ar/1823) for example.
-
-If the artist name is not available, the [anonymous artist -tag](https://vocadb.net/T/6403/anonymous-artist) can be used along with some placeholder name.
-
-Composite names consisting of parts that are pronounced the same way in different writing systems should generally be avoided (with some exceptions). Every field should contain only one version of the name:
-- "Giga(ギガ)" is incorrect → should be separated into two names: Giga and ギガ
-- "Bumpyうるし(Urushi)"" is incorrect → should be separated into two names: Bumpyうるし and BumpyUrushi
-
-If there is no separate entry for the artist's **solo** circle, the circle name can be included as an alias. For these, the circle name should be mentioned in the artist description.
+<RuleEmbed ruleId={76} fields={["id"]}/>
+<RuleEmbed ruleId={77} fields={["id"]}/>
+<RuleEmbed ruleId={65} fields={["id"]}/>
+<RuleEmbed ruleId={88} fields={["id"]}/>
+<RuleEmbed ruleId={83} fields={["id"]}/>
+<RuleEmbed ruleId={80} fields={["id"]}/>
 
 ### Main picture
 
-All pictures should be related to the artist, not their works.
+Main picture of the artist. 
 
-Watch out for pictures that look like avatars but are actually part of the **default avatar collection** for the website. These should not be added. (TODO list of default avatars per site, piapro for example)
-
-More on [Choosing the main picture for artist entries](/docs/artists/choosing-the-main-picture-for-artist-entries)
+<RuleEmbed ruleId={84} fields={["id"]}/>
+<RuleEmbed ruleId={165} fields={["id"]}/>
 
 ### Artist description
 
-For other neutral and objective information that does not belong to any other field.
+The artist description is for additional and useful information that doesn't fit into other fields.
+
+[GitHub-flavored Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) is supported for formatting.
+
+<RuleEmbed ruleId={71} fields={["id"]}/>
+<RuleEmbed ruleId={23} fields={["id"]}/>
 
 Subjective artist descriptions can be added with a blockquote along with the source:
 
@@ -63,16 +64,17 @@ Which displays as:
 From [source text](https://example.com/):
 > I make music
 
+If the original description is non-English, a separate English translation can be added in the field below.
 
-[GitHub-flavored Markdown](https://docs.github.com/en/get-started/writing-on-github) is supported for formatting.
-
-English translation can be added/moved to a separate field below, if the original description exists in a non-English language.
+<RuleEmbed ruleId={82} fields={["id"]}/>
 
 ### Artist type
 
-Artist type specifies the **most common** role that the artist participates in. Additional roles can be specified with [tags](https://vocadb.net/T/7372/artists).
+Artist type (`Music Producer`, `Lyricist`, `Circle`, `UTaU` ...) is the main categorization of the artist entry.
 
-Be careful when changing the artist type, since it changes the default role for all of their existing entries.
+<RuleEmbed ruleId={81} fields={["id"]}/>
+
+Be careful when changing artist's type when that artist already has songs/albums added. If you do this, generally you need to make sure that artist's roles are still correct, because **changing the type changes the default role for all those existing entries.**
 
 Different artist types are described at [Artist types](/docs/artists/artist-types).
 
@@ -90,29 +92,31 @@ Multiple associated artists can be added with the same role (multiple illustrato
 
 #### Character designer
 
-- Only needs to be specified if it's different from the illustrator.
+- Character designer of the character/voicebank. 
+
+<RuleEmbed ruleId={85} fields={["id"]}/>
 
 #### Manager
 
 - Manager of the character/voicebank.
 
-- Only needs to be specified if it's different from the voice provider.
-
 #### Voice provider
 
 - Person who provided their voice for the voicebank.
+
+<RuleEmbed ruleId={86} fields={["id"]}/>
 
 ### Groups and circles
 
 For grouping related artists under a shared group/circle.
 
-If an artist leaves a group/circle, generally it's best to mention this in the artist & circle description instead of emptying this field.
-
-Solo circles can be added as artist aliases instead creating a separate entry (circle mentioned in the entry description).
+<RuleEmbed ruleId={87} fields={["id"]}/>
+<RuleEmbed ruleId={82} fields={["id"]}/>
+<RuleEmbed ruleId={83} fields={["id"]}/>
 
 ### Base voicebank
 
-Base voicebank if available.
+<RuleEmbed ruleId={91} fields={["id"]}/>
 
 For example, the base voicebank for [Megpoid Talk](https://vocadb.net/Ar/21629) is [GUMI](https://vocadb.net/Ar/3).
 
@@ -120,56 +124,37 @@ For example, the base voicebank for [Megpoid Talk](https://vocadb.net/Ar/21629) 
 
 The release date of the voicebank.
 
+<RuleEmbed ruleId={92} fields={["id"]}/>
+
 ### External links
 
 External links relevant to this entry. 
 
-Link category:
+<RuleEmbed ruleId={17} fields={["id"]}/>
+<RuleEmbed ruleId={16} fields={["id"]}/>
+<RuleEmbed ruleId={19} fields={["id"]}/>
+<RuleEmbed ruleId={20} fields={["id"]}/>
 
-- Official: Artist's official websites and social media handles and other public links.
-- Commercial: Authorized sales such as Amazon and CDJapan.
-- Reference: Fansites with useful information such as wikis.
-- Other: Links that do not fit into anything above.
-
-More on the [External links -page](/docs/other-guidelines/external-links).
+- More on [External links](/docs/other-guidelines/external-links)
 
 ### Language(s)
 
 Supported voice synth languages.
 
+<RuleEmbed ruleId={89} fields={["id"]}/>
+
 These are inherited to any derived voicebank and can be overwritten when necessary.
 
 ### Status
 
-Entry status communicates the level of completeness.
+Entry status communicates the level of completeness:
 
-- Draft = Entry is missing crucial information. This status indicates that additional information needs to be added or corrected.
-- Finished = The entry has all the necessary information, but it hasn't been inspected by a trusted user yet.
-- Approved = The entry has been inspected and approved by a trusted user. Approved entries can only be edited by trusted users and above.
-- Locked = Typically used for protecting entries from vandalism or unnecessary editing. Can only be edited by moderators and above.
+- **Draft**: Entry is missing crucial information. This status indicates that additional information is needed or corrections are requested.
+- **Finished**: The entry has all the necessary information but hasn't been inspected by a trusted user yet.
+- **Approved**: The entry has been inspected and approved by a trusted user. Approved entries can only be edited and tagged by trusted users and above.
+- **Locked**: Locked entries can only be edited by moderators and above
 
-#### Finished artist entry requirements
-
-Finished artist entries should meet the following criteria:
-
-- Artist type is specified
-- [Name](/docs/artists/artist-entry-editing#tab-Basic-info)
-- [Description](/docs/artists/artist-entry-editing#Artist-description) OR [External link](/docs/artists/artist-entry-editing#External-links)
-
-#### Artist entry validation errors
-
-From [VocaDb.Model.Resources.json](https://github.com/VocaDB/vocadb/blob/60325c247287e2f0ca2e22a2604ac5a4c5e56898/VocaDbWeb/public/locales/quc/VocaDb.Model.Resources.json#L54):
-
-- NeedReferences, corresponds to [Rule: Artist source required](/docs/pinned/rule-reference#rule-artist-source-required).
-- NeedType, corresponds to [Rule: Correct entry subtype required](/docs/pinned/rule-reference#rule-correct-entry-subtype-required).
-- UnnecessaryPName, corresponds to [Rule: No producer name duplication](/docs/pinned/rule-reference#rule-no-producer-name-duplication).
-- UnspecifiedNames, corresponds to [Rule: Original language required](/docs/pinned/rule-reference#rule-original-language-required).
-
-#### Criteria for approving artists
-
-TODO
-
-## Tab: Additional pics
+## Tab 2: Additional pics
 
 Additional (official) pictures for the artist. Most useful for voice synth entries.
 
@@ -177,6 +162,10 @@ Allowed types: .bmp, .gif, .jpg, .jpeg, .png. Maximum size is 8 MB.
 
 ## Update notes
 
-Entry update notes are optional, but should **always** be used if the edit reason or the information source is not obvious.
+Update notes are optional but should **always** be used if the edit reason or information source is not obvious.
 
-In some cases, the entry description or the comment section might be more suitable to use.
+If necessary, use the entry description for visibility or the comment section to ask questions.
+
+<RuleEmbed ruleId={1} fields={["id"]}/>
+
+➡️ Next: [Albums](/docs/albums)

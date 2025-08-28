@@ -6,20 +6,32 @@ tags: ["wikipage", "editing", "albums", "documentation", "vocadb"]
 ---
 
 import Navigation from "@/components/markdown/Navigation.astro";
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 
 <Navigation />
 
-[Album entry creation page](https://vocadb.net/Album/Create)
+Album entries can be created from: https://vocadb.net/Album/Create
 
-Make sure that the entry belongs to the database: [content policy for albums](/docs/other-guidelines/content-policy#albums).
+Before creating the album entry, make sure that the entry belongs to the database:
 
-Album entries can be created with:
+<RuleEmbed ruleId={47} fields={["id"]}/>
+<RuleEmbed ruleId={48} fields={["id"]}/>
+<RuleEmbed ruleId={49} fields={["id"]}/>
 
-- [Name](/docs/albums/album-entry-editing#tab-basic-info)
-- At least one [Artist](/docs/albums/album-entry-editing#tab-artists)
+The album entry creation page requires:
 
-These are **different** from the [finished album entry requirements](/docs/albums/album-entry-editing#finished-album-entry-requirements).
+- 1) An album name
 
-If the artist entry doesn't exist, you will need to use the ["Add an artist" page](https://vocadb.net/Artist/Create) first to create an entry.
+<RuleEmbed ruleId={7} fields={["id"]}/>
+<RuleEmbed ruleId={8} fields={["id"]}/>
 
-After submitting the album, you can add more detailed information to the entry on the [album edit page](/docs/albums/album-entry-editing).
+<RuleEmbed ruleId={53} fields={["id"]}/>
+<RuleEmbed ruleId={54} fields={["id"]}/>
+
+- 2) At least one artist 
+
+If the artist entry doesn't exist, you will need to [create the artist entry](/docs/artists/artist-entry-creation) first.
+
+After submitting the album entry, you can start adding more detailed information to it.
+
+➡️ Next: [Editing album entries](/docs/albums/album-entry-editing)

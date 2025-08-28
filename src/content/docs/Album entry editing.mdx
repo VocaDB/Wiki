@@ -6,45 +6,56 @@ tags: ["wikipage", "editing", "albums", "documentation", "vocadb"]
 ---
 
 import Navigation from "@/components/markdown/Navigation.astro";
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 
 <Navigation />
 
 This page explains how to edit existing album entries.
 
-[Albums FAQ](/docs/pinned/vocadb-editing-faq#albums) | [Deleting album entries](/docs/other-guidelines/content-removal-guidelines) | [Merging album entries](/docs/other-guidelines/merging-entries) |
-## Tab: Basic info
+The edit page also includes buttons for [deleting](/docs/other-guidelines/content-removal-guidelines) and [merging](/docs/other-guidelines/merging-entries) album entries.
+
+The edit page is split into 6 different tabs:
+
+1) [Basic info](/docs/albums/album-entry-editing#tab-1-basic-info)
+2) [Artists](/docs/albums/album-entry-editing#tab-2-artists)
+3) [Discs](/docs/albums/album-entry-editing#tab-3-discs)
+4) [Tracks](/docs/albums/album-entry-editing#tab-4-tracks)
+5) [Additional pictures](/docs/albums/album-entry-editing#tab-5-additional-pictures)
+6) [Media](/docs/albums/album-entry-editing#tab-6-media)
+
+## Tab 1: Basic info
+
+The basic info tab includes fields for names, main cover picture, description, album/record type, release events, release date, catalog number, barcode, external links and the entry status.
 
 ### Names
 
-For general instructions on fields like "Original language," "Primary name," "Non-English," "Romanized," "English," and "Aliases," refer to [Entry names and aliases](/docs/other-guidelines/entry-names-and-aliases).
+General instructions for entry names (= titles) and aliases are documented [here](/docs/other-guidelines/entry-names-and-aliases).
 
+Name rules that are specific to album entries:
 
-
-#### Album entry-specific name instructions
-
-Unlike songs, albums should include the **full album name**, even if the name seems to have **multiple parts**.
-[#VOCALOID CAFETERIA vol.01 Chinese food](https://vocadb.net/Al/33074) for example.
-
-If an album has multiple entries due to differences in tracklists, include this information in the title, such as "(Regular Edition)" or "(Kagamine Rin version)," if appropriate. Link these album entries using the album description and/or external links. Also include the [multiple editions](http://vocadb.net/T/4877/multiple-editions) tag.
-
+<RuleEmbed ruleId={53} fields={["id"]}/>
+<RuleEmbed ruleId={54} fields={["id"]}/>
 
 ### Cover picture
 
 A cover picture for the album.
 
-- If the album has no cover picture, use the [no cover art tag.](https://vocadb.net/T/2811/no-cover-art)
-
-- If the only available cover picture is low quality, use the [temporary cover art tag.](https://vocadb.net/T/429/temporary-cover-art)
+<RuleEmbed ruleId={55} fields={["id"]}/>
+<RuleEmbed ruleId={56} fields={["id"]}/>
 
 ### Album description
 
-For other information that does not belong to any other field.
+The album description is for additional and useful information that doesn't fit into other fields.
 
 [GitHub-flavored Markdown](https://docs.github.com/en/get-started/writing-on-github) is supported for formatting.
+
+<RuleEmbed ruleId={23} fields={["id"]}/>
 
 If the original description is in a non-English language, an English translation can be added/moved to a separate field below.
 
 ### Record type
+
+Album / Record type (*Original album*, *Single*, *Compilation*) is the main categorization of the album entry. 
 
 If unsure which type to use, try to find out how the artists themselves categorize the album. For more elaborate descriptions, refer to Wikipedia, Discogs, or Musicbrainz. More details are available on the [Album types and artist participation](/docs/albums/album-types-and-artist-participation) page.
 
@@ -82,11 +93,13 @@ For albums that don't fit into anything above.
 
 ### Release event
 
-The [release events](/docs/secondary-entry-types/events) of the album.
+Release event(s) of the album, if available. For common [holidays](https://vocadb.net/T/6682/holiday) like Christmas, use the corresponding [tag](https://vocadb.net/T/64/christmas) instead.
+
+<RuleEmbed ruleId={98} fields={["id"]}/>
 
 ### Release date
 
-The earliest release date of the album.
+The earliest release / publish date of the album.
 
 ### Catalog number
 
@@ -103,82 +116,38 @@ External links relevant to the entry. Illegal/direct download links are forbidde
 
 Link categories:
 
-- **Official**: Official album websites.
-- **Commercial**: Authorized sales sites like Amazon and CDJapan.
-- **Reference**: Fansites with useful information such as wikis.
-- **Other**: Links that don't fit into the above categories.
+<RuleEmbed ruleId={17} fields={["id"]}/>
+<RuleEmbed ruleId={16} fields={["id"]}/>
+<RuleEmbed ruleId={19} fields={["id"]}/>
+<RuleEmbed ruleId={20} fields={["id"]}/>
 
-More details are available on the [External links page](/docs/other-guidelines/external-links).
+- More on [External links](/docs/other-guidelines/external-links)
 
 ### Status
 
 Entry status communicates the level of completeness:
 
-- **Draft**: Entry is missing crucial information. Indicates a request for additional information or corrections.
-- **Finished**: The entry has all necessary information but hasn't been inspected by a trusted user yet.
-- **Approved**: The entry has been inspected and approved by a trusted user. Approved entries can only be edited by trusted users.
-- **Locked**: Locked entries can only be edited by moderators.
+- **Draft**: Entry is missing crucial information. This status indicates that additional information is needed or corrections are requested.
+- **Finished**: The entry has all the necessary information but hasn't been inspected by a trusted user yet.
+- **Approved**: The entry has been inspected and approved by a trusted user. Approved entries can only be edited and tagged by trusted users and above.
+- **Locked**: Locked entries can only be edited by moderators and above
 
-#### Finished Album Entry Requirements
-
-Finished album entries should meet the following criteria:
-
-- The album has at least one name and the original language is specified. 
-- All artists (including vocalists) responsible for the album are specified. Whenever possible, each of those artists should also have an artist entry. 
-- The album has a cover picture, [temporary cover art tag](https://vocadb.net/T/429), or [no cover art tag](https://vocadb.net/T/2811/no-cover-art).
-- The album includes one of the following: description, external link, or media link.
-- The album's release date (at least the year) is specified.
-- The album has a complete tracklist.
-- The album type is specified.
-
-##### Album entry validation errors
-
-From [VocaDb.Model.Resources.json](https://github.com/VocaDB/vocadb/blob/60325c247287e2f0ca2e22a2604ac5a4c5e56898/VocaDbWeb/public/locales/quc/VocaDb.Model.Resources.json#L2):
-
-- DuplicateArtist (automatically fixed when the entry is saved), corresponds to [Rule: No duplicate information](/docs/pinned/rule-reference#rule-no-duplicate-information).
-- NeedArtist, corresponds to [Rule: Artist credit required](/docs/pinned/rule-reference#rule-artist-credit-required).
-- NeedCover, corresponds to [Rule: Cover art required](/docs/pinned/rule-reference#rule-cover-art-required).
-- NeedReferences, corresponds to [Rule: Album source required](/docs/pinned/rule-reference#rule-album-source-required).
-- NeedReleaseYear, corresponds to [Rule: Publish year required](/docs/pinned/rule-reference#rule-publish-year-required).
-- NeedTracks, corresponds to [Rule: Tracklist status](/docs/pinned/rule-reference#rule-tracklist-status).
-- NeedType, corresponds to [Rule: Correct entry subtype required](/docs/pinned/rule-reference#rule-correct-entry-subtype-required).
-- UnspecifiedNames, corresponds to [Rule: Original language required](/docs/pinned/rule-reference#rule-original-language-required).
-
-#### Criteria for approving albums
-
-- Entry is finished (no edit warnings)
-- Title is present in the original language, and is romanized/translated (if applicable)
-- All participating artists are properly credited, including lyricist, illustrator, mastering, etc.
-- A non-temporary cover art has been added to the entry
-- Catalog number is added (if applicable)
-- Official external links (including crossfades) have been added (if applicable)
-
-
-## Tab: Artists
+## Tab 2: Artists
 
 In this tab, you can add and delete artists who have participated in the album. These changes do not affect the tracklist (song entries).
 
 Artists can also be added as **custom artists**, which adds an artist credit to the song entry as text without creating an artist entry.
 
-- For [finished album entries](/docs/other-guidelines/required-entry-fields#album-fields), artist credits in the "producer" category (composers, arrangers, voice manipulators, ...) **must be made with artist entries**, as opposed to crediting them as custom artists.
+<RuleEmbed ruleId={66} fields={["id", "entry_status"]}/>
+<RuleEmbed ruleId={67} fields={["id", "entry_status"]}/>
+<RuleEmbed ruleId={64} fields={["id", "entry_status"]}/>
 
-- Album entries with no known producers should include the artist entry [Unknown producer(s)](https://vocadb.net/Ar/23966).
-
-- If the **name** of the producer **is known**, create a new artist entry and tag it with [limited artist information](https://vocadb.net/T/3034/limited-artist-information).
-
-Vocaloids, UTAUs, and other singing synthesizer voicebanks are added as artists as well. Refer to [Choosing the correct voicebank credit](/docs/other-guidelines/choosing-the-correct-voicebank-credit).
-
-- If the vocalist is uncredited, the artist entry [Unknown vocalist(s)](https://vocadb.net/Ar/23554) can be used. The entry [Unknown vocal synth(s)](https://vocadb.net/Ar/128519) or any of its derived artist entries can also be used to further narrow down the vocalist.
+<RuleEmbed ruleId={166} fields={["id", "entry_status"]}/>
+<RuleEmbed ruleId={142} fields={["id"]}/>
 
 ### Support status
 
-For albums, the support status indicates that an artist had a minor role compared to other artists **of the same category**. For example, if the album has multiple songs by one artist and 1 or 2 remixes by other artists, the remix artists should be marked as support.
-
-Effects of support status:
-- Artists with support status never appear in the "artist string" of the album.
-- On the album entry page, support artists are shown in parentheses and after all other artists.
-- Albums or songs where the artist has support status never appear on the first tab of the artist's entry page, under recent or popular albums.
-- These albums also never appear on the artist's "main albums" tab.
+<RuleEmbed ruleId={62} fields={["id"]}/>
 
 For collaboration albums, none of the artists can be marked as support.
 
@@ -186,28 +155,44 @@ For collaboration albums, none of the artists can be marked as support.
 
 Same rules as with songs. Refer to the [Artist roles section](/docs/songs/song-entry-editing#Artist-roles).
 
-## Tab: Discs
+## Tab 3: Discs
 
-If the album contains multiple discs you may define extra properties for those discs here. You may specify disc **name** and **type** (Audio or Video). Name is optional: if not specified, the default "Disc #" will be used, where "#" is the disc number.
+If the album contains multiple discs you may define extra properties for those discs here. 
 
-## Tab: Tracks
+You may specify disc **name** and **type** (Audio or Video). 
+
+Name is optional: if not specified, the default "Disc #" will be used, where "#" is the disc number.
+
+## Tab 4: Tracks
 
 Songs entries can be connected to the album entry here.
 
 Clicking a track by its name opens the "Track properties" window, which can be used to add artists to the song entry (track). Only the artists which are added in the ["Artists"-tab](/docs/albums/album-entry-editing#tab-Artists) are visible here.
 
-    * If the artist participates in most of the songs, it's efficient to select all the tracks and update them instead of adding the artist to the tracks one by one.
+- If the artist participates in most of the songs, it's efficient to select all the tracks and update them instead of adding the artist to the tracks one by one.
 
-The "custom track" feature (no song entry) is intended for tracks made by out-of-scope artists. [Secret Sky 2020 (DJ Mix)](https://vocadb.net/Al/32323) for example.
+<RuleEmbed ruleId={57} fields={["id"]}/>
 
 When the album entry is saved, the new tracks are created as song entries.
 
-## Tab: Additional pictures
+## Tab 5: Additional pictures
+
+Additional (official) pictures for the album. 
 
 Note that the main picture (cover) is edited on the "Basic Info" tab. Only upload pictures relevant to this album.
 
-## Tab: Media
+## Tab 6: Media
 
 Crossfades and other advertisements related to the album.
 
 - [Media (video) services supported by VocaDB](/docs/other-guidelines/supported-streaming-services)
+
+## Update notes
+
+Update notes are optional but should **always** be used if the edit reason or information source is not obvious.
+
+If necessary, use the entry description for visibility or the comment section to ask questions.
+
+<RuleEmbed ruleId={1} fields={["id"]}/>
+
+➡️ Next: [Entry types](/docs/other-guidelines/entry-types)

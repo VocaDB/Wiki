@@ -6,20 +6,40 @@ tags: ["wikipage", "editing", "artists", "documentation", "vocadb"]
 ---
 
 import Navigation from "@/components/markdown/Navigation.astro";
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 
 <Navigation />
 
-Artists are created through the artist entry creation page: https://vocadb.net/Artist/Create
+Artist entries can be created from: https://vocadb.net/Artist/Create
 
-Make sure that the entry belongs to the database: [content policy for artists](/docs/other-guidelines/content-policy#artists).
+Before creating the artist entry, make sure that the entry belongs to the database:
 
-Artist entries can be created with:
+<RuleEmbed ruleId={69} fields={["id"]}/>
+<RuleEmbed ruleId={70} fields={["id"]}/>
+<RuleEmbed ruleId={72} fields={["id"]}/>
 
-- [Name](/docs/artists/artist-entry-editing#tab-basic-info)
-- [Description](/docs/artists/artist-entry-editing#artist-description) OR [External link](/docs/artists/artist-entry-editing#external-links)
+Voicebank entries include further restrictions:
 
-Also, at least one [song entry](/docs/songs/song-entry-creation) should be attached to the artist entry.
+<RuleEmbed ruleId={73} fields={["id"]}/>
+<RuleEmbed ruleId={74} fields={["id"]}/>
 
-These are the **same** as [finished artist entry requirements](/docs/artists/artist-entry-editing#finished-artist-entry-requirements).
+The artist entry creation page requires:
 
-After submitting the artist, you can add more detailed information to the entry on the [artist edit page](/docs/artists/artist-entry-editing).
+- 1) An artist name
+
+<RuleEmbed ruleId={7} fields={["id"]}/>
+<RuleEmbed ruleId={8} fields={["id"]}/>
+
+<RuleEmbed ruleId={76} fields={["id"]}/>
+<RuleEmbed ruleId={77} fields={["id"]}/>
+<RuleEmbed ruleId={65} fields={["id"]}/>
+<RuleEmbed ruleId={88} fields={["id"]}/>
+<RuleEmbed ruleId={83} fields={["id"]}/>
+<RuleEmbed ruleId={80} fields={["id"]}/>
+
+- 2) Source
+
+<RuleEmbed ruleId={71} fields={["id"]}/>
+
+➡️ Next: [Editing artist entries](/docs/artists/artist-entry-editing)
+

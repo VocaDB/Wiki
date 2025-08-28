@@ -1,5 +1,5 @@
-import { Badge, badgeVariants } from "./ui/badge";
 import { cn } from "@/lib/utils";
+import { badgeVariants } from "./ui/badge";
 
 interface TagsDisplayProps {
   tags: string[];
@@ -7,7 +7,7 @@ interface TagsDisplayProps {
 
 export const TagsDisplay: React.FC<TagsDisplayProps> = ({ tags }) => {
   return (
-    <div className="space-x-2">
+    <div className="mb-2 space-x-2">
       {tags.map((tag) => (
         <a
           href={["/tags", tag].join("/")}

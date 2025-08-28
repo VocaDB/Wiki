@@ -27,6 +27,7 @@ const ruleCollection = defineCollection({
   schema: z.object({
     name: z.string(),
     id: z.number(),
+    // context: content_policy, description, links, romanization
     entry_type: z
       .union([
         z.literal("All"),

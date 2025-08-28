@@ -6,20 +6,37 @@ tags: ["wikipage", "editing", "songs", "documentation", "vocadb"]
 ---
 
 import Navigation from "@/components/markdown/Navigation.astro";
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 
 <Navigation />
 
-Song entry creation page: https://vocadb.net/Song/Create
+Song entries can be created from: https://vocadb.net/Song/Create
 
-Make sure that the entry belongs to the database: [content policy for songs](/docs/other-guidelines/content-policy#songs).
+- Album tracklists (= multiple song entries) are easier to create from the album edit page instead. 
 
-Song entries can be created with:
+Before creating the song entry, make sure that the entry belongs to the database:
 
-- [Name](/docs/songs/song-entry-editing#names)
-  - The title section should only contain the name of the song. Vocalists, song type, producers, etc. should all be removed.
-- 1 [Artist](/docs/songs/song-entry-editing#tab-artists)
-  - If the artist entry doesn't exist, you will need to use the ["Add an artist" page](https://vocadb.net/Artist/Create) to create an entry.
+<RuleEmbed ruleId={10} fields={["id"]}/>
+<RuleEmbed ruleId={11} fields={["id"]}/>
+<RuleEmbed ruleId={12} fields={["id"]}/>
+<RuleEmbed ruleId={13} fields={["id"]}/>
+<RuleEmbed ruleId={14} fields={["id"]}/>
+<RuleEmbed ruleId={135} fields={["id"]}/>
 
-These are **different** from the [finished song entry requirements](/docs/songs/song-entry-editing#finished-song-entry-requirements).
+The song entry creation page requires:
 
-After submitting the song, you can add more detailed information to the entry on the [song edit page](/docs/songs/song-entry-editing). Some of the information is **automatically filled** based on the PV links (publish date for example).
+- 1) A song title
+
+<RuleEmbed ruleId={7} fields={["id"]}/>
+<RuleEmbed ruleId={101} fields={["id"]}/>
+<RuleEmbed ruleId={102} fields={["id"]}/>
+
+- 2) And at least one artist
+
+If the artist entry doesn't exist, you will need to [create the artist entry](/docs/artists/artist-entry-creation) first.
+
+If the song entry shouldn't include any artist entries ([cover unifier entry](https://vocadb.net/T/6751/out-of-scope-cover-unifier) for example), the [Temporary artist entry](https://vocadb.net/Ar/139625) can be used to bypass the creation form.
+
+After submitting the song entry, you can start adding more detailed information to it.
+
+➡️ Next: [Editing song entries](/docs/songs/song-entry-editing)

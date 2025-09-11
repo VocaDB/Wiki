@@ -27,7 +27,6 @@ const ruleCollection = defineCollection({
   schema: z.object({
     name: z.string(),
     id: z.number(),
-    // context: content_policy, description, links, romanization
     entry_type: z
       .union([
         z.literal("All"),
@@ -48,6 +47,7 @@ const ruleCollection = defineCollection({
     date_created: FlexibleDate(),
     date_modified: FlexibleDate(),
     rationale: z.string().nullable().optional(),
+    rule_context: z.enum(["Names", "Content policy", "Description", "External links", "Romanization"]).nullable().optional(),
     status: z.enum(["Active", "Deprecated"]).default("Active")
   })
 });

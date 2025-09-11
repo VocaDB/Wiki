@@ -6,6 +6,7 @@ tags: ["wikipage", "artists", "albums", "songs", "editing", "guidelines", "moder
 ---
 
 import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import RuleEmbedList from "@/components/markdown/RuleEmbedList.astro";
 
 This page explains what kind of entries are accepted on VocaDB.
 
@@ -13,48 +14,34 @@ This page explains what kind of entries are accepted on VocaDB.
 
 <RuleEmbed ruleId={174} />
 <RuleEmbed ruleId={30} />
-<RuleEmbed ruleId={72} />
 
 ## Artists
 
 - [Wiki page for artists](/docs/artists).
 
-<RuleEmbed ruleId={69} />
-<RuleEmbed ruleId={70} />
-<RuleEmbed ruleId={73} />
-<RuleEmbed ruleId={74} />
+<RuleEmbedList entry_type={"Artists"} rule_context={"Content policy"} />
 
 ## Albums
 
 - [Wiki page for albums](/docs/albums).
 
-<RuleEmbed ruleId={47} />
-<RuleEmbed ruleId={48} />
-<RuleEmbed ruleId={49} />
+<RuleEmbedList entry_type={"Albums"} rule_context={"Content policy"} />
 
 ## Songs
 
 - [Wiki page for songs](/docs/songs).
 
-<RuleEmbed ruleId={12} />
-<RuleEmbed ruleId={11} />
-<RuleEmbed ruleId={10} />
-<RuleEmbed ruleId={135} />
+<RuleEmbedList entry_type={"Songs"} rule_context={"Content policy"} />
 
 ## Events
 
 - [Wiki page for events](/docs/events).
 
-<RuleEmbed ruleId={95} />
+<RuleEmbedList entry_type={"Events"} rule_context={"Content policy"} />
 
 ## Tags
 
 - [Wiki page for tags](/docs/tags).
 
-<RuleEmbed ruleId={149} />
-<RuleEmbed ruleId={150} />
-
-<RuleEmbed ruleId={148} />
-<RuleEmbed ruleId={168} />
-<RuleEmbed ruleId={152} />
+<RuleEmbedList entry_type={"Tags"} rule_context={"Content policy"} fields={"Entry_type"}/>
 

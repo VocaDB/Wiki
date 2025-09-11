@@ -29,6 +29,13 @@ export default defineConfig({
   ],
   redirects: {
 
+    "/rules/song-content-policy-song-source-required": "/rules/song-source-required",
+    "/rules/song-content-policy-no-wips": "/rules/no-wips",
+    "/rules/song-content-policy-no-ai-generated-songs": "/rules/no-ai-generated-songs",
+    "/rules/song-content-policy-no-out-of-scope-song-entries": "/rules/no-out-of-scope-song-entries",
+    "/rules/song-content-policy-no-song-entries-by-forbidden-artists": "/rules/no-song-entries-by-forbidden-artists",
+    "/rules/song-content-policy-song-source-required": "/rules/song-source-required",
+
     "/docs/rule-reference": "/rules",
 
     "/docs/documentation/vocadb-changelog": "/docs/website-changelog",

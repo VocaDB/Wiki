@@ -2,78 +2,44 @@
 import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 import { EntryType, type RuleFields } from "@/content/config";
 import { getCollection } from "astro:content";
-import DocPageLayout from "../../layouts/DocPageLayout.astro";
 
 let rules = await getCollection("rules");
 
 interface Props {
   entry_type: (typeof EntryType)[number] | "All";
+  rule_context?: string;
   fields?: RuleFields[] | "All";
 }
 
-const { entry_type, fields } = Astro.props;
+const { entry_type, rule_context, fields } = Astro.props;
 if (entry_type !== "All") {
-  rules = rules.filter(
-    (rule) => {
-      const ruleEntryType = rule.data.entry_type;
+  rules = rules.filter(rule => {
+    const ruleEntryType = rule.data.entry_type;
 
-      if (ruleEntryType === "All") {
-        return true;
-      }
-
-      if (Array.isArray(ruleEntryType)) {
-        return ruleEntryType.includes(entry_type);
-      }
-
-      return false;
+    if (ruleEntryType === "All") {
+      return true;
     }
-  );
+
+    if (Array.isArray(ruleEntryType)) {
+      return ruleEntryType.includes(entry_type);
+    }
+
+    return false;
+  });
 }
 
-const pageTitle =
-  entry_type === "All" ? "All rules" : `All rules for ${entry_type}`;
+if (rule_context) {
+  rules = rules.filter(rule => rule.data.rule_context === rule_context);
+}
 
-
-rules.sort((a, b) => a.data.id - b.data.id)
-const rulesForDraft = rules.filter(rule => rule.data.entry_status === "Draft"); 
-const rulesForFinished = rules.filter(rule => rule.data.entry_status === "Finished"); 
-const rulesForApproved = rules.filter(rule => rule.data.entry_status === "Approved"); 
-
+rules.sort((a, b) => a.data.id - b.data.id);
 ---
 
-<DocPageLayout
-  frontmatter={{ title: pageTitle }}
-  headings={[
-    {depth: 1, slug: "draft", text: "Draft +"},
-    {depth: 1, slug: "finished", text: "Finished +"},
-    {depth: 1, slug: "approved", text: "Approved"}
-    ]}>
-
-  <h2 id="draft">Draft+ entries</h2>
-  {
-    rulesForDraft.map((rule: { slug: string | undefined }) => (
-      <RuleEmbed
-        rule={rule.slug}
-        fields={fields}
-      />
-    ))
-  }
-  <h2 id="finished">Finished+ entries</h2>
-  {
-    rulesForFinished.map((rule: { slug: string | undefined }) => (
-      <RuleEmbed
-        rule={rule.slug}
-        fields={fields}
-      />
-    ))
-  }
-  <h2 id="approved">Approved entries</h2>
-  {
-    rulesForApproved.map((rule: { slug: string | undefined }) => (
-      <RuleEmbed
-        rule={rule.slug}
-        fields={fields}
-      />
-    ))
-  }
-</DocPageLayout>
+{
+  rules.map((rule: { slug: string | undefined }) => (
+    <RuleEmbed
+      rule={rule.slug}
+      fields={fields}
+    />
+  ))
+}

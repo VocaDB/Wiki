@@ -31,9 +31,9 @@ General instructions for entry names (= titles) and aliases are documented [here
 
 Name rules that are specific to song entries:
 
-<RuleEmbed ruleId={101} fields={["id"]}/>
-<RuleEmbed ruleId={102} fields={["id"]}/>
-<RuleEmbed ruleId={29} fields={["id"]}/>
+<RuleEmbed ruleId={101} />
+<RuleEmbed ruleId={102} />
+<RuleEmbed ruleId={29} />
 
 ### Song Description
 
@@ -41,8 +41,8 @@ The song description is for additional and useful information that doesn't fit i
 
 [GitHub-flavored Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) is supported for formatting.
 
-<RuleEmbed ruleId={23} fields={["id"]}/>
-<RuleEmbed ruleId={104} fields={["id"]}/>
+<RuleEmbed ruleId={23} />
+<RuleEmbed ruleId={104} />
 
 [Verified artists](/docs/artist-verification) can submit subjective comments using the [artist's personal description](/docs/song-entry-page#artists-personal-description).
 
@@ -52,9 +52,9 @@ If the original description is non-English, a separate English translation can b
 
 Song type (`Original song`, `Remix`, `Cover`, ...) is the main categorization of the song entry.
 
-<RuleEmbed ruleId={108} fields={["id"]}/>
-<RuleEmbed ruleId={125} fields={["id"]}/>
-<RuleEmbed ruleId={126} fields={["id"]}/>
+<RuleEmbed ruleId={108} />
+<RuleEmbed ruleId={125} />
+<RuleEmbed ruleId={126} />
 
 Guidelines for classification:
 - If **vocals are different** but the instrumental is identical, it's likely a **cover**.
@@ -63,57 +63,57 @@ Guidelines for classification:
 
 #### Original song
 
-<RuleEmbed ruleId={109} fields={["id"]}/>
+<RuleEmbed ruleId={109} />
 
 #### Remaster
 
-<RuleEmbed ruleId={116} fields={["id"]}/>
-<RuleEmbed ruleId={117} fields={["id"]}/>
+<RuleEmbed ruleId={116} />
+<RuleEmbed ruleId={117} />
 
 #### Remix
 
-<RuleEmbed ruleId={112} fields={["id"]}/>
-<RuleEmbed ruleId={102} fields={["id"]}/>
-<RuleEmbed ruleId={114} fields={["id"]}/>
-<RuleEmbed ruleId={113} fields={["id"]}/>
+<RuleEmbed ruleId={112} />
+<RuleEmbed ruleId={102} />
+<RuleEmbed ruleId={114} />
+<RuleEmbed ruleId={113} />
 
 #### Cover
 
-<RuleEmbed ruleId={115} fields={["id"]}/>
-<RuleEmbed ruleId={127} fields={["id"]}/>
+<RuleEmbed ruleId={115} />
+<RuleEmbed ruleId={127} />
 
 #### Instrumental
 
-<RuleEmbed ruleId={157} fields={["id"]}/>
-<RuleEmbed ruleId={111} fields={["id"]}/>
-<RuleEmbed ruleId={110} fields={["id"]}/>
+<RuleEmbed ruleId={157} />
+<RuleEmbed ruleId={111} />
+<RuleEmbed ruleId={110} />
 
 #### Mashup
 
-<RuleEmbed ruleId={121} fields={["id"]}/>
-<RuleEmbed ruleId={123} fields={["id"]}/>
+<RuleEmbed ruleId={121} />
+<RuleEmbed ruleId={123} />
 
 #### Music PV
 
-<RuleEmbed ruleId={118} fields={["id"]}/>
-<RuleEmbed ruleId={119} fields={["id"]}/>
-<RuleEmbed ruleId={120} fields={["id"]}/>
+<RuleEmbed ruleId={118} />
+<RuleEmbed ruleId={119} />
+<RuleEmbed ruleId={120} />
 
 #### Drama PV
 
-<RuleEmbed ruleId={159} fields={["id"]}/>
+<RuleEmbed ruleId={159} />
 
 #### Other
 
-<RuleEmbed ruleId={124} fields={["id"]}/>
+<RuleEmbed ruleId={124} />
 
 ### Original version
 
 If the song type is not `Original song`, a separate field will pop up for specifying the `Original version`.
 
-<RuleEmbed ruleId={105} fields={["id"]}/>
-<RuleEmbed ruleId={106} fields={["id"]}/>
-<RuleEmbed ruleId={130} fields={["id"]}/>
+<RuleEmbed ruleId={105} />
+<RuleEmbed ruleId={106} />
+<RuleEmbed ruleId={130} />
 
 Original song can be searched/selected by:
 - A) Song title
@@ -122,9 +122,9 @@ Original song can be searched/selected by:
 
 The "Find originals" button attempts to find original songs based on the song title. The exact logic is available on [GitHub](https://github.com/VocaDB/vocadb/blob/19012a3971bb96d103901bc7ffc4656b0ea10763/VocaDbWeb/Scripts/Stores/Song/SongEditStore.ts#L386).
 
-<RuleEmbed ruleId={128} fields={["id"]}/>
-<RuleEmbed ruleId={156} fields={["id"]}/>
-<RuleEmbed ruleId={129} fields={["id"]}/>
+<RuleEmbed ruleId={128} />
+<RuleEmbed ruleId={156} />
+<RuleEmbed ruleId={129} />
 
 Sometimes the entry tree structure grows unintuitive due to conflicting details. Correct entry tree structure can be formed with the following process:
 
@@ -141,19 +141,19 @@ This means that the `original version` of any entry should not be modified later
 
 Duration of the song. 
 
-<RuleEmbed ruleId={131} fields={["id"]}/>
+<RuleEmbed ruleId={131} />
 
 ### BPM
 
 The song [Tempo/BPM](https://en.wikipedia.org/wiki/Tempo) can be added as a specific number or as a range.
 
-<RuleEmbed ruleId={103} fields={["id"]}/>
+<RuleEmbed ruleId={103} />
 
 ### Release Event
 
 Release event(s) of the song, if available. For common [holidays](https://vocadb.net/T/6682/holiday) like Christmas, use the corresponding [tag](https://vocadb.net/T/64/christmas) instead.
 
-<RuleEmbed ruleId={98} fields={["id"]}/>
+<RuleEmbed ruleId={98} />
 
 ### Publish Date
 
@@ -161,7 +161,7 @@ The earliest **public** publish date of the song (from any album/PV).
 
 If empty, the publish date is automatically suggested based on the album and PV links.
 
-<RuleEmbed ruleId={100} fields={["id"]}/>
+<RuleEmbed ruleId={100} />
 
 ### External Links
 
@@ -171,18 +171,18 @@ Links to lyrics should be added to the [Lyrics tab](/docs/song-entry-editing#tab
 
 Duplicating album and artist links in song entries is **redundant**.
 
-<RuleEmbed ruleId={17} fields={["id"]}/>
-<RuleEmbed ruleId={16} fields={["id"]}/>
-<RuleEmbed ruleId={19} fields={["id"]}/>
-<RuleEmbed ruleId={20} fields={["id"]}/>
+<RuleEmbed ruleId={17} />
+<RuleEmbed ruleId={16} />
+<RuleEmbed ruleId={19} />
+<RuleEmbed ruleId={20} />
 
-<RuleEmbed ruleId={18} fields={["id"]}/>
+<RuleEmbed ruleId={18} />
 
 - More on [External links](/docs/external-links)
 
 ### Language(s)
 
-<RuleEmbed ruleId={107} fields={["id"]}/>
+<RuleEmbed ruleId={107} />
 
 The language of the song vocals. 
 
@@ -203,17 +203,17 @@ In this tab, you can add or remove artist entries that participated in the song.
 
 Artists can also be added as **custom artists**, which adds an artist credit to the song entry as text without creating an artist entry.
 
-<RuleEmbed ruleId={66} fields={["id", "entry_status"]}/>
-<RuleEmbed ruleId={67} fields={["id", "entry_status"]}/>
-<RuleEmbed ruleId={132} fields={["id"]}/>
-<RuleEmbed ruleId={155} fields={["id"]}/>
-<RuleEmbed ruleId={141} fields={["id"]}/>
-<RuleEmbed ruleId={142} fields={["id"]}/>
-<RuleEmbed ruleId={160} fields={["id"]}/>
+<RuleEmbed ruleId={66} fields={["entry_status"]}/>
+<RuleEmbed ruleId={67} fields={["entry_status"]}/>
+<RuleEmbed ruleId={132} />
+<RuleEmbed ruleId={155} />
+<RuleEmbed ruleId={141} />
+<RuleEmbed ruleId={142} />
+<RuleEmbed ruleId={160} />
 
 ### Support Status
 
-<RuleEmbed ruleId={62} fields={["id"]}/>
+<RuleEmbed ruleId={62} />
 
 ### Artist Roles
 
@@ -221,9 +221,9 @@ Artist roles describe how different artists participated in creating the song.
 
 The artist's type (from their entry) determines their default roles. For example, artists of the "lyricist" type are marked as the lyricist role by default. When the artist role differs from the artist type, the correct artist role must be specified.
 
-<RuleEmbed ruleId={81} fields={["id"]}/>
-<RuleEmbed ruleId={93} fields={["id"]}/>
-<RuleEmbed ruleId={134} fields={["id"]}/>
+<RuleEmbed ruleId={81} />
+<RuleEmbed ruleId={93} />
+<RuleEmbed ruleId={134} />
 
 #### Animator
 
@@ -319,29 +319,29 @@ Songs may contain any number of embedded media files (Promotional Videos = PVs) 
 
 All embeds should have the same version of the song (except for unrelated [intros](https://vocadb.net/T/6334/unrelated-intro) and [outros](https://vocadb.net/T/6494/unrelated-outro)). 
 
-<RuleEmbed ruleId={131} fields={["id"]}/>
+<RuleEmbed ruleId={131} />
 
-<RuleEmbed ruleId={117} fields={["id"]}/>
-<RuleEmbed ruleId={119} fields={["id"]}/>
-<RuleEmbed ruleId={135} fields={["id"]}/>
+<RuleEmbed ruleId={117} />
+<RuleEmbed ruleId={119} />
+<RuleEmbed ruleId={135} />
 
 ### PV types
 
 #### Original
 
-<RuleEmbed ruleId={161} fields={["id"]}/>
-<RuleEmbed ruleId={162} fields={["id"]}/>
+<RuleEmbed ruleId={161} />
+<RuleEmbed ruleId={162} />
 
 If a Nicolog archive of a deleted PV exists, relevant data (duration, publish date, tags, vocalists, author) will be automatically added, as with normal PVs. This can be accomplished by replacing the "nicovideo" in the URL with "nicolog". 
 
 #### Reprint
 
-<RuleEmbed ruleId={163} fields={["id"]}/>
-<RuleEmbed ruleId={94} fields={["id"]}/>
+<RuleEmbed ruleId={163} />
+<RuleEmbed ruleId={94} />
 
 #### Other
 
-<RuleEmbed ruleId={164} fields={["id"]}/>
+<RuleEmbed ruleId={164} />
 
 ### File Uploads
 
@@ -351,13 +351,13 @@ Verified artists can use VocaDB to host their songs. Currently, only files in th
 
 Lyrics can be added, along with romanizations and translations. Multiple translations are supported.
 
-<RuleEmbed ruleId={138} fields={["id"]}/>
-<RuleEmbed ruleId={139} fields={["id"]}/>
-<RuleEmbed ruleId={140} fields={["id"]}/>
+<RuleEmbed ruleId={138} />
+<RuleEmbed ruleId={139} />
+<RuleEmbed ruleId={140} />
 
-<RuleEmbed ruleId={30} fields={["id"]}/>
+<RuleEmbed ruleId={30} />
 
-<RuleEmbed ruleId={137} fields={["id"]}/>
+<RuleEmbed ruleId={137} />
 
 - Changing the language(s) of the original lyrics also changes the entry language.
 - Sources for lyrics are autofilled based on the source URL.
@@ -371,6 +371,6 @@ Update notes are optional but should **always** be used if the edit reason or in
 
 If necessary, use the entry description for visibility or the comment section to ask questions.
 
-<RuleEmbed ruleId={1} fields={["id"]}/>
+<RuleEmbed ruleId={1} />
 
 ➡️ Next: [Artists](/docs/artists)

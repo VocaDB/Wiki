@@ -39,6 +39,7 @@ const content = await ruleEntry.render();
 
 /* Skipped fields:
 - name (always displayed)
+- id (always displayed)
 - status (always displayed if Deprecated)
 - detection_script
 - be_validations
@@ -60,7 +61,7 @@ const shouldShowGroup = (groupFields: RuleFields[]): boolean => {
         <h3 class="mt-0">
           Rule:
           <a href={`/rules/${ruleEntry.slug}`}> {ruleData.name}</a>
-          {shouldShowField("id") && ` (id=${ruleData.id})`}
+          {` (id=${ruleData.id})`}
         </h3>
 
         {content && <content.Content />}

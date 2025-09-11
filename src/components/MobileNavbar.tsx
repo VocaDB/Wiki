@@ -3,10 +3,10 @@ import {
   ChevronUpIcon,
   HamburgerMenuIcon,
 } from "@radix-ui/react-icons";
+import { useState } from "react";
 import { groupedNavbarParents, navbarParents, posts } from "./navigationConfig";
 import { ScrollArea } from "./ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
-import { useState } from "react";
 
 export default function MobileNavbar() {
   const [expanded, setExpanded] = useState<string | undefined>();
@@ -61,7 +61,6 @@ export default function MobileNavbar() {
                                 key={post.params.slug}
                                 href={[
                                   "/docs",
-                                  c.toLowerCase(),
                                   post.params.slug,
                                 ].join("/")}
                               >

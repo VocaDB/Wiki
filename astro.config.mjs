@@ -54,7 +54,7 @@ export default defineConfig({
     
     "/wiki/6": "/docs/songs#song-type",
     "/wiki/6/song-types": "/docs/songs#song-type",
-    "/docs/songs/song-entry-editing/#song-type":"/docs/songs#song-type",
+    "/docs/songs/song-entry-editing#song-type":"/docs/song-entry-editing#song-type",
     
     "/wiki/8": "/docs/album-types-and-artist-participation",
     "/wiki/8/album-types-and-artist-participation":"/docs/album-types-and-artist-participation",

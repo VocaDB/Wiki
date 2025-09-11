@@ -39,6 +39,13 @@ export default defineConfig({
 
     "/docs/guidelines/merging-entries": "/docs/merging-entries",
 
+    "/docs/development/development-environment-linux": "/docs/development-environment-linux",
+    "/docs/development/development-environment-windows": "/docs/development-environment-windows",
+    "/docs/development/front-end-only-development-environment": "/docs/front-end-only-development-environment",
+
+    "/docs/development/public-api": "/docs/public-api",
+    "/docs/development/repository-structure": "/docs/repository-structure",
+
     "/wiki/1": "/docs/romanization-guidelines",
     "/wiki/1/romanization-guidelines":"/docs/romanization-guidelines",
     "/docs/other-guidelines/romanization-guidelines":"/docs/romanization-guidelines",

@@ -32,13 +32,44 @@ if (entry_type !== "All") {
 
 const pageTitle =
   entry_type === "All" ? "All rules" : `All rules for ${entry_type}`;
+
+
+rules.sort((a, b) => a.data.id - b.data.id)
+const rulesForDraft = rules.filter(rule => rule.data.entry_status === "Draft"); 
+const rulesForFinished = rules.filter(rule => rule.data.entry_status === "Finished"); 
+const rulesForApproved = rules.filter(rule => rule.data.entry_status === "Approved"); 
+
 ---
 
 <DocPageLayout
   frontmatter={{ title: pageTitle }}
-  headings={[]}>
+  headings={[
+    {depth: 1, slug: "draft", text: "Draft +"},
+    {depth: 1, slug: "finished", text: "Finished +"},
+    {depth: 1, slug: "approved", text: "Approved"}
+    ]}>
+
+  <h2 id="draft">Draft+ entries</h2>
   {
-    rules.sort((a, b) => a.data.id - b.data.id).map((rule: { slug: string | undefined }) => (
+    rulesForDraft.map((rule: { slug: string | undefined }) => (
+      <RuleEmbed
+        rule={rule.slug}
+        fields={fields}
+      />
+    ))
+  }
+  <h2 id="finished">Finished+ entries</h2>
+  {
+    rulesForFinished.map((rule: { slug: string | undefined }) => (
+      <RuleEmbed
+        rule={rule.slug}
+        fields={fields}
+      />
+    ))
+  }
+  <h2 id="approved">Approved entries</h2>
+  {
+    rulesForApproved.map((rule: { slug: string | undefined }) => (
       <RuleEmbed
         rule={rule.slug}
         fields={fields}

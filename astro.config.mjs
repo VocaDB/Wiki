@@ -46,6 +46,8 @@ export default defineConfig({
     "/docs/development/public-api": "/docs/public-api",
     "/docs/development/repository-structure": "/docs/repository-structure",
 
+    "/docs/required-entry-fields": "/rules",
+
     "/wiki/1": "/docs/romanization-guidelines",
     "/wiki/1/romanization-guidelines":"/docs/romanization-guidelines",
     "/docs/other-guidelines/romanization-guidelines":"/docs/romanization-guidelines",

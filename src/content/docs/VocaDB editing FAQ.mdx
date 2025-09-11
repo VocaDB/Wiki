@@ -5,107 +5,58 @@ parent: Pinned
 tags: ["wikipage", "editing", "guidelines", "documentation", "vocadb"]
 ---
 
-----
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+
+This page documents the most fequently asked questions and edit mistakes regarding VocaDB entries.
 
 ## Songs
 
 ### Are instrumental/human-sung songs allowed on VocaDB?
 
-Generally no, with some exceptions:
-* The song was published together on an album with Vocaloid (or other voice synth) songs.
-* The song has **at least 5** vocal-synth covers on VocaDB, and it's not already on UtaiteDB/TouhouDB.
-    * Add the [out of scope cover unifer tag](https://vocadb.net/T/6751/out-of-scope-cover-unifier).
-
-Documented on [Content policy/Songs](/docs/content-policy#Songs).
+<RuleEmbed ruleId={12} />
 
 ### Should the original artist be added to covers/remixes?
 
-Generally no, with some exceptions:
-* The original artist directly worked on the derived version (cover/remix).
-* The original song is out of scope (with human vocals or instrumental) and not on VocaDB. 
-    * Also see above: if the out-of-scope song is added to VocaDB, then the original artist should not be added to derivatives.
-
-Rationale: if the original song is on VocaDB, repeating the original artists for derivatives is redundant, and redundant information should be avoided.
-
-Documented on [Song entry editing](/docs/song-entry-editing#tab-artists).
+<RuleEmbed ruleId={132} />
 
 ### If a Vocaloid song was released simultaneously with a human vocals version, which one is the original?
 
-We give preference to the Vocaloid version, unless the artist clearly indicates that the version with human vocals is the original.
-
-Related tags: [simultaneous upload](https://vocadb.net/T/4946/simultaneous-upload), [self-cover](https://vocadb.net/T/391)
-
-Documented on [Song entry editing](/docs/song-entry-editing#cover).
+<RuleEmbed ruleId={127} />
 
 ### I think that a song is using an append, or another version than indicated, but can't confirm. Which voicebank should I use?
 
-In general you should use the voicebank indicated by the artist. If you have a strong reason to believe that the voicebank is an append or other variation, such as a Vocaloid 3 upgrade of the voicebank, you may add that voicebank instead, but please mention that in the edit notes, entry description or comments.
-
-Rationale: all information on VocaDB should be verifiable; there should ideally be a clear way to confirm it by checking an official source.
-
-Documented on [Choosing the correct voicebank credit](/docs/choosing-the-correct-voicebank-credit) page.
+See the page for [Choosing the correct voicebank credit](https://wiki.vocadb.net/docs/choosing-the-correct-voicebank-credit)
 
 ### Are work in progress (WIP) versions of songs allowed on VocaDB?
 
-Generally, no. Work in progress (WIP) songs should not be added on VocaDB, except in special cases. Demo songs for upcoming voicebanks are allowed even if they're not complete, but avoid adding too many of them. All songs on VocaDB should either be publicly available for streaming, or published on an album.
-
-It's ok to add an entry for a song that isn't released yet if you know when and where it will be released. In this case, input the planned release date and mention in the song notes where the song will be released.
-
-Documented on [Content policy/Songs](/docs/content-policy#Songs).
+<RuleEmbed ruleId={10} />
 
 ### What is the publish date of a song?
 
-The publish date (release date) is the date when the song was first made **public**. This includes: 
-* Video streaming services such as NicoNicoDouga and YouTube.
-* Distributing the song on a physical album at a record store or event.
-* Digital album on a marketplace such as iTunes, Spotify, Apple Music, etc.. 
+<RuleEmbed ruleId={100} />
 
-The publish date on VocaDB **must** be the earliest date that the song was publically available. Private distribution does not count. Work in progress versions also do not count.
+## Other common edit mistakes
 
-If the song is deleted and then reuploaded, the publish date does not change. It's still the date when the song was **first** made public.
-
-Documented on [Song entry editing](/docs/song-entry-editing#publish-date).
-
-----
+<RuleEmbed ruleId={101} />
+<RuleEmbed ruleId={30} />
+<RuleEmbed ruleId={36} />
+<RuleEmbed ruleId={138} />
 
 ## Albums
 
 ### If an album was released as multiple editions (such as regular/limited), is there need to create separate entries?
 
-Generally no, unless the tracklists are different or the editions were released at different times. Additional discs, different cover and catalog number are allowed without the need to create separate entry, and can be added as [Additional pictures](/docs/album-entry-editing#tab-additional-pictures).
-
-However, the differences between different editions (especially additional discs) should be clearly explained in the album description.
-
-For these entries (whether they are single entries or multiple entries), apply the [multiple editions](http://vocadb.net/T/4877/multiple-editions) tag.
-
-#### Reasons for splitting the album into multiple entries
-
-(applies if one of these is true)
-
-* Changing the order of tracks (this prevents automatic tagging)
-* Adding or removing tracks
-* Significantly changing the contents of the tracks (remix/cover/different lengths). Small changes do not require splitting.
-
-#### Reasons for not splitting the album
-
-* Appending something to the name (such as "Limited Edition")
-* Different covers (additional covers can be added on the "Additional pictures" tab)
-* Adding or removing discs (usually DVD/video)
-* Different catalog numbers (additional catalog numbers can be mentioned in the catalog number field)
-
-Rationale: albums with multiple editions are more of a rule than exception, and splitting the editions into multiple entries provides little additional value.
+<RuleEmbed ruleId={54} />
 
 ### Should I create an album entry for a single song?
 
-If there is clear indication that the song was released as a single, then yes, you can use the ["Single" album type](/docs/album-entry-creation).
+If there is clear indication that the song was released as a single, then yes, you can use the ["Single" album type](/docs/docs/album-entry-editing#single).
 
-----
-
-## Artists
+## Voicebanks
 
 ### Should voice synth characters with multiple voicebanks be split into multiple entries?
 
-As a general guideline, voice synth entries should correspond to the voicebanks available in the  corresponding editor.
+As a general guideline, voice synth entries should correspond to the voicebanks available in the corresponding editor.
 
 If the voicebanks were distributed separately, that's also a strong reason for splitting the voicebanks into different entries.
 
@@ -115,13 +66,13 @@ Sometimes a voice synth might have multiple voicebanks, but they're almost alway
 
 When in doubt, the safest approach is to start with a single entry and split it later if required. This helps avoid creating multiple unused Vocaloid entries.
 
-#### Reasons for splitting voicebank entries
+### Reasons for splitting voicebank entries
 
-* Voicebanks are commonly credited as separate by the artists
-* Voicebanks appear separate in the editor
-* Voicebanks sound distinctly different, or are made for different languages
-* Voicebanks have separate brand names / box art
-* Voicebanks were released at different times
-* Voicebanks can be purchased separately (they are not always bundled together)
+- Voicebanks are commonly credited as separate by the artists
+- Voicebanks appear separate in the editor
+- Voicebanks sound distinctly different, or are made for different languages
+- Voicebanks have separate brand names / box art
+- Voicebanks were released at different times
+- Voicebanks can be purchased separately (they are not always bundled together)
 
 Rationale: Artist entries don't generally interfere with each other, but having an excessive amount of them makes finding and managing each individual entry difficult. We want the voicebank credits to be as accurate as possible, but without needlessly complicating editing. Helping users find relevant information is key, so we try to strike a balance.

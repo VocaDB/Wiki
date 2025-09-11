@@ -57,7 +57,7 @@ export default function MobileNavbar() {
                           <div className="peer-data-[state=open]:grid hidden text-muted-foreground py-1 ml-4">
                             {groupedNavbarParents[c]?.map((post) => (
                               <a
-                                className="hover:underline pt-2"
+                                className="hover:underline pt-2 visited:text-blue-500"
                                 key={post.params.slug}
                                 href={[
                                   "/docs",
@@ -79,7 +79,7 @@ export default function MobileNavbar() {
                       post.params.slug,
                     ].join("/")}
                     key={post.params.slug}
-                    className="text-muted-foreground"
+                    className="text-muted-foreground visited:text-blue-500"
                   >
                     {post.props.entry.data.title}
                   </a>

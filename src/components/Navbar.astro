@@ -44,7 +44,7 @@ import { ScrollArea } from "./ui/scroll-area";
                       <div class="peer-data-[state=open]:grid hidden text-muted-foreground py-1 ml-4">
                         {groupedNavbarParents[c]?.map((post) => (
                           <a
-                            class="hover:underline py-1"
+                            class="hover:underline py-1 visited:text-blue-500"
                             href={[
                               "/docs",
                               post.params.slug,
@@ -61,7 +61,7 @@ import { ScrollArea } from "./ui/scroll-area";
             {groupedNavbarParents[parentEntry.props.entry.data.title]?.map(
               (post) => (
                 <a
-                  class="text-muted-foreground hover:underline py-1"
+                  class="text-muted-foreground hover:underline py-1 visited:text-blue-500"
                   href={[
                     "/docs",
                     post.params.slug,

@@ -38,7 +38,7 @@ export default defineConfig({
 
     "/wiki/1": "/docs/romanization-guidelines",
     "/wiki/1/romanization-guidelines":"/docs/romanization-guidelines",
-    "/docs/other-guideliness/romanization-guidelines":"/docs/romanization-guidelines",
+    "/docs/other-guidelines/romanization-guidelines":"/docs/romanization-guidelines",
     
     "/wiki/2": "/",
     "/wiki/2/vocadb-wiki": "/",

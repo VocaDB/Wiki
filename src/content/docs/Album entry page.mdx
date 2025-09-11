@@ -15,7 +15,7 @@ This page explains the fields and features for the album entry page.
 
 ## User actions
 
-[The album entry status](/docs/albums/album-entry-editing#Status) is shown with at the end of this line.
+[The album entry status](/docs/album-entry-editing#Status) is shown with at the end of this line.
 
 ### Add to my collection
 
@@ -38,7 +38,7 @@ Albums can be rated from 1 to 5 stars, and the average of all users' ratings is 
 
 ### Edit
 
-Opens the [Edit page](/docs/albums/album-entry-editing) for the album entry.
+Opens the [Edit page](/docs/album-entry-editing) for the album entry.
 
 ### View modifications
 
@@ -51,7 +51,7 @@ The specific version can be viewed by clicking one of the version numbers in the
 
 https://vocadb.net/Album/ViewVersion/{version_id}
 
-The version page has two user actions available (four for [Moderator+](/docs/documentation/user-groups)).
+The version page has two user actions available (four for [Moderator+](/docs/user-groups)).
 
 #### Revert to this version (Moderator+)
 
@@ -63,7 +63,7 @@ The version page has two user actions available (four for [Moderator+](/docs/doc
 
 #### Report an error
 
-Creates an [Entry Report](/docs/pinned/entry-reports) and adds it to the [Entry Report list](https://vocadb.net/Admin/ViewEntryReports) visible to Trusted Users and up.
+Creates an [Entry Report](/docs/entry-reports) and adds it to the [Entry Report list](https://vocadb.net/Admin/ViewEntryReports) visible to Trusted Users and up.
 
 #### Hide this version (Moderator+)
 
@@ -76,7 +76,7 @@ Downloads the album track information in [CSV format](https://en.wikipedia.org/w
 Default tag format string is:
 %title%;%title%%featvocalists%;%producers%;%album%;%discnumber%;%track%
 
-Custom format string usage is documented on the [Album track format strings for the custom CSV export](/docs/albums/album-track-format-strings-for-the-custom-csv-export) page.
+Custom format string usage is documented on the [Album track format strings for the custom CSV export](/docs/album-track-format-strings-for-the-custom-csv-export) page.
 
 
 ### Tab: Basic info
@@ -107,17 +107,17 @@ Producers featured on the album. Artists that belong to the "Producer" category 
 
 ##### Circle
 
-[Circle(s)](/docs/artists/artist-entry-editing#Circle) associated with the album entry.
+[Circle(s)](/docs/artist-entry-editing#Circle) associated with the album entry.
 
 ##### Label(s)
 
-[Labels](/docs/artists/artist-entry-editing#Label) associated with the album entry.
+[Labels](/docs/artist-entry-editing#Label) associated with the album entry.
 
 ##### Other artists
 
 All other artist types (for example, Illustrators, Lyricists, etc.) and roles.
 
-#### [Description](/docs/albums/album-entry-editing#Album-description)
+#### [Description](/docs/album-entry-editing#Album-description)
 
 The album entry description is truncated to the first ~~400 characters. If longer than this, a "Show full description" button is provided.
 
@@ -125,7 +125,7 @@ The English translation (if available) is shown by default, regardless of the us
 
 #### Type
 
-[Album type](/docs/albums/album-entry-editing#Record-type)
+[Album type](/docs/album-entry-editing#Record-type)
 
 #### Tags
 
@@ -147,21 +147,21 @@ You can remove tags that you added yourself by removing your tag vote (toggling 
 
 https://vocadb.net/Album/ManageTagUsages/{album_id}
 
-The entry tags are displayed as a table with the columns _Tag_, _Count_, _Votes_ (Visible to [Moderator+](/docs/documentation/user-groups) only), _Date_.
+The entry tags are displayed as a table with the columns _Tag_, _Count_, _Votes_ (Visible to [Moderator+](/docs/user-groups) only), _Date_.
 
 Tags can be removed by any trusted user, regardless of who added and voted for the tag.
 
 #### Release date
 
-[Release date](/docs/albums/album-entry-editing#Release-date) of the album.
+[Release date](/docs/album-entry-editing#Release-date) of the album.
 
 #### Catalog number
 
-[Catalog number](/docs/albums/album-entry-editing#Catalog-number) of the album.
+[Catalog number](/docs/album-entry-editing#Catalog-number) of the album.
 
 #### Release event
 
-[Release event(s)](/docs/albums/album-entry-editing#Release-event) of the album.
+[Release event(s)](/docs/album-entry-editing#Release-event) of the album.
 
 If the album publish date is outside the event date range by more than 7 days, the difference is displayed with "(x days)", where x is the number of days to the event start (or end) date:
 
@@ -171,11 +171,11 @@ If the album publish date is outside the event date range by more than 7 days, t
 
 #### Language(s)
 
-List of the [languages in the tracklist](/docs/songs/song-entry-editing#Languages).
+List of the [languages in the tracklist](/docs/song-entry-editing#Languages).
 
 #### Ads / crossfades
 
-Album [ads and crossfades](/docs/albums/album-entry-editing#tab-Media).
+Album [ads and crossfades](/docs/album-entry-editing#tab-Media).
 
 #### Official links
 
@@ -199,19 +199,19 @@ The average (rounded) album rating and the number of ratings are displayed below
 
 #### Addition date
 
-Entry creation date. Corresponds to the last row in [the entry history -table](/docs/albums/album-entry-page#View-modifications), except for some very early entries.
+Entry creation date. Corresponds to the last row in [the entry history -table](/docs/album-entry-page#View-modifications), except for some very early entries.
 
 #### Tracklist
 
-[Tracklist](/docs/albums/album-entry-editing#tab-Tracks) of the entry, separated by disc (if applicable).
+[Tracklist](/docs/album-entry-editing#tab-Tracks) of the entry, separated by disc (if applicable).
 
-If all of the tracks include a [duration](/docs/songs/song-entry-editing#Duration), the total album duration/length is calculated and displayed.
+If all of the tracks include a [duration](/docs/song-entry-editing#Duration), the total album duration/length is calculated and displayed.
 
 #### Artist's personal description
 
 For an artist's personal introduction of the entry. Unlike the description field, this is considered a **subjective** opinion, possibly written in first person, and may include a limited amount of "marketing speech." For entries with multiple involved artists, only one description may be provided, but whenever possible, the circle/group can be selected as the author.
 
-This field should **only** be added by the artist themselves, who must have a [Verified Artist](https://wiki.vocadb.net/docs/documentation/user-groups#verified-artists) account.
+This field should **only** be added by the artist themselves, who must have a [Verified Artist](https://wiki.vocadb.net/docs/user-groups#verified-artists) account.
 
 #### Latest comments
 
@@ -221,7 +221,7 @@ As with the entry description, [GitHub-flavored Markdown](https://docs.github.co
 
 Placing the @ symbol before a username will notify the relevant user when the comment is sent, similar to Discord's ping system.
 
-Always follow the [discussion rules](/docs/pinned/discussion-rules). 
+Always follow the [discussion rules](/docs/discussion-rules). 
 
 #### Latest review
 
@@ -237,7 +237,7 @@ All reviews for the album.
 
 ### Tab: Pictures
 
-[Additional album pictures](/docs/albums/album-entry-editing#tab-Additional-pictures) (such as an album's back cover art) are displayed on this tab.
+[Additional album pictures](/docs/album-entry-editing#tab-Additional-pictures) (such as an album's back cover art) are displayed on this tab.
 
 ### Tab: Related albums
 

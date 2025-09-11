@@ -28,6 +28,9 @@ export default defineConfig({
     pagefind(),
   ],
   redirects: {
+
+    "/docs/rule-reference": "/rules",
+
     "/docs/documentation/vocadb-changelog": "/docs/website-changelog",
     "/docs/documentation/website-changelog": "/docs/website-changelog",
 

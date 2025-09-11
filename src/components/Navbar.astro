@@ -22,12 +22,11 @@ import { ScrollArea } from "./ui/scroll-area";
       })
       .map(({ navbarItem, parentEntry }) => (
         <div class="pb-4">
-          <a
-            href={"/docs/"}
-            class="text-sm font-semibold hover:underline"
+          <p
+            class="text-sm font-semibold"
           >
             {parentEntry.props.entry.data.title}
-          </a>
+          </p>
           <div class="grid grid-flow-row auto-rows-max text-sm mt-1 w-5/6">
             {navbarItem.subcategories !== undefined &&
               navbarItem.subcategories.length > 0 && (

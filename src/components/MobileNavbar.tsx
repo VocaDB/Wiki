@@ -76,7 +76,6 @@ export default function MobileNavbar() {
                   <a
                     href={[
                       "/docs",
-                      parentEntry.params.slug,
                       post.params.slug,
                     ].join("/")}
                     key={post.params.slug}

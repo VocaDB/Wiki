@@ -5,29 +5,38 @@ parent: Other-guidelines
 tags: ["wikipage", "artists", "songs", "albums", "documentation", "names", "languages", "vocadb"]
 ---
 
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+
+General instructions for entry names (= titles) and aliases are documented here.
+
+For entry-specific instructions, check the relevant pages:
+- [Songs](/docs/song-entry-editing#names)
+- [Artists](/docs/artist-entry-editing#names)
+- [Albums](/docs/album-entry-editing#names)
+
 ## Original Language
 
+<RuleEmbed ruleId={24} fields={["id"]}/>
 
 The "Original language" is the language of the most common, official, primary name. This determines the displayed name when the user setting "preferred display language" is set to "Original".
 
 This field is automatically set during entry creation but **doesn't automatically update** when the names are edited.
 
+<RuleEmbed ruleId={25} fields={["id"]}/>
+
 ## Primary Name
 
-The primary name of the entry includes the official or unofficial romanization and/or **English translation**. The official romanization and/or translation, if available, **takes priority**.
+The primary name of the entry includes the official or unofficial romanization and/or **English translation**. 
+
+<RuleEmbed ruleId={26} fields={["id"]}/>
 
 **Do NOT** romanize or translate titles if you do not know the language well enough. **Machine translations are strictly forbidden**. It's better to leave the fields empty than to have them incorrect.
 
-Missing names do not need to be copied from the other two fields. The system will substitute those when needed.
+<RuleEmbed ruleId={30} fields={["id"]}/>
 
-**New** non-English translations should not be added without a good reason. For example, the song entry [ECHO](https://vocadb.net/S/68814) should not receive new translations.
+<RuleEmbed ruleId={8} fields={["id"]}/>
 
-Exceptions include:
-
-- Translation is used **somewhere else** (improves searchability)
-- Translation is related to the original name, giving additional context or value.
-  - Example: "Матрёшка" for [Matryoshka](https://vocadb.net/S/368).
-    * = Additional context/value
+<RuleEmbed ruleId={29} fields={["id"]}/>
 
 ### Non-English
 

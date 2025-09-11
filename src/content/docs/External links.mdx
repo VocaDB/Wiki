@@ -5,12 +5,14 @@ parent: Other-guidelines
 tags: ["wikipage", "editing", "external links", "documentation", "vocadb"]
 ---
 
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+
 External links can be added to entries for songs, albums, artists, tags, and events. 
 
 These links serve three main purposes:
-- 1) Provide ways for the viewers to **legally purchase** or download the albums or songs.
-- 2) Provide ways for the viewers to **find out more** about the artists or albums.
-- 3) Provide points of **reference**.
+1) Provide ways for the viewers to **legally purchase** or download the albums or songs.
+2) Provide ways for the viewers to **find out more** about the artists or albums.
+3) Provide points of **reference**.
 
 Note that VocaDB is not intended to provide **all the possible** information about artists, nor can users buy albums on VocaDB. Artists' own websites, online stores and sometimes other wikis are better for explaining this. 
 
@@ -22,21 +24,7 @@ Link icons are maintained on the [ExtIcons-repository](https://github.com/VocaDB
 
 ## Link categories
 
-Link categories (official, commercial, reference, other) are available for the main entry types (songs, albums and artists).
-
-### Official links
-
-- Official
-- Commercial
-
-Official links are links to content that the artist can directly control: official websites, social media links, etc. Official links that include commercial features (such as album/song purchase) should be marked as Commercial.
-
-### Unofficial links
-
-- Reference
-- Other
-
-Unofficial links are links to content that artist doesn't directly control: Wikipedia pages, fansites, etc. If the link is not referencing the content of the entry, it should be marked as **Other**.
+<RuleEmbed ruleId={20} fields={["id"]}/>
 
 ### Link category examples
 
@@ -50,28 +38,13 @@ Unofficial links are links to content that artist doesn't directly control: Wiki
 
 See the [Content removal guidelines](/docs/content-removal-guidelines#information-that-the-artist-can-freely-remove-without-asking).
 
-## Mobile links
+## Different URL Formats
 
-Some websites have a separate URL for pages meant to be viewed on mobile:
-* https://m.youtube.com
-* https://sp.nicovideo.jp/
-
-Always prefer adding the **desktop version** of the link.
-
-# Different URL Formats
-Some websites support different URL formats that point to the same webpage.
-YouTube channels, for example, may have up to four different URL formats:
-- Default URL: https://www.youtube.com/channel/YouTube
-- Handle URL: https://www.youtube.com/@YouTube
-- Custom URL: https://www.youtube.com/c/YouTube
-- Legacy URL: https://www.youtube.com/user/YouTube
-
-Adding links with different URL formats is encouraged because they can be useful for recognition and archival purposes. However, note that "@" urls (for example https://www.youtube.com/@YouTube) are not currently supported by the system that adds relevant artists to songs on the song submission page, so if an artist has only the "@" url, you will have to add the artist manually. 
+<RuleEmbed ruleId={75} fields={["id"]}/>
+<RuleEmbed ruleId={16} fields={["id"]}/>
 
 ## Forbidden links
 
-**Direct** download links to media files (such as .mp3 or .flac) and links to file-hosting services (such as Google Drive or Dropbox) are not allowed, even if they're legal. If the content is officially distributed, link the artist's page (e.g., on Piapro or a blog) instead. There are multiple reasons for this, but the most important is that the artist gets traffic for the downloads.
-
-Links to illegal file sharing sites are not allowed.
-
-Email links are not allowed.
+<RuleEmbed ruleId={17} fields={["id"]}/>
+<RuleEmbed ruleId={18} fields={["id"]}/>
+<RuleEmbed ruleId={19} fields={["id"]}/>

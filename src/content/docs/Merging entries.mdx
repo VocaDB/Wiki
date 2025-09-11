@@ -5,6 +5,8 @@ parent: Other-guidelines
 tags: ["wikipage", "artists", "songs", "albums", "editing", "guidelines", "moderation", "merging entries", "splitting entries", "documentation", "vocadb"]
 ---
 
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+
 ## What is it used for
 
 Duplicates often appear on VocaDB. Whenever a duplicate is detected it needs to be deleted or merged in most cases. Merging copies all properties from the source entry to the destination, and the source entry is deleted. 
@@ -27,13 +29,17 @@ If the source entry has no useful information and no song/tag votes, merging is 
 
 ## How to merge
 
-Assuming you have the necessary permissions, the merge option appears on the entry edit page. In general, merge should be performed **from the newer entry to the older one**, because the source entry will be deleted, and it's more likely that there are external references to the older entry.
+Assuming you have the necessary permissions, the merge option appears on the entry edit page. 
+
+<RuleEmbed ruleId={28} fields={["id"]}/>
 
 ## Splitting Artist Entries
 
 The general principle in VocaDB is to merge artist entries belonging to the same person, therefore centralizing information and enhancing user features like following artists. However, there are situations where a different approach is necessary, particularly when artists have multiple distinct personas or wish to separate their work. 
 
 When creating new entries, VocaDB checks against existing links and names to prevent duplicates, sometimes revealing previously unknown connections between artist profiles. The **more** distinct the artist profiles or personas are, the **more** justifiable it becomes to maintain separate entries. In such cases, these entries can be linked through their descriptions, as in the case of LamazeP and GojimajiP (https://vocadb.net/Ar/304).
+
+<RuleEmbed ruleId={79} fields={["id"]}/>
 
 Artists can request to split their entry if they have multiple distinct artistic personas with different names. This may be due to various reasons, for example, a desire to start fresh or separate older works from newer ones, etc.. To request a split, contact a moderator with the relevant artist names, and give information to help determine which song entries belong to which persona. Include clarifications for unclear cases, specify publish date cutoffs if applicable, and ideally, provide a pre-organized list of song entries under each artist name.
 

@@ -5,89 +5,56 @@ parent: Other-guidelines
 tags: ["wikipage", "artists", "albums", "songs", "editing", "guidelines", "moderation", "tos", "documentation", "vocadb"]
 ---
 
-This page explains what kind of entries are accepted.
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+
+This page explains what kind of entries are accepted on VocaDB.
 
 ## General
 
-Sensitive personal information should not be shared in entries or user profiles.
-
-**VocaDB does not host Machine Translations**, such as those from DeepL or Google Translate. Do **NOT** use these to romanize or translate if you do not know the language well enough.
-
+<RuleEmbed ruleId={174} fields={["id"]}/>
+<RuleEmbed ruleId={30} fields={["id"]}/>
+<RuleEmbed ruleId={72} fields={["id"]}/>
 
 ## Artists
 
-### Main requirements
+- [Wiki page for artists](/docs/artists).
 
-#### 1. Each artist entry should be included in at least **one song or album**.
-
-Exceptions:
-* Base ("Unknown") voicebank entries.
-* People who play a large role in a vocal-synth event (e.g. DJ).
-* [Associated artists](/docs/artist-entry-editing#Associated-artists) for voicebanks.
-
-#### 2. Artists that are **not voice-synth-related** should not be added to the database. 
-
-This applies to [cover unifier songs](https://vocadb.net/T/6751) as well (use the custom artist feature). 
-
-For illustrators, this rule can be ambiguous. 
-
-* [Stock photo](https://vocadb.net/T/6639/stock-photography) credits should generally be credited with the custom artist feature (no entry).
-* Illustrators with voice-synth related artworks should have an entry.
-* Illustrators who collaborate a lot with different voice-synth artists should have an entry.
-
-Artists that are **directly** participating/collaborating (including illustrators) **should/can have artist entries**: Animators, lyricists, other individuals, etc.
-
-Artist entry is usually not necessary, if a person is credited for a small/ambiguous role, such as "advice".
-
-#### 3. Make sure that the artist is not listed [here](/docs/forbidden-artists).
-
-### Voicebanks
-
-**Unreleased** voicebanks with no demo songs should **not** be added.
-
-Artist entries for unofficial voicebanks, generated from existing singing voices **without consent** are **not** allowed. Song credits should be added with "custom artist" feature along with the [unofficial voicebank/Jinriki tag](https://vocadb.net/T/7095/unofficial-voicebank). Keep in mind that [RVC AI](https://vocadb.net/T/9730/rvc-ai) models generally fall under this category, unless the model is authorized.
-
-Fan-made derivatives such as pitchbends and genderswaps such as [Hagane Miku](https://vocadb.net/T/7203/hagane-miku), **should not be added as artist entries**, as they are not voicebanks of their own. Corresponding tags should be used instead: https://vocadb.net/T/92/derivative.
-
-    * Official derivatives made or commissioned by the original creator of the voicebank, whether for Vocaloid or UTAU, are **allowed**.
+<RuleEmbed ruleId={69} fields={["id"]}/>
+<RuleEmbed ruleId={70} fields={["id"]}/>
+<RuleEmbed ruleId={73} fields={["id"]}/>
+<RuleEmbed ruleId={74} fields={["id"]}/>
 
 ## Albums
 
-The album needs to have at least one track with voice synth vocals (Vocaloid/UTAU/Cevio/etc.).
+- [Wiki page for albums](/docs/albums).
 
-Additionally, the album must have had a physical (i.e. CD) or digital release (i.e. Bandcamp, Spotify, etc.) at some point in time. Sometimes artists "publish" their song collections as a playlist which is insufficient for an album entry.
-
-Unofficial, fanmade compilation albums (bootlegs) where the author(s) are not involved in creating the songs are generally not allowed. There can be some exceptions if the albums are widely known, for example the [Hatsune Miku 1st Song Album](https://vocadb.net/Al/104). This is decided on a case-by-case basis and staff members reserve the right to remove these entries should they deem it necessary.
+<RuleEmbed ruleId={47} fields={["id"]}/>
+<RuleEmbed ruleId={48} fields={["id"]}/>
+<RuleEmbed ruleId={49} fields={["id"]}/>
 
 ## Songs
 
-Make sure that the (main) artist of the song is not listed [here](/docs/forbidden-artists/).
+- [Wiki page for songs](/docs/songs).
 
-Songs without voice-synth vocals (vocaloid/utau/cevio/etc.) should not be added, with a few exceptions:
-
-* Song is part of an album entry (tracks by out-of-scope artists should be created as custom tracks)
-* Song has **at least 5** voice-synth covers (these can be added as [cover unifier entries](https://vocadb.net/T/6751))
-
-Song entries for AI generated songs (AI generated music or AI generated uncontrolled vocal synthesis) are not allowed. Songs made with [Suno](https://suno.com/home) for example.
-
-Work in progress (WIP) songs/trailers should not be added, except voicebank demos. 
-
-* Teasers that are different from the actual songs that they promote are allowed ([example](https://vocadb.net/S/588175)).
-
-Song entries should not be created based on unpublished YouTube premieres. 
-
-    * Adding links that have not yet premiered to **existing song entries** is fine, as long as the song entry has some other playable link.
+<RuleEmbed ruleId={12} fields={["id"]}/>
+<RuleEmbed ruleId={11} fields={["id"]}/>
+<RuleEmbed ruleId={10} fields={["id"]}/>
+<RuleEmbed ruleId={135} fields={["id"]}/>
 
 ## Events
 
-[Event entries](/docs/events) must be related to vocal synths, but otherwise have no creation requirements
+- [Wiki page for events](/docs/events).
+
+<RuleEmbed ruleId={95} fields={["id"]}/>
 
 ## Tags
 
-- Tag entries without a description and category are not accepted. 
+- [Wiki page for tags](/docs/tags).
 
-- Inflammatory tags, such as "bad tuning", are not accepted.
+<RuleEmbed ruleId={149} fields={["id"]}/>
+<RuleEmbed ruleId={150} fields={["id"]}/>
 
-- Tags that are incredibly specific to the point they are only used in a single entry are not accepted.
+<RuleEmbed ruleId={148} fields={["id"]}/>
+<RuleEmbed ruleId={168} fields={["id"]}/>
+<RuleEmbed ruleId={152} fields={["id"]}/>
 
-More on the wiki page for [tags](/docs/tags).

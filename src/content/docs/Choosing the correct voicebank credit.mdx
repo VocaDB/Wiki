@@ -5,30 +5,16 @@ parent: Other-guidelines
 tags: ["wikipage", "editing", "artists", "documentation", "guidelines", "vocadb"]
 ---
 
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+
 With ambiguous crediting it's important to minimize potential credit errors.
 
-If **not** further specified, the default choice in most cases is **the base voicebank**. In some cases they are marked with the text _"unknown"_.
+<RuleEmbed ruleId={172} fields={["id"]}/>
 
-*  "Hatsune Miku" = [Hatsune Miku](https://vocadb.net/Ar/1)
-*  "Otomachi Una" = [Otomachi Una (Unknown)](https://vocadb.net/Ar/49701)
+<RuleEmbed ruleId={144} fields={["id"]}/>
 
-There are some exceptions where the base voicebank should be avoided:
+<RuleEmbed ruleId={145} fields={["id"]}/>
 
-For example, **Japanese** "Xin Hua" songs should be credited with the V4 Japanese voicebank, since the base voicebank is Chinese.
-* "Xin Hua" =  ["Xin Hua V4 Japanese (Unknown)"](https://vocadb.net/Ar/60459)
+<RuleEmbed ruleId={146} fields={["id"]}/>
 
-Always make sure that the song language matches one of the voicebank languages, except with songs tagged with [unsupported language](https://vocadb.net/T/7059).
-
-When crediting a derived voicebank **based on hearing**, "Hatsune Miku Append (Soft)" for example, it's important to mark the entry with the ["unconfirmed vocalists"](https://vocadb.net/T/6416) -tag or use the entry edit notes to document the source.
-
-When the vocalist sounds different from the base-version but no further guess exists, the ["unspecified voicebank"](https://vocadb.net/T/2982) -tag can be used.
-
-If the specific voicebank is only partially credited, there are two options depending which piece of information is omitted: 
-
-* "Kamui Gakupo V4" = ["V4 Kamui Gakupo (Unknown)"](https://vocadb.net/Ar/36302)
-
-* "Kamui Gakupo (Power)" =  ["V3 Kamui Gakupo (Power)"](https://vocadb.net/Ar/1763)
-
-Always credit the **earliest** "Gakupo Power" bank (V3 instead of V4) along with the ["unspecified voicebank version"](https://vocadb.net/T/4862/unspecified-voicebank-version) -tag.
-
-Multiengine synths that have no clear/safe-to-assume base voicebanks usually have a corresponding "unknown"-entry. These are grouped under the ["unspecified voicebank engine"](https://vocadb.net/T/9027/unspecified-voicebank-engine) -tag.
+<RuleEmbed ruleId={173} fields={["id"]}/>

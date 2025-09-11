@@ -23,7 +23,7 @@ import { ScrollArea } from "./ui/scroll-area";
       .map(({ navbarItem, parentEntry }) => (
         <div class="pb-4">
           <a
-            href={["/docs", parentEntry.params.slug].join("/")}
+            href={"/docs/"}
             class="text-sm font-semibold hover:underline"
           >
             {parentEntry.props.entry.data.title}
@@ -65,7 +65,6 @@ import { ScrollArea } from "./ui/scroll-area";
                   class="text-muted-foreground hover:underline py-1"
                   href={[
                     "/docs",
-                    getParent(post)!.toLowerCase(),
                     post.params.slug,
                   ].join("/")}
                 >

@@ -10,17 +10,7 @@ const docsCollection = defineCollection({
     parent: z.string().nullable().optional(),
     tags: z.array(z.string()).default([])
   })
-});
-
-const FlexibleDate = () =>
-  z
-    .union([
-      z.string().regex(/^\d{4}$/, "Expected format: YYYY"),
-      z.string().regex(/^\d{4}-\d{2}$/, "Expected format: YYYY-MM"),
-      z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Expected format: YYYY-MM-DD")
-    ])
-    .nullable()
-    .optional();
+});    
 
 const ruleCollection = defineCollection({
   type: "content",
@@ -43,9 +33,9 @@ const ruleCollection = defineCollection({
     occurance: z.number().nullable().optional(),
     detection_script: z.string().nullable().optional(),
     edit_list: z.string().nullable().optional(),
-    date_checked: FlexibleDate(),
-    date_created: FlexibleDate(),
-    date_modified: FlexibleDate(),
+    date_checked: z.date().nullable().optional(),
+    date_created: z.date().nullable().optional(),
+    date_modified: z.date().nullable().optional(),
     rationale: z.string().nullable().optional(),
     rule_context: z.enum(["Names", "Content policy", "Description", "External links", "Romanization"]).nullable().optional(),
     status: z.enum(["Active", "Deprecated"]).default("Active")

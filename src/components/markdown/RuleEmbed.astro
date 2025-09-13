@@ -12,6 +12,10 @@ const { rule: ruleName, ruleId, fields = [] } = Astro.props;
 
 let ruleEntry;
 
+const ISO_date = (date: Date): string => {
+  return date.toISOString().split("T")[0];
+};
+
 if (ruleName) {
   ruleEntry = await getEntry("rules", ruleName);
 } else if (ruleId !== undefined) {
@@ -71,7 +75,7 @@ const shouldShowGroup = (groupFields: RuleFields[]): boolean => {
         {ruleData.status == "Deprecated" && (
           <p class="text-red-500">
             ⚠️ This rule has been deprecated{" "}
-            {ruleData.date_modified && `(${ruleData.date_modified})`}
+            {ruleData.date_modified && `(${ISO_date(ruleData.date_modified)})`}
           </p>
         )}
 
@@ -95,10 +99,10 @@ const shouldShowGroup = (groupFields: RuleFields[]): boolean => {
         {shouldShowGroup(["date_created", "date_modified"]) && (
           <>
             {ruleData.date_created && (
-              <p>Rule created {ruleData.date_created}</p>
+              <p>Rule created {ISO_date(ruleData.date_created)}</p>
             )}
             {ruleData.date_modified && (
-              <p>Rule modified {ruleData.date_modified}</p>
+              <p>Rule modified {ISO_date(ruleData.date_modified)}</p>
             )}
           </>
         )}
@@ -120,7 +124,7 @@ const shouldShowGroup = (groupFields: RuleFields[]): boolean => {
               {ruleData.edit_list && (
                 <span>
                   : <a href={ruleData.edit_list}>Edit list</a>
-                  {ruleData.date_checked && ` updated ${ruleData.date_checked}`}
+                  {ruleData.date_checked && ` updated ${ISO_date(ruleData.date_checked)}`}
                 </span>
               )}
             </p>

@@ -16,7 +16,7 @@ const ruleCollection = defineCollection({
   type: "content",
   schema: z.object({
     name: z.string(),
-    id: z.number(),
+    id: z.number(), // rule id
     entry_type: z
       .union([
         z.literal("All"),
@@ -28,17 +28,17 @@ const ruleCollection = defineCollection({
     entry_status: z
       .enum(["Draft", "Finished", "Approved", "Locked"])
       .default("Draft"),
-    fe_validations: z.string().nullable().optional(),
-    be_validations: z.boolean().nullable().optional(),
-    occurance: z.number().nullable().optional(),
-    detection_script: z.string().nullable().optional(),
-    edit_list: z.string().nullable().optional(),
-    date_checked: z.date().nullable().optional(),
-    date_created: z.date().nullable().optional(),
-    date_modified: z.date().nullable().optional(),
-    rationale: z.string().nullable().optional(),
-    parent_id: z.number().nullable().optional(),
-    rule_context: z.enum(["Names", "Content policy", "Description", "External links", "Romanization"]).nullable().optional(),
+    fe_validations: z.string().nullable().optional(), // frontend
+    be_validations: z.boolean().nullable().optional(), // backend
+    occurance: z.number().nullable().optional(), // amount of edit mistakes
+    detection_script: z.string().nullable().optional(), // xyz.py, see mods repo
+    edit_list: z.string().nullable().optional(), // sheet link or TODO
+    date_checked: z.date().nullable().optional(), // date sheet last generated
+    date_created: z.date().nullable().optional(), // rule creation date
+    date_modified: z.date().nullable().optional(), // date of rule modification (excluding wording changes)
+    rationale: z.string().nullable().optional(), // Short explanation why the rule is necessary
+    parent_id: z.number().nullable().optional(), // parent rule id
+    rule_context: z.enum(["Names", "Content policy", "Description", "External links", "Romanization"]).nullable().optional(), // Context which is not limited to just one entry type
     status: z.enum(["Active", "Deprecated"]).default("Active")
   })
 });

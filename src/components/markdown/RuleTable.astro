@@ -17,6 +17,7 @@ const ISO_date = (date: Date): string => {
         <th>Name</th>
         <th>E.Type</th>
         <th>E.Status</th>
+        <th>Context</th>
         <th>Occurrence</th>
         <th>Checked</th>
         <th>List</th>
@@ -47,6 +48,7 @@ const ISO_date = (date: Date): string => {
                   {rule.data.entry_status}
                 </span>
               </td>
+              <td>{rule.data.rule_context || "-"}</td>
               <td>{rule.data.occurance || "-"}</td>
               <td>{(rule.data.date_checked && ISO_date(rule.data.date_checked)) || "-"}</td>
               <td>

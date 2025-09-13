@@ -1,18 +1,21 @@
 ---
-name: "Artist credit required"
+name: Artist credit required
 id: 66
-entry_type: ["Songs","Albums","Artists"]
-entry_status: "Draft"
-fe_validations: "NeedArtist"
+entry_type:
+  - Songs
+  - Albums
+  - Artists
+entry_status: Draft
+fe_validations: NeedArtist
 be_validations:
 occurance:
 detection_script:
-edit_list:
+edit_list: TODO
 date_checked:
 date_created:
 date_modified:
 rationale:
-status: "Active"
+status: Active
 rule_context:
 ---
 All album and song entries require at least one artist credit (custom or a proper entry). 

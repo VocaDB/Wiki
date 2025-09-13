@@ -1,18 +1,20 @@
 ---
-name: "No song entries by forbidden artists"
+name: No song entries by forbidden artists
 id: 13
-entry_type: ["Songs","Artists"]
-entry_status: "Draft"
+entry_type:
+  - Songs
+  - Artists
+entry_status: Draft
 fe_validations:
 be_validations:
 occurance:
 detection_script:
-edit_list:
+edit_list: TODO
 date_checked:
 date_created:
 date_modified:
 rationale:
-rule_context: "Content policy"
-status: "Active"
+rule_context: Content policy
+status: Active
 ---
 Song entries where the main producer is listed under [forbidden artists](/docs/forbidden-artists) should not be added.

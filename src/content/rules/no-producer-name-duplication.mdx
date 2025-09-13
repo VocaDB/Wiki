@@ -1,18 +1,19 @@
 ---
-name: "No producer name duplication"
+name: No producer name duplication
 id: 78
-entry_type: ["Artists"]
-entry_status: "Finished"
-fe_validations: "UnnecessaryPName"
+entry_type:
+  - Artists
+entry_status: Finished
+fe_validations: UnnecessaryPName
 be_validations:
 occurance:
 detection_script:
-edit_list:
+edit_list: TODO
 date_checked:
 date_created:
 date_modified:
 rationale:
-status: "Active"
+status: Active
 rule_context:
 ---
 If the artist name includes the "producer" suffix (P or -P), do not duplicate a version without it as an alias.

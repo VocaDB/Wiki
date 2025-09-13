@@ -1,7 +1,12 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
 const ruleEntries: CollectionEntry<"rules">[] = await getCollection("rules");
+
+const ISO_date = (date: Date): string => {
+  return date.toISOString().split("T")[0];
+};
 ---
+
 
 <div class="table-container">
   <table class="rule-table sortable">
@@ -25,7 +30,7 @@ const ruleEntries: CollectionEntry<"rules">[] = await getCollection("rules");
           .map((rule, slug) => (
             <tr>
               <td>{rule.data.id}</td>
-              <td>{rule.data.date_modified || rule.data.date_created}</td>
+              <td>{(rule.data.date_modified && ISO_date(rule.data.date_modified)) || (rule.data.date_created && ISO_date(rule.data.date_created))}</td>
               <td class="rule-name">
                 <a href={`/rules/${rule.slug}`}>{rule.data.name}</a>
               </td>

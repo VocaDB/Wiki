@@ -1,0 +1,20 @@
+views:
+  - type: table
+    name: Table
+    filters:
+      and:
+        - file.ext != "base"
+    order:
+      - id
+      - file.name
+      - parent_id
+      - edit_list
+      - entry_status
+      - entry_type
+    sort:
+      - property: id
+        direction: ASC
+      - property: edit_list
+        direction: ASC
+    columnSize:
+      note.edit_list: 160

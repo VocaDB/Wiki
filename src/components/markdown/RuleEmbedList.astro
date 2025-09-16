@@ -14,8 +14,9 @@ interface Props {
 
 const { entry_type, rule_context, fields, excluded_ids } = Astro.props;
 
-rules = rules.filter(rule => !excluded_ids.includes(rule.data.id));
-
+if (excluded_ids) {
+  rules = rules.filter(rule => !excluded_ids.includes(rule.data.id));
+}
 if (entry_type !== "All") {
   rules = rules.filter(rule => {
     const ruleEntryType = rule.data.entry_type;

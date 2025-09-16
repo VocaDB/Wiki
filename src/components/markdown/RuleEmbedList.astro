@@ -9,9 +9,13 @@ interface Props {
   entry_type: (typeof EntryType)[number] | "All";
   rule_context?: string;
   fields?: RuleFields[] | "All";
+  excluded_ids: number[];
 }
 
-const { entry_type, rule_context, fields } = Astro.props;
+const { entry_type, rule_context, fields, excluded_ids } = Astro.props;
+
+rules = rules.filter(rule => !excluded_ids.includes(rule.data.id));
+
 if (entry_type !== "All") {
   rules = rules.filter(rule => {
     const ruleEntryType = rule.data.entry_type;

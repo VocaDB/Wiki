@@ -5,63 +5,31 @@ parent: Other-guidelines
 tags: ["wikipage", "editing", "guidelines", "romanization", "translation", "transcription", "names", "lyrics", "languages", "documentation", "vocadb"]
 ---
 
-## Japanese romanization
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import RuleEmbedList from "@/components/markdown/RuleEmbedList.astro";
 
-**Using Machine Translation tools like DeepL or Google Translate is expressly forbidden. Do not romanize or translate if you do not know the language well enough.**
+This guide assumes the reader has basic knowledge of Japanese grammar to be able to correctly romanize. 
 
-This guide assumes the reader has basic knowledge of Japanese grammar to be able to correctly romanize. If you wish to learn more about Japanese grammar, visit http://www.guidetojapanese.org. See also the wiki page for [Romanization walkthrough](/docs/romanization-walkthrough).
+See also the wiki page for [Romanization walkthrough](/docs/romanization-walkthrough).
 
-* If you are unsure about the romanization, leave a comment on the entry. You can use @(username) to notify the editor who added the romanization.
-* Commonly accepted romanizations will be allowed, even if they're technically incorrect and are generally exempt from the guidelines. More accurate romanizations can always be added as aliases.
-* If the romanization is provided by the producer on an official page, or by another official source such as the record label, use that instead.
+## Title romanization rules
+
+<RuleEmbed ruleId={32} />
+<RuleEmbed ruleId={30} />
+
+If you are unsure about the romanization, leave a comment on the entry. You can use @(username) to notify the editor who added the romanization.
 
 Voice synth-related Japanese slang and terminology is collected in this [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1h7KGUnq8WUJ87L7IgPxaTMvhNZ7npeSoseOJZmh8PoM/).
 
-### Basic Rules
+<RuleEmbedList rule_context={"Romanization"} excluded_ids={[30,31,32,46]}/>
 
-Use the rules of Modified [Hepburn romanization](http://en.wikipedia.org/wiki/Hepburn_romanization) unless an exception has been indicated below.
+## What if I want to romanize song lyrics for VocaDB?
 
-* Capitalization: Capitalize all words that are NOT single kana particles（は、が、を、etc）
-    * E.g. 歌に形はないけれど would be romanized as ‘Uta ni Katachi wa Nai Keredo’
-* Separate all words and particles with spaces.
-* When adding the P to a producer’s name, do not use a dash.
-    * E.g. めざめP  would be romanized as ‘MezameP’ not ‘Mezame-P’
-* If ん is followed by a vowel(including や・ゆ・よ), romanize it as n’
-    * E.g. してやんよ would be romanized as “Shiteyan’yo”
-* Use the same order as the Japanese name. Usually this is Lastname Firstname. Providing the alternate order (usually the western order Firstname Lastname) is usually not necessary. Note that the rule stated above still applies: if an officially accepted Romanization already exists, use that.
+First of all, thank you for your help! 
 
-### Exceptions
+Most of the above guidelines need not apply for lyric romanizations, but we request that you do follow the guideline of not using macrons for long vowels. Otherwise, it is up to your discretion.
 
-* Loanwords are romanized into their original language. コーヒー would be romanized as ‘coffee’.
-    * However, if the loanword is complex scientific latin nomenclature, the common name for said article is preferred. For an example, see http://vocadb.net/S/25395
-    *If the entire name is composed of loanwords, leave the romanized name field empty. Use the translated name field instead.
-* づ is romanized as ‘dzu’
-* Do not use macrons for long vowels. こおり is romanized as ‘koori’, not ‘kōri’
-* Use a dash when appending honorific suffixes to names unless the suffix is part of the name.
-    * お姉さん would be romanized as ‘Onee-san’, but 西沢さんP would be romanized as ‘NishizawasanP’ because the –san is part of the producer’s name.
-
-### Particles
-
-Wikipedia: http://en.wikipedia.org/wiki/Japanese_particles
-
-* は is romanized as ‘wa’ if it is used after a noun as a topic marker:
-    * E.g. 恋は戦争 would be romanized as ‘Koi wa Sensou’, the は is not part of a word and functions as a particle
-* へ is romanized as ‘e’ if it is used after the name of a place to indicate direction as a particle.
-    * E.g. 駆ける、星空の彼方へ would be romanized as ‘Kakeru, Hoshizora no Kanata e’, the へ is not part of a word and functions as a particle
-* を is romanized as ‘o’ if it is used after a noun as a direct object particle (90% of the time).
-    * E.g. 地球最後の告白を would be romanized as ‘Chikyuu Saigo no Kokuhaku o’
-
-## Chinese romanization
-
-* Use the [Pinyin](http://en.wikipedia.org/wiki/Pinyin) system.
-* The use of tonal marks is encouraged, but not necessary.
-* Capitalize every romanized word.
-* Separate the romanization of each Chinese character with a space, but special names and proper nouns are kept together.
-    * Example: 北京 would be romanized as "Běijīng" or simply "Beijing"
-    * For names of people, separate the first and last name with a space.
-        * Example: 毛泽东 would be romanized as "Máo Zédōng" or "Mao Zedong""
-
-## Transcription
+<RuleEmbed ruleId={138} />
 
 Many older songs (and some newer songs) do not provide lyrics in their descriptions or elsewhere, and their lyrics can only be found in the PV itself. A decent amount of other songs do not have lyrics in the PV either, and therefore their lyrics have to be transcribed by hearing. 
 
@@ -69,21 +37,11 @@ Many older songs (and some newer songs) do not provide lyrics in their descripti
 
 Visual transcriptions are almost always easier than auditory ones, as you can rely on both seeing the characters themselves and having the readings to go with them from the song's audio. 
 
-* If you transcribe from a PV, make sure to link the PV as the source and add (Transcribed from PV) next to it. For example, "YouTube (Transcribed from PV)"
-* The use of [OCR (Optical Character Recognition)](https://en.wikipedia.org/wiki/Optical_character_recognition), such as Google Lens and other AI-assisted tools, is allowed, but they should not be blindly trusted. If you use them, make sure to confirm that they are accurate before adding them to an entry. Keep in mind that OCR is often quite unreliable on stylized or low-quality text.
-
+- If you transcribe from a PV, make sure to link the PV as the source and add (Transcribed from PV) next to it. For example, "YouTube (Transcribed from PV)"
+- The use of [OCR (Optical Character Recognition)](https://en.wikipedia.org/wiki/Optical_character_recognition), such as Google Lens and other AI-assisted tools, is allowed, but they should not be blindly trusted. If you use them, make sure to confirm that they are accurate before adding them to an entry. Keep in mind that OCR is often quite unreliable on stylized or low-quality text.
 
 ### Audio Transcription
 
 Audio transcription is much more difficult than visual transcription, duing to the wide variety of characters that share similar or identical readings. Transcribers need to not only know these characters, but also decide which one fits the given context best. For this reason, it is generally discouraged to attempt audio transcriptions unless you are advanced enough in the languge. 
 
-* Ai-assisted tools are **not allowed** for audio transcription, as they are extremely inaccurate with languages like Japanese and Chinese and even more so with Vocaloid.
-
-
-# What if I want to romanize song lyrics for VocaDB?
-
-First of all, thank you for your help! 
-
-Most of the above guidelines need not apply for lyric romanizations, but we request that you do follow the guideline of not using macrons for long vowels. Otherwise, it is up to your discretion.
-
-(Of course, MTL is still not allowed.)
+<RuleEmbed ruleId={46} />

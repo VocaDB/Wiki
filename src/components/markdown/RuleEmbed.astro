@@ -60,13 +60,20 @@ const shouldShowGroup = (groupFields: RuleFields[]): boolean => {
 
 {
   (
-    <div class="rounded-xl border shadow py-2 px-4 mt-1">
-      <div>
-        <h3 class="mt-0">
-          Rule:
-          <a href={`/rules/${ruleEntry.slug}`}> {ruleData.name}</a>
-          {` (id=${ruleData.id})`}
+    <div class="rounded border shadow mt-1">
+      <div class="border-b mt-0">
+        <h3 class="m-0 text-base flex">
+          <span class="border-r px-2 py-1 block">
+            Rule {ruleData.id}<span class="w-0 collapse inline-block">:{` `}</span>
+          </span>
+          <span class="px-2 py-1 block">
+            <a href={`/rules/${ruleEntry.slug}`}> {ruleData.name}</a>
+          </span>
         </h3>
+
+      </div>
+      
+      <div class="px-4">
 
         {content && <content.Content />}
 
@@ -80,7 +87,7 @@ const shouldShowGroup = (groupFields: RuleFields[]): boolean => {
         )}
 
         {shouldShowGroup(["entry_status", "entry_type"]) && (
-          <span>
+          <p>
             (Applies to all
             {
               <em>
@@ -93,7 +100,7 @@ const shouldShowGroup = (groupFields: RuleFields[]): boolean => {
                 .map((str: string) => str.toLowerCase().replace(/s$/, ""))
                 .join(" & ")}
             entries)
-          </span>
+          </p>
         )}
 
         {shouldShowGroup(["date_created", "date_modified"]) && (

@@ -1,7 +1,12 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
 const ruleEntries: CollectionEntry<"rules">[] = await getCollection("rules");
+
+const ISO_date = (date: Date): string => {
+  return date.toISOString().split("T")[0];
+};
 ---
+
 
 <div class="table-container">
   <table class="rule-table sortable">
@@ -12,6 +17,7 @@ const ruleEntries: CollectionEntry<"rules">[] = await getCollection("rules");
         <th>Name</th>
         <th>E.Type</th>
         <th>E.Status</th>
+        <th>Context</th>
         <th>Occurrence</th>
         <th>Checked</th>
         <th>List</th>
@@ -25,7 +31,7 @@ const ruleEntries: CollectionEntry<"rules">[] = await getCollection("rules");
           .map((rule, slug) => (
             <tr>
               <td>{rule.data.id}</td>
-              <td>{rule.data.date_modified || rule.data.date_created}</td>
+              <td>{(rule.data.date_modified && ISO_date(rule.data.date_modified)) || (rule.data.date_created && ISO_date(rule.data.date_created))}</td>
               <td class="rule-name">
                 <a href={`/rules/${rule.slug}`}>{rule.data.name}</a>
               </td>
@@ -42,11 +48,12 @@ const ruleEntries: CollectionEntry<"rules">[] = await getCollection("rules");
                   {rule.data.entry_status}
                 </span>
               </td>
+              <td>{rule.data.rule_context || "-"}</td>
               <td>{rule.data.occurance || "-"}</td>
-              <td>{rule.data.date_checked || "-"}</td>
+              <td>{(rule.data.date_checked && ISO_date(rule.data.date_checked)) || "-"}</td>
               <td>
                 {rule.data.edit_list ?
-                  <a href={rule.data.edit_list}>Link</a>
+                  rule.data.edit_list === "TODO" ? "TODO" : <a href={rule.data.edit_list}>Link</a>
                 : "-"}
               </td>
             </tr>

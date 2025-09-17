@@ -6,6 +6,7 @@ tags: ["wikipage", "editing", "external links", "documentation", "vocadb"]
 ---
 
 import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import RuleEmbedList from "@/components/markdown/RuleEmbedList.astro";
 
 External links can be added to entries for songs, albums, artists, tags, and events. 
 
@@ -38,13 +39,6 @@ Link icons are maintained on the [ExtIcons-repository](https://github.com/VocaDB
 
 See the [Content removal guidelines](/docs/content-removal-guidelines#information-that-the-artist-can-freely-remove-without-asking).
 
-## Different URL Formats
+## External link rules
 
-<RuleEmbed ruleId={75} />
-<RuleEmbed ruleId={16} />
-
-## Forbidden links
-
-<RuleEmbed ruleId={17} />
-<RuleEmbed ruleId={18} />
-<RuleEmbed ruleId={19} />
+<RuleEmbedList rule_context={"External links"} excluded_ids={[20]}/>

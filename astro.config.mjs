@@ -37,6 +37,7 @@ export default defineConfig({
     "/rules/song-content-policy-song-source-required": "/rules/song-source-required",
 
     "/docs/rule-reference": "/rules",
+    "/docs/pinned/rule-reference": "/rules",
 
     "/docs/documentation/vocadb-changelog": "/docs/website-changelog",
     "/docs/documentation/website-changelog": "/docs/website-changelog",

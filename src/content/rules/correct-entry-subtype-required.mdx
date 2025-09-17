@@ -1,9 +1,12 @@
 ---
-name: "Correct entry subtype required"
+name: Correct entry subtype required
 id: 27
-entry_type: ["Songs","Albums","Artists"]
-entry_status: "Finished"
-fe_validations: "NeedType"
+entry_type:
+  - Songs
+  - Albums
+  - Artists
+entry_status: Finished
+fe_validations: NeedType
 be_validations:
 occurance:
 detection_script:
@@ -12,7 +15,7 @@ date_checked:
 date_created:
 date_modified:
 rationale:
-status: "Active"
+status: Active
 rule_context:
 ---
 Include the correct album/artist/song type.

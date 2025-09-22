@@ -7,12 +7,14 @@ views:
     order:
       - id
       - file.name
-      - rule_context
       - parent_id
+      - rule_context
       - entry_type
       - edit_list
       - entry_status
     sort:
+      - property: parent_id
+        direction: DESC
       - property: id
         direction: ASC
       - property: edit_list

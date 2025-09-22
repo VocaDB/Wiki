@@ -37,7 +37,6 @@ const ruleCollection = defineCollection({
     date_created: z.date().nullable().optional(), // rule creation date
     date_modified: z.date().nullable().optional(), // date of rule modification (excluding wording changes)
     rationale: z.string().nullable().optional(), // Short explanation why the rule is necessary
-    parent_id: z.number().nullable().optional(), // parent rule id
     rule_context: z.enum(["Names", "Content policy", "External links", "Romanization"]).nullable().optional(), // Context which is not limited to just one entry type
     status: z.enum(["Active", "Deprecated"]).default("Active")
   })

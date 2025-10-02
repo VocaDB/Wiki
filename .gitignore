@@ -24,3 +24,5 @@ pnpm-debug.log*
 .history
 
 .obsidian
+
+validate_rule_fields.py

@@ -29,6 +29,8 @@ export default defineConfig({
   ],
   redirects: {
 
+    "/rules/matching-language": "/rules/matching-song-language",
+
     "/rules/link-categories.mdx": "rules/correct-link-category",
     "/docs/mentioned-tags": "/rules/table",
 

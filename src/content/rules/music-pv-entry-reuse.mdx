@@ -1,8 +1,10 @@
 ---
-name: "Music PV entry reuse"
+name: Music PV entry reuse
 id: 119
-entry_type: ["Songs","Albums"]
-entry_status: "Finished"
+entry_type:
+  - Songs
+  - Albums
+entry_status: Finished
 fe_validations:
 be_validations:
 occurance:
@@ -12,7 +14,8 @@ date_checked:
 date_created:
 date_modified:
 rationale:
-status: "Active"
+status: Active
 rule_context:
+validation_strategy: 2
 ---
 If the **remarkable** **official** music PV has the same length as the original entry AND if the original entry has no official upload (album track for example), reuse the original entry.

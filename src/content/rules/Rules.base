@@ -7,17 +7,40 @@ views:
     order:
       - id
       - file.name
-      - parent_id
+      - validation_strategy
+      - be_validations
+      - date_checked
       - rule_context
       - entry_type
+      - occurance
       - edit_list
       - entry_status
+      - date_created
+      - date_modified
+      - detection_script
+      - fe_validations
+      - name
+      - rationale
+      - status
     sort:
-      - property: parent_id
+      - property: entry_type
+        direction: DESC
+      - property: validation_strategy
         direction: DESC
       - property: id
         direction: ASC
+      - property: validation strategy
+        direction: DESC
       - property: edit_list
+        direction: DESC
+      - property: entry_status
         direction: ASC
     columnSize:
-      note.edit_list: 160
+      file.name: 249
+      note.validation_strategy: 68
+      note.be_validations: 70
+      note.date_checked: 109
+      note.rule_context: 137
+      note.entry_type: 231
+      note.edit_list: 90
+      note.entry_status: 95

@@ -7,6 +7,7 @@ views:
     order:
       - id
       - file.name
+      - relevant_tag_id
       - validation_strategy
       - be_validations
       - date_checked
@@ -23,12 +24,16 @@ views:
       - rationale
       - status
     sort:
+      - property: relevant_tag_id
+        direction: DESC
+      - property: file.name
+        direction: ASC
+      - property: id
+        direction: ASC
       - property: entry_type
         direction: DESC
       - property: validation_strategy
         direction: DESC
-      - property: id
-        direction: ASC
       - property: validation strategy
         direction: DESC
       - property: edit_list
@@ -36,7 +41,7 @@ views:
       - property: entry_status
         direction: ASC
     columnSize:
-      file.name: 249
+      file.name: 250
       note.validation_strategy: 68
       note.be_validations: 70
       note.date_checked: 109

@@ -7,7 +7,6 @@ const ISO_date = (date: Date): string => {
 };
 ---
 
-
 <div class="table-container">
   <table class="rule-table sortable">
     <thead>
@@ -18,6 +17,7 @@ const ISO_date = (date: Date): string => {
         <th>E.Type</th>
         <th>E.Status</th>
         <th>Context</th>
+        <th>Tag</th>
         <th>VS</th>
         <th>Occurrence</th>
         <th>Checked</th>
@@ -32,7 +32,11 @@ const ISO_date = (date: Date): string => {
           .map((rule, slug) => (
             <tr>
               <td>{rule.data.id}</td>
-              <td>{(rule.data.date_modified && ISO_date(rule.data.date_modified)) || (rule.data.date_created && ISO_date(rule.data.date_created))}</td>
+              <td>
+                {(rule.data.date_modified &&
+                  ISO_date(rule.data.date_modified)) ||
+                  (rule.data.date_created && ISO_date(rule.data.date_created))}
+              </td>
               <td class="rule-name">
                 <a href={`/rules/${rule.slug}`}>{rule.data.name}</a>
               </td>
@@ -50,12 +54,24 @@ const ISO_date = (date: Date): string => {
                 </span>
               </td>
               <td>{rule.data.rule_context || "-"}</td>
+              <td>
+                {rule.data.relevant_tag_id ?
+                  <a href={`https://vocadb.net/T/${rule.data.relevant_tag_id}`}>
+                    {rule.data.relevant_tag_id}
+                  </a>
+                : "-"}
+              </td>
               <td>{rule.data.validation_strategy}</td>
               <td>{rule.data.occurance || "-"}</td>
-              <td>{(rule.data.date_checked && ISO_date(rule.data.date_checked)) || "-"}</td>
+              <td>
+                {(rule.data.date_checked && ISO_date(rule.data.date_checked)) ||
+                  "-"}
+              </td>
               <td>
                 {rule.data.edit_list ?
-                  rule.data.edit_list === "TODO" ? "TODO" : <a href={rule.data.edit_list}>Link</a>
+                  rule.data.edit_list === "TODO" ?
+                    "TODO"
+                  : <a href={rule.data.edit_list}>Link</a>
                 : "-"}
               </td>
             </tr>

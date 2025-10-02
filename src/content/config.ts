@@ -40,6 +40,7 @@ const ruleCollection = defineCollection({
     rule_context: z.enum(["Names", "Content policy", "External links", "Romanization"]).nullable().optional(), // Context which is not limited to just one entry type
     status: z.enum(["Active", "Deprecated"]).default("Active"),
     validation_strategy: z.number().default(0),
+    relevant_tag_id: z.number().nullable().optional()
   })
 });
 

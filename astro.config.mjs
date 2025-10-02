@@ -29,6 +29,8 @@ export default defineConfig({
   ],
   redirects: {
 
+    "/rules/link-categories.mdx": "rules/correct-link-category",
+
     "/rules/song-content-policy-song-source-required": "/rules/song-source-required",
     "/rules/song-content-policy-no-wips": "/rules/no-wips",
     "/rules/song-content-policy-no-ai-generated-songs": "/rules/no-ai-generated-songs",

@@ -77,7 +77,6 @@ export default defineConfig({
     
     "/wiki/6": "/docs/songs#song-type",
     "/wiki/6/song-types": "/docs/songs#song-type",
-    "/docs/songs/song-entry-editing#song-type":"/docs/song-entry-editing#song-type",
     
     "/wiki/8": "/docs/album-types-and-artist-participation",
     "/wiki/8/album-types-and-artist-participation":"/docs/album-types-and-artist-participation",
@@ -125,7 +124,6 @@ export default defineConfig({
     
     "/wiki/21": "/docs/song-entry-editing#tab-artists",
     "/wiki/21/artist-roles": "/docs/song-entry-editing#tab-artists",
-    "/docs/songs/song-entry-editing#tab-artists": "/docs/song-entry-editing#tab-artists",
 
     "/wiki/22": "/docs/vocadb-domains-and-login-process",
     "/wiki/22/vocadb-domains-login-process":"/docs/vocadb-domains-and-login-process",
@@ -169,7 +167,6 @@ export default defineConfig({
     
     "/wiki/32": "/docs/song-entry-editing#pv-types",
     "/wiki/32/pv-types": "/docs/song-entry-editing#pv-types",
-    "/docs/songs/song-entry-editing#pv-types":"/docs/song-entry-editing#pv-types",
 
     "/wiki/33": "/docs/search-terms-cheat-sheet",
     "/wiki/33/search-terms-cheat-sheet":"/docs/search-terms-cheat-sheet",
@@ -213,7 +210,6 @@ export default defineConfig({
    
     "/wiki/47": "/docs/song-entry-editing#criteria-for-approving-songs",
     "/wiki/47/criteria-for-approving-songs":"/docs/song-entry-editing#criteria-for-approving-songs",
-    "/docs/songs/song-entry-editing#criteria-for-approving-songs": "/docs/song-entry-editing#criteria-for-approving-songs",
     
     "/wiki/48": "/docs/touhoudb-what-is-it-for",
     "/wiki/48/touhoudb-what-is-it-for":"/docs/touhoudb-what-is-it-for",

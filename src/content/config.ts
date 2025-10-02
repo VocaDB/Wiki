@@ -39,8 +39,17 @@ const ruleCollection = defineCollection({
     rationale: z.string().nullable().optional(), // Short explanation why the rule is necessary
     rule_context: z.enum(["Names", "Content policy", "External links", "Romanization"]).nullable().optional(), // Context which is not limited to just one entry type
     status: z.enum(["Active", "Deprecated"]).default("Active"),
+    relevant_tag_id: z.number().nullable().optional(),
     validation_strategy: z.number().default(0),
-    relevant_tag_id: z.number().nullable().optional()
+    /*
+    Validation strategy:
+      0) not realistic
+      1) direct api calls / standalone script (for when the relevant entries are easy to find)
+      2) datadump + mikumod version analysis
+      3) datadump only
+      4) edit diff based
+      5) backend validation exists
+    */
   })
 });
 

@@ -3,7 +3,7 @@ name: No producer name duplication
 id: 78
 entry_type:
   - Artists
-entry_status: Finished
+entry_status: Draft
 fe_validations: UnnecessaryPName
 be_validations:
 occurance:
@@ -16,6 +16,8 @@ rationale:
 status: Active
 rule_context: Names
 validation_strategy: 2
+automatically_fixed: "True"
+complete_validation: true
 ---
 If the artist name includes the "producer" suffix (P or -P), do not duplicate a version without it as an alias.
 

@@ -30,9 +30,9 @@ const ruleCollection = defineCollection({
       .default("Draft"),
     fe_validations: z.string().nullable().optional(), // frontend
     be_validations: z.boolean().nullable().optional(), // backend
-    occurance: z.number().nullable().optional(), // amount of edit mistakes
+    occurance: z.number().nullable().optional(), // amount of edit mistakes, based on edit list
     detection_script: z.string().nullable().optional(), // xyz.py, see mods repo
-    edit_list: z.string().nullable().optional(), // sheet link or TODO
+    edit_list: z.string().nullable().optional(), // sheet link
     date_checked: z.date().nullable().optional(), // date sheet last generated
     date_created: z.date().nullable().optional(), // rule creation date
     date_modified: z.date().nullable().optional(), // date of rule modification (excluding wording changes)
@@ -41,14 +41,18 @@ const ruleCollection = defineCollection({
     status: z.enum(["Active", "Deprecated"]).default("Active"),
     relevant_tag_id: z.number().nullable().optional(),
     validation_strategy: z.number().default(0),
+    automatically_fixed: z.enum(["True", "False", "Partially"]).nullable().optional(),
+    complete_validation: z.boolean().nullable().optional(),
+    
     /*
-    Validation strategy:
-      0) not realistic
-      1) direct api calls / standalone script (for when the relevant entries are easy to find)
-      2) datadump + mikumod version analysis
-      3) datadump only
-      4) edit diff based
-      5) backend validation exists
+    Validation strategy
+    0) Not realistic
+    1) Based on direct API calls --> Edit list or automatically fixed
+    2) Based on recent edits (simple version-based) --> Entry report or automatically fixed
+    3) Based on recent edits (version-based, multiple entries/tags) --> Entry report or automatically fixed
+    4) Based on recent edits (diff-based) --> Entry report or automatically fixed
+    5) Based on datadump
+    6) Backend validation exists
     */
   })
 });

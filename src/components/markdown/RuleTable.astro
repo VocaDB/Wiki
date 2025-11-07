@@ -18,7 +18,7 @@ const ISO_date = (date: Date): string => {
         <th title="Relevant entry status">E.Status</th>
         <th title="Rule context">Context</th>
         <th title="Relevant tag">Tag</th>
-        <th title="Validation strategy">VS</th>
+        <th title="MikuMod support">MikuModded</th>
         <th title="Number of invalid entries">Occurrence</th>
         <th title="Date last checked">Checked</th>
         <th title="Relevant edit list of invalid entries">List</th>
@@ -61,7 +61,7 @@ const ISO_date = (date: Date): string => {
                   </a>
                 : "-"}
               </td>
-              <td>{rule.data.validation_strategy}</td>
+              <td>{rule.data.mikumod_support}</td>
               <td>{rule.data.occurance || "-"}</td>
               <td>
                 {(rule.data.date_checked && ISO_date(rule.data.date_checked)) ||

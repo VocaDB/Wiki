@@ -8,7 +8,6 @@ views:
       - id
       - file.name
       - relevant_tag_id
-      - validation_strategy
       - be_validations
       - date_checked
       - rule_context
@@ -32,8 +31,6 @@ views:
         direction: ASC
       - property: entry_type
         direction: DESC
-      - property: validation_strategy
-        direction: DESC
       - property: validation strategy
         direction: DESC
       - property: edit_list
@@ -42,7 +39,6 @@ views:
         direction: ASC
     columnSize:
       file.name: 250
-      note.validation_strategy: 68
       note.be_validations: 70
       note.date_checked: 109
       note.rule_context: 137

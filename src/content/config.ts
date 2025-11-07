@@ -40,20 +40,9 @@ const ruleCollection = defineCollection({
     rule_context: z.enum(["Names", "Content policy", "External links", "Romanization"]).nullable().optional(), // Context which is not limited to just one entry type
     status: z.enum(["Active", "Deprecated"]).default("Active"),
     relevant_tag_id: z.number().nullable().optional(),
-    validation_strategy: z.number().default(0),
+    mikumod_support: z.enum(["True", "False", "Planned"]).nullable().optional(),
     automatically_fixed: z.enum(["True", "False", "Partially"]).nullable().optional(),
     complete_validation: z.boolean().nullable().optional(),
-    
-    /*
-    Validation strategy
-    0) Not realistic
-    1) Based on direct API calls --> Edit list or automatically fixed
-    2) Based on recent edits (simple version-based) --> Entry report or automatically fixed
-    3) Based on recent edits (version-based, multiple entries/tags) --> Entry report or automatically fixed
-    4) Based on recent edits (diff-based) --> Entry report or automatically fixed
-    5) Based on datadump
-    6) Backend validation exists
-    */
   })
 });
 

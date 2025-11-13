@@ -7,15 +7,18 @@ interface TagsDisplayProps {
 
 export const TagsDisplay: React.FC<TagsDisplayProps> = ({ tags }) => {
   return (
-    <div className="mb-2 space-x-2">
+    <div className="mb-2">
       {tags.map((tag) => (
-        <a
-          href={["/tags", tag].join("/")}
-          key={tag}
-          className={cn(badgeVariants(), "no-underline")}
-        >
-          {tag}
-        </a>
+        <>
+          <a
+            href={["/tags", tag].join("/")}
+            key={tag}
+            className={cn(badgeVariants(), "no-underline")}
+          >
+            {tag}
+          </a>
+          {" "}
+        </>
       ))}
     </div>
   );

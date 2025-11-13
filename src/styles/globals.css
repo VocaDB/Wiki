@@ -80,4 +80,8 @@
   .prose code::after {
     content: "";
   }
+
+  .prose {
+    max-width: unset
+  }
 }

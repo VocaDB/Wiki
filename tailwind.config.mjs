@@ -4,7 +4,7 @@ import animate from "tailwindcss-animate";
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}", "./astro.config.mjs"],
   darkMode: "selector",
   theme: {
     container: {
@@ -13,6 +13,9 @@ export default {
       screens: {
         "2xl": "1400px",
       },
+    },
+    fontWeight: {
+      unset: 'unset'
     },
     extend: {
       colors: {

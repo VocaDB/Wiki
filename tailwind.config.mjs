@@ -14,9 +14,6 @@ export default {
         "2xl": "1400px",
       },
     },
-    fontWeight: {
-      unset: 'unset'
-    },
     extend: {
       colors: {
         border: "hsl(var(--border) / <alpha-value>)",
@@ -71,6 +68,9 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      fontWeight: {
+        unset: 'unset'
       },
     },
   },

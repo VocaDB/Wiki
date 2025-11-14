@@ -5,8 +5,9 @@ parent: Artists
 tags: ["wikipage", "editing", "artists", "documentation", "vocadb"]
 ---
 
-import Navigation from "@/components/markdown/Navigation.astro";
+import Navigation from "@/components/markdown/EntryGuidelinesNav.astro";
 import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import RuleEmbedGroup from "@/components/markdown/RuleEmbedGroup.astro";
 
 <Navigation />
 
@@ -29,21 +30,25 @@ General instructions for entry names (= titles) and aliases are documented [here
 
 Name rules that are specific to artist entries:
 
-<RuleEmbed ruleId={76} />
-<RuleEmbed ruleId={77} />
-<RuleEmbed ruleId={78} />
-<RuleEmbed ruleId={65} />
-<RuleEmbed ruleId={88} />
-<RuleEmbed ruleId={83} />
-<RuleEmbed ruleId={80} />
+<RuleEmbedGroup>
+	<RuleEmbed ruleId={76} />
+	<RuleEmbed ruleId={77} />
+	<RuleEmbed ruleId={78} />
+	<RuleEmbed ruleId={65} />
+	<RuleEmbed ruleId={88} />
+	<RuleEmbed ruleId={83} />
+	<RuleEmbed ruleId={80} />
+</RuleEmbedGroup>
 
 ### Main picture
 
 Main picture of the artist. 
 
-<RuleEmbed ruleId={84} />
-<RuleEmbed ruleId={90} />
-<RuleEmbed ruleId={165} />
+<RuleEmbedGroup>
+	<RuleEmbed ruleId={84} />
+	<RuleEmbed ruleId={90} />
+	<RuleEmbed ruleId={165} />
+</RuleEmbedGroup>
 
 ### Artist description
 
@@ -51,8 +56,10 @@ The artist description is for additional and useful information that doesn't fit
 
 [GitHub-flavored Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) is supported for formatting.
 
-<RuleEmbed ruleId={71} />
-<RuleEmbed ruleId={23} />
+<RuleEmbedGroup>
+	<RuleEmbed ruleId={71} />
+	<RuleEmbed ruleId={23} />
+</RuleEmbedGroup>
 
 Subjective artist descriptions can be added with a blockquote along with the source:
 
@@ -112,9 +119,11 @@ Multiple associated artists can be added with the same role (multiple illustrato
 
 For grouping related artists under a shared group/circle.
 
-<RuleEmbed ruleId={87} />
-<RuleEmbed ruleId={82} />
-<RuleEmbed ruleId={83} />
+<RuleEmbedGroup>
+	<RuleEmbed ruleId={87} />
+	<RuleEmbed ruleId={82} />
+	<RuleEmbed ruleId={83} />
+</RuleEmbedGroup>
 
 ### Base voicebank
 
@@ -132,11 +141,13 @@ The release date of the voicebank.
 
 External links relevant to the entry. 
 
-<RuleEmbed ruleId={20} />
-<RuleEmbed ruleId={17} />
-<RuleEmbed ruleId={16} />
-<RuleEmbed ruleId={19} />
-<RuleEmbed ruleId={75} />
+<RuleEmbedGroup>
+	<RuleEmbed ruleId={20} />
+	<RuleEmbed ruleId={17} />
+	<RuleEmbed ruleId={16} />
+	<RuleEmbed ruleId={19} />
+	<RuleEmbed ruleId={75} />
+</RuleEmbedGroup>
 
 - More on [External links](/docs/external-links)
 

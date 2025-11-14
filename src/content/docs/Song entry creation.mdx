@@ -5,8 +5,9 @@ parent: Songs
 tags: ["wikipage", "editing", "songs", "documentation", "vocadb"]
 ---
 
-import Navigation from "@/components/markdown/Navigation.astro";
+import Navigation from "@/components/markdown/EntryGuidelinesNav.astro";
 import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import RuleEmbedGroup from "@/components/markdown/RuleEmbedGroup.astro";
 
 <Navigation />
 
@@ -16,20 +17,24 @@ Song entries can be created from: https://vocadb.net/Song/Create
 
 Before creating the song entry, make sure that the entry belongs to the database:
 
-<RuleEmbed ruleId={10} />
-<RuleEmbed ruleId={11} />
-<RuleEmbed ruleId={12} />
-<RuleEmbed ruleId={13} />
-<RuleEmbed ruleId={14} />
-<RuleEmbed ruleId={135} />
+<RuleEmbedGroup>
+  <RuleEmbed ruleId={10} />
+  <RuleEmbed ruleId={11} />
+  <RuleEmbed ruleId={12} />
+  <RuleEmbed ruleId={13} />
+  <RuleEmbed ruleId={14} />
+  <RuleEmbed ruleId={135} />
+</RuleEmbedGroup>
 
 The song entry creation page requires:
 
 - 1) A song title
 
-<RuleEmbed ruleId={7} />
-<RuleEmbed ruleId={101} />
-<RuleEmbed ruleId={102} />
+<RuleEmbedGroup>
+  <RuleEmbed ruleId={7} />
+  <RuleEmbed ruleId={101} />
+  <RuleEmbed ruleId={102} />
+</RuleEmbedGroup>
 
 - 2) And at least one artist
 

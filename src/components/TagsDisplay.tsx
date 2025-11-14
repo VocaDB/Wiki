@@ -6,7 +6,7 @@ interface TagsDisplayProps {
 }
 
 export const TagsDisplay: React.FC<TagsDisplayProps> = ({ tags }) => {
-  return (
+  if (tags) return (
     <div className="mb-2">
       {tags.map((tag) => (
         <>

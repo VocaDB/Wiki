@@ -1,41 +1,35 @@
 ---
 import type { RuleFields } from "@/content/config";
-import { getCollection, getEntry } from "astro:content";
+import { getCollection, getEntry, type CollectionEntry } from "astro:content";
 
 interface Props {
-  rule?: string;
+  rule?: CollectionEntry<'rules'>;
+  ruleName?: string;
   ruleId?: number;
   fields?: RuleFields[] | "All";
 }
 
-const { rule: ruleName, ruleId, fields = [] } = Astro.props;
+const { rule: rule, ruleName, ruleId, fields = [] } = Astro.props;
 
-let ruleEntry;
+let ruleEntry = rule;
 
-const ISO_date = (date: Date): string => {
+const getIsoDate = (date: Date): string => {
   return date.toISOString().split("T")[0];
 };
 
 if (ruleName) {
   ruleEntry = await getEntry("rules", ruleName);
-} else if (ruleId !== undefined) {
+} else if (ruleId) {
   // Filter by numeric ID
-  const ruleEntries = await getCollection(
-    "rules",
-    (entry: { data: { id: number } }) => {
-      return entry.data.id === ruleId;
-    }
-  );
+  const ruleEntries = await getCollection("rules", (entry: { data: { id: number; }; }) => {
+    return entry.data.id === ruleId;
+  });
   ruleEntry = ruleEntries[0];
-} else {
-  throw new Error(
-    "Either 'rule' (string) or 'ruleId' (number) must be provided"
-  );
 }
 
 if (!ruleEntry) {
-  const identifier = ruleName ? `"${ruleName}"` : `ID ${ruleId}`;
-  throw new Error(`Rule ${identifier} not found`);
+  let identifier = ruleName ? ` "${ruleName}"` : (ruleId ? ` ID ${ruleId}` : '');
+  throw new Error(`Rule${identifier} not found. Either 'rule', 'ruleName' (string) or 'ruleId' (number) must be provided`);
 }
 
 const ruleData = ruleEntry.data;
@@ -54,89 +48,68 @@ const shouldShowField = (fieldName: RuleFields): boolean => {
 };
 
 const shouldShowGroup = (groupFields: RuleFields[]): boolean => {
-  return fields === "All" || groupFields.some(field => fields.includes(field));
+  return fields === "All" || groupFields.some((field) => fields.includes(field));
 };
 ---
 
-{
-  (
-    <div class="rounded border shadow mt-1">
-      <div class="border-b mt-0">
-        <h3 class="m-0 text-base flex">
-          <span class="border-r px-2 py-1 block">
-            Rule {ruleData.id}<span class="w-0 collapse inline-block">:{` `}</span>
-          </span>
-          <span class="px-2 py-1 block">
-            <a href={`/rules/${ruleEntry.slug}`}> {ruleData.name}</a>
-          </span>
-        </h3>
+<div class="rule-embed">
+  <div class="border-b mt-0">
+    <h3 class="m-0 text-base flex">
+      <span class="border-r px-2 py-1 block">
+        Rule {ruleData.id}<span class="w-0 collapse inline-block">:{` `}</span>
+      </span>
+      <span class="px-2 py-1 block">
+        <a href={`/rules/${ruleEntry.slug}`}> {ruleData.name}</a>
+      </span>
+    </h3>
+  </div>
 
-      </div>
-      
-      <div class="px-4">
+  <div class="px-4">
+    {content && <content.Content />}
 
-        {content && <content.Content />}
+    {ruleData.rationale && <p>Rationale: {ruleData.rationale}</p>}
 
-        {ruleData.rationale && <p>Rationale: {ruleData.rationale}</p>}
+    {ruleData.status == "Deprecated" && <p class="text-red-500">⚠️ This rule has been deprecated {ruleData.date_modified && `(${getIsoDate(ruleData.date_modified)})`}</p>}
 
-        {ruleData.status == "Deprecated" && (
-          <p class="text-red-500">
-            ⚠️ This rule has been deprecated{" "}
-            {ruleData.date_modified && `(${ISO_date(ruleData.date_modified)})`}
-          </p>
-        )}
+    {
+      shouldShowGroup(["entry_status", "entry_type"]) && (
+        <p>
+          (Applies to all
+          {<em>{ruleData.entry_status !== "Draft" && ruleData.entry_status.toLowerCase()}</em>} {ruleData.entry_type !== "All" && ruleData.entry_type.map((str: string) => str.toLowerCase().replace(/s$/, "")).join(" & ")}
+          entries)
+        </p>
+      )
+    }
 
-        {shouldShowGroup(["entry_status", "entry_type"]) && (
-          <p>
-            (Applies to all
-            {
-              <em>
-                {ruleData.entry_status !== "Draft" &&
-                  ruleData.entry_status.toLowerCase()}
-              </em>
-            }{" "}
-            {ruleData.entry_type !== "All" &&
-              ruleData.entry_type
-                .map((str: string) => str.toLowerCase().replace(/s$/, ""))
-                .join(" & ")}
-            entries)
-          </p>
-        )}
+    {
+      shouldShowGroup(["date_created", "date_modified"]) && (
+        <>
+          {ruleData.date_created && <p>Rule created {getIsoDate(ruleData.date_created)}</p>}
+          {ruleData.date_modified && <p>Rule modified {getIsoDate(ruleData.date_modified)}</p>}
+        </>
+      )
+    }
 
-        {shouldShowGroup(["date_created", "date_modified"]) && (
-          <>
-            {ruleData.date_created && (
-              <p>Rule created {ISO_date(ruleData.date_created)}</p>
-            )}
-            {ruleData.date_modified && (
-              <p>Rule modified {ISO_date(ruleData.date_modified)}</p>
-            )}
-          </>
-        )}
+    {
+      shouldShowField("fe_validations") && ruleData.fe_validations && (
+        <p>
+          Frontend validation with: <a href={`https://github.com/search?type=code&q=repo%3AVocaDB%2Fvocadb+Validation+${ruleData.fe_validations}`}>{ruleData.fe_validations}</a>
+        </p>
+      )
+    }
 
-        {shouldShowField("fe_validations") && ruleData.fe_validations && (
-          <p>
-            Frontend validation with:{" "}
-            <a
-              href={`https://github.com/search?type=code&q=repo%3AVocaDB%2Fvocadb+Validation+${ruleData.fe_validations}`}>
-              {ruleData.fe_validations}
-            </a>
-          </p>
-        )}
-
-        {shouldShowGroup(["occurance", "edit_list", "date_checked"]) &&
-          (ruleData.occurance ?? 0) > 0 && (
-            <p>
-              {`~${ruleData.occurance} affected entries`}
-              {ruleData.edit_list && (
-                <span>
-                  : <a href={ruleData.edit_list}>Edit list</a>
-                  {ruleData.date_checked && ` updated ${ISO_date(ruleData.date_checked)}`}
-                </span>
-              )}
-            </p>
+    {
+      shouldShowGroup(["occurance", "edit_list", "date_checked"]) && (ruleData.occurance ?? 0) > 0 && (
+        <p>
+          {`~${ruleData.occurance} affected entries`}
+          {ruleData.edit_list && (
+            <span>
+              : <a href={ruleData.edit_list}>Edit list</a>
+              {ruleData.date_checked && ` updated ${getIsoDate(ruleData.date_checked)}`}
+            </span>
           )}
-      </div>
-    </div>
-  )
-}
+        </p>
+      )
+    }
+  </div>
+</div>

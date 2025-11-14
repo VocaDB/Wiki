@@ -6,76 +6,72 @@
 import type { TocItem } from '@/utils/generateToC.ts'
 
 interface Props {
-	toc: TocItem[];
-	depth?: number;
-	isMobile?: boolean;
+  toc: TocItem[];
+  depth?: number;
+  isMobile?: boolean;
+  track?: boolean;
 }
 
-const { toc, isMobile = false, depth = 0 } = Astro.props;
+const { toc, isMobile = false, depth = 0, track = false } = Astro.props;
 ---
 
-<ul class:list={{ isMobile }}>
-	{
-		toc.map((heading) => (
-			<li>
-				<a href={'#' + heading.slug} class="text-muted-foreground hover:underline">
-					<span>{heading.text}</span>
-				</a>
-				{heading.children.length > 0 && (
-					<Astro.self toc={heading.children} depth={depth + 1} isMobile={isMobile} />
-				)}
-			</li>
-		))
-	}
+<ul class:list={{ isMobile, track }}>
+  {
+    toc.map((heading) => (
+      <li>
+        <a href={'#' + heading.slug} class={isMobile ? '' : 'text-muted-foreground hover:underline'}>
+          <span>{heading.text}</span>
+        </a>
+        {heading.children.length > 0 && (
+          <Astro.self toc={heading.children} depth={depth + 1} isMobile={isMobile} />
+        )}
+      </li>
+    ))
+  }
 </ul>
 
 <style define:vars={{ depth }}>
-	ul {
-		padding: 0;
-		list-style: none;
-	}
-	a {
-		--pad-inline: 0.5rem;
-		display: block;
-		border-radius: 0.25rem;
-		padding-block: 0.25rem;
-		padding-inline: calc(1rem * var(--depth) + var(--pad-inline)) var(--pad-inline);
-		line-height: 1.5;
-	}
-	a[aria-current='true'] {
-		color: var(--sl-color-text-accent);
-	}
-	.isMobile a {
-		--pad-inline: 1rem;
-		display: flex;
-		justify-content: space-between;
-		gap: var(--pad-inline);
-		border-top: 1px solid var(--sl-color-gray-6);
-		border-radius: 0;
-		padding-block: 0.5rem;
-		color: var(--sl-color-text);
-		font-size: var(--sl-text-sm);
-		text-decoration: none;
-		outline-offset: var(--sl-outline-offset-inside);
-	}
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    padding-left: 0;
+  }
+
+  a {
+    --pad-inline: 0.5rem;
+    display: block;
+    border-radius: 0.25rem;
+    padding-block: 0.25rem;
+    padding-inline: calc(1rem * var(--depth) + var(--pad-inline)) var(--pad-inline);
+    line-height: 1.5;
+  }
+
+  .isMobile a {
+    --pad-inline: 1rem;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 0;
+    padding-block: 0.25rem;
+    text-decoration: none;
+  }
 </style>
 
-{ depth === 0 && <script is:inline>
+{ (depth === 0 && track) && <script is:inline>
   document.addEventListener("astro:page-load", () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         const id = entry.target.id;
-        const header = document.querySelector(`li a[href="#${id}"]`);
-        if (header === null) {
-          console.log(id);
-          return;
-        }
-
-        if (entry.intersectionRatio > 0) {
-          header.classList.remove("text-muted-foreground");
-        } else {
-          header.classList.add("text-muted-foreground");
-        }
+        const headers = document.querySelectorAll(`.track a[href="#${id}"]`);
+        headers.forEach(header => {
+          if (entry.intersectionRatio > 0) {
+            header.classList.remove("text-muted-foreground");
+          } else {
+            header.classList.add("text-muted-foreground");
+          }
+        })
       });
     });
 

@@ -9,7 +9,7 @@ import {
 import { navigate } from "astro:transitions/client";
 import { useCallback, useEffect, useState } from "react";
 import Highlighter from "react-highlight-words";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 interface ArticleData {
   url: string;

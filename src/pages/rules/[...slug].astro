@@ -2,6 +2,10 @@
 import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 import { getCollection } from "astro:content";
 import DocPageLayout from "../../layouts/DocPageLayout.astro";
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import stripMarkdown from 'strip-markdown';
+import remarkStringify from 'remark-stringify';
 
 export async function getStaticPaths() {
   const ruleEntries = await getCollection("rules");
@@ -38,7 +42,7 @@ const { headings } = await entry.render();
 
 const isNumericRoute = !isNaN(Number(Astro.params.slug));
 
-function formatFieldValue(key: string, value: any): string {
+function formatFieldValue(value: any): string {
   if (value === null || value === undefined) {
     return "-";
   }
@@ -57,14 +61,26 @@ function formatFieldValue(key: string, value: any): string {
 
   return String(value);
 }
+
+async function stripText(markdownInput: string) {
+  const file = await unified()
+    .use(remarkParse)
+    .use(stripMarkdown)
+    .use(remarkStringify)
+    .process(markdownInput);
+
+  return String(file);
+}
+
+let description = await stripText(entry.body)
 ---
 
 <DocPageLayout
   frontmatter={entry.data}
   title={`Rule: ${entry.data.name}`}
-  description={entry.body}
+  description={description}
   headings={headings}>
-  <script define:vars={{ slug: entry.slug, currentPath: Astro.params.slug }}>
+  <script define:vars={{ slug: entry.slug, currentPath: Astro.params.slug }} is:inline>
     // Redirect to canonical URL if accessed via numeric ID
     if (currentPath !== slug && !isNaN(Number(currentPath))) {
       const newUrl = window.location.pathname.replace(/\/[^\/]+$/, `/${slug}`);
@@ -75,7 +91,7 @@ function formatFieldValue(key: string, value: any): string {
   <div data-pagefind-ignore={isNumericRoute ? "all" : undefined}>
   <div class="rule-metadata">
     <RuleEmbed
-      rule={entry.slug}
+      rule={entry}
       fields={"All"}
     />
 
@@ -86,7 +102,7 @@ function formatFieldValue(key: string, value: any): string {
             <tr>
               <th class="field-name">Rule {fieldKey}:</th>
               <td class="field-value">
-                {formatFieldValue(fieldKey, fieldValue)}
+                {formatFieldValue(fieldValue)}
               </td>
             </tr>
           ))

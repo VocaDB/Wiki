@@ -3,17 +3,18 @@ import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 import { EntryType, type RuleFields } from "@/content/config";
 import { getCollection } from "astro:content";
 import DocPageLayout from "../../layouts/DocPageLayout.astro";
+import RuleEmbedGroup from "./RuleEmbedGroup.astro";
 
 let rules = await getCollection("rules");
 
 interface Props {
-  entry_type: (typeof EntryType)[number] | "All";
-  rule_context?: string;
+  entryType: (typeof EntryType)[number] | "All";
+  ruleContext?: string;
   fields?: RuleFields[] | "All";
 }
 
-const { entry_type, rule_context, fields } = Astro.props;
-if (entry_type !== "All") {
+const { entryType, ruleContext, fields } = Astro.props;
+if (entryType !== "All") {
   rules = rules.filter(rule => {
     const ruleEntryType = rule.data.entry_type;
 
@@ -22,19 +23,19 @@ if (entry_type !== "All") {
     }
 
     if (Array.isArray(ruleEntryType)) {
-      return ruleEntryType.includes(entry_type);
+      return ruleEntryType.includes(entryType);
     }
 
     return false;
   });
 }
 
-if (rule_context) {
-  rules = rules.filter(rule => rule.data.rule_context === rule_context);
+if (ruleContext) {
+  rules = rules.filter(rule => rule.data.rule_context === ruleContext);
 }
 
 const pageTitle =
-  entry_type === "All" ? "All rules" : `All rules for ${entry_type}`;
+  entryType === "All" ? "All rules" : `All rules for ${entryType}`;
 
 rules.sort((a, b) => a.data.id - b.data.id);
 
@@ -54,31 +55,38 @@ const rulesForApproved = rules.filter(
     { depth: 1, slug: "finished", text: "Finished +" },
     { depth: 1, slug: "approved", text: "Approved" }
   ]}>
+  
   <h2 id="draft">Draft+ entries</h2>
+  <RuleEmbedGroup>
   {
-    rulesForDraft.map((rule: { slug: string | undefined }) => (
+    rulesForDraft.map((rule) => (
       <RuleEmbed
-        rule={rule.slug}
+        rule={rule}
         fields={fields}
       />
     ))
   }
+  </RuleEmbedGroup>
   <h2 id="finished">Finished+ entries</h2>
+  <RuleEmbedGroup>
   {
-    rulesForFinished.map((rule: { slug: string | undefined }) => (
+    rulesForFinished.map((rule) => (
       <RuleEmbed
-        rule={rule.slug}
+        rule={rule}
         fields={fields}
       />
     ))
   }
+  </RuleEmbedGroup>
   <h2 id="approved">Approved entries</h2>
+  <RuleEmbedGroup>
   {
-    rulesForApproved.map((rule: { slug: string | undefined }) => (
+    rulesForApproved.map((rule) => (
       <RuleEmbed
-        rule={rule.slug}
+        rule={rule}
         fields={fields}
       />
     ))
   }
+  </RuleEmbedGroup>
 </DocPageLayout>

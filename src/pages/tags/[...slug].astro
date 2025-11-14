@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import Base from "@/layouts/Base.astro";
+import DocPageLayout from "@/layouts/DocPageLayout.astro";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("docs");
@@ -18,9 +18,7 @@ const taggedEntries = (await getCollection("docs")).filter((entry) =>
 );
 ---
 
-<Base>
-  <h1 class="text-4xl font-extrabold mb-4">All pages for tag "{tag}"</h1>
-
+<DocPageLayout title={`All pages for tag "${tag}"`}>
   <ul class="list-disc list-inside">
     {
       taggedEntries.map((entry) => (
@@ -29,7 +27,6 @@ const taggedEntries = (await getCollection("docs")).filter((entry) =>
             class="underline"
             href={[
               "/docs",
-              entry.data.parent?.toLowerCase(),
               entry.slug.toLowerCase(),
             ].join("/")}
           >
@@ -40,4 +37,4 @@ const taggedEntries = (await getCollection("docs")).filter((entry) =>
     }
     <ul></ul>
   </ul>
-</Base>
+</DocPageLayout>

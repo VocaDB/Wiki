@@ -7,18 +7,18 @@ import RuleEmbedGroup from "@/components/markdown/RuleEmbedGroup.astro";
 let rules = await getCollection("rules");
 
 interface Props {
-  entry_type: (typeof EntryType)[number] | "All";
-  rule_context?: string;
+  entryType: (typeof EntryType)[number] | "All";
+  ruleContext?: string;
   fields?: RuleFields[] | "All";
-  excluded_ids: number[];
+  excludedIds: number[];
 }
 
-const { entry_type, rule_context, fields, excluded_ids } = Astro.props;
+const { entryType, ruleContext, fields, excludedIds } = Astro.props;
 
-if (excluded_ids) {
-  rules = rules.filter(rule => !excluded_ids.includes(rule.data.id));
+if (excludedIds) {
+  rules = rules.filter(rule => !excludedIds.includes(rule.data.id));
 }
-if (entry_type !== "All") {
+if (entryType !== "All") {
   rules = rules.filter(rule => {
     const ruleEntryType = rule.data.entry_type;
 
@@ -27,15 +27,15 @@ if (entry_type !== "All") {
     }
 
     if (Array.isArray(ruleEntryType)) {
-      return ruleEntryType.includes(entry_type);
+      return ruleEntryType.includes(entryType);
     }
 
     return false;
   });
 }
 
-if (rule_context) {
-  rules = rules.filter(rule => rule.data.rule_context === rule_context);
+if (ruleContext) {
+  rules = rules.filter(rule => rule.data.rule_context === ruleContext);
 }
 
 rules.sort((a, b) => a.data.id - b.data.id);

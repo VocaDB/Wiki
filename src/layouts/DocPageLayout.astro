@@ -36,7 +36,7 @@ const description = Astro.props?.description ?? frontmatter?.description;
         {
           toc && (
             <details class="not-prose xl:hidden rounded-xl border shadow mb-4 bg-card">
-              <summary class="font-semibold tracking-tight m-2 mx-4">On this page</summary>
+              <summary class="font-semibold tracking-tight m-2 mx-4 cursor-pointer">On this page</summary>
               <div class="my-2">
                 <TableOfContentsList isMobile={true} toc={toc} />
               </div>

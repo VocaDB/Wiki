@@ -42,7 +42,7 @@ const { headings } = await entry.render();
 
 const isNumericRoute = !isNaN(Number(Astro.params.slug));
 
-function formatFieldValue(key: string, value: any): string {
+function formatFieldValue(value: any): string {
   if (value === null || value === undefined) {
     return "-";
   }
@@ -102,7 +102,7 @@ let description = await stripText(entry.body)
             <tr>
               <th class="field-name">Rule {fieldKey}:</th>
               <td class="field-value">
-                {formatFieldValue(fieldKey, fieldValue)}
+                {formatFieldValue(fieldValue)}
               </td>
             </tr>
           ))

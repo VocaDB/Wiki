@@ -1,4 +1,3 @@
-import { slug } from "github-slugger";
 import { visit } from "unist-util-visit";
 
 const HEADINGS = ["h1", "h2", "h3", "h4", "h5", "h6"];

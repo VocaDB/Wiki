@@ -9,7 +9,8 @@ import {
 import { ScrollArea } from "./ui/scroll-area";
 ---
 
-<ScrollArea client:visible className="py-6 pr-6 h-full">
+<ScrollArea client:visible className="pr-6 h-full">
+  <div class="py-6">
   {
     navbarParents
       .map((i) => {
@@ -75,6 +76,7 @@ import { ScrollArea } from "./ui/scroll-area";
         </div>
       ))
   }
+  </div>
 </ScrollArea>
 
 <script>

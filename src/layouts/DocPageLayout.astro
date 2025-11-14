@@ -3,44 +3,46 @@ import type { MarkdownHeading } from "astro";
 import Layout from "./Base.astro";
 import { TagsDisplay } from "@/components/TagsDisplay";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { generateToC } from "@/utils/generateToC.ts"
+import TableOfContentsList from "@/components/TableOfContentsList.astro"
 
 export interface Props {
   headings: MarkdownHeading[];
   frontmatter: any;
+  title?: string;
+  description?: string;
 }
 
 const { frontmatter, headings } = Astro.props;
+
+const toc = generateToC(headings, {
+  minHeadingLevel: 2,
+  maxHeadingLevel: 4,
+})
+
+const title = Astro.props.title ?? frontmatter.title
+const description = Astro.props.description ?? frontmatter.title
 ---
 
-<Layout title={frontmatter.title} description={frontmatter.description}>
-  <main class="relative xl:grid xl:grid-cols-[1fr_300px]">
+<Layout title={title} description={description}>
+  <main class="relative xl:grid xl:grid-cols-[1fr_300px] gap-10">
     <div data-pagefind-body class="prose dark:prose-invert">
-      <h1>{frontmatter.title}</h1>
+      <h1>{title}</h1>
       <TagsDisplay tags={frontmatter.tags ?? []} />
       <slot />
     </div>
 
     {
-      headings.length > 0 && (
-        <div class="hidden xl:block text-sm sticky top-16 h-[calc(100vh-4rem)] pt-4">
-          <ScrollArea
-            className="h-full pb-4"
-            client:visible>
-            <p class="font-semibold">On this page</p>
-            <ul class="list-none">
-              {headings
-                .filter((h) => h.depth < 4)
-                .map((heading) => (
-                  <li class="pt-2">
-                    <a class="text-muted-foreground" href={`#${heading.slug}`}>
-                      {heading.text}
-                    </a>
-                  </li>
-                ))}
-            </ul>
-          </ScrollArea>
-        </div>
-      )
+      headings.length > 0 && <div class="hidden xl:block text-sm sticky top-16 h-[calc(100vh-4rem)] -my-6">
+        <ScrollArea
+          className="h-full"
+          client:visible>
+          <div class="py-6">
+            <p class="font-semibold mb-2 mx-2">On this page</p>
+            <TableOfContentsList toc={toc}>
+          </div>
+        </ScrollArea>
+      </div>
     }
   </main>
 </Layout>

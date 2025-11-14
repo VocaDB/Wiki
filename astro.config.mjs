@@ -7,6 +7,9 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import remarkSectionize from "remark-sectionize";
 import rehypePluginMoveIdToSection from "./src/rehype-sectionize";
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import { rehypeHeadingIds } from '@astrojs/markdown-remark';
+import {fromHtmlIsomorphic} from 'hast-util-from-html-isomorphic'
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,7 +26,18 @@ export default defineConfig({
     sitemap(),
     mdx({
       remarkPlugins: [remarkSectionize],
-      rehypePlugins: [rehypePluginMoveIdToSection],
+      rehypePlugins: [rehypeHeadingIds, [rehypeAutolinkHeadings, {
+        behavior: 'wrap',
+        content: /** @type {Array<ElementContent>} */ (
+          fromHtmlIsomorphic(
+            '<svg class="inline-block h-4 w-4 opacity-0 group-hover:opacity-100 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>',
+            { fragment: true }
+          ).children
+        ),
+        properties: {
+          class: 'color-[unset] font-unset no-underline group'
+        }
+      }], rehypePluginMoveIdToSection],
     }),
     pagefind(),
   ],

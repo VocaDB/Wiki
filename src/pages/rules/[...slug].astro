@@ -61,6 +61,8 @@ function formatFieldValue(key: string, value: any): string {
 
 <DocPageLayout
   frontmatter={entry.data}
+  title={`Rule: ${entry.data.name}`}
+  description={entry.body}
   headings={headings}>
   <script define:vars={{ slug: entry.slug, currentPath: Astro.params.slug }}>
     // Redirect to canonical URL if accessed via numeric ID
@@ -72,7 +74,6 @@ function formatFieldValue(key: string, value: any): string {
   
   <div data-pagefind-ignore={isNumericRoute ? "all" : undefined}>
   <div class="rule-metadata">
-    <h1>Rule: {entry.data.name}</h1>
     <RuleEmbed
       rule={entry.slug}
       fields={"All"}

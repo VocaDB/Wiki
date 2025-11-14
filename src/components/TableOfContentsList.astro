@@ -3,6 +3,7 @@
 // Source: https://github.com/withastro/starlight/blob/bf1a9e6fd7311c30b7d1adbecfe9ca32e24207d9/packages/starlight/components/TableOfContents/TableOfContentsList.astro
 // Source is licensed under MIT.
 
+import { cn } from '@/lib/utils.ts';
 import type { TocItem } from '@/utils/generateToC.ts'
 
 interface Props {
@@ -19,7 +20,7 @@ const { toc, isMobile = false, depth = 0, track = false } = Astro.props;
   {
     toc.map((heading) => (
       <li>
-        <a href={'#' + heading.slug} class={isMobile ? '' : 'text-muted-foreground hover:underline'}>
+        <a href={'#' + heading.slug} class={isMobile ? '' : 'text-muted-foreground'}>
           <span>{heading.text}</span>
         </a>
         {heading.children.length > 0 && (
@@ -49,13 +50,16 @@ const { toc, isMobile = false, depth = 0, track = false } = Astro.props;
     line-height: 1.5;
   }
 
+  a:hover {
+    text-decoration: underline; 
+  }
+
   .isMobile a {
     --pad-inline: 1rem;
     display: flex;
     justify-content: space-between;
     border-radius: 0;
     padding-block: 0.25rem;
-    text-decoration: none;
   }
 </style>
 

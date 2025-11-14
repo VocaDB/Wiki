@@ -6,14 +6,17 @@ tags: ["wikipage", "editing", "events", "documentation", "vocadb"]
 ---
 
 import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import RuleEmbedGroup from "@/components/markdown/RuleEmbedGroup.astro";
 
 [Event entries](https://vocadb.net/Event) are for physical or digital voice synth related events.
 
 Event entries can be created from: https://vocadb.net/Event/Edit
 
-<RuleEmbed ruleId={95} />
-<RuleEmbed ruleId={96} />
-<RuleEmbed ruleId={98} />
+<RuleEmbedGroup>
+  <RuleEmbed ruleId={95} />
+  <RuleEmbed ruleId={96} />
+  <RuleEmbed ruleId={98} />
+</RuleEmbedGroup>
 
 A full list of event related rules is available [here](/rules/events)
 

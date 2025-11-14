@@ -43,9 +43,9 @@ rules.sort((a, b) => a.data.id - b.data.id);
 
 <RuleEmbedGroup>
 {
-  rules.map((rule: { slug: string | undefined }) => (
+  rules.map((rule) => (
     <RuleEmbed
-      rule={rule.slug}
+      rule={rule}
       fields={fields}
     />
   ))

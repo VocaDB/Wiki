@@ -1,16 +1,17 @@
 ---
 import type { RuleFields } from "@/content/config";
-import { getCollection, getEntry } from "astro:content";
+import { getCollection, getEntry, type CollectionEntry } from "astro:content";
 
 interface Props {
-  rule?: string;
+  rule?: CollectionEntry<'rules'>;
+  ruleName?: string;
   ruleId?: number;
   fields?: RuleFields[] | "All";
 }
 
-const { rule: ruleName, ruleId, fields = [] } = Astro.props;
+const { rule: rule, ruleName, ruleId, fields = [] } = Astro.props;
 
-let ruleEntry;
+let ruleEntry = rule;
 
 const getIsoDate = (date: Date): string => {
   return date.toISOString().split("T")[0];
@@ -18,19 +19,17 @@ const getIsoDate = (date: Date): string => {
 
 if (ruleName) {
   ruleEntry = await getEntry("rules", ruleName);
-} else if (ruleId !== undefined) {
+} else if (ruleId) {
   // Filter by numeric ID
   const ruleEntries = await getCollection("rules", (entry: { data: { id: number; }; }) => {
     return entry.data.id === ruleId;
   });
   ruleEntry = ruleEntries[0];
-} else {
-  throw new Error("Either 'rule' (string) or 'ruleId' (number) must be provided");
 }
 
 if (!ruleEntry) {
-  const identifier = ruleName ? `"${ruleName}"` : `ID ${ruleId}`;
-  throw new Error(`Rule ${identifier} not found`);
+  let identifier = ruleName ? ` "${ruleName}"` : (ruleId ? ` ID ${ruleId}` : '');
+  throw new Error(`Rule${identifier} not found. Either 'rule', 'ruleName' (string) or 'ruleId' (number) must be provided`);
 }
 
 const ruleData = ruleEntry.data;

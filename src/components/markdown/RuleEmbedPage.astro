@@ -3,6 +3,7 @@ import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 import { EntryType, type RuleFields } from "@/content/config";
 import { getCollection } from "astro:content";
 import DocPageLayout from "../../layouts/DocPageLayout.astro";
+import RuleEmbedGroup from "./RuleEmbedGroup.astro";
 
 let rules = await getCollection("rules");
 
@@ -54,31 +55,38 @@ const rulesForApproved = rules.filter(
     { depth: 1, slug: "finished", text: "Finished +" },
     { depth: 1, slug: "approved", text: "Approved" }
   ]}>
+  
   <h2 id="draft">Draft+ entries</h2>
+  <RuleEmbedGroup>
   {
-    rulesForDraft.map((rule: { slug: string | undefined }) => (
+    rulesForDraft.map((rule) => (
       <RuleEmbed
-        rule={rule.slug}
+        rule={rule}
         fields={fields}
       />
     ))
   }
+  </RuleEmbedGroup>
   <h2 id="finished">Finished+ entries</h2>
+  <RuleEmbedGroup>
   {
-    rulesForFinished.map((rule: { slug: string | undefined }) => (
+    rulesForFinished.map((rule) => (
       <RuleEmbed
-        rule={rule.slug}
+        rule={rule}
         fields={fields}
       />
     ))
   }
+  </RuleEmbedGroup>
   <h2 id="approved">Approved entries</h2>
+  <RuleEmbedGroup>
   {
-    rulesForApproved.map((rule: { slug: string | undefined }) => (
+    rulesForApproved.map((rule) => (
       <RuleEmbed
-        rule={rule.slug}
+        rule={rule}
         fields={fields}
       />
     ))
   }
+  </RuleEmbedGroup>
 </DocPageLayout>

@@ -42,7 +42,7 @@ const ruleCollection = defineCollection({
     relevant_tag_id: z.number().nullable().optional(),
     mikumod_support: z.enum(["True", "False", "Planned"]).nullable().optional(),
     automatically_fixed: z.enum(["True", "False", "Partially"]).nullable().optional(),
-    complete_validation: z.boolean().nullable().optional(),
+    complete_validation: z.enum(["True", "False"]).nullable().optional(),
   })
 });
 

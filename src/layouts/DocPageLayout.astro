@@ -11,9 +11,10 @@ export interface Props {
   frontmatter?: any;
   title?: string;
   description?: string;
+  filePath?: string;
 }
 
-const { frontmatter = {}, headings } = Astro.props;
+const { frontmatter = {}, headings, filePath } = Astro.props;
 
 let toc = null;
 
@@ -31,7 +32,7 @@ const description = Astro.props?.description ?? frontmatter?.description;
   <main class="relative xl:grid xl:grid-cols-[1fr_300px] gap-10">
     <article data-pagefind-body class="prose dark:prose-invert max-w-none min-w-0">
       <header class="mb-8">
-        <h1>{title}</h1>
+        <h1 class="mb-8">{title}</h1>
         <TagsDisplay tags={frontmatter.tags ?? []} />
         {
           toc && (
@@ -45,6 +46,16 @@ const description = Astro.props?.description ?? frontmatter?.description;
         }
       </header>
       <slot />
+      <hr class="mb-4"/>
+      <footer class="not-prose">
+        <p>
+          
+          { [
+            filePath && ['https://github.com/VocaDB/Wiki/edit/main/' + filePath, <><svg class="inline align-[-0.125em]" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><!-- Icon from TDesign Icons by TDesign - https://github.com/Tencent/tdesign-icons/blob/main/LICENSE --><g fill="none"><path d="M3 21h4.5l10-10L13 6.5l-10 10z" /><path d="M21.5 7L17 2.5l-4 4l4.5 4.5z" /><path stroke="currentColor" stroke-width="2" d="m13 6.5l-10 10V21h4.5l10-10M13 6.5l4.5 4.5M13 6.5l4-4L21.5 7l-4 4" /></g></svg> Edit this page</>],
+            filePath && ['https://github.com/VocaDB/Wiki/commits/main/' + filePath, <><svg class="inline align-[-0.125em]" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><!-- Icon from TDesign Icons by TDesign - https://github.com/Tencent/tdesign-icons/blob/main/LICENSE --><path fill="none" stroke="currentColor" stroke-linecap="square" stroke-width="2" d="M2.552 13c.5 4.777 4.539 8.5 9.448 8.5a9.5 9.5 0 0 0 0-19c-1.628 0-3.16.41-4.5 1.131A9.54 9.54 0 0 0 3.38 8M12 7v5l2.5 2.5m-12-11v5h5" /></svg> See page history</>],
+            ['https://github.com/VocaDB/Wiki/issues/new', <><svg class="inline align-[-0.125em]" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><!-- Icon from TDesign Icons by TDesign - https://github.com/Tencent/tdesign-icons/blob/main/LICENSE --><g fill="none"><path d="M9.195 5.635A6.5 6.5 0 0 0 5.5 11.5v5a6.5 6.5 0 1 0 13 0v-5a6.5 6.5 0 0 0-9.305-5.865" /><path stroke="currentColor" stroke-linecap="square" stroke-width="2" d="M3 10h2.5m13 0H21M3 18h2.5m13 0H21M9 5.4L7 3m8 2.4L17 3M5.5 16.5v-5a6.5 6.5 0 0 1 13 0v5a6.5 6.5 0 1 1-13 0ZM10 11h4m-4 6h4" /></g></svg> Report an issue</>],
+          ].filter(e => e).flatMap(e => [<a href={ e[0] } class="hover:underline" target="_blank">{ e[1] }</a>, ' • ']).slice(0, -1) }
+      </footer>
     </article>
 
     {

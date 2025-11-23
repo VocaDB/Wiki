@@ -3,7 +3,6 @@
 // Source: https://github.com/withastro/starlight/blob/bf1a9e6fd7311c30b7d1adbecfe9ca32e24207d9/packages/starlight/components/TableOfContents/TableOfContentsList.astro
 // Source is licensed under MIT.
 
-import { cn } from '@/lib/utils.ts';
 import type { TocItem } from '@/utils/generateToC.ts'
 
 interface Props {
@@ -33,33 +32,26 @@ const { toc, isMobile = false, depth = 0, track = false } = Astro.props;
 
 <style define:vars={{ depth }}>
   ul {
-    padding: 0;
-    list-style: none;
+    @apply p-0 list-none;
   }
 
   li {
-    padding-left: 0;
+    @apply pl-0;
   }
 
   a {
     --pad-inline: 0.5rem;
-    display: block;
-    border-radius: 0.25rem;
-    padding-block: 0.25rem;
+    @apply block rounded-md py-1 leading-normal;
     padding-inline: calc(1rem * var(--depth) + var(--pad-inline)) var(--pad-inline);
-    line-height: 1.5;
   }
 
   a:hover {
-    text-decoration: underline; 
+    @apply underline;
   }
 
   .isMobile a {
     --pad-inline: 1rem;
-    display: flex;
-    justify-content: space-between;
-    border-radius: 0;
-    padding-block: 0.25rem;
+    @apply flex justify-between rounded-none py-1;
   }
 </style>
 

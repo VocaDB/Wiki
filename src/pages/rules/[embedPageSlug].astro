@@ -1,0 +1,27 @@
+---
+import RuleEmbedPage from "@/components/markdown/RuleEmbedPage.astro";
+
+export async function getStaticPaths() {
+  const pages = {
+    albums: "Albums",
+    artists: "Artists",
+    events: "Events",
+    songlists: "Songlists",
+    songs: "Songs",
+    tags: "Tags"
+  }
+
+  return Object.entries(pages).map(([ slug, type ]) => ({
+    params: {
+      embedPageSlug: slug
+    },
+    props: {
+      type
+    }
+  }));
+}
+
+const { type } = Astro.props;
+---
+
+<RuleEmbedPage entryType={type} fields={["entry_status"]}/>

@@ -15,11 +15,11 @@ interface Props {
 const { toc, isMobile = false, depth = 0, track = false } = Astro.props;
 ---
 
-<ul class:list={{ isMobile, track }}>
+<ul class:list={['p-0 list-none', { isMobile, track }]}>
   {
     toc.map((heading) => (
-      <li>
-        <a href={'#' + heading.slug} class={isMobile ? '' : 'text-muted-foreground'}>
+      <li class='pl-0'>
+        <a href={'#' + heading.slug} class:list={[`block py-1 leading-normal hover:underline ps-[calc(1rem*var(--depth)+var(--pad-inline))] pe-[var(--pad-inline)]`, isMobile ? '[--pad-inline:1rem]' : 'text-muted-foreground [--pad-inline:0rem]']} style={`--depth: ${depth}`}>
           <span>{heading.text}</span>
         </a>
         {heading.children.length > 0 && (
@@ -29,31 +29,6 @@ const { toc, isMobile = false, depth = 0, track = false } = Astro.props;
     ))
   }
 </ul>
-
-<style define:vars={{ depth }}>
-  ul {
-    @apply p-0 list-none;
-  }
-
-  li {
-    @apply pl-0;
-  }
-
-  a {
-    --pad-inline: 0.5rem;
-    @apply block rounded-md py-1 leading-normal;
-    padding-inline: calc(1rem * var(--depth) + var(--pad-inline)) var(--pad-inline);
-  }
-
-  a:hover {
-    @apply underline;
-  }
-
-  .isMobile a {
-    --pad-inline: 1rem;
-    @apply flex justify-between rounded-none py-1;
-  }
-</style>
 
 { (depth === 0 && track) && <script is:inline>
   document.addEventListener("astro:page-load", () => {

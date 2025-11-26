@@ -59,17 +59,15 @@ const description = Astro.props?.description ?? frontmatter?.description;
       </footer>
     </article>
 
-    {
-      toc && (
-        <div class="hidden xl:block text-sm sticky top-16 h-[calc(100vh-4rem)] -my-6">
-          <ScrollArea className="h-full" client:visible>
-            <div class="py-6">
-              <p class="font-semibold mb-2 mx-2">On this page</p>
+    <div class="hidden xl:block text-sm sticky top-16 h-[calc(100vh-4rem)] -my-6">
+      <ScrollArea className="h-full" client:visible>
+        <div class="py-6">
+          {toc && <div>
+              <p class="font-semibold mb-2">On this page</p>
               <TableOfContentsList track={true} toc={toc} />
-            </div>
-          </ScrollArea>
+          </div>}
         </div>
-      )
-    }
+      </ScrollArea>
+    </div>
   </main>
 </Layout>

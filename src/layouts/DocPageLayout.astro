@@ -5,15 +5,17 @@ import { TagsDisplay } from "@/components/TagsDisplay";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { generateToC } from "@/utils/generateToC.ts";
 import TableOfContentsList from "@/components/TableOfContentsList.astro"
+import { CounterClockwiseClockIcon, ExclamationTriangleIcon, Pencil1Icon } from "@radix-ui/react-icons";
 
 export interface Props {
   headings?: MarkdownHeading[];
   frontmatter?: any;
   title?: string;
   description?: string;
+  filePath?: string;
 }
 
-const { frontmatter = {}, headings } = Astro.props;
+const { frontmatter = {}, headings, filePath } = Astro.props;
 
 let toc = null;
 
@@ -31,7 +33,7 @@ const description = Astro.props?.description ?? frontmatter?.description;
   <main class="relative xl:grid xl:grid-cols-[1fr_300px] gap-10">
     <article data-pagefind-body class="prose dark:prose-invert max-w-none min-w-0">
       <header class="mb-8">
-        <h1>{title}</h1>
+        <h1 class="mb-8">{title}</h1>
         <TagsDisplay tags={frontmatter.tags ?? []} />
         {
           toc && (
@@ -45,19 +47,27 @@ const description = Astro.props?.description ?? frontmatter?.description;
         }
       </header>
       <slot />
+      <hr class="mb-4"/>
+      <footer class="not-prose">
+        <p>
+          
+          { [
+            filePath && ['https://github.com/VocaDB/Wiki/edit/main/' + filePath, <><Pencil1Icon  className="inline align-[-0.125em]" /> Edit this page</>],
+            filePath && ['https://github.com/VocaDB/Wiki/commits/main/' + filePath, <><CounterClockwiseClockIcon className="inline align-[-0.125em]" /> See page history</>],
+            ['https://github.com/VocaDB/Wiki/issues/new', <><ExclamationTriangleIcon className="inline align-[-0.125em]" /> Report an issue</>],
+          ].filter(e => e).flatMap(e => [<a href={ e[0] } class="hover:underline" target="_blank">{ e[1] }</a>, ' • ']).slice(0, -1) }
+      </footer>
     </article>
 
-    {
-      toc && (
-        <div class="hidden xl:block text-sm sticky top-16 h-[calc(100vh-4rem)] -my-6">
-          <ScrollArea className="h-full" client:visible>
-            <div class="py-6">
-              <p class="font-semibold mb-2 mx-2">On this page</p>
+    <div class="hidden xl:block text-sm sticky top-16 h-[calc(100vh-4rem)] -my-6">
+      <ScrollArea className="h-full" client:visible>
+        <div class="py-6">
+          {toc && <div>
+              <p class="font-semibold mb-2">On this page</p>
               <TableOfContentsList track={true} toc={toc} />
-            </div>
-          </ScrollArea>
+          </div>}
         </div>
-      )
-    }
+      </ScrollArea>
+    </div>
   </main>
 </Layout>

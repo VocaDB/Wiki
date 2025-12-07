@@ -15,5 +15,37 @@ rationale:
 status: Active
 rule_context: Romanization
 mikumod_support: "False"
+excerpt: The official romanization and/or translation should be prioritized even if it's against VocaDB's [romanization guidelines](/docs/romanization-guidelines).
 ---
-The official romanization and/or translation should be prioritized even if it's against VocaDB's [romanization guidelines](/docs/romanization-guidelines).
+
+import { Alert } from "@/components/ui/alert"
+import { BoxGroup } from "@/components/ui/box"
+
+If available, the official romanization and/or translation should be used as the primary name in favor of other translations/romanizations, even though more known translations/romanizations are available or the romanization breaks [VocaDB romanization rules](/docs/romanization-guidelines).
+
+## Examples
+
+For ["Servant of Evil"](https://vocadb.net/S/1358), despite the previous title is more known, the official translation, "His significance of existence", is used as the primary name.
+
+<BoxGroup>
+  <Alert variant="incorrect">
+    **English**: Servant of Evil
+  </Alert>
+
+  <Alert variant="correct">
+    **English**: His significance of existence
+  </Alert>
+</BoxGroup>
+
+
+For ["DUNE"](https://vocadb.net/S/157860), despite the transliteration "Sand Planet", the official translation, "DUNE", is used as the primary name.
+
+<BoxGroup>
+  <Alert variant="incorrect">
+    **English**: Sand Planet
+  </Alert>
+
+  <Alert variant="correct">
+    **English**: DUNE
+  </Alert>
+</BoxGroup>

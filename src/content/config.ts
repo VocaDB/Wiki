@@ -17,6 +17,7 @@ const ruleCollection = defineCollection({
   schema: z.object({
     name: z.string(),
     id: z.number(), // rule id
+    excerpt: z.string().nullable().optional(), // short excerpt/description for the embed and social tags (e.g. Google, Discord)
     entry_type: z
       .union([
         z.literal("All"),

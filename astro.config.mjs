@@ -3,6 +3,7 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import pagefind from "astro-pagefind";
 import { defineConfig } from "astro/config";
+import markdownIntegration from '@astropub/md';
 
 import mdx from "@astrojs/mdx";
 import remarkSectionize from "remark-sectionize";
@@ -42,6 +43,7 @@ export default defineConfig({
       ],
     }),
     pagefind(),
+    markdownIntegration(),
   ],
   redirects: {
 

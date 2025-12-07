@@ -69,7 +69,11 @@ async function stripText(markdownInput: string) {
   return String(file);
 }
 
-let description = await stripText(entry.body)
+let content
+if (entry.data.excerpt) {
+  content = await entry.render()
+} 
+const description = await stripText(entry.data.excerpt || entry.body)
 ---
 
 <DocPageLayout
@@ -78,6 +82,7 @@ let description = await stripText(entry.body)
   description={description}
   headings={headings},
   filePath={'src/content/rules/' + entry.id}>
+  
   <script define:vars={{ slug: entry.slug, currentPath: Astro.params.slug }} is:inline>
     // Redirect to canonical URL if accessed via numeric ID
     if (currentPath !== slug && !isNaN(Number(currentPath))) {
@@ -86,26 +91,25 @@ let description = await stripText(entry.body)
     }
   </script>
   
-  <div data-pagefind-ignore={isNumericRoute ? "all" : undefined}>
-  <div class="rule-metadata">
-    <RuleEmbed
-      rule={entry}
-      fields={"All"}
-    />
+  <RuleEmbed
+    rule={entry}
+    fields={"All"}
+  />
 
-    <table class="metadata-table">
-      <tbody>
-        {
-          Object.entries(entry.data).map(([fieldKey, fieldValue]) => (
-            <tr>
-              <th class="field-name">Rule {fieldKey}:</th>
-              <td class="field-value">
-                {formatFieldValue(fieldValue)}
-              </td>
-            </tr>
-          ))
-        }
-      </tbody>
-    </table>
-  </div>
+  {content && <content.Content />}
+
+  <table class="metadata-table" data-pagefind-ignore={isNumericRoute ? "all" : undefined}>
+    <tbody>
+      {
+        Object.entries(entry.data).map(([fieldKey, fieldValue]) => (
+          <tr>
+            <th class="field-name">Rule {fieldKey}:</th>
+            <td class="field-value">
+              {formatFieldValue(fieldValue)}
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
 </DocPageLayout>

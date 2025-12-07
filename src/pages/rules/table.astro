@@ -1,12 +1,31 @@
 ---
 import RuleTable from "@/components/markdown/RuleTable.astro";
 import DocPageLayout from "@/layouts/DocPageLayout.astro";
-
 ---
-<DocPageLayout headings={[]}, frontmatter={{ title: "Rule Table" }}>
+
+<DocPageLayout headings={[]} , frontmatter={{ title: "Rule Table" }}>
   <main>
     <RuleTable />
   </main>
 </DocPageLayout>
 
 <script src="/sorttable.js" is:inline defer></script>
+
+<script>
+  function initSorttable() {
+    const sorttable = (window as any).sorttable;
+    if (sorttable && sorttable.init) {
+      sorttable.init();
+    }
+  }
+
+  // Initialize on first load
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initSorttable);
+  } else {
+    initSorttable();
+  }
+
+  // Re-initialize after Astro page transitions
+  document.addEventListener("astro:page-load", initSorttable);
+</script>

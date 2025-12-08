@@ -4,12 +4,12 @@ import tailwind from "@astrojs/tailwind";
 import pagefind from "astro-pagefind";
 import { defineConfig } from "astro/config";
 
+import { rehypeHeadingIds } from '@astrojs/markdown-remark';
 import mdx from "@astrojs/mdx";
+import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import remarkSectionize from "remark-sectionize";
 import rehypePluginMoveIdToSection from "./src/rehype-sectionize";
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import { rehypeHeadingIds } from '@astrojs/markdown-remark';
-import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic';
 
 // https://astro.build/config
 export default defineConfig({
@@ -45,8 +45,8 @@ export default defineConfig({
     pagefind(),
   ],
   redirects: {
-
-    "/rules/corresponding-primary-name": "/rules/matching-primary-name",
+    "/rules/matching-primary-name": "/rules/matching-default-language",
+    "/rules/corresponding-primary-name": "/rules/matching-default-language",
 
     "/rules/matching-language": "/rules/matching-song-language",
 

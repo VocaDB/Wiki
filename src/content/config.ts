@@ -47,6 +47,29 @@ const ruleCollection = defineCollection({
   })
 });
 
+export const ruleDataKeyDictionary: Record<string, string> = {
+  id: "ID",
+  date_created: "Date created",
+  date_modified: "Date modified",
+  name: "Name",
+  entry_type: "Entry type",
+  entry_status: "Entry status",
+  rule_context: "Rule context",
+  relevant_tag_id: "Relevant tag",
+  mikumod_support: "MikuMod support",
+  occurance: "Occurrence",
+  date_checked: "Date checked",
+  edit_list: "Edit list",
+  status: "Status",
+  fe_validations: "Frontend validations",
+  be_validations: "Backend validations",
+  rationale: "Rationale",
+  automatically_fixed: "Automatically fixed",
+  complete_validation: "Complete validation",
+  excerpt: "Excerpt",
+  detection_script: "Detection script"
+}
+
 export type RuleFields = keyof CollectionEntry<"rules">["data"];
 
 export const collections = {

@@ -1,4 +1,5 @@
 ---
+import { ruleDataKeyDictionary } from "@/content/config";
 import { getCollection, type CollectionEntry } from "astro:content";
 const ruleEntries: CollectionEntry<"rules">[] = await getCollection("rules");
 
@@ -11,17 +12,17 @@ const ISO_date = (date: Date): string => {
   <table class="rule-table sortable">
     <thead>
       <tr>
-        <th title="Rule id">ID</th>
-        <th title="Date modified or created">Date</th>
-        <th title="Rule name">Name</th>
-        <th title="Entry type">E.Type</th>
-        <th title="Relevant entry status">E.Status</th>
-        <th title="Rule context">Context</th>
-        <th title="Relevant tag">Tag</th>
-        <th title="MikuMod support">MikuModded</th>
-        <th title="Number of invalid entries">Occurrence</th>
-        <th title="Date last checked">Checked</th>
-        <th title="Relevant edit list of invalid entries">List</th>
+        <th title="Rule id">{ruleDataKeyDictionary.id}</th>
+        <th title="Date modified or created">{ruleDataKeyDictionary.date_modified}</th>
+        <th title="Rule name">{ruleDataKeyDictionary.name}</th>
+        <th title="Entry type">{ruleDataKeyDictionary.entry_type}</th>
+        <th title="Relevant entry status">{ruleDataKeyDictionary.entry_status}</th>
+        <th title="Rule context">{ruleDataKeyDictionary.rule_context}</th>
+        <th title="Relevant tag">{ruleDataKeyDictionary.relevant_tag_id}</th>
+        <th title="MikuMod support">{ruleDataKeyDictionary.mikumod_support}</th>
+        <th title="Number of invalid entries">{ruleDataKeyDictionary.occurance}</th>
+        <th title="Date last checked">{ruleDataKeyDictionary.date_checked}</th>
+        <th title="Relevant edit list of invalid entries">{ruleDataKeyDictionary.edit_list}</th>
       </tr>
     </thead>
     <tbody>

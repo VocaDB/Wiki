@@ -1,11 +1,13 @@
 ---
 import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import { FormattedField } from "@/components/markdown/RuleFormattedField.tsx";
 import { getCollection } from "astro:content";
 import DocPageLayout from "../../layouts/DocPageLayout.astro";
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import stripMarkdown from 'strip-markdown';
 import remarkStringify from 'remark-stringify';
+import { ruleDataKeyDictionary } from "@/content/config.ts";
 
 export async function getStaticPaths() {
   const ruleEntries = await getCollection("rules");
@@ -37,27 +39,11 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { headings } = await entry.render();
 
+headings.push({ depth: 2, slug: 'metadata', text: 'Metadata' })
+
 const isNumericRoute = !isNaN(Number(Astro.params.slug));
 
-function formatFieldValue(value: any): string {
-  if (value === null || value === undefined) {
-    return "-";
-  }
-
-  if (Array.isArray(value)) {
-    return value.join(", ");
-  }
-
-  if (value instanceof Date) {
-    return value.toLocaleDateString();
-  }
-
-  if (typeof value === "boolean") {
-    return value ? "True" : "False";
-  }
-
-  return String(value);
-}
+const a = FormattedField
 
 async function stripText(markdownInput: string) {
   const file = await unified()
@@ -81,7 +67,8 @@ const description = await stripText(entry.data.excerpt || entry.body)
   title={`Rule: ${entry.data.name}`}
   description={description}
   headings={headings},
-  filePath={'src/content/rules/' + entry.id}>
+  filePath={'src/content/rules/' + entry.id}
+  pagefindIgnore={isNumericRoute}>
   
   <script define:vars={{ slug: entry.slug, currentPath: Astro.params.slug }} is:inline>
     // Redirect to canonical URL if accessed via numeric ID
@@ -98,18 +85,23 @@ const description = await stripText(entry.data.excerpt || entry.body)
 
   {content && <content.Content />}
 
-  <table class="metadata-table" data-pagefind-ignore={isNumericRoute ? "all" : undefined}>
-    <tbody>
-      {
-        Object.entries(entry.data).map(([fieldKey, fieldValue]) => (
-          <tr>
-            <th class="field-name">Rule {fieldKey}:</th>
-            <td class="field-value">
-              {formatFieldValue(fieldValue)}
-            </td>
-          </tr>
-        ))
-      }
-    </tbody>
-  </table>
+  <section id="metadata">
+    <h2>Metadata</h2>
+
+    <table class="metadata-table">
+      <tbody>
+        {
+          Object.entries(entry.data).map(([fieldKey, fieldValue]) => {
+            if (['excerpt'].includes(fieldKey)) return
+            return <tr>
+              <th class="field-name">{ruleDataKeyDictionary[fieldKey] || fieldKey}:</th>
+              <td class="field-value">
+                <FormattedField value={fieldValue} />
+              </td>
+            </tr>
+          })
+        }
+      </tbody>
+    </table>
+  </section>
 </DocPageLayout>

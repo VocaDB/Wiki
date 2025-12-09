@@ -15,9 +15,10 @@ export interface Props {
   description?: string;
   filePath?: string;
   noRightSidebar?: boolean;
+  pagefindIgnore: boolean;
 }
 
-const { frontmatter = {}, headings, filePath, noRightSidebar } = Astro.props;
+const { frontmatter = {}, headings, filePath, noRightSidebar, pagefindIgnore } = Astro.props;
 
 let toc = null;
 
@@ -33,7 +34,7 @@ const description = Astro.props?.description ?? frontmatter?.description;
 
 <Layout title={title} description={description}>
   <main class="relative xl:grid xl:grid-cols-[1fr_300px] gap-10">
-    <article data-pagefind-body class={cn("prose dark:prose-invert max-w-none min-w-0", noRightSidebar && "col-span-2")}>
+    <article data-pagefind-body={pagefindIgnore ? undefined : ''} class={cn("prose dark:prose-invert max-w-none min-w-0", noRightSidebar && "col-span-2")}>
       <header class="mb-8">
         <h1 class="mb-8">{title}</h1>
         <TagsDisplay tags={frontmatter.tags ?? []} />

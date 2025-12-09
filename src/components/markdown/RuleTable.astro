@@ -20,8 +20,8 @@ const ISO_date = (date: Date): string => {
         <th title="Rule context">{ruleDataKeyDictionary.rule_context}</th>
         <th title="Relevant tag">{ruleDataKeyDictionary.relevant_tag_id}</th>
         <th title="MikuMod support">{ruleDataKeyDictionary.mikumod_support}</th>
-        <th title="Number of invalid entries">{ruleDataKeyDictionary.occurance}</th>
-        <th title="Date last checked">{ruleDataKeyDictionary.date_checked}</th>
+        <th title="Rule check is complete/exhaustive">Complete</th>
+        <th title="Rule violations get automatically fixed">Autofix</th>
         <th title="Relevant edit list of invalid entries">{ruleDataKeyDictionary.edit_list}</th>
       </tr>
     </thead>
@@ -63,11 +63,8 @@ const ISO_date = (date: Date): string => {
                 : "-"}
               </td>
               <td>{rule.data.mikumod_support}</td>
-              <td>{rule.data.occurance || "-"}</td>
-              <td>
-                {(rule.data.date_checked && ISO_date(rule.data.date_checked)) ||
-                  "-"}
-              </td>
+              <td>{rule.data.complete_validation || "-"}</td>
+              <td>{rule.data.automatically_fixed || "-"}</td>
               <td>
                 {rule.data.edit_list ?
                   rule.data.edit_list === "TODO" ?

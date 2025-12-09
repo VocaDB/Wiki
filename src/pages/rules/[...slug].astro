@@ -43,8 +43,6 @@ headings.push({ depth: 2, slug: 'metadata', text: 'Metadata' })
 
 const isNumericRoute = !isNaN(Number(Astro.params.slug));
 
-const a = FormattedField
-
 async function stripText(markdownInput: string) {
   const file = await unified()
     .use(remarkParse)
@@ -62,11 +60,12 @@ if (entry.data.excerpt) {
 const description = await stripText(entry.data.excerpt || entry.body)
 ---
 
-<DocPageLayout
-  frontmatter={entry.data}
-  title={`Rule: ${entry.data.name}`}
-  description={description}
-  headings={headings},
+<DocPageLayout frontmatter={{
+    ...entry.data,
+    title: `Rule: ${entry.data.name}`,
+    description: description
+  }}
+  headings={headings}
   filePath={'src/content/rules/' + entry.id}
   pagefindIgnore={isNumericRoute}>
   

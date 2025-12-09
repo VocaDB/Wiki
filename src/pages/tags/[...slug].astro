@@ -18,7 +18,7 @@ const taggedEntries = (await getCollection("docs")).filter((entry) =>
 );
 ---
 
-<DocPageLayout title={`All pages for tag "${tag}"`}>
+<DocPageLayout frontmatter={{ title: `All pages for tag "${tag}"` }}>
   <ul class="list-disc list-inside">
     {
       taggedEntries.map((entry) => (

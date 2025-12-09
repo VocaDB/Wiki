@@ -65,9 +65,23 @@ export const ruleDataKeyDictionary: Record<string, string> = {
   be_validations: "Backend validations",
   rationale: "Rationale",
   automatically_fixed: "Automatically fixed",
-  complete_validation: "Complete validation",
+  complete_validation: "Complete",
   excerpt: "Excerpt",
-  detection_script: "Detection script"
+  detection_script: "Detection script",
+  _date: "Date"
+}
+
+export const ruleDataKeyDetailsDictionary: Record<string, string> = {
+  id: "Rule ID",
+  name: "Rule name",
+  entry_status: "Relevant entry status",
+  occurance: "Number of invalid entries",
+  date_checked: "Date last checked",
+  edit_list: "Relevant edit list of invalid entries",
+  automatically_fixed: "Rule violations get automatically fixed",
+  complete_validation: "Rule check is complete/exhaustive",
+  detection_script: "Detection script",
+  _date: "Date modified or created",
 }
 
 export type RuleFields = keyof CollectionEntry<"rules">["data"];

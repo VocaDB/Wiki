@@ -7,7 +7,7 @@ import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import stripMarkdown from 'strip-markdown';
 import remarkStringify from 'remark-stringify';
-import { ruleDataKeyDictionary } from "@/content/config.ts";
+import { ruleDataKeyDetailsDictionary, ruleDataKeyDictionary } from "@/content/config.ts";
 
 export async function getStaticPaths() {
   const ruleEntries = await getCollection("rules");
@@ -94,9 +94,9 @@ const description = await stripText(entry.data.excerpt || entry.body)
           Object.entries(entry.data).map(([fieldKey, fieldValue]) => {
             if (['excerpt'].includes(fieldKey)) return
             return <tr>
-              <th class="field-name">{ruleDataKeyDictionary[fieldKey] || fieldKey}:</th>
+              <th class="field-name" title={ruleDataKeyDetailsDictionary[fieldKey]}>{ruleDataKeyDictionary[fieldKey] || fieldKey}:</th>
               <td class="field-value">
-                <FormattedField value={fieldValue} />
+                <FormattedField fKey={fieldKey} value={fieldValue} />
               </td>
             </tr>
           })

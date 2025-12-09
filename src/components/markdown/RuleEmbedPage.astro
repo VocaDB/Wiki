@@ -56,37 +56,45 @@ const rulesForApproved = rules.filter(
     { depth: 2, slug: "approved", text: "Approved" }
   ]}>
   
-  <h2 id="draft">Draft+ entries</h2>
-  <RuleEmbedGroup>
-  {
-    rulesForDraft.map((rule) => (
-      <RuleEmbed
-        rule={rule}
-        fields={fields}
-      />
-    ))
-  }
-  </RuleEmbedGroup>
-  <h2 id="finished">Finished+ entries</h2>
-  <RuleEmbedGroup>
-  {
-    rulesForFinished.map((rule) => (
-      <RuleEmbed
-        rule={rule}
-        fields={fields}
-      />
-    ))
-  }
-  </RuleEmbedGroup>
-  <h2 id="approved">Approved entries</h2>
-  <RuleEmbedGroup>
-  {
-    rulesForApproved.map((rule) => (
-      <RuleEmbed
-        rule={rule}
-        fields={fields}
-      />
-    ))
-  }
-  </RuleEmbedGroup>
+  <section id="draft">
+    <h2>Draft+ entries</h2>
+    <RuleEmbedGroup>
+    {
+      rulesForDraft.map((rule) => (
+        <RuleEmbed
+          rule={rule}
+          fields={fields}
+        />
+      ))
+    }
+    </RuleEmbedGroup>
+  </section>
+
+  <section id="finished">
+    <h2>Finished+ entries</h2>
+    <RuleEmbedGroup>
+    {
+      rulesForFinished.map((rule) => (
+        <RuleEmbed
+          rule={rule}
+          fields={fields}
+        />
+      ))
+    }
+    </RuleEmbedGroup>
+  </section>
+
+  <section id="approved">
+    <h2>Approved entries</h2>
+    <RuleEmbedGroup>
+    {
+      rulesForApproved.map((rule) => (
+        <RuleEmbed
+          rule={rule}
+          fields={fields}
+        />
+      ))
+    }
+    </RuleEmbedGroup>
+  </section>
 </DocPageLayout>

@@ -1,9 +1,9 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import DocPageLayout from "@/layouts/DocPageLayout.astro";
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("docs");
+  const blogEntries: CollectionEntry<"docs">[] = await getCollection("docs");
   const tags = [...new Set(blogEntries.flatMap((entry) => entry.data.tags))];
   return tags.map((tag) => ({
     params: {
@@ -13,7 +13,7 @@ export async function getStaticPaths() {
   }));
 }
 const { tag } = Astro.props;
-const taggedEntries = (await getCollection("docs")).filter((entry) =>
+const taggedEntries: CollectionEntry<"docs">[] = (await getCollection("docs")).filter((entry) =>
   entry.data.tags.includes(tag)
 );
 ---

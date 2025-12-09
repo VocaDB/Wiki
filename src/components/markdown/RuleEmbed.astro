@@ -23,7 +23,7 @@ if (ruleName) {
   ruleEntry = await getEntry("rules", ruleName);
 } else if (ruleId) {
   // Filter by numeric ID
-  const ruleEntries = await getCollection("rules", (entry: { data: { id: number; }; }) => {
+  const ruleEntries: CollectionEntry<"rules">[] = await getCollection("rules", (entry: { data: { id: number; }; }) => {
     return entry.data.id === ruleId;
   });
   ruleEntry = ruleEntries[0];

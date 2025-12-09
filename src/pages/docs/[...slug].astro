@@ -16,6 +16,6 @@ const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
 ---
 
-<DocPageLayout frontmatter={entry.data} headings={headings} filePath={'src/content/docs/' + entry.id}>
+<DocPageLayout frontmatter={entry.data} headings={headings} filePath={'src/content/docs/' + entry.id} pagePath={'docs/' + entry.slug}>
   <Content />
 </DocPageLayout>

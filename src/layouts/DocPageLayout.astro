@@ -19,11 +19,12 @@ export interface Props {
   headings?: MarkdownHeading[];
   frontmatter?: FrontMatter;
   filePath?: string;
+  pagePath?: string;
   noRightSidebar?: boolean;
   pagefindIgnore: boolean;
 }
 
-const { frontmatter = {}, headings, filePath, noRightSidebar, pagefindIgnore } = Astro.props;
+const { frontmatter = {}, headings, filePath, pagePath, noRightSidebar, pagefindIgnore } = Astro.props;
 
 let toc = null;
 
@@ -32,6 +33,13 @@ if (headings && headings.length > 0)
     minHeadingLevel: 2,
     maxHeadingLevel: 4
   })
+
+let issueBody = ''
+
+if (pagePath) issueBody += `- **Page**: [${pagePath}](https://wiki.vocadb.net/${pagePath})\n`
+if (filePath) issueBody += `- **File**: [${filePath}](https://github.com/VocaDB/Wiki/blob/main/${filePath})\n`
+
+if (issueBody) issueBody += '\n[your issue here]';
 
 const title = frontmatter?.title;
 const description = frontmatter?.description;
@@ -58,11 +66,10 @@ const description = frontmatter?.description;
       <hr class="mb-4"/>
       <footer class="not-prose">
         <p>
-          
           { [
-            filePath && ['https://github.com/VocaDB/Wiki/edit/main/' + filePath, <><Pencil1Icon  className="inline align-[-0.125em]" /> Edit this page</>],
+            filePath && ['https://github.com/VocaDB/Wiki/edit/main/' + filePath, <><Pencil1Icon className="inline align-[-0.125em]" /> Edit this page</>],
             filePath && ['https://github.com/VocaDB/Wiki/commits/main/' + filePath, <><CounterClockwiseClockIcon className="inline align-[-0.125em]" /> See page history</>],
-            ['https://github.com/VocaDB/Wiki/issues/new', <><ExclamationTriangleIcon className="inline align-[-0.125em]" /> Report an issue</>],
+            ["https://github.com/VocaDB/Wiki/issues/new" + (issueBody ? '?body=' + encodeURIComponent(issueBody) : ''), <><ExclamationTriangleIcon className="inline align-[-0.125em]" /> Report an issue</>],
           ].filter(e => e).flatMap(e => [<a href={ e[0] } class="hover:underline" target="_blank">{ e[1] }</a>, ' • ']).slice(0, -1) }
       </footer>
     </article>

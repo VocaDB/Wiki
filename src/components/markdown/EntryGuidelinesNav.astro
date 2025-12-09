@@ -1,10 +1,9 @@
 ---
+import { Box } from "@/components/ui/box";
 import BreadCrumbs from "./BreadCrumbs.astro";
 ---
 
-<div
-  class="rounded-xl border bg-card text-card-foreground shadow w-full not-prose"
->
+<Box className="not-prose">
   <div class="sm:p-6 p-4">
     <h2 class="font-semibold leading-none tracking-tight">Entry guidelines</h2>
   </div>
@@ -67,4 +66,4 @@ import BreadCrumbs from "./BreadCrumbs.astro";
       ]}
     />
   </div>
-</div>
+</Box>

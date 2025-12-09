@@ -7,6 +7,7 @@ import { generateToC } from "@/utils/generateToC.ts";
 import TableOfContentsList from "@/components/TableOfContentsList.astro"
 import { CounterClockwiseClockIcon, ExclamationTriangleIcon, Pencil1Icon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils.ts";
+import { genericBoxClass } from "@/components/ui/box";
 
 interface FrontMatter {
   title?: string;
@@ -44,7 +45,7 @@ const description = frontmatter?.description;
         <TagsDisplay tags={frontmatter.tags ?? []} />
         {
           toc && (
-            <details class="not-prose xl:hidden rounded-xl border shadow mb-4 bg-card">
+            <details class:list={["not-prose xl:hidden mb-4", genericBoxClass]}>
               <summary class="font-semibold tracking-tight m-2 mx-4 cursor-pointer">On this page</summary>
               <div class="my-2">
                 <TableOfContentsList isMobile={true} toc={toc} />

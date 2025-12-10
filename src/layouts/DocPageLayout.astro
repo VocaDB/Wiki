@@ -21,7 +21,7 @@ export interface Props {
   filePath?: string;
   pagePath?: string;
   noRightSidebar?: boolean;
-  pagefindIgnore: boolean;
+  pagefindIgnore?: boolean;
 }
 
 const { frontmatter = {}, headings, filePath, pagePath, noRightSidebar, pagefindIgnore } = Astro.props;

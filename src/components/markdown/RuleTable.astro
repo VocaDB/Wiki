@@ -58,7 +58,7 @@ const ISO_date = (date: Date): string => {
                   'edit_list',
                 ] as const).map(key => (
                   <td>
-                    <FormattedField fKey={key} value={rule.data[key]} short={true} />
+                    <FormattedField fieldKey={key} fieldValue={rule.data[key]} short={true} />
                   </td>
                 ))
               }

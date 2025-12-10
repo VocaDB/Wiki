@@ -96,7 +96,7 @@ const description = await stripText(entry.data.excerpt || entry.body)
             return <tr>
               <th class="field-name" title={ruleDataKeyDetailsDictionary[fieldKey]}>{ruleDataKeyDictionary[fieldKey] || fieldKey}:</th>
               <td class="field-value">
-                <FormattedField fKey={fieldKey} value={fieldValue} />
+                <FormattedField fieldKey={fieldKey} fieldValue={fieldValue} />
               </td>
             </tr>
           })

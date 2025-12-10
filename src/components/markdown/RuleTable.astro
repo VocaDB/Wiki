@@ -9,10 +9,7 @@ const ISO_date = (date: Date): string => {
   return date.toISOString().split("T")[0];
 };
 
-const ruleDataHeadingKeys: (keyof typeof ruleDataKeyDetailsDictionary)[] = [
-  'id',
-  '_date',
-  'name',
+const ruleDataBodyKeys: RuleFields[] = [
   'entry_type',
   'entry_status',
   'rule_context',
@@ -23,15 +20,11 @@ const ruleDataHeadingKeys: (keyof typeof ruleDataKeyDetailsDictionary)[] = [
   'edit_list',
 ]
 
-const ruleDataBodyKeys: RuleFields[] = [
-  'entry_type',
-  'entry_status',
-  'rule_context',
-  'relevant_tag_id',
-  'mikumod_support',
-  'complete_validation',
-  'automatically_fixed',
-  'edit_list',
+const ruleDataHeadingKeys: (keyof typeof ruleDataKeyDetailsDictionary)[] = [
+  'id',
+  '_date',
+  'name',
+  ...ruleDataBodyKeys
 ]
 ---
 

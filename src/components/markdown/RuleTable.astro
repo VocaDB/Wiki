@@ -2,32 +2,44 @@
 import { ruleDataKeyDictionary, ruleDataKeyDetailsDictionary } from "@/content/config";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { FormattedField } from "./RuleFormattedField.tsx";
+import { type RuleFields } from "@/content/config";
 
 const ruleEntries: CollectionEntry<"rules">[] = await getCollection("rules");
 const ISO_date = (date: Date): string => {
   return date.toISOString().split("T")[0];
 };
+
+const ruleDataHeadingKeys: (keyof typeof ruleDataKeyDetailsDictionary)[] = [
+  'id',
+  '_date',
+  'name',
+  'entry_type',
+  'entry_status',
+  'rule_context',
+  'relevant_tag_id',
+  'mikumod_support',
+  'complete_validation',
+  'automatically_fixed',
+  'edit_list',
+]
+
+const ruleDataBodyKeys: RuleFields[] = [
+  'entry_type',
+  'entry_status',
+  'rule_context',
+  'relevant_tag_id',
+  'mikumod_support',
+  'complete_validation',
+  'automatically_fixed',
+  'edit_list',
+]
 ---
 
 <div class="table-container">
   <table class="rule-table sortable">
     <thead>
       <tr>
-        {
-          [
-            'id',
-            '_date',
-            'name',
-            'entry_type',
-            'entry_status',
-            'rule_context',
-            'relevant_tag_id',
-            'mikumod_support',
-            'complete_validation',
-            'automatically_fixed',
-            'edit_list',
-          ].map(key => <th title={ruleDataKeyDetailsDictionary[key]}>{ruleDataKeyDictionary[key]}</th>)
-        }
+        {ruleDataHeadingKeys.map(key => <th title={ruleDataKeyDetailsDictionary[key]}>{ruleDataKeyDictionary[key]}</th>)}
       </tr>
     </thead>
     <tbody>
@@ -46,22 +58,11 @@ const ISO_date = (date: Date): string => {
               <td class="rule-name">
                 <a href={`/rules/${rule.slug}`}>{rule.data.name}</a>
               </td>
-              {
-                ([
-                  'entry_type',
-                  'entry_status',
-                  'rule_context',
-                  'relevant_tag_id',
-                  'mikumod_support',
-                  'complete_validation',
-                  'automatically_fixed',
-                  'edit_list',
-                ] as const).map(key => (
-                  <td>
-                    <FormattedField fieldKey={key} fieldValue={rule.data[key]} short={true} />
-                  </td>
-                ))
-              }
+              {ruleDataBodyKeys.map(key => (
+                <td>
+                  <FormattedField fieldKey={key} fieldValue={rule.data[key]} short={true} />
+                </td>
+              ))}
             </tr>
           ))
       }

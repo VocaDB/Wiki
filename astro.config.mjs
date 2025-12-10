@@ -15,8 +15,8 @@ import { Link2Icon } from "@radix-ui/react-icons";
 import { renderToStaticMarkup } from "react-dom/server";
 import { createElement } from "react";
 
-const link2IconComponent = renderToStaticMarkup(createElement(Link2Icon, {class: 'inline-block h-4 w-4 opacity-0 group-hover:opacity-100 ml-1 align-baseline'}));
-const link2IconHast = fromHtmlIsomorphic(link2IconComponent, { fragment: true }).children[0];
+const linkIconComponent = renderToStaticMarkup(createElement(Link2Icon, {class: 'inline-block h-4 w-4 opacity-0 group-hover:opacity-100 ml-1 align-baseline'}));
+const linkIconHast = fromHtmlIsomorphic(linkIconComponent, { fragment: true }).children[0];
 
 // https://astro.build/config
 export default defineConfig({
@@ -37,7 +37,7 @@ export default defineConfig({
         rehypeHeadingIds,
         [rehypeAutolinkHeadings, {
           behavior: 'wrap',
-          content: link2IconHast,
+          content: linkIconHast,
           properties: {
             class: 'color-[unset] font-unset no-underline group'
           }

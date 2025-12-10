@@ -67,7 +67,7 @@ const description = await stripText(entry.data.excerpt || entry.body)
   }}
   headings={headings}
   filePath={'src/content/rules/' + entry.id}
-  pagePath={'rules/' + entry.id}
+  pagePath={'rules/' + entry.slug}
   pagefindIgnore={isNumericRoute}>
   
   <script define:vars={{ slug: entry.slug, currentPath: Astro.params.slug }} is:inline>

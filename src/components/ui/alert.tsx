@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 import { CheckIcon, Cross2Icon, ExclamationTriangleIcon, InfoCircledIcon } from "@radix-ui/react-icons";
-import { Box } from "@/components/ui/box";
+import { Box } from "@/components/Box";
 
 const alertVariants = cva(
   "px-4",

@@ -65,12 +65,13 @@ const description = frontmatter?.description;
       <slot />
       <hr class="mb-4"/>
       <footer class="not-prose">
-        <p>
+        <ul class="flex [&>*]:after:mx-2 [&>*]:after:content-['•'] [&>*:last-child]:after:content-['']">
           { [
             filePath && ['https://github.com/VocaDB/Wiki/edit/main/' + filePath, <><Pencil1Icon className="inline align-[-0.125em]" /> Edit this page</>],
             filePath && ['https://github.com/VocaDB/Wiki/commits/main/' + filePath, <><CounterClockwiseClockIcon className="inline align-[-0.125em]" /> See page history</>],
             ["https://github.com/VocaDB/Wiki/issues/new" + (issueBody ? '?body=' + encodeURIComponent(issueBody) : ''), <><ExclamationTriangleIcon className="inline align-[-0.125em]" /> Report an issue</>],
-          ].filter(e => e).flatMap(e => [<a href={ e[0] } class="hover:underline" target="_blank">{ e[1] }</a>, ' • ']).slice(0, -1) }
+          ].filter(e => e).map(e => <li><a href={ e[0] } class="hover:underline" target="_blank">{ e[1] }</a></li>) }
+        </ul>
       </footer>
     </article>
 

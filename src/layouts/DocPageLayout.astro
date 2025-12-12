@@ -5,9 +5,9 @@ import { TagsDisplay } from "@/components/TagsDisplay";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { generateToC } from "@/utils/generateToC.ts";
 import TableOfContentsList from "@/components/TableOfContentsList.astro"
-import { CounterClockwiseClockIcon, ExclamationTriangleIcon, Pencil1Icon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils.ts";
 import { genericBoxClass } from "@/components/Box";
+import { ArticleFooter } from "@/components/markdown/ArticleFooter";
 
 interface FrontMatter {
   title?: string;
@@ -34,13 +34,6 @@ if (headings && headings.length > 0)
     maxHeadingLevel: 4
   })
 
-let issueBody = ''
-
-if (pagePath) issueBody += `- **Page**: [${pagePath}](https://wiki.vocadb.net/${pagePath})\n`
-if (filePath) issueBody += `- **File**: [${filePath}](https://github.com/VocaDB/Wiki/blob/main/${filePath})\n`
-
-if (issueBody) issueBody += '\n[your issue here]';
-
 const title = frontmatter?.title;
 const description = frontmatter?.description;
 ---
@@ -65,13 +58,7 @@ const description = frontmatter?.description;
       <slot />
       <hr class="mb-4"/>
       <footer class="not-prose">
-        <ul class="flex [&>*]:after:mx-2 [&>*]:after:content-['•'] [&>*:last-child]:after:content-['']">
-          { [
-            filePath && ['https://github.com/VocaDB/Wiki/edit/main/' + filePath, <><Pencil1Icon className="inline align-[-0.125em]" /> Edit this page</>],
-            filePath && ['https://github.com/VocaDB/Wiki/commits/main/' + filePath, <><CounterClockwiseClockIcon className="inline align-[-0.125em]" /> See page history</>],
-            ["https://github.com/VocaDB/Wiki/issues/new" + (issueBody ? '?body=' + encodeURIComponent(issueBody) : ''), <><ExclamationTriangleIcon className="inline align-[-0.125em]" /> Report an issue</>],
-          ].filter(e => e).map(e => <li><a href={ e[0] } class="hover:underline" target="_blank">{ e[1] }</a></li>) }
-        </ul>
+        <ArticleFooter filePath={filePath} pagePath={pagePath} />
       </footer>
     </article>
 

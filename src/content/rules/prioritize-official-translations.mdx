@@ -15,17 +15,19 @@ rationale:
 status: Active
 rule_context: Romanization
 mikumod_support: "False"
-excerpt: The official romanization and/or translation should be prioritized even if it's against VocaDB's [romanization guidelines](/docs/romanization-guidelines).
+excerpt: Prioritize official translations/romanizations even if it is lesser known or breaks [VocaDB romanization guidelines](/docs/romanization-guidelines).
 ---
 
 import { Alert } from "@/components/ui/alert"
 import { BoxGroup } from "@/components/Box"
 
-If available, the official romanization and/or translation should be used as the primary name in favor of other translations/romanizations, even though more known translations/romanizations are available or the romanization breaks [VocaDB romanization rules](/docs/romanization-guidelines).
+If available, the official romanization and/or translation should be used as the primary name in favor of other translations/romanizations, even if other translations/romanizations are more known or the romanization breaks [VocaDB romanization rules](/docs/romanization-guidelines).
+
+Note that alternative names can be put as an alias of an entry.
 
 ## Examples
 
-For ["Servant of Evil"](https://vocadb.net/S/1358), despite the previous title is more known, the official translation, "His significance of existence", is used as the primary name.
+For "[Servant of Evil](https://vocadb.net/S/1358)", despite the more known "Servant of Evil" title, the official translation, "His significance of existence", should be used as the primary name.
 
 <BoxGroup>
   <Alert variant="incorrect">
@@ -37,8 +39,7 @@ For ["Servant of Evil"](https://vocadb.net/S/1358), despite the previous title i
   </Alert>
 </BoxGroup>
 
-
-For ["DUNE"](https://vocadb.net/S/157860), despite the transliteration "Sand Planet", the official translation, "DUNE", is used as the primary name.
+For "[DUNE](https://vocadb.net/S/157860)", although the transliteration "Sand Planet" is popular, the official translation, "DUNE", should be used as the primary name.
 
 <BoxGroup>
   <Alert variant="incorrect">

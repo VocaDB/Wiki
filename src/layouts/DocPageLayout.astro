@@ -7,6 +7,7 @@ import { generateToC } from "@/utils/generateToC.ts";
 import TableOfContentsList from "@/components/TableOfContentsList.astro";
 import { cn } from "@/lib/utils.ts";
 import { genericBoxClass } from "@/components/Box";
+import { ArticleFooter } from "@/components/markdown/ArticleFooter";
 
 interface FrontMatter {
   title?: string;
@@ -68,6 +69,10 @@ const description = frontmatter?.description;
         }
       </header>
       <slot />
+      <hr class="mb-4" />
+      <footer class="not-prose">
+        <ArticleFooter filePath={filePath} pagePath={pagePath} />
+      </footer>
     </article>
 
     {

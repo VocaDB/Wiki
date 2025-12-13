@@ -7,7 +7,7 @@ tags: ["wikipage", "editing", "albums", "documentation", "vocadb"]
 
 import Navigation from "@/components/markdown/EntryGuidelinesNav.astro";
 import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
-import RuleEmbedGroup from "@/components/markdown/RuleEmbedGroup.astro";
+import { BoxGroup } from "@/components/Box.tsx";
 
 <Navigation />
 
@@ -34,19 +34,19 @@ General instructions for entry names (= titles) and aliases are documented [here
 
 Name rules that are specific to album entries:
 
-<RuleEmbedGroup>
+<BoxGroup>
   <RuleEmbed ruleId={53} />
   <RuleEmbed ruleId={54} />
-</RuleEmbedGroup>
+</BoxGroup>
 
 ### Cover picture
 
 A cover picture for the album.
 
-<RuleEmbedGroup>
+<BoxGroup>
   <RuleEmbed ruleId={55} />
   <RuleEmbed ruleId={56} />
-</RuleEmbedGroup>
+</BoxGroup>
 
 ### Album description
 
@@ -121,12 +121,12 @@ Barcodes are usually plain numbers, e.g., 01234567, and can be scanned from the 
 
 External links relevant to the entry. 
 
-<RuleEmbedGroup>
+<BoxGroup>
   <RuleEmbed ruleId={20} />
   <RuleEmbed ruleId={17} />
   <RuleEmbed ruleId={16} />
   <RuleEmbed ruleId={19} />
-</RuleEmbedGroup>
+</BoxGroup>
 
 - More on [External links](/docs/external-links)
 
@@ -145,11 +145,11 @@ In this tab, you can add and delete artists who have participated in the album. 
 
 Artists can also be added as **custom artists**, which adds an artist credit to the song entry as text without creating an artist entry.
 
-<RuleEmbedGroup>
+<BoxGroup>
   <RuleEmbed ruleId={66} fields={["entry_status"]}/>
   <RuleEmbed ruleId={67} fields={["entry_status"]}/>
   <RuleEmbed ruleId={64} fields={["entry_status"]}/>
-</RuleEmbedGroup>
+</BoxGroup>
 
 - Rules for [choosing the correct voicebank credit](/docs/choosing-the-correct-voicebank-credit)
 

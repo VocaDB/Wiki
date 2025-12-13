@@ -3,7 +3,7 @@ import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 import { EntryType, type RuleFields } from "@/content/config";
 import { getCollection, type CollectionEntry } from "astro:content";
 import DocPageLayout from "../../layouts/DocPageLayout.astro";
-import RuleEmbedGroup from "./RuleEmbedGroup.astro";
+import { BoxGroup } from "@/components/Box.tsx";
 
 let rules: CollectionEntry<"rules">[] = await getCollection("rules");
 
@@ -59,7 +59,7 @@ const rulesForApproved = rules.filter(
   
   <section id="draft">
     <h2>Draft+ entries</h2>
-    <RuleEmbedGroup>
+    <BoxGroup>
     {
       rulesForDraft.map((rule) => (
         <RuleEmbed
@@ -68,12 +68,12 @@ const rulesForApproved = rules.filter(
         />
       ))
     }
-    </RuleEmbedGroup>
+    </BoxGroup>
   </section>
 
   <section id="finished">
     <h2>Finished+ entries</h2>
-    <RuleEmbedGroup>
+    <BoxGroup>
     {
       rulesForFinished.map((rule) => (
         <RuleEmbed
@@ -82,12 +82,12 @@ const rulesForApproved = rules.filter(
         />
       ))
     }
-    </RuleEmbedGroup>
+    </BoxGroup>
   </section>
 
   <section id="approved">
     <h2>Approved entries</h2>
-    <RuleEmbedGroup>
+    <BoxGroup>
     {
       rulesForApproved.map((rule) => (
         <RuleEmbed
@@ -96,6 +96,6 @@ const rulesForApproved = rules.filter(
         />
       ))
     }
-    </RuleEmbedGroup>
+    </BoxGroup>
   </section>
 </DocPageLayout>

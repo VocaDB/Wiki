@@ -24,36 +24,40 @@ export const ArticleFooter: React.FC<ArticleFooterProps> = ({
   if (issueBody) issueBody += "\n[your issue here]";
 
   return (
-    <ul className="flex flex-wrap gap-1 leading-none">
+    <ul className="flex flex-wrap gap-4 leading-none">
       {[
         filePath && [
           "https://github.com/VocaDB/Wiki/edit/main/" + filePath,
           <>
-            <Pencil1Icon /> Edit this page
+            <Pencil1Icon className="inline align-[-0.125em]" /> Edit this page
           </>,
         ],
         filePath && [
           "https://github.com/VocaDB/Wiki/commits/main/" + filePath,
           <>
-            <CounterClockwiseClockIcon /> See page history
+            <CounterClockwiseClockIcon className="inline align-[-0.125em]" />{" "}
+            See page history
           </>,
         ],
         [
           "https://github.com/VocaDB/Wiki/issues/new" +
             (issueBody ? "?body=" + encodeURIComponent(issueBody) : ""),
           <>
-            <ExclamationTriangleIcon /> Report an issue
+            <ExclamationTriangleIcon className="inline align-[-0.125em]" />{" "}
+            Report an issue
           </>,
         ],
       ]
         .filter((e) => e)
         .map((e) => (
           <li>
-            <Button variant="outline" asChild>
-              <a href={e[0]} target="_blank" className="flex">
-                {e[1]}
-              </a>
-            </Button>
+            <a
+              href={e[0]}
+              target="_blank"
+              className="hover:underline text-foreground/60 hover:text-foreground/80"
+            >
+              {e[1]}
+            </a>
           </li>
         ))}
     </ul>

@@ -6,7 +6,7 @@ tags: ["wikipage", "editing", "guidelines", "documentation", "vocadb"]
 ---
 
 import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
-import RuleEmbedGroup from "@/components/markdown/RuleEmbedGroup.astro";
+import { BoxGroup } from "@/components/Box.tsx";
 
 This page documents the most fequently asked questions and edit mistakes regarding VocaDB entries.
 
@@ -38,7 +38,7 @@ See the page for [Choosing the correct voicebank credit](https://wiki.vocadb.net
 
 ## Other common edit mistakes
 
-<RuleEmbedGroup>
+<BoxGroup>
   <RuleEmbed ruleId={101} />
   <RuleEmbed ruleId={30} />
   <RuleEmbed ruleId={36} />
@@ -47,7 +47,7 @@ See the page for [Choosing the correct voicebank credit](https://wiki.vocadb.net
   <RuleEmbed ruleId={17} />
   <RuleEmbed ruleId={104} />
   <RuleEmbed ruleId={69} />
-</RuleEmbedGroup>
+</BoxGroup>
 
 ## Albums
 

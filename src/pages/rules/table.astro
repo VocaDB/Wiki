@@ -3,10 +3,8 @@ import RuleTable from "@/components/markdown/RuleTable.astro";
 import DocPageLayout from "@/layouts/DocPageLayout.astro";
 ---
 
-<DocPageLayout headings={[]} , frontmatter={{ title: "Rule Table" }}>
-  <main>
-    <RuleTable />
-  </main>
+<DocPageLayout frontmatter={{ title: "Rule Table" }} noRightSidebar={true} pagefindIgnore={true}>
+  <RuleTable />
 </DocPageLayout>
 
 <script src="/sorttable.js" is:inline defer></script>

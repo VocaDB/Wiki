@@ -5,15 +5,25 @@ import { TagsDisplay } from "@/components/TagsDisplay";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { generateToC } from "@/utils/generateToC.ts";
 import TableOfContentsList from "@/components/TableOfContentsList.astro"
+import { cn } from "@/lib/utils.ts";
+import { genericBoxClass } from "@/components/Box";
+
+interface FrontMatter {
+  title?: string;
+  description?: string;
+  tags?: string[];
+}
 
 export interface Props {
   headings?: MarkdownHeading[];
-  frontmatter?: any;
-  title?: string;
-  description?: string;
+  frontmatter?: FrontMatter;
+  filePath?: string;
+  pagePath?: string;
+  noRightSidebar?: boolean;
+  pagefindIgnore?: boolean;
 }
 
-const { frontmatter = {}, headings } = Astro.props;
+const { frontmatter = {}, headings, filePath, pagePath, noRightSidebar, pagefindIgnore } = Astro.props;
 
 let toc = null;
 
@@ -23,19 +33,19 @@ if (headings && headings.length > 0)
     maxHeadingLevel: 4
   })
 
-const title = Astro.props?.title ?? frontmatter?.title;
-const description = Astro.props?.description ?? frontmatter?.description;
+const title = frontmatter?.title;
+const description = frontmatter?.description;
 ---
 
 <Layout title={title} description={description}>
   <main class="relative xl:grid xl:grid-cols-[1fr_300px] gap-10">
-    <article data-pagefind-body class="prose dark:prose-invert max-w-none min-w-0">
+    <article data-pagefind-body={pagefindIgnore ? undefined : ''} class={cn("prose dark:prose-invert max-w-none min-w-0", noRightSidebar && "col-span-2")}>
       <header class="mb-8">
-        <h1>{title}</h1>
+        <h1 class="mb-8">{title}</h1>
         <TagsDisplay tags={frontmatter.tags ?? []} />
         {
           toc && (
-            <details class="not-prose xl:hidden rounded-xl border shadow mb-4 bg-card">
+            <details class:list={["not-prose xl:hidden mb-4", genericBoxClass]}>
               <summary class="font-semibold tracking-tight m-2 mx-4 cursor-pointer">On this page</summary>
               <div class="my-2">
                 <TableOfContentsList isMobile={true} toc={toc} />
@@ -47,17 +57,15 @@ const description = Astro.props?.description ?? frontmatter?.description;
       <slot />
     </article>
 
-    {
-      toc && (
-        <div class="hidden xl:block text-sm sticky top-16 h-[calc(100vh-4rem)] -my-6">
-          <ScrollArea className="h-full" client:visible>
-            <div class="py-6">
-              <p class="font-semibold mb-2 mx-2">On this page</p>
+    { !noRightSidebar && <div class="hidden xl:block text-sm sticky top-16 h-[calc(100vh-4rem)] -my-6">
+      <ScrollArea className="h-full" client:visible>
+        <div class="py-6">
+          {toc && <div>
+              <p class="font-semibold mb-2">On this page</p>
               <TableOfContentsList track={true} toc={toc} />
-            </div>
-          </ScrollArea>
+          </div>}
         </div>
-      )
-    }
+      </ScrollArea>
+    </div> }
   </main>
 </Layout>

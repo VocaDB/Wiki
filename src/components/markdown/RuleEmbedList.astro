@@ -1,10 +1,10 @@
 ---
 import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 import { EntryType, type RuleFields } from "@/content/config";
-import { getCollection } from "astro:content";
-import RuleEmbedGroup from "@/components/markdown/RuleEmbedGroup.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import { BoxGroup } from "@/components/Box.tsx";
 
-let rules = await getCollection("rules");
+let rules: CollectionEntry<"rules">[] = await getCollection("rules");
 
 interface Props {
   entryType: (typeof EntryType)[number] | "All";
@@ -41,7 +41,7 @@ if (ruleContext) {
 rules.sort((a, b) => a.data.id - b.data.id);
 ---
 
-<RuleEmbedGroup>
+<BoxGroup>
 {
   rules.map((rule) => (
     <RuleEmbed
@@ -50,4 +50,4 @@ rules.sort((a, b) => a.data.id - b.data.id);
     />
   ))
 }
-</RuleEmbedGroup>
+</BoxGroup>

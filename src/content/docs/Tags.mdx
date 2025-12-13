@@ -6,7 +6,7 @@ tags: ["wikipage", "documentation", "editing", "tags", "vocadb"]
 ---
 
 import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
-import RuleEmbedGroup from "@/components/markdown/RuleEmbedGroup.astro";
+import { BoxGroup } from "@/components/Box.tsx";
 
 [Tags](https://vocadb.net/Tag) are labels that can be added to all [entry types](/docs/entry-types) (Artists, Albums, Songs, ...).
 
@@ -20,17 +20,17 @@ A full list of tag-related rules is available [here](/rules/tags)
 
 ## Tagging entries
 
-<RuleEmbedGroup>
+<BoxGroup>
   <RuleEmbed ruleId={21} />
   <RuleEmbed ruleId={22} />
   <RuleEmbed ruleId={59} />
   <RuleEmbed ruleId={168} />
   <RuleEmbed ruleId={152} />
-</RuleEmbedGroup>
+</BoxGroup>
 
 ## Creating and editing tags
 
-<RuleEmbedGroup>
+<BoxGroup>
   <RuleEmbed ruleId={169} />
   <RuleEmbed ruleId={149} />
   <RuleEmbed ruleId={147} />
@@ -39,7 +39,7 @@ A full list of tag-related rules is available [here](/rules/tags)
   <RuleEmbed ruleId={153} />
   <RuleEmbed ruleId={154} />
   <RuleEmbed ruleId={151} />
-</RuleEmbedGroup>
+</BoxGroup>
 
 ## Tag categories
 

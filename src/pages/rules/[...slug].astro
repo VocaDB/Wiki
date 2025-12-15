@@ -1,6 +1,6 @@
 ---
 import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
-import { FormattedField } from "@/components/markdown/RuleFormattedField.tsx";
+import { FormattedField } from "@/components/markdown/RuleFormattedField";
 import { getCollection, type CollectionEntry } from "astro:content";
 import DocPageLayout from "../../layouts/DocPageLayout.astro";
 import { unified } from "unified";
@@ -11,7 +11,7 @@ import {
   ruleDataKeyDetailsDictionary,
   ruleDataKeyDictionary,
   type RuleFields,
-} from "@/content/config.ts";
+} from "@/content/config";
 
 export async function getStaticPaths() {
   const ruleEntries: CollectionEntry<"rules">[] = await getCollection("rules");

@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils.ts";
 import type { groupedNavbarParents, navbarParents, posts } from "./navigationConfig";
 
 // We have to access these navbar configs via astro props because they are not available on the client side
-interface NavContentsProps {
+export interface NavContentsProps {
   mobile?: boolean;
   groupedNavbarParents: typeof groupedNavbarParents;
   navbarParents: typeof navbarParents;

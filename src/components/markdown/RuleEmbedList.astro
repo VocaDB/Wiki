@@ -1,13 +1,13 @@
 ---
 import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
-import { EntryType, type RuleFields } from "@/content/config";
+import { type EntryType, type RuleFields } from "@/content/config";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { BoxGroup } from "@/components/Box.tsx";
 
 let rules: CollectionEntry<"rules">[] = await getCollection("rules");
 
 interface Props {
-  entryType: (typeof EntryType)[number] | "All";
+  entryType: EntryType;
   ruleContext?: string;
   fields?: RuleFields[] | "All";
   excludedIds: number[];

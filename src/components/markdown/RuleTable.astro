@@ -40,7 +40,7 @@ const ruleDataHeadingKeys: (keyof typeof ruleDataKeyDetailsDictionary)[] = [
         ruleEntries
           .filter(rule => rule.data.status === "Active")
           .sort((a, b) => a.data.id - b.data.id)
-          .map((rule, slug) => (
+          .map((rule) => (
             <tr>
               <td>{rule.data.id}</td>
               <td>

@@ -1,8 +1,9 @@
 ---
 import RuleEmbedPage from "@/components/markdown/RuleEmbedPage.astro";
+import type { EntryType } from "@/content/config";
 
 export async function getStaticPaths() {
-  const pages = {
+  const pages: Record<string, EntryType> = {
     albums: "Albums",
     artists: "Artists",
     events: "Events",

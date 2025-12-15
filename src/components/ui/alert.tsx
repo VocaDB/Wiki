@@ -2,23 +2,26 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
-import { CheckIcon, Cross2Icon, ExclamationTriangleIcon, InfoCircledIcon } from "@radix-ui/react-icons";
+import {
+  CheckIcon,
+  Cross2Icon,
+  ExclamationTriangleIcon,
+  InfoCircledIcon,
+} from "@radix-ui/react-icons";
 import { Box } from "@/components/Box";
 
-const alertVariants = cva(
-  "px-4",
-  {
-    variants: {
-      variant: {
-        default: "",
-        destructive: "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive",
-      },
+const alertVariants = cva("px-4", {
+  variants: {
+    variant: {
+      default: "",
+      destructive:
+        "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive",
     },
-    defaultVariants: {
-      variant: "default",
-    },
-  }
-);
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
 
 const Alert = React.forwardRef<
   HTMLDivElement,
@@ -57,48 +60,46 @@ const AlertDescription = React.forwardRef<
 ));
 AlertDescription.displayName = "AlertDescription";
 
-
 const alertTitleIconVariants = {
   success: {
     title: "Success",
-    icon: CheckIcon
+    icon: CheckIcon,
   },
   correct: {
     title: "Correct",
-    icon: CheckIcon
+    icon: CheckIcon,
   },
   incorrect: {
     title: "Incorrect",
-    icon: Cross2Icon
+    icon: Cross2Icon,
   },
   caution: {
     title: "Caution",
-    icon: ExclamationTriangleIcon
+    icon: ExclamationTriangleIcon,
   },
   danger: {
     title: "Danger",
-    icon: ExclamationTriangleIcon
+    icon: ExclamationTriangleIcon,
   },
   note: {
     title: "Note",
-    icon: InfoCircledIcon
-  }
+    icon: InfoCircledIcon,
+  },
 };
 
 const SimpleAlert = React.forwardRef<
   HTMLDivElement,
-  Omit<React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof alertVariants>, "variant"> & {
+  Omit<
+    React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof alertVariants>,
+    "variant"
+  > & {
     alertTitle?: string;
     variant: keyof typeof alertTitleIconVariants;
   }
 >(({ className, variant, alertTitle, ...props }, ref) => {
   const Icon = alertTitleIconVariants[variant].icon;
   return (
-    <Alert
-      ref={ref}
-      className={className}
-      {...props}
-    >
+    <Alert ref={ref} className={className} {...props}>
       <AlertTitle>
         <Icon className="mr-1 h-5 w-5 inline-block" />
         {alertTitle || alertTitleIconVariants[variant].title}
@@ -109,4 +110,9 @@ const SimpleAlert = React.forwardRef<
 });
 SimpleAlert.displayName = "SimpleAlert";
 
-export { Alert as RawAlert, AlertTitle, AlertDescription, SimpleAlert as Alert };
+export {
+  Alert as RawAlert,
+  AlertTitle,
+  AlertDescription,
+  SimpleAlert as Alert,
+};

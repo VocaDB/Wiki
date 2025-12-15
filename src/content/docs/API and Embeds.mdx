@@ -2,10 +2,19 @@
 title: API and Embeds
 description: API and Embeds
 parent: Documentation
-tags: ["wikipage", "api", "documentation", "external links", "related websites", "songs", "vocadb"]
+tags:
+  [
+    "wikipage",
+    "api",
+    "documentation",
+    "external links",
+    "related websites",
+    "songs",
+    "vocadb",
+  ]
 ---
 
-* [Services that make use of VocaDB APIs](/docs/services-that-make-use-of-vocadb-apis)
+- [Services that make use of VocaDB APIs](/docs/services-that-make-use-of-vocadb-apis)
 
 This page provides information on how to **embed** VocaDB pages and info on other websites with the help of [VocaDB's API](https://vocadb.net/api) and specific parameters.
 
@@ -19,12 +28,12 @@ VocaDB offers an API for qtip2-based tooltips for artists, albums and songs. Thi
 
 ### Usage for webmasters
 
-In order to use the tooltips, you need to include jQuery (recommended version 1.8 or higher), qtip2 and VocaDB tooltips library on the site. 
+In order to use the tooltips, you need to include jQuery (recommended version 1.8 or higher), qtip2 and VocaDB tooltips library on the site.
 
-* Make sure [jQuery](http://code.jquery.com) is included on your pages. 
-* Add the [qtip2 JavaScript](https://static.vocadb.net/ext/jquery.qtip.min.js) at the end of the page (after the jQuery reference).
-* Add the [qtip2 CSS](https://static.vocadb.net/ext/jquery.qtip.min.css) at the beginning of the page, inside the head tag.
-* Add the [VocaDB tooltips library JavaScript](https://static.vocadb.net/ext/VocaDBTooltips.js) after the JQuery and qtip JavaScript references.
+- Make sure [jQuery](http://code.jquery.com) is included on your pages.
+- Add the [qtip2 JavaScript](https://static.vocadb.net/ext/jquery.qtip.min.js) at the end of the page (after the jQuery reference).
+- Add the [qtip2 CSS](https://static.vocadb.net/ext/jquery.qtip.min.css) at the beginning of the page, inside the head tag.
+- Add the [VocaDB tooltips library JavaScript](https://static.vocadb.net/ext/VocaDBTooltips.js) after the JQuery and qtip JavaScript references.
 
 You may also use a CDN for qtip, or download the scripts to your server.
 
@@ -35,9 +44,10 @@ Once these three libraries are included, the tooltip should automatically be add
 ### Overview
 
 VocaDB allows PVs in the database to be embedded on other sites. Compared to embedding the video directly, for example from Youtube, this provides the following benefits:
-* Translated title and artist information
-* Allows the user to choose between all available video services. VocaDB supports NND, Youtube, Piapro, SoundCloud, Bilibili and Vimeo. All these can be included with a single embed.
-* A link to VocaDB is included automatically for additional information.
+
+- Translated title and artist information
+- Allows the user to choose between all available video services. VocaDB supports NND, Youtube, Piapro, SoundCloud, Bilibili and Vimeo. All these can be included with a single embed.
+- A link to VocaDB is included automatically for additional information.
 
 Below is an example of a song embed.
 

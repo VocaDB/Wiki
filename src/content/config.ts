@@ -1,8 +1,15 @@
 import { type CollectionEntry, defineCollection, z } from "astro:content";
 
-export const EntryTypeList = ["Songs", "Albums", "Artists", "Events", "Tags", "Songlists"] as const
+export const EntryTypeList = [
+  "Songs",
+  "Albums",
+  "Artists",
+  "Events",
+  "Tags",
+  "Songlists",
+] as const;
 
-export type EntryType =  (typeof EntryTypeList)[number] | "All"
+export type EntryType = (typeof EntryTypeList)[number] | "All";
 
 const docsCollection = defineCollection({
   type: "content",
@@ -10,9 +17,9 @@ const docsCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     parent: z.string().nullable().optional(),
-    tags: z.array(z.string()).default([])
-  })
-});    
+    tags: z.array(z.string()).default([]),
+  }),
+});
 
 const ruleCollection = defineCollection({
   type: "content",
@@ -21,12 +28,7 @@ const ruleCollection = defineCollection({
     id: z.number(), // rule id
     excerpt: z.string().nullable().optional(), // short excerpt/description for the embed and social tags (e.g. Google, Discord)
     entry_type: z
-      .union([
-        z.literal("All"),
-        z.array(
-          z.enum(EntryTypeList)
-        )
-      ])
+      .union([z.literal("All"), z.array(z.enum(EntryTypeList))])
       .default("All"),
     entry_status: z
       .enum(["Draft", "Finished", "Approved", "Locked"])
@@ -40,13 +42,19 @@ const ruleCollection = defineCollection({
     date_created: z.date().nullable().optional(), // rule creation date
     date_modified: z.date().nullable().optional(), // date of rule modification (excluding wording changes)
     rationale: z.string().nullable().optional(), // Short explanation why the rule is necessary
-    rule_context: z.enum(["Names", "Content policy", "External links", "Romanization"]).nullable().optional(), // Context which is not limited to just one entry type
+    rule_context: z
+      .enum(["Names", "Content policy", "External links", "Romanization"])
+      .nullable()
+      .optional(), // Context which is not limited to just one entry type
     status: z.enum(["Active", "Deprecated"]).default("Active"),
     relevant_tag_id: z.number().nullable().optional(),
     mikumod_support: z.enum(["True", "False", "Planned"]).nullable().optional(),
-    automatically_fixed: z.enum(["True", "False", "Partially"]).nullable().optional(),
+    automatically_fixed: z
+      .enum(["True", "False", "Partially"])
+      .nullable()
+      .optional(),
     complete_validation: z.enum(["True", "False"]).nullable().optional(),
-  })
+  }),
 });
 
 export const ruleDataKeyDictionary: Record<string, string> = {
@@ -70,8 +78,8 @@ export const ruleDataKeyDictionary: Record<string, string> = {
   complete_validation: "Complete",
   excerpt: "Excerpt",
   detection_script: "Detection script",
-  _date: "Date"
-}
+  _date: "Date",
+};
 
 export const ruleDataKeyDetailsDictionary: Record<string, string> = {
   id: "Rule ID",
@@ -84,11 +92,11 @@ export const ruleDataKeyDetailsDictionary: Record<string, string> = {
   complete_validation: "Rule check is complete/exhaustive",
   detection_script: "Detection script",
   _date: "Date modified or created",
-}
+};
 
 export type RuleFields = keyof CollectionEntry<"rules">["data"];
 
 export const collections = {
   docs: docsCollection,
-  rules: ruleCollection
+  rules: ruleCollection,
 };

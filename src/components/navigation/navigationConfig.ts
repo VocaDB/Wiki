@@ -31,10 +31,10 @@ export const headerNavItems = [
 
 export const posts = await getDocPaths();
 
-export const getParent = (p: { params?: { slug: string; }; props: any; }) =>
+export const getParent = (p: { params?: { slug: string }; props: any }) =>
   p.props.entry.data.parent;
 
 export const groupedNavbarParents = groupBy(
   posts.filter((p) => getParent(p) !== undefined),
-  (post) => getParent(post)!
+  (post) => getParent(post)!,
 );

@@ -9,20 +9,20 @@ export async function getStaticPaths() {
     events: "Events",
     songlists: "Songlists",
     songs: "Songs",
-    tags: "Tags"
-  }
+    tags: "Tags",
+  };
 
-  return Object.entries(pages).map(([ slug, type ]) => ({
+  return Object.entries(pages).map(([slug, type]) => ({
     params: {
-      embedPageSlug: slug
+      embedPageSlug: slug,
     },
     props: {
-      type
-    }
+      type,
+    },
   }));
 }
 
 const { type } = Astro.props;
 ---
 
-<RuleEmbedPage entryType={type} fields={["entry_status"]}/>
+<RuleEmbedPage entryType={type} fields={["entry_status"]} />

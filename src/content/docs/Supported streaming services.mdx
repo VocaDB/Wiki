@@ -5,21 +5,20 @@ parent: Other-guidelines
 tags: ["wikipage", "api", "documentation", "external links", "songs", "vocadb"]
 ---
 
-Media streaming service support on VocaDB is very extendable. 
+Media streaming service support on VocaDB is very extendable.
 
 New services can be added as long as there's a way to get the embeddable video ID. Other information such as video duration and author information is optional:
 
-|Service|ID format|ID source|API for media info|Embed format|Library|
-| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-|[YouTube](https://www.youtube.com/results?search_query=vocaloid)|kKjtPMktA3Q|URL|Full|HTML5 (iframe)||
-|[Vimeo](https://vimeo.com/search?type=clip&q=vocaloid)|1234567|URL|Full|HTML5 (iframe)||
-|[SoundCloud](https://soundcloud.com/search/sounds?q=vocaloid)|244504967 hightrancesea/mirror-song|API|Full|HTML5 (iframe)||
-|[NicoNicoDouga](https://www.nicovideo.jp/tag/VOCALOID)|sm28107817|URL|Limited|HTML5 (iframe)|[NicoApiClient](https://github.com/VocaDB/nicovideo-apiclient-dotnet)|
-|[BiliBili](https://search.bilibili.com/all?keyword=vocaloid)|4176277|URL|Limited|HTML5 (iframe)||
-|[Piapro](https://piapro.jp/)|qmlyzf3njdljhayx|HTML||HTML5 (audio)|[PiaproClient](https://github.com/VocaDB/piapro-dotnet)|
-|[Bandcamp](https://bandcamp.com/search?q=vocaloid&item_type=t)|379042|HTML||HTML5 (iframe)|[NYoutubeDL](https://gitlab.com/BrianAllred/NYoutubeDL)|
-|Creofuga (deprecated) |1234567|URL||HTML5 (iframe)||
-
+| Service                                                          | ID format                           | ID source | API for media info | Embed format   | Library                                                               |
+| ---------------------------------------------------------------- | ----------------------------------- | --------- | ------------------ | -------------- | --------------------------------------------------------------------- |
+| [YouTube](https://www.youtube.com/results?search_query=vocaloid) | kKjtPMktA3Q                         | URL       | Full               | HTML5 (iframe) |                                                                       |
+| [Vimeo](https://vimeo.com/search?type=clip&q=vocaloid)           | 1234567                             | URL       | Full               | HTML5 (iframe) |                                                                       |
+| [SoundCloud](https://soundcloud.com/search/sounds?q=vocaloid)    | 244504967 hightrancesea/mirror-song | API       | Full               | HTML5 (iframe) |                                                                       |
+| [NicoNicoDouga](https://www.nicovideo.jp/tag/VOCALOID)           | sm28107817                          | URL       | Limited            | HTML5 (iframe) | [NicoApiClient](https://github.com/VocaDB/nicovideo-apiclient-dotnet) |
+| [BiliBili](https://search.bilibili.com/all?keyword=vocaloid)     | 4176277                             | URL       | Limited            | HTML5 (iframe) |                                                                       |
+| [Piapro](https://piapro.jp/)                                     | qmlyzf3njdljhayx                    | HTML      |                    | HTML5 (audio)  | [PiaproClient](https://github.com/VocaDB/piapro-dotnet)               |
+| [Bandcamp](https://bandcamp.com/search?q=vocaloid&item_type=t)   | 379042                              | HTML      |                    | HTML5 (iframe) | [NYoutubeDL](https://gitlab.com/BrianAllred/NYoutubeDL)               |
+| Creofuga (deprecated)                                            | 1234567                             | URL       |                    | HTML5 (iframe) |                                                                       |
 
 Ideally the PV ID and other metadata can be parsed from the URL and metadata (such as video title) can be parsed from the API.
 
@@ -27,20 +26,21 @@ API calls are generally cheap, while downloading and parsing HTML is more costly
 
 For SoundCloud we're saving both the internal media ID and the URL, because conversion between those would not be possible without additional API calls. There is no easy way to navigate to SoundCloud by knowing just the media ID.
 
-----
+---
 
-In order to add support for a new service to be embedded, we need a reliable way to get the embed code from the media URL. Usually the URL contains the ID that is also required by the embed code. 
+In order to add support for a new service to be embedded, we need a reliable way to get the embed code from the media URL. Usually the URL contains the ID that is also required by the embed code.
 
 For example, YouTube URLs look like this https://youtu.be/AAABBBCCC
 
 The embed code is https://www.youtube.com/embed/AAABBBCCC
 
 This is the only mandatory thing. Additionally, VocaDB supports loading metadata for the media:
-* Title
-* Thumbnail
-* Upload date
-* Length
-* Author
+
+- Title
+- Thumbnail
+- Upload date
+- Length
+- Author
 
 This metadata is preferable, but not mandatory. In the optimal case, the service has a programmatic API for loading that metadata. HTML parsing may work if the HTML structure is simple enough, but there is always a risk of the parser breaking when the layout changes.
 
@@ -51,40 +51,39 @@ Artists entries can be auto detected from the PV URLs while adding song entries.
 1. API-based: We can retrieve the channel id for most media services using an official API. The channel id is then used to find relevant artist entries using channel weblinks.
 2. Title based: Many song titles use the format "【artist name】 song title 【song type】". This can be parsed using regular expressions to retrieve the title, song type and the voicebank.
 
-
 ## Artist channel URL formats
 
 YouTube has by far the most channel URL formats. It is currently recommended that the id based `/channel/` url is always added to artist entries.
 
-| URL | ID | Name | Auto-fill | Notes |
-| --- | --- | --- | --- | --- |
-| /channel/UCBR8-60-B28hp2BmDPdntcQ | UCBR8-60-B28hp2BmDPdntcQ | Channel URL | Yes | The `UC` prefix is sometimes omitted |
-| /channel/@YouTube | YouTube | Handle URL  | No | The handle can be changed by users |
-| /c/YouTube | YouTube | Custom URL | No | Custom URLs can no longer be set up or changed |
-| /user/YouTube | YouTube | Legacy username URL | No | Only exist for accounts created between 2012-03-14 and approximately 2014-11-24 |
+| URL                               | ID                       | Name                | Auto-fill | Notes                                                                           |
+| --------------------------------- | ------------------------ | ------------------- | --------- | ------------------------------------------------------------------------------- |
+| /channel/UCBR8-60-B28hp2BmDPdntcQ | UCBR8-60-B28hp2BmDPdntcQ | Channel URL         | Yes       | The `UC` prefix is sometimes omitted                                            |
+| /channel/@YouTube                 | YouTube                  | Handle URL          | No        | The handle can be changed by users                                              |
+| /c/YouTube                        | YouTube                  | Custom URL          | No        | Custom URLs can no longer be set up or changed                                  |
+| /user/YouTube                     | YouTube                  | Legacy username URL | No        | Only exist for accounts created between 2012-03-14 and approximately 2014-11-24 |
 
 NicoNico assigns a numerical user id to every user.
 
-| URL | ID | Name | Auto-fill | Notes |
-| --- | --- | --- | --- | --- |
-| nicovideo.jp/user/865591 | 865591 | User URL | Yes |  |
+| URL                      | ID     | Name     | Auto-fill | Notes |
+| ------------------------ | ------ | -------- | --------- | ----- |
+| nicovideo.jp/user/865591 | 865591 | User URL | Yes       |       |
 
 SoundCloud users can freely set and change their usernames. A permanent numerical user id exists, but it is currently not possible to retrieve the username from the user id without using the API.
 
-| URL | ID | Name | Auto-fill | Notes |
-| --- | --- | --- | --- | --- |
-| soundcloud.com/mitchiem | mitchiem | Username URL | Yes |  |
+| URL                     | ID       | Name         | Auto-fill | Notes |
+| ----------------------- | -------- | ------------ | --------- | ----- |
+| soundcloud.com/mitchiem | mitchiem | Username URL | Yes       |       |
 
 BiliBili assigns a numerical user id to every user.
 
-| URL | ID | Name | Auto-fill | Notes |
-| --- | --- | --- | --- | --- |
-| space.bilibili.com/5669526 | 5669526 | Space URL | Yes |  |
+| URL                        | ID      | Name      | Auto-fill | Notes |
+| -------------------------- | ------- | --------- | --------- | ----- |
+| space.bilibili.com/5669526 | 5669526 | Space URL | Yes       |       |
 
 Piapro users can choose their account name (piapro user ID) during account creation
 
-| URL | ID | Name | Auto-fill | Notes |
-| --- | --- | --- | --- | --- |
-| piapro.jp/pp001001 | pp001001 | Piapro ID URL | Yes |  |
+| URL                | ID       | Name          | Auto-fill | Notes |
+| ------------------ | -------- | ------------- | --------- | ----- |
+| piapro.jp/pp001001 | pp001001 | Piapro ID URL | Yes       |       |
 
 We currently don't support artist auto fill for Vimeo, Creofuga or Bandcamp song entries.

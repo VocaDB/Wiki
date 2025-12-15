@@ -3,7 +3,11 @@ import RuleTable from "@/components/markdown/RuleTable.astro";
 import DocPageLayout from "@/layouts/DocPageLayout.astro";
 ---
 
-<DocPageLayout frontmatter={{ title: "Rule Table" }} noRightSidebar={true} pagefindIgnore={true}>
+<DocPageLayout
+  frontmatter={{ title: "Rule Table" }}
+  noRightSidebar={true}
+  pagefindIgnore={true}
+>
   <RuleTable />
 </DocPageLayout>
 

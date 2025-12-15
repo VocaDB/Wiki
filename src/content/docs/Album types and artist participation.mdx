@@ -2,7 +2,16 @@
 title: Album types and artist participation
 description: Album types and artist participation
 parent: Albums
-tags: ["wikipage", "editing", "artists", "albums", "guidelines", "documentation", "vocadb"]
+tags:
+  [
+    "wikipage",
+    "editing",
+    "artists",
+    "albums",
+    "guidelines",
+    "documentation",
+    "vocadb",
+  ]
 ---
 
 This page aims to explain the nuance between different album types.
@@ -11,15 +20,16 @@ Vocaloid artists collaborate a lot more than average "normal" artists. Thus ther
 
 ## Album type (disc type)
 
-Album type is the single most obvious variable affecting the album classification. One problem with album types is that there's a certain level of **overlap**, and only one album type can be specified per album. Thus, multiple album types might apply, but the most significant must be **chosen**. For example, the "Split album" type usually overrides "Single" or "EP". The second problem is that the terms are more or less informal and might be understood differently by different people. 
+Album type is the single most obvious variable affecting the album classification. One problem with album types is that there's a certain level of **overlap**, and only one album type can be specified per album. Thus, multiple album types might apply, but the most significant must be **chosen**. For example, the "Split album" type usually overrides "Single" or "EP". The second problem is that the terms are more or less informal and might be understood differently by different people.
 
-"Compilation" is especially problematic, because [according to Wikipedia](http://en.wikipedia.org/wiki/Compilation_album), it can mean both a collection of artist's old songs (also called a retrospective album or "best of" compilation), as well as collaboration of multiple artists, consisting of entirely new songs. 
+"Compilation" is especially problematic, because [according to Wikipedia](http://en.wikipedia.org/wiki/Compilation_album), it can mean both a collection of artist's old songs (also called a retrospective album or "best of" compilation), as well as collaboration of multiple artists, consisting of entirely new songs.
 
-On VocaDB the Compilation type was intended to represent the retrospective variation, because that seems to be more common. The only album type which is clearly meant for collaboration is the Split Album, which means a collaboration of a small number of artists with roughly the equal number of songs on the album. Usually this means split singles or EPs with two artists having one or two songs. Other collaborative albums were intended to use the "Original album" type, which is reserved for full albums consisting mostly of new songs, whether it's by one or more artists. 
+On VocaDB the Compilation type was intended to represent the retrospective variation, because that seems to be more common. The only album type which is clearly meant for collaboration is the Split Album, which means a collaboration of a small number of artists with roughly the equal number of songs on the album. Usually this means split singles or EPs with two artists having one or two songs. Other collaborative albums were intended to use the "Original album" type, which is reserved for full albums consisting mostly of new songs, whether it's by one or more artists.
 
 Currently album type has NO effect on how the album is **displayed** on artist's entry page. There has been suggestions of adding a new type for collaboration compilations. The "Split Album" type has limited use currently, so it could also be redefined for this purpose. In fact, [Musicbrainz](http://musicbrainz.org/doc/Split_Release) seems to use the term "Split release" for all albums where there is no clear main artist.
 
 ## Artist string
+
 Artist string cannot be edited directly. It is constructed automatically based on the list of artists through rather complex rules. When determining an album's main artists, what matters is the number of artists considered to be in the music producing role.
 
 Currently, if this number exceeds 3, the artist string will be "Various artists" and the album is considered to be a collaboration compilation.
@@ -27,11 +37,13 @@ Currently, if this number exceeds 3, the artist string will be "Various artists"
 ## Some album type edge-cases
 
 ### Another Dimensions by Tripshots
-http://vocadb.net/Album/Details/3 
+
+http://vocadb.net/Album/Details/3
 
 Technically Tripshots' album, but the album has exactly one original song by him, others being covers of his songs. Therefore it could also be considered a compilation album. The other artists could be marked as support role, but that also feels wrong considering they all produced roughly the same number of songs. Generally, crediting albums consisting mostly of remixes or covers is problematic. Should the remix artists be credited, or just the original composer?
 
 ### DanceDanceDance by Vanguard Sound
+
 http://vocadb.net/Album/Details/2174
 
 This is a special case of collaboration - collaboration within a circle.

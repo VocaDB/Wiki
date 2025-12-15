@@ -13,9 +13,9 @@ export async function getStaticPaths() {
   }));
 }
 const { tag } = Astro.props;
-const taggedEntries: CollectionEntry<"docs">[] = (await getCollection("docs")).filter((entry) =>
-  entry.data.tags.includes(tag)
-);
+const taggedEntries: CollectionEntry<"docs">[] = (
+  await getCollection("docs")
+).filter((entry) => entry.data.tags.includes(tag));
 ---
 
 <DocPageLayout frontmatter={{ title: `All pages for tag "${tag}"` }}>
@@ -25,10 +25,7 @@ const taggedEntries: CollectionEntry<"docs">[] = (await getCollection("docs")).f
         <li>
           <a
             class="underline"
-            href={[
-              "/docs",
-              entry.slug.toLowerCase(),
-            ].join("/")}
+            href={["/docs", entry.slug.toLowerCase()].join("/")}
           >
             {entry.data.title}
           </a>

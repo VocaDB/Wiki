@@ -5,7 +5,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/ui/command";
+} from "@/components/ui/command";
 import { navigate } from "astro:transitions/client";
 import { useCallback, useEffect, useState } from "react";
 import Highlighter from "react-highlight-words";

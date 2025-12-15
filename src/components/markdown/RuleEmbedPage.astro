@@ -16,7 +16,7 @@ interface Props {
 const { entryType, ruleContext, fields } = Astro.props;
 
 if (entryType !== "All") {
-  rules = rules.filter(rule => {
+  rules = rules.filter((rule) => {
     const ruleEntryType = rule.data.entry_type;
 
     if (ruleEntryType === "All") {
@@ -32,7 +32,7 @@ if (entryType !== "All") {
 }
 
 if (ruleContext) {
-  rules = rules.filter(rule => rule.data.rule_context === ruleContext);
+  rules = rules.filter((rule) => rule.data.rule_context === ruleContext);
 }
 
 const pageTitle =
@@ -40,12 +40,14 @@ const pageTitle =
 
 rules.sort((a, b) => a.data.id - b.data.id);
 
-const rulesForDraft = rules.filter(rule => rule.data.entry_status === "Draft");
+const rulesForDraft = rules.filter(
+  (rule) => rule.data.entry_status === "Draft",
+);
 const rulesForFinished = rules.filter(
-  rule => rule.data.entry_status === "Finished"
+  (rule) => rule.data.entry_status === "Finished",
 );
 const rulesForApproved = rules.filter(
-  rule => rule.data.entry_status === "Approved"
+  (rule) => rule.data.entry_status === "Approved",
 );
 ---
 
@@ -54,48 +56,35 @@ const rulesForApproved = rules.filter(
   headings={[
     { depth: 2, slug: "draft", text: "Draft +" },
     { depth: 2, slug: "finished", text: "Finished +" },
-    { depth: 2, slug: "approved", text: "Approved" }
-  ]}>
-  
+    { depth: 2, slug: "approved", text: "Approved" },
+  ]}
+>
   <section id="draft">
     <h2>Draft+ entries</h2>
     <BoxGroup>
-    {
-      rulesForDraft.map((rule) => (
-        <RuleEmbed
-          rule={rule}
-          fields={fields}
-        />
-      ))
-    }
+      {rulesForDraft.map((rule) => <RuleEmbed rule={rule} fields={fields} />)}
     </BoxGroup>
   </section>
 
   <section id="finished">
     <h2>Finished+ entries</h2>
     <BoxGroup>
-    {
-      rulesForFinished.map((rule) => (
-        <RuleEmbed
-          rule={rule}
-          fields={fields}
-        />
-      ))
-    }
+      {
+        rulesForFinished.map((rule) => (
+          <RuleEmbed rule={rule} fields={fields} />
+        ))
+      }
     </BoxGroup>
   </section>
 
   <section id="approved">
     <h2>Approved entries</h2>
     <BoxGroup>
-    {
-      rulesForApproved.map((rule) => (
-        <RuleEmbed
-          rule={rule}
-          fields={fields}
-        />
-      ))
-    }
+      {
+        rulesForApproved.map((rule) => (
+          <RuleEmbed rule={rule} fields={fields} />
+        ))
+      }
     </BoxGroup>
   </section>
 </DocPageLayout>

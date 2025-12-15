@@ -6,11 +6,12 @@ tags: ["wikipage", "documentation", "user", "vocadb"]
 ---
 
 ## Domains
-* Main domain: https://vocadb.net (www.vocadb.net is an alias)
-* Static files: 
-  * https://static.vocadb.net (primary)
-  * https://vocadb.t3.storage.dev ([Tigris](https://www.tigrisdata.com/) storage bucket)
-* Test instance (future branch): https://beta.vocadb.net
+
+- Main domain: https://vocadb.net (www.vocadb.net is an alias)
+- Static files:
+  - https://static.vocadb.net (primary)
+  - https://vocadb.t3.storage.dev ([Tigris](https://www.tigrisdata.com/) storage bucket)
+- Test instance (future branch): https://beta.vocadb.net
 
 ### SSL domain
 
@@ -21,11 +22,14 @@ The SSL site is mostly used for logging in. The site is functional, but most of 
 SSL certificate is PositiveSSL Multi-Domain certificate bought through Namecheap.
 
 ### Static files
+
 Static files such as images are served from a separate domain to improve cacheability.
 
 ## Login process
+
 There are multiple paths for logging in:
-* Logging in from an arbitrary page on the main site, while the credentials are posted to the SSL site. After logging in the user is redirected back to the main site to the page where they were when logging in.
-* Alternatively, the user may log in from the main site, but choose not to use the SSL domain while logging in. This is mostly for problem cases where the SSL domain is somehow unusable.
-* Logging in from an artibrary page on the SSL site. After logging in, the user is returned to the SSL site, instead of the main site.
-* Logging in with Twitter credentials using OAuth. **(removed)**
+
+- Logging in from an arbitrary page on the main site, while the credentials are posted to the SSL site. After logging in the user is redirected back to the main site to the page where they were when logging in.
+- Alternatively, the user may log in from the main site, but choose not to use the SSL domain while logging in. This is mostly for problem cases where the SSL domain is somehow unusable.
+- Logging in from an artibrary page on the SSL site. After logging in, the user is returned to the SSL site, instead of the main site.
+- Logging in with Twitter credentials using OAuth. **(removed)**

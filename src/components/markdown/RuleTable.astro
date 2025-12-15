@@ -1,5 +1,8 @@
 ---
-import { ruleDataKeyDictionary, ruleDataKeyDetailsDictionary } from "@/content/config";
+import {
+  ruleDataKeyDictionary,
+  ruleDataKeyDetailsDictionary,
+} from "@/content/config";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { FormattedField } from "./RuleFormattedField.tsx";
 import { type RuleFields } from "@/content/config";
@@ -10,35 +13,41 @@ const ISO_date = (date: Date): string => {
 };
 
 const ruleDataBodyKeys: RuleFields[] = [
-  'entry_type',
-  'entry_status',
-  'rule_context',
-  'relevant_tag_id',
-  'mikumod_support',
-  'complete_validation',
-  'automatically_fixed',
-  'edit_list',
-]
+  "entry_type",
+  "entry_status",
+  "rule_context",
+  "relevant_tag_id",
+  "mikumod_support",
+  "complete_validation",
+  "automatically_fixed",
+  "edit_list",
+];
 
 const ruleDataHeadingKeys: (keyof typeof ruleDataKeyDetailsDictionary)[] = [
-  'id',
-  '_date',
-  'name',
-  ...ruleDataBodyKeys
-]
+  "id",
+  "_date",
+  "name",
+  ...ruleDataBodyKeys,
+];
 ---
 
 <div class="table-container">
   <table class="rule-table sortable">
     <thead>
       <tr>
-        {ruleDataHeadingKeys.map(key => <th title={ruleDataKeyDetailsDictionary[key]}>{ruleDataKeyDictionary[key]}</th>)}
+        {
+          ruleDataHeadingKeys.map((key) => (
+            <th title={ruleDataKeyDetailsDictionary[key]}>
+              {ruleDataKeyDictionary[key]}
+            </th>
+          ))
+        }
       </tr>
     </thead>
     <tbody>
       {
         ruleEntries
-          .filter(rule => rule.data.status === "Active")
+          .filter((rule) => rule.data.status === "Active")
           .sort((a, b) => a.data.id - b.data.id)
           .map((rule) => (
             <tr>
@@ -51,9 +60,13 @@ const ruleDataHeadingKeys: (keyof typeof ruleDataKeyDetailsDictionary)[] = [
               <td class="rule-name">
                 <a href={`/rules/${rule.slug}`}>{rule.data.name}</a>
               </td>
-              {ruleDataBodyKeys.map(key => (
+              {ruleDataBodyKeys.map((key) => (
                 <td>
-                  <FormattedField fieldKey={key} fieldValue={rule.data[key]} short={true} />
+                  <FormattedField
+                    fieldKey={key}
+                    fieldValue={rule.data[key]}
+                    short={true}
+                  />
                 </td>
               ))}
             </tr>

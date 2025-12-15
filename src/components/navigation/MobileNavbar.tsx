@@ -1,6 +1,4 @@
-import {
-  HamburgerMenuIcon,
-} from "@radix-ui/react-icons";
+import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { ScrollArea } from "../ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { NavContents } from "./NavContents.tsx";

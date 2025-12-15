@@ -1,11 +1,11 @@
 ---
 import type { RuleFields } from "@/content/config";
 import { getCollection, getEntry, type CollectionEntry } from "astro:content";
-import { Markdown } from '@astropub/md';
+import { Markdown } from "@astropub/md";
 import { Box } from "@/components/Box";
 
 interface Props {
-  rule?: CollectionEntry<'rules'>;
+  rule?: CollectionEntry<"rules">;
   ruleName?: string;
   ruleId?: number;
   fields?: RuleFields[] | "All";
@@ -23,15 +23,20 @@ if (ruleName) {
   ruleEntry = await getEntry("rules", ruleName);
 } else if (ruleId) {
   // Filter by numeric ID
-  const ruleEntries: CollectionEntry<"rules">[] = await getCollection("rules", (entry: { data: { id: number; }; }) => {
-    return entry.data.id === ruleId;
-  });
+  const ruleEntries: CollectionEntry<"rules">[] = await getCollection(
+    "rules",
+    (entry: { data: { id: number } }) => {
+      return entry.data.id === ruleId;
+    },
+  );
   ruleEntry = ruleEntries[0];
 }
 
 if (!ruleEntry) {
-  let identifier = ruleName ? ` "${ruleName}"` : (ruleId ? ` ID ${ruleId}` : '');
-  throw new Error(`Rule${identifier} not found. Either 'rule', 'ruleName' (string) or 'ruleId' (number) must be provided`);
+  let identifier = ruleName ? ` "${ruleName}"` : ruleId ? ` ID ${ruleId}` : "";
+  throw new Error(
+    `Rule${identifier} not found. Either 'rule', 'ruleName' (string) or 'ruleId' (number) must be provided`,
+  );
 }
 
 const ruleData = ruleEntry.data;
@@ -50,7 +55,9 @@ const shouldShowField = (fieldName: RuleFields): boolean => {
 };
 
 const shouldShowGroup = (groupFields: RuleFields[]): boolean => {
-  return fields === "All" || groupFields.some((field) => fields.includes(field));
+  return (
+    fields === "All" || groupFields.some((field) => fields.includes(field))
+  );
 };
 ---
 
@@ -67,17 +74,39 @@ const shouldShowGroup = (groupFields: RuleFields[]): boolean => {
   </div>
 
   <div class="px-4">
-    {ruleData.excerpt ? <Markdown of={ruleData.excerpt}/> : content && <content.Content />}
+    {
+      ruleData.excerpt ? (
+        <Markdown of={ruleData.excerpt} />
+      ) : (
+        content && <content.Content />
+      )
+    }
 
     {ruleData.rationale && <p>Rationale: {ruleData.rationale}</p>}
 
-    {ruleData.status == "Deprecated" && <p class="text-red-500">⚠️ This rule has been deprecated {ruleData.date_modified && `(${getIsoDate(ruleData.date_modified)})`}</p>}
+    {
+      ruleData.status == "Deprecated" && (
+        <p class="text-red-500">
+          ⚠️ This rule has been deprecated{" "}
+          {ruleData.date_modified && `(${getIsoDate(ruleData.date_modified)})`}
+        </p>
+      )
+    }
 
     {
       shouldShowGroup(["entry_status", "entry_type"]) && (
         <p>
           (Applies to all
-          {<em>{ruleData.entry_status !== "Draft" && ruleData.entry_status.toLowerCase()}</em>} {ruleData.entry_type !== "All" && ruleData.entry_type.map((str: string) => str.toLowerCase().replace(/s$/, "")).join(" & ")}
+          {
+            <em>
+              {ruleData.entry_status !== "Draft" &&
+                ruleData.entry_status.toLowerCase()}
+            </em>
+          }{" "}
+          {ruleData.entry_type !== "All" &&
+            ruleData.entry_type
+              .map((str: string) => str.toLowerCase().replace(/s$/, ""))
+              .join(" & ")}
           entries)
         </p>
       )
@@ -86,8 +115,12 @@ const shouldShowGroup = (groupFields: RuleFields[]): boolean => {
     {
       shouldShowGroup(["date_created", "date_modified"]) && (
         <>
-          {ruleData.date_created && <p>Rule created {getIsoDate(ruleData.date_created)}</p>}
-          {ruleData.date_modified && <p>Rule modified {getIsoDate(ruleData.date_modified)}</p>}
+          {ruleData.date_created && (
+            <p>Rule created {getIsoDate(ruleData.date_created)}</p>
+          )}
+          {ruleData.date_modified && (
+            <p>Rule modified {getIsoDate(ruleData.date_modified)}</p>
+          )}
         </>
       )
     }
@@ -95,23 +128,30 @@ const shouldShowGroup = (groupFields: RuleFields[]): boolean => {
     {
       shouldShowField("fe_validations") && ruleData.fe_validations && (
         <p>
-          Frontend validation with: <a href={`https://github.com/search?type=code&q=repo%3AVocaDB%2Fvocadb+Validation+${ruleData.fe_validations}`}>{ruleData.fe_validations}</a>
+          Frontend validation with:{" "}
+          <a
+            href={`https://github.com/search?type=code&q=repo%3AVocaDB%2Fvocadb+Validation+${ruleData.fe_validations}`}
+          >
+            {ruleData.fe_validations}
+          </a>
         </p>
       )
     }
 
     {
-      shouldShowGroup(["occurance", "edit_list", "date_checked"]) && (ruleData.occurance ?? 0) > 0 && (
-        <p>
-          {`~${ruleData.occurance} affected entries`}
-          {ruleData.edit_list && (
-            <span>
-              : <a href={ruleData.edit_list}>Edit list</a>
-              {ruleData.date_checked && ` updated ${getIsoDate(ruleData.date_checked)}`}
-            </span>
-          )}
-        </p>
-      )
+      shouldShowGroup(["occurance", "edit_list", "date_checked"]) &&
+        (ruleData.occurance ?? 0) > 0 && (
+          <p>
+            {`~${ruleData.occurance} affected entries`}
+            {ruleData.edit_list && (
+              <span>
+                : <a href={ruleData.edit_list}>Edit list</a>
+                {ruleData.date_checked &&
+                  ` updated ${getIsoDate(ruleData.date_checked)}`}
+              </span>
+            )}
+          </p>
+        )
     }
   </div>
 </Box>

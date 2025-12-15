@@ -3,43 +3,47 @@ import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 import { FormattedField } from "@/components/markdown/RuleFormattedField.tsx";
 import { getCollection, type CollectionEntry } from "astro:content";
 import DocPageLayout from "../../layouts/DocPageLayout.astro";
-import { unified } from 'unified';
-import remarkParse from 'remark-parse';
-import stripMarkdown from 'strip-markdown';
-import remarkStringify from 'remark-stringify';
-import { ruleDataKeyDetailsDictionary, ruleDataKeyDictionary, type RuleFields } from "@/content/config.ts";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import stripMarkdown from "strip-markdown";
+import remarkStringify from "remark-stringify";
+import {
+  ruleDataKeyDetailsDictionary,
+  ruleDataKeyDictionary,
+  type RuleFields,
+} from "@/content/config.ts";
 
 export async function getStaticPaths() {
   const ruleEntries: CollectionEntry<"rules">[] = await getCollection("rules");
   const paths = [];
-  
+
   for (const entry of ruleEntries) {
     const pathConfig = {
       params: {
-        slug: entry.slug
+        slug: entry.slug,
       },
-      props: { entry }
+      props: { entry },
     };
-    
+
     paths.push(pathConfig);
-    
-    if (typeof entry.data.id === 'number') {
+
+    if (typeof entry.data.id === "number") {
       paths.push({
         params: {
-          slug: entry.data.id.toString()
+          slug: entry.data.id.toString(),
         },
-        props: { entry }
+        props: { entry },
       });
     }
   }
-  
+
   return paths;
 }
 
 const { entry } = Astro.props;
 const { headings } = await entry.render();
 
-headings.push({ depth: 2, slug: 'metadata', text: 'Metadata' })
+headings.push({ depth: 2, slug: "metadata", text: "Metadata" });
 
 const isNumericRoute = !isNaN(Number(Astro.params.slug));
 
@@ -53,35 +57,36 @@ async function stripText(markdownInput: string) {
   return String(file);
 }
 
-let content
+let content;
 if (entry.data.excerpt) {
-  content = await entry.render()
-} 
-const description = await stripText(entry.data.excerpt || entry.body)
+  content = await entry.render();
+}
+const description = await stripText(entry.data.excerpt || entry.body);
 ---
 
-<DocPageLayout frontmatter={{
+<DocPageLayout
+  frontmatter={{
     ...entry.data,
     title: `Rule: ${entry.data.name}`,
-    description: description
+    description: description,
   }}
   headings={headings}
-  filePath={'src/content/rules/' + entry.id}
-  pagePath={'rules/' + entry.slug}
-  pagefindIgnore={isNumericRoute}>
-  
-  <script define:vars={{ slug: entry.slug, currentPath: Astro.params.slug }} is:inline>
+  filePath={"src/content/rules/" + entry.id}
+  pagePath={"rules/" + entry.slug}
+  pagefindIgnore={isNumericRoute}
+>
+  <script
+    define:vars={{ slug: entry.slug, currentPath: Astro.params.slug }}
+    is:inline
+  >
     // Redirect to canonical URL if accessed via numeric ID
     if (currentPath !== slug && !isNaN(Number(currentPath))) {
       const newUrl = window.location.pathname.replace(/\/[^\/]+$/, `/${slug}`);
-      window.history.replaceState({}, '', newUrl);
+      window.history.replaceState({}, "", newUrl);
     }
   </script>
-  
-  <RuleEmbed
-    rule={entry}
-    fields={"All"}
-  />
+
+  <RuleEmbed rule={entry} fields={"All"} />
 
   {content && <content.Content />}
 
@@ -92,13 +97,23 @@ const description = await stripText(entry.data.excerpt || entry.body)
       <tbody>
         {
           Object.entries(entry.data).map(([fieldKey, fieldValue]) => {
-            if (['excerpt'].includes(fieldKey)) return
-            return <tr>
-              <th class="field-name" title={ruleDataKeyDetailsDictionary[fieldKey]}>{ruleDataKeyDictionary[fieldKey] || fieldKey}:</th>
-              <td class="field-value">
-                <FormattedField fieldKey={fieldKey as RuleFields} fieldValue={fieldValue} />
-              </td>
-            </tr>
+            if (["excerpt"].includes(fieldKey)) return;
+            return (
+              <tr>
+                <th
+                  class="field-name"
+                  title={ruleDataKeyDetailsDictionary[fieldKey]}
+                >
+                  {ruleDataKeyDictionary[fieldKey] || fieldKey}:
+                </th>
+                <td class="field-value">
+                  <FormattedField
+                    fieldKey={fieldKey as RuleFields}
+                    fieldValue={fieldValue}
+                  />
+                </td>
+              </tr>
+            );
           })
         }
       </tbody>

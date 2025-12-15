@@ -4,7 +4,7 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
-  CommandList
+  CommandList,
 } from "@/ui/command";
 import { navigate } from "astro:transitions/client";
 import { useCallback, useEffect, useState } from "react";
@@ -44,13 +44,13 @@ const extractSearchWords = (searchTerm: string): string[] => {
   return searchTerm
     .toLowerCase()
     .split(/\s+/)
-    .filter(t => t.length > 2);
+    .filter((t) => t.length > 2);
 };
 
 const findBestExcerpt = (
   content: string,
   searchTerm: string,
-  maxLength: number = 200
+  maxLength: number = 200,
 ): string => {
   if (!content) return "";
 
@@ -70,7 +70,9 @@ const findBestExcerpt = (
     }
 
     const lowerPara = paragraph.toLowerCase();
-    const matches = searchTerms.filter(term => lowerPara.includes(term)).length;
+    const matches = searchTerms.filter((term) =>
+      lowerPara.includes(term),
+    ).length;
 
     if (matches > maxMatches) {
       maxMatches = matches;
@@ -87,7 +89,7 @@ const findBestExcerpt = (
 
 function HighlightedText({
   text,
-  searchTerm
+  searchTerm,
 }: {
   text: string;
   searchTerm: string;
@@ -106,7 +108,7 @@ function HighlightedText({
 
 function ResultItem({
   result,
-  searchTerm
+  searchTerm,
 }: {
   result: SearchResult & { titleScore?: number };
   searchTerm: string;
@@ -157,19 +159,14 @@ function ResultItem({
   return (
     <CommandItem
       className="flex flex-col items-start py-2 cursor-pointer"
-      onSelect={() => navigate(data.url.replace(".html", "") ?? "/")}>
+      onSelect={() => navigate(data.url.replace(".html", "") ?? "/")}
+    >
       <div className="font-medium">
-        <HighlightedText
-          text={data.meta.title}
-          searchTerm={searchTerm}
-        />
+        <HighlightedText text={data.meta.title} searchTerm={searchTerm} />
       </div>
       {excerpt && (
         <div className="text-sm text-muted-foreground mt-1 line-clamp-2">
-          <HighlightedText
-            text={excerpt}
-            searchTerm={searchTerm}
-          />
+          <HighlightedText text={excerpt} searchTerm={searchTerm} />
         </div>
       )}
     </CommandItem>
@@ -186,8 +183,9 @@ export default function SearchMenu() {
 
   const MAX_RESULT_COUNT = 15;
 
-  const performSearch = useCallback(async (term: string) => {
-    // @ts-ignore
+  const performSearch = useCallback(
+    async (term: string) => {
+      // @ts-ignore
       if (window.pagefind === undefined || !term) {
         setResults([]);
         return;
@@ -204,7 +202,7 @@ export default function SearchMenu() {
         }
 
         const resultsWithTitleScoring = await Promise.all(
-          searchResults.results.map(async result => {
+          searchResults.results.map(async (result) => {
             try {
               const data = await result.data();
               const title = data.meta?.title || "";
@@ -215,20 +213,19 @@ export default function SearchMenu() {
 
               if (lowerTitle === lowerTerm) {
                 titleScore = 10;
-              }
-              else if (lowerTitle.startsWith(lowerTerm)) {
+              } else if (lowerTitle.startsWith(lowerTerm)) {
                 titleScore = 8;
-              }
-              else if (lowerTitle.includes(lowerTerm)) {
+              } else if (lowerTitle.includes(lowerTerm)) {
                 titleScore = 5;
-              }
-              else {
+              } else {
                 const searchWords = extractSearchWords(term);
                 const titleWords = title.toLowerCase().split(/\s+/);
 
                 for (const searchWord of searchWords) {
                   if (
-                    titleWords.some(titleWord => titleWord.includes(searchWord))
+                    titleWords.some((titleWord) =>
+                      titleWord.includes(searchWord),
+                    )
                   ) {
                     titleScore += 2;
                   }
@@ -240,7 +237,7 @@ export default function SearchMenu() {
               console.error("Error loading result data for scoring:", err);
               return { ...result, titleScore: 0 };
             }
-          })
+          }),
         );
 
         // Prioritize title match
@@ -259,7 +256,7 @@ export default function SearchMenu() {
         setIsSearching(false);
       }
     },
-    [MAX_RESULT_COUNT]
+    [MAX_RESULT_COUNT],
   );
 
   // Effect for search term changes
@@ -292,7 +289,7 @@ export default function SearchMenu() {
         }
 
         e.preventDefault();
-        setOpen(prev => !prev);
+        setOpen((prev) => !prev);
       }
     };
 
@@ -306,7 +303,8 @@ export default function SearchMenu() {
         className="relative h-8 text-muted-foreground sm:pr-12 w-full justify-start md:w-40 lg:w-64 px-4 transition-none hover:transition-colors"
         variant="outline"
         onClick={() => setOpen(true)}
-        aria-label="Search documentation">
+        aria-label="Search documentation"
+      >
         <span className="hidden lg:inline-flex">Search documentation...</span>
         <span className="inline-flex lg:hidden">Search...</span>
         <kbd className="absolute right-[0.3rem] h-5 select-none bg-muted gap-1 items-center rounded px-1.5 sm:flex text-[10px]">
@@ -314,9 +312,7 @@ export default function SearchMenu() {
         </kbd>
       </Button>
 
-      <CommandDialog
-        open={open}
-        onOpenChange={setOpen}>
+      <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput
           value={searchTerm}
           onValueChange={setSearchTerm}
@@ -333,12 +329,8 @@ export default function SearchMenu() {
             <CommandEmpty>Type something to search</CommandEmpty>
           ) : (
             <CommandGroup>
-              {results.map(res => (
-                <ResultItem
-                  key={res.id}
-                  result={res}
-                  searchTerm={searchTerm}
-                />
+              {results.map((res) => (
+                <ResultItem key={res.id} result={res} searchTerm={searchTerm} />
               ))}
             </CommandGroup>
           )}

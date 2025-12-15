@@ -10,7 +10,10 @@ interface NavContentsProps {
 export function NavContents({ mobile = false }: NavContentsProps) {
   const [expanded, setExpanded] = useState<string | undefined>();
 
-  const containerClass = cn('flex flex-col', mobile ? "space-y-3 pb-6" : "space-y-1 pb-4 text-sm");
+  const containerClass = cn(
+    "flex flex-col",
+    mobile ? "space-y-3 pb-6" : "space-y-1 pb-4 text-sm",
+  );
   const buttonClass = mobile ? "py-1.5" : "py-1";
   const linkClass = "hover:underline visited:text-blue-500";
 
@@ -27,7 +30,7 @@ export function NavContents({ mobile = false }: NavContentsProps) {
         })
         .map(({ navbarItem, title }) => (
           <div key={navbarItem.title} className={containerClass}>
-            <h4 className={'font-semibold'}>{title}</h4>
+            <h4 className={"font-semibold"}>{title}</h4>
 
             <div className={"flex flex-col"}>
               {navbarItem.subcategories !== undefined &&
@@ -36,7 +39,10 @@ export function NavContents({ mobile = false }: NavContentsProps) {
                     {navbarItem.subcategories.map((c) => (
                       <div key={c}>
                         <div
-                          className={cn("collapsibleNav group flex flex-row items-center gap-1 peer text-muted-foreground hover:underline cursor-pointer py-1", buttonClass)}
+                          className={cn(
+                            "collapsibleNav group flex flex-row items-center gap-1 peer text-muted-foreground hover:underline cursor-pointer py-1",
+                            buttonClass,
+                          )}
                           data-state={c === expanded ? "open" : "closed"}
                           onClick={() =>
                             c === expanded
@@ -44,13 +50,15 @@ export function NavContents({ mobile = false }: NavContentsProps) {
                               : setExpanded(c)
                           }
                         >
-                          <p className="flex-1">
-                          {c}
-                          </p>
+                          <p className="flex-1">{c}</p>
                           <ChevronDownIcon className="group-data-[state=closed]:block hidden" />
                           <ChevronUpIcon className="group-data-[state=closed]:hidden" />
                         </div>
-                        <div className={cn("peer-data-[state=open]:grid hidden text-muted-foreground ml-4")}>
+                        <div
+                          className={cn(
+                            "peer-data-[state=open]:grid hidden text-muted-foreground ml-4",
+                          )}
+                        >
                           {groupedNavbarParents[c]?.map((post) => (
                             <a
                               className={cn(linkClass, buttonClass)}
@@ -70,7 +78,11 @@ export function NavContents({ mobile = false }: NavContentsProps) {
                 <a
                   href={["/docs", post.params.slug].join("/")}
                   key={post.params.slug}
-                  className={cn('text-muted-foreground', linkClass, buttonClass)}
+                  className={cn(
+                    "text-muted-foreground",
+                    linkClass,
+                    buttonClass,
+                  )}
                 >
                   {post.props.entry.data.title}
                 </a>

@@ -8,7 +8,7 @@ import {
   SITE_DEFAULT_OG_IMAGE,
 } from "../site_config";
 import "@/styles/globals.css";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 
 export interface Props {
   /** Title of the page */
@@ -55,7 +55,7 @@ const {
     <meta property="og:image" content={thumbnail.src} />
     <meta property="og:url" content={Astro.request.url} />
     <meta name="twitter:card" content="summary_large_image" />
-    <ViewTransitions />
+    <ClientRouter />
     <script is:inline>
       const setTheme = () => {
         const theme = (() => {

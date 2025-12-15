@@ -1,11 +1,11 @@
 ---
 import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 import { EntryType, type RuleFields } from "@/content/config";
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import DocPageLayout from "../../layouts/DocPageLayout.astro";
-import RuleEmbedGroup from "./RuleEmbedGroup.astro";
+import { BoxGroup } from "@/components/Box.tsx";
 
-let rules = await getCollection("rules");
+let rules: CollectionEntry<"rules">[] = await getCollection("rules");
 
 interface Props {
   entryType: (typeof EntryType)[number] | "All";
@@ -14,6 +14,7 @@ interface Props {
 }
 
 const { entryType, ruleContext, fields } = Astro.props;
+
 if (entryType !== "All") {
   rules = rules.filter(rule => {
     const ruleEntryType = rule.data.entry_type;
@@ -51,42 +52,50 @@ const rulesForApproved = rules.filter(
 <DocPageLayout
   frontmatter={{ title: pageTitle }}
   headings={[
-    { depth: 1, slug: "draft", text: "Draft +" },
-    { depth: 1, slug: "finished", text: "Finished +" },
-    { depth: 1, slug: "approved", text: "Approved" }
+    { depth: 2, slug: "draft", text: "Draft +" },
+    { depth: 2, slug: "finished", text: "Finished +" },
+    { depth: 2, slug: "approved", text: "Approved" }
   ]}>
   
-  <h2 id="draft">Draft+ entries</h2>
-  <RuleEmbedGroup>
-  {
-    rulesForDraft.map((rule) => (
-      <RuleEmbed
-        rule={rule}
-        fields={fields}
-      />
-    ))
-  }
-  </RuleEmbedGroup>
-  <h2 id="finished">Finished+ entries</h2>
-  <RuleEmbedGroup>
-  {
-    rulesForFinished.map((rule) => (
-      <RuleEmbed
-        rule={rule}
-        fields={fields}
-      />
-    ))
-  }
-  </RuleEmbedGroup>
-  <h2 id="approved">Approved entries</h2>
-  <RuleEmbedGroup>
-  {
-    rulesForApproved.map((rule) => (
-      <RuleEmbed
-        rule={rule}
-        fields={fields}
-      />
-    ))
-  }
-  </RuleEmbedGroup>
+  <section id="draft">
+    <h2>Draft+ entries</h2>
+    <BoxGroup>
+    {
+      rulesForDraft.map((rule) => (
+        <RuleEmbed
+          rule={rule}
+          fields={fields}
+        />
+      ))
+    }
+    </BoxGroup>
+  </section>
+
+  <section id="finished">
+    <h2>Finished+ entries</h2>
+    <BoxGroup>
+    {
+      rulesForFinished.map((rule) => (
+        <RuleEmbed
+          rule={rule}
+          fields={fields}
+        />
+      ))
+    }
+    </BoxGroup>
+  </section>
+
+  <section id="approved">
+    <h2>Approved entries</h2>
+    <BoxGroup>
+    {
+      rulesForApproved.map((rule) => (
+        <RuleEmbed
+          rule={rule}
+          fields={fields}
+        />
+      ))
+    }
+    </BoxGroup>
+  </section>
 </DocPageLayout>

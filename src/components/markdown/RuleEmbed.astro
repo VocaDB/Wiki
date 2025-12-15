@@ -1,6 +1,8 @@
 ---
 import type { RuleFields } from "@/content/config";
 import { getCollection, getEntry, type CollectionEntry } from "astro:content";
+import { Markdown } from '@astropub/md';
+import { Box } from "@/components/Box";
 
 interface Props {
   rule?: CollectionEntry<'rules'>;
@@ -21,7 +23,7 @@ if (ruleName) {
   ruleEntry = await getEntry("rules", ruleName);
 } else if (ruleId) {
   // Filter by numeric ID
-  const ruleEntries = await getCollection("rules", (entry: { data: { id: number; }; }) => {
+  const ruleEntries: CollectionEntry<"rules">[] = await getCollection("rules", (entry: { data: { id: number; }; }) => {
     return entry.data.id === ruleId;
   });
   ruleEntry = ruleEntries[0];
@@ -52,7 +54,7 @@ const shouldShowGroup = (groupFields: RuleFields[]): boolean => {
 };
 ---
 
-<div class="rule-embed">
+<Box>
   <div class="border-b mt-0">
     <h3 class="m-0 text-base flex">
       <span class="border-r px-2 py-1 block">
@@ -65,7 +67,7 @@ const shouldShowGroup = (groupFields: RuleFields[]): boolean => {
   </div>
 
   <div class="px-4">
-    {content && <content.Content />}
+    {ruleData.excerpt ? <Markdown of={ruleData.excerpt}/> : content && <content.Content />}
 
     {ruleData.rationale && <p>Rationale: {ruleData.rationale}</p>}
 
@@ -112,4 +114,4 @@ const shouldShowGroup = (groupFields: RuleFields[]): boolean => {
       )
     }
   </div>
-</div>
+</Box>

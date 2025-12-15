@@ -17,6 +17,7 @@ const ruleCollection = defineCollection({
   schema: z.object({
     name: z.string(),
     id: z.number(), // rule id
+    excerpt: z.string().nullable().optional(), // short excerpt/description for the embed and social tags (e.g. Google, Discord)
     entry_type: z
       .union([
         z.literal("All"),
@@ -45,6 +46,43 @@ const ruleCollection = defineCollection({
     complete_validation: z.enum(["True", "False"]).nullable().optional(),
   })
 });
+
+export const ruleDataKeyDictionary: Record<string, string> = {
+  id: "ID",
+  date_created: "Date created",
+  date_modified: "Date modified",
+  name: "Name",
+  entry_type: "Entry type",
+  entry_status: "Entry status",
+  rule_context: "Rule context",
+  relevant_tag_id: "Relevant tag",
+  mikumod_support: "MikuMod support",
+  occurance: "Occurrence",
+  date_checked: "Date checked",
+  edit_list: "Edit list",
+  status: "Status",
+  fe_validations: "Frontend validations",
+  be_validations: "Backend validations",
+  rationale: "Rationale",
+  automatically_fixed: "Automatically fixed",
+  complete_validation: "Complete",
+  excerpt: "Excerpt",
+  detection_script: "Detection script",
+  _date: "Date"
+}
+
+export const ruleDataKeyDetailsDictionary: Record<string, string> = {
+  id: "Rule ID",
+  name: "Rule name",
+  entry_status: "Relevant entry status",
+  occurance: "Number of invalid entries",
+  date_checked: "Date last checked",
+  edit_list: "Relevant edit list of invalid entries",
+  automatically_fixed: "Rule violations get automatically fixed",
+  complete_validation: "Rule check is complete/exhaustive",
+  detection_script: "Detection script",
+  _date: "Date modified or created",
+}
 
 export type RuleFields = keyof CollectionEntry<"rules">["data"];
 

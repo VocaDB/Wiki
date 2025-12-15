@@ -7,7 +7,7 @@ tags: ["wikipage", "editing", "artists", "documentation", "vocadb"]
 
 import Navigation from "@/components/markdown/EntryGuidelinesNav.astro";
 import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
-import RuleEmbedGroup from "@/components/markdown/RuleEmbedGroup.astro";
+import { BoxGroup } from "@/components/Box.tsx";
 
 <Navigation />
 
@@ -15,24 +15,24 @@ Artist entries can be created from: https://vocadb.net/Artist/Create
 
 Before creating the artist entry, make sure that the entry belongs to the database:
 
-<RuleEmbedGroup>
+<BoxGroup>
   <RuleEmbed ruleId={69} />
   <RuleEmbed ruleId={70} />
   <RuleEmbed ruleId={72} />
-</RuleEmbedGroup>
+</BoxGroup>
 
 Voicebank entries include further restrictions:
 
-<RuleEmbedGroup>
+<BoxGroup>
   <RuleEmbed ruleId={73} />
   <RuleEmbed ruleId={74} />
-</RuleEmbedGroup>
+</BoxGroup>
 
 The artist entry creation page requires:
 
 - 1) An artist name
 
-<RuleEmbedGroup>
+<BoxGroup>
   <RuleEmbed ruleId={7} />
   <RuleEmbed ruleId={8} />
 
@@ -42,7 +42,7 @@ The artist entry creation page requires:
   <RuleEmbed ruleId={88} />
   <RuleEmbed ruleId={83} />
   <RuleEmbed ruleId={80} />
-</RuleEmbedGroup>
+</BoxGroup>
 
 - 2) Source
 

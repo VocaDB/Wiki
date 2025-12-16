@@ -3,7 +3,6 @@ import {
   ExclamationTriangleIcon,
   Pencil1Icon,
 } from "@radix-ui/react-icons";
-import { Button } from "@/components/ui/button";
 
 interface ArticleFooterProps {
   filePath?: string;
@@ -41,7 +40,7 @@ export const ArticleFooter: React.FC<ArticleFooterProps> = ({
         ],
         [
           "https://github.com/VocaDB/Wiki/issues/new" +
-            (issueBody ? "?body=" + encodeURIComponent(issueBody) : ""),
+          (issueBody ? "?body=" + encodeURIComponent(issueBody) : ""),
           <>
             <ExclamationTriangleIcon className="inline align-[-0.125em]" />{" "}
             Report an issue

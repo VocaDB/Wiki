@@ -15,7 +15,7 @@ export function NavContents({ mobile = false }: NavContentsProps) {
     mobile ? "space-y-3 pb-6" : "space-y-1 pb-4 text-sm",
   );
   const buttonClass = mobile ? "py-1.5" : "py-1";
-  const linkClass = "hover:underline visited:text-blue-500";
+  const linkClass = "hover:underline";
 
   return (
     <>

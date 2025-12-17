@@ -6,6 +6,8 @@ tags: ["wikipage", "homepage", "vocadb"]
 ---
 
 import Navigation from "@/components/markdown/EntryGuidelinesNav.astro";
+import LinkCard from "@/components/markdown/LinkCard.astro";
+import CardGrid from "@/components/markdown/CardGrid.astro";
 
 Welcome to the [VocaDB](http://vocadb.net/) wiki!
 
@@ -15,39 +17,48 @@ This wiki is primarily used for documenting guidelines and rules for the site.
 
 To learn about the website and the rules, start here:
 
-- ➡️ [VocaDB explained](/docs/vocadb-explained)
+<LinkCard title="➡️ VocaDB explained" description="What is VocaDB? Basics of the website" href="/docs/vocadb-explained" />
 
 For more information about VocaDB, see [the complete description](/docs/vocadb-what-is-it-for) and [history](/docs/vocadbs-history).
 
-[VocaDB Changelog](/docs/website-changelog) | [Rule table](/rules/table)
+{/* [VocaDB Changelog](/docs/website-changelog) | [Rule table](/rules/table) */}
+
+<CardGrid>
+  <LinkCard title="VocaDB Changelog" description="List of changes on the website" href="/docs/website-changelog" />
+  <LinkCard title="Rule table" description="Table of all rules" href="/rules/table" />
+</CardGrid>
 
 View [all the rules](/rules) for [albums](/rules/albums), [artists](/rules/artists), [songs](/rules/songs), [tags](/rules/tags), [events](/rules/events), [song lists](/rules/songlists).
 
 ## Quick links
 
-- 👶 [Quick guide for new editors](/docs/quick-guide-for-new-editors)
-- 💪 [VocaDB - How to help](/docs/vocadb-how-to-help)
-- 🧾 [VocaDB editing FAQ](/docs/vocadb-editing-faq)
-- 🏴 [Entry reports](/docs/entry-reports)
-- 🈳 [Romanization guidelines](/docs/romanization-guidelines)
-
-- 🔍 [Search terms cheat sheet](/docs/search-terms-cheat-sheet)
-- 💬 [Discussion rules](/docs/discussion-rules)
-- 👥 [User groups](/docs/user-groups) (trusted users, moderators, ...)
-- 🛡️ [Management guidelines](/docs/management-guidelines)
-- 🕵🏻‍♂️ [Content policy](/docs/content-policy) (what kind of entries are accepted)
-- 🗑️ [Content removal guidelines](/docs/content-removal-guidelines) (how to remove entries)
-- ✅ [Artist verification](/docs/artist-verification) (how to claim artist entries)
+<CardGrid>
+  <LinkCard title="👶 Quick guide for new editors" description="Things you need to know before editing" href="/docs/quick-guide-for-new-editors" />
+  <LinkCard title="💪 How to help" description="All the ways you can help VocaDB" href="/docs/vocadb-how-to-help" />
+  <LinkCard title="🧾 Editing FAQ" description="Answers to common questions and editing mistakes" href="/docs/vocadb-editing-faq" />
+  <LinkCard title="🏴 Entry reports" description="A way to track and communicate issues with entries" href="/docs/entry-reports" />
+  <LinkCard title="🈳 Romanization guidelines" description="Guidelines to write Romanized texts" href="/docs/romanization-guidelines" />
+  <LinkCard title="🔍 Search terms cheat sheet" description="Contains different search operators and queries" href="/docs/search-terms-cheat-sheet" />
+  <LinkCard title="💬 Discussion rules" description="Rules for discussions on entry comments and forums" href="/docs/discussion-rules" />
+  <LinkCard title="👥 User groups" description="User groups on the website (e.g. trusted users, moderators)" href="/docs/user-groups" />
+  <LinkCard title="🛡️ Management guidelines" description="About management and moderation" href="/docs/management-guidelines" />
+  <LinkCard title="🕵🏻‍♂️ Content policy" description="What kind of entries are accepted" href="/docs/content-policy" />
+  <LinkCard title="🗑️ Content removal guidelines" description="How to remove entries" href="/docs/content-removal-guidelines" />
+  <LinkCard title="✅ Artist verification" description="How to claim artist entries" href="/docs/artist-verification" />
+</CardGrid>
 
 ## Interconnected websites
 
-- 🎙️ [UtaiteDB Wiki](/tags/utaitedb)
-- ☯︎ [TouhouDB Wiki](/tags/touhoudb)
-
-- 😎 [Services that make use of VocaDB APIs](/docs/services-that-make-use-of-vocadb-apis)
-- 🌐 [Useful related, informational sites](/docs/useful-related-informational-sites)
+<CardGrid>
+  <LinkCard title="🎙️ UtaiteDB Wiki" description="Pages about UtaiteDB, database for utaites" href="/tags/utaitedb" />
+  <LinkCard title="☯︎ TouhouDB Wiki" description="Pages about TouhouDB, database for Touhou-inspired music" href="/tags/touhoudb" />
+  <LinkCard title="😎 Services that make use of VocaDB APIs" description="Some tools and websites that use VocaDB APIs" href="/docs/services-that-make-use-of-vocadb-apis" />
+  <LinkCard title="🌐 Useful related, informational sites" description="Other related sites you can check" href="/docs/useful-related-informational-sites" />
+</CardGrid>
 
 ## Other languages
 
-- 🇨🇳 [VocaDB Wiki (中文/Chinese)](/tags/chinese)
-- 🇯🇵 [VocaDB Wiki (日本語/Japanese)](/tags/japanese)
+<CardGrid>
+  <LinkCard title="🇨🇳 VocaDB Wiki (中文/Chinese)" description="Pages in Chinese — 中文信息" href="/tags/chinese" />
+  <LinkCard title="🇯🇵 VocaDB Wiki (日本語/Japanese)" description="Pages in Japanese — 日本語の情報" href="/tags/japanese" />
+</CardGrid>

@@ -56,7 +56,7 @@
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
   }
-  
+
   * {
     @apply border-border;
   }
@@ -67,7 +67,6 @@
 }
 
 @layer components {
-
   .prose code::before,
   .prose code::after {
     content: "";

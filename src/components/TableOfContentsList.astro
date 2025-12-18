@@ -3,7 +3,8 @@
 // Source: https://github.com/withastro/starlight/blob/bf1a9e6fd7311c30b7d1adbecfe9ca32e24207d9/packages/starlight/components/TableOfContents/TableOfContentsList.astro
 // Source is licensed under MIT.
 
-import type { TocItem } from '@/utils/generateToC.ts'
+import type { TocItem } from "@/utils/generateToC.ts";
+import TableOfContentsScript from "./TableOfContentsScript.astro";
 
 interface Props {
   toc: TocItem[];
@@ -15,39 +16,32 @@ interface Props {
 const { toc, isMobile = false, depth = 0, track = false } = Astro.props;
 ---
 
-<ul class:list={['p-0 list-none', { isMobile, track }]}>
+<ul class:list={["p-0 list-none", { isMobile, track }]}>
   {
     toc.map((heading) => (
-      <li class='pl-0'>
-        <a href={'#' + heading.slug} class:list={[`block py-1 leading-normal hover:underline ps-[calc(1rem*var(--depth)+var(--pad-inline))] pe-[var(--pad-inline)]`, isMobile ? '[--pad-inline:1rem]' : 'text-muted-foreground [--pad-inline:0rem]']} style={`--depth: ${depth}`}>
+      <li class="pl-0">
+        <a
+          href={"#" + heading.slug}
+          class:list={[
+            `block py-1 leading-normal hover:underline ps-[calc(1rem*var(--depth)+var(--pad-inline))] pe-[var(--pad-inline)]`,
+            isMobile
+              ? "[--pad-inline:1rem]"
+              : "text-muted-foreground [--pad-inline:0rem]",
+          ]}
+          style={`--depth: ${depth}`}
+        >
           <span>{heading.text}</span>
         </a>
         {heading.children.length > 0 && (
-          <Astro.self toc={heading.children} depth={depth + 1} isMobile={isMobile} />
+          <Astro.self
+            toc={heading.children}
+            depth={depth + 1}
+            isMobile={isMobile}
+          />
         )}
       </li>
     ))
   }
 </ul>
 
-{ (depth === 0 && track) && <script is:inline>
-  document.addEventListener("astro:page-load", () => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const id = entry.target.id;
-        const headers = document.querySelectorAll(`.track a[href="#${id}"]`);
-        headers.forEach(header => {
-          if (entry.intersectionRatio > 0) {
-            header.classList.remove("text-muted-foreground");
-          } else {
-            header.classList.add("text-muted-foreground");
-          }
-        })
-      });
-    });
-
-    document.querySelectorAll("section[id]").forEach((section) => {
-      observer.observe(section);
-    });
-  });
-</script> }
+{depth === 0 && track && <TableOfContentsScript />}

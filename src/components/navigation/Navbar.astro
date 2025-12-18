@@ -6,6 +6,12 @@ import { groupedNavbarParents, navbarParents, posts } from "./navigationConfig";
 
 <ScrollArea client:visible className="pr-6 h-full">
   <div class="py-6">
-    <NavContents groupedNavbarParents={groupedNavbarParents} navbarParents={navbarParents} posts={posts} client:visible mobile={false} />
+    <NavContents
+      groupedNavbarParents={groupedNavbarParents}
+      navbarParents={navbarParents}
+      posts={posts}
+      client:visible
+      mobile={false}
+    />
   </div>
 </ScrollArea>

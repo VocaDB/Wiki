@@ -15,6 +15,77 @@ rationale:
 status: Active
 rule_context: Romanization
 mikumod_support: "False"
+excerpt: Do not add the romanization if the entire name is composed of loanwords.
 ---
 
-If the entire name is composed of loanwords, leave the romanized name field empty. Use the translated name field instead.
+import { Alert } from "@/components/ui/alert";
+import { BoxGroup } from "@/components/Box";
+
+The romanization of the non-English name should not be added as a primary name or the alias.
+
+If the entire non-English primary name is composed of loanwords, the Romanized primary name must be left empty, leaving the English primary name filled for the translation.
+
+If an alias is composed of loanwords, the Romanized alias must not be added.
+
+## Examples
+
+For "[Melt](https://vocadb.net/S/1322)":
+
+<BoxGroup>
+  <Alert variant="incorrect">
+    <table class="table-fixed">
+      <tr>
+        <th>Non-English</th>
+        <td>メルト</td>
+      </tr>
+      <tr>
+        <th>Romanized</th>
+        <td>Meruto</td>
+      </tr>
+      <tr>
+        <th>English</th>
+        <td>Melt</td>
+      </tr>
+    </table>
+  </Alert>
+
+  <Alert variant="correct">
+    <table class="table-fixed">
+      <tr>
+        <th>Non-English</th>
+        <td>メルト</td>
+        </tr>
+      <tr>
+        <th>Romanized</th>
+        <td className="text-muted-foreground">[left empty]</td>
+      </tr>
+      <tr>
+        <th>English</th>
+        <td>Melt</td>
+      </tr>
+    </table>
+  </Alert>
+</BoxGroup>
+
+For "[Alien Alien](https://vocadb.net/S/106773)":
+
+<Alert variant="correct">
+  <table class="table-fixed">
+    <tr>
+      <th>Non-English</th>
+      <td>エイリアンエイリアン</td>
+    </tr>
+    <tr>
+      <th>Romanized</th>
+      <td className="text-muted-foreground">[left empty]</td>
+    </tr>
+    <tr>
+      <th>English</th>
+      <td>Alien Alien</td>
+    </tr>
+  </table>
+</Alert>
+
+## Related pages
+
+- [Rule: Loanword romanization](/rules/loanword-romanization)

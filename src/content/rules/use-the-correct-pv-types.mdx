@@ -1,5 +1,5 @@
 ---
-name: Use the correct PV types
+name: Correct PV type
 id: 133
 entry_type:
   - Songs
@@ -16,8 +16,18 @@ rationale:
 status: Active
 rule_context:
 mikumod_support: "False"
+excerpt: Use the correct PV type between [Original](/rules/original-pv-classification), [Reprint](/rules/reprint-pv-classification), and [Other](/rules/other-pv-classification).
 ---
 
-- `Original` = Authorized content uploaded by a party with rights to both audio and video.
-- `Reprint` = A PV copied from another service and uploaded by a party unrelated to the original artist. Identical to the original upload.
-- `Other` = Subtitled PVs or Music PVs that can be considered low-effort. The audio length should match in any case.
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import { BoxGroup } from "@/components/Box.tsx";
+
+For each PV/media on any applicable entry, choose the correct type. There are three available types: [Original](/rules/original-pv-classification), [Reprint](/rules/reprint-pv-classification), and [Other](/rules/other-pv-classification).
+
+<BoxGroup>
+  <RuleEmbed ruleId={161} />
+  <RuleEmbed ruleId={163} />
+  <RuleEmbed ruleId={164} />
+</BoxGroup>
+
+For more information, see [the respective section on the Song entry editing page](/docs/song-entry-editing#pv-types) or the respective rule pages for each type (click the title).

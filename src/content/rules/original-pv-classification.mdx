@@ -16,10 +16,21 @@ rationale:
 status: Active
 rule_context:
 mikumod_support: "False"
+excerpt: Original PVs are authorized content uploaded by a party with rights to both audio and video.
 ---
 
-Original PV is authorized content uploaded by a party with rights to both audio and video.
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import { BoxGroup } from "@/components/Box.tsx";
 
-Usually, this is the artist themselves or someone uploading on their behalf. If this is the case, and it's not obvious how the upload was authorized, please clarify this in the edit notes.
+The Original PV type is used for authorized content uploaded by a party with rights to both audio and video.
 
-Usually there is one original PV per service (Niconico, Youtube, ...).
+Usually, this is the artist/producer themselves or someone uploading on their behalf. In case this is not obvious how the upload was authorized, clarify this in the update notes.
+
+See [the respective section on the Song entry editing page](/docs/song-entry-editing#original) for more information.
+
+## Related rules
+
+<BoxGroup>
+  <RuleEmbed ruleId={133} />
+  <RuleEmbed ruleId={162} />
+</BoxGroup>

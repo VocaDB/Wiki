@@ -16,8 +16,15 @@ rationale:
 status: Active
 rule_context:
 mikumod_support: "Planned"
+excerpt: If an original PV is unavailable, mark it as unavailable instead of removing the link.
 ---
 
-When an original PV is deleted (or hidden by the author, or unavailable worldwide), mark it as "unavailable" instead of removing the link.
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+
+If an original PV is unavailable (deleted, hidden by the author, or blocked worldwide), do not remove the link. Instead, mark the PV as unavailable.
 
 You can check the availability using the [YouTube region restriction checker](https://polsy.org.uk/stuff/ytrestrict.cgi).
+
+## Related rules
+
+<RuleEmbed ruleId={136} />

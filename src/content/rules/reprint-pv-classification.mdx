@@ -16,8 +16,21 @@ rationale:
 status: Active
 rule_context:
 mikumod_support: "False"
+excerpt: Reprint PVs are copies original from another service by a party unrelated to the original artist.
 ---
 
-Reprint is a PV copied from another service and uploaded by a party unrelated to the original artist.
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import { BoxGroup } from "@/components/Box.tsx";
+
+The Reprint PV type is used for uploads of the original PV from another service by a party unrelated to the original artist.
 
 It should be identical to the original (music, vocals, length, and video). If any of these are changed, use the "Other" type, or create another (music PV) entry if appropriate.
+
+See [the respective section on the Song entry editing page](/docs/song-entry-editing#reprint) for more information.
+
+## Related rules
+
+<BoxGroup>
+  <RuleEmbed ruleId={94} />
+  <RuleEmbed ruleId={133} />
+</BoxGroup>

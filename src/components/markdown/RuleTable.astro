@@ -4,7 +4,7 @@ import {
   ruleDataKeyDetailsDictionary,
 } from "@/content/config";
 import { getCollection, type CollectionEntry } from "astro:content";
-import { FormattedField } from "./RuleFormattedField.tsx";
+import { FormattedField } from "./RuleFormattedField";
 import { type RuleFields } from "@/content/config";
 
 const ruleEntries: CollectionEntry<"rules">[] = await getCollection("rules");

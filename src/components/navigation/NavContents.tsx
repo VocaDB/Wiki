@@ -1,13 +1,26 @@
 import { ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
-import { groupedNavbarParents, navbarParents, posts } from "./navigationConfig";
 import { cn } from "@/lib/utils.ts";
+import type {
+  groupedNavbarParents,
+  navbarParents,
+  posts,
+} from "./navigationConfig";
 
-interface NavContentsProps {
+// We have to access these navbar configs via astro props because they are not available on the client side
+export interface NavContentsProps {
   mobile?: boolean;
+  groupedNavbarParents: typeof groupedNavbarParents;
+  navbarParents: typeof navbarParents;
+  posts: typeof posts;
 }
 
-export function NavContents({ mobile = false }: NavContentsProps) {
+export function NavContents({
+  mobile = false,
+  groupedNavbarParents,
+  navbarParents,
+  posts,
+}: NavContentsProps) {
   const [expanded, setExpanded] = useState<string | undefined>();
 
   const containerClass = cn(
@@ -15,7 +28,7 @@ export function NavContents({ mobile = false }: NavContentsProps) {
     mobile ? "space-y-3 pb-6" : "space-y-1 pb-4 text-sm",
   );
   const buttonClass = mobile ? "py-1.5" : "py-1";
-  const linkClass = "hover:underline visited:text-blue-500";
+  const linkClass = "hover:underline";
 
   return (
     <>

@@ -23,4 +23,3 @@ export const TagsDisplay: React.FC<TagsDisplayProps> = ({ tags }) => {
       </div>
     );
 };
-

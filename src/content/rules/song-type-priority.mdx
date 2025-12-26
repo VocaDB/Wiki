@@ -19,12 +19,26 @@ mikumod_support: "Planned"
 excerpt: The priority of the song type is Mashup/Remix > Remaster > Cover > Music PV
 ---
 
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import { BoxGroup } from "@/components/Box.tsx";
+
 The priority of the type of a song entry are as follows.
 
 > Mashup/Remix > Remaster > Cover > Music PV
 
-This means that the "Mashup" or "Remix" type take precedence to the "Remaster" type, then the "Remaster" type takes precedents to the "Cover" type, and so on.
+This means that the "Mashup" or "Remix" type take precedence to the "Remaster" type, then the "Remaster" type takes precedents to the "Cover" type, and so on. Use this priority when selecting the type of a song entry.
 
 For example:
 
-- A mashup/remix with changed vocals should use the "Mashup" or "Remix" type.
+- A remix with changed vocals should use the "Remix" type.
+- A remaster with changed instrument track should use the "Remix" type.
+- A music video with changed vocals should use the "Cover" type.
+
+This is because the a song entry can only accept one type at the time. When more types apply, [add them as tags](https://wiki.vocadb.net/rules/specify-multiple-song-types).
+
+## Related rules
+
+<BoxGroup>
+  <RuleEmbed ruleId={125} />
+  <RuleEmbed ruleId={126} />
+</BoxGroup>

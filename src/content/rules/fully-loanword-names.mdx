@@ -20,6 +20,7 @@ excerpt: Do not add the romanization if the entire name is composed of loanwords
 
 import { Alert } from "@/components/ui/alert";
 import { BoxGroup } from "@/components/Box";
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 
 The romanization of the non-English name should not be added as a primary name or the alias.
 
@@ -86,6 +87,9 @@ For "[Alien Alien](https://vocadb.net/S/106773)":
   </table>
 </Alert>
 
-## Related pages
+## Related rules
 
-- [Rule: Loanword romanization](/rules/loanword-romanization)
+<BoxGroup>
+  <RuleEmbed ruleId={8} />
+  <RuleEmbed ruleId={43} />
+</BoxGroup>

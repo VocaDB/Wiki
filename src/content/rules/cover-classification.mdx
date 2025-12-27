@@ -18,7 +18,11 @@ status: Active
 rule_context:
 mikumod_support: "False"
 relevant_tag_id: 391
+excerpt: The "Cover" song type is used for re-recorded versions of a song.
 ---
+
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import { BoxGroup } from "@/components/Box.tsx";
 
 A Cover (カバー曲) is a re-recorded version of a song, usually by a different artist.
 
@@ -29,3 +33,9 @@ In the voice synth world, covers often use a different voicebank while keeping t
 Songs with (only) [changed lyrics](https://vocadb.net/T/2866) or [added lyrics](https://vocadb.net/T/8892) should be marked as covers.
 
 Note that cover entries tagged with [out of scope arrangement](https://vocadb.net/T/10594/) sound instrumentally different from the base entry.
+
+## Related rules
+
+<BoxGroup>
+  <RuleEmbed ruleId={127} />
+</BoxGroup>

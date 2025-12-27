@@ -18,8 +18,21 @@ status: Active
 rule_context:
 mikumod_support: "False"
 relevant_tag_id: 371
+excerpt: The "Remix" song type is used for variants of a song, often in a different genre.
 ---
+
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import { BoxGroup } from "@/components/Box.tsx";
 
 A [remix](https://vocadb.net/T/371/remix) is a variant of an original recording, often in a different genre.
 
 Remixes may or may not involve recording new music, often using samples from the original.
+
+## Related rules
+
+<BoxGroup>
+  <RuleEmbed ruleId={177} />
+  <RuleEmbed ruleId={102} />
+  <RuleEmbed ruleId={114} />
+  <RuleEmbed ruleId={113} />
+</BoxGroup>

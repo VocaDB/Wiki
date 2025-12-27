@@ -16,8 +16,19 @@ rationale:
 status: Active
 rule_context:
 mikumod_support: "False"
+excerpt: The "Mashup" song type is used for songs made by blending two or more songs together.
 ---
+
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import { BoxGroup } from "@/components/Box.tsx";
 
 Mashups are songs made by blending two or more songs together.
 
 Songs that mix multiple covers of the same song together (joining multiple vocal tracks) should be labeled as covers.
+
+## Related rules
+
+<BoxGroup>
+  <RuleEmbed ruleId={122} />
+  <RuleEmbed ruleId={123} />
+</BoxGroup>

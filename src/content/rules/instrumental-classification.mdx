@@ -17,8 +17,20 @@ status: Active
 rule_context:
 mikumod_support: "False"
 relevant_tag_id: 208
+excerpt: The "Instrumental" song type is used for instrumental versions of a song available in an album.
 ---
+
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import { BoxGroup } from "@/components/Box.tsx";
 
 The [Instrumental](https://vocadb.net/T/208/instrumental) song type is used for instrumental versions of songs, where a non-instrumental version with vocals is the original. AKA off-vocal or karaoke.
 
 Instrumental versions of songs are accepted only as part of album entries. They should be the same as the original version, excluding vocals. If otherwise different, use the remix or cover types with the instrumental tag.
+
+## Related rules
+
+<BoxGroup>
+  <RuleEmbed ruleId={111} />
+  <RuleEmbed ruleId={110} />
+  <RuleEmbed ruleId={176} />
+</BoxGroup>

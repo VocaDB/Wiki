@@ -20,10 +20,9 @@ excerpt: Do not add the romanization if the entire name is composed of loanwords
 
 import { Alert } from "@/components/ui/alert";
 import { BoxGroup } from "@/components/Box";
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 
-The romanization of the non-English name should not be added as a primary name or the alias.
-
-If the entire non-English primary name is composed of loanwords, the Romanized primary name must be left empty, leaving the English primary name filled for the translation.
+The romanization of the non-English name should not be added as a primary name or the alias if the entire non-English name is composed of loanwords. Leave the Romanized primary name field empty, while keeping the English primary name filled for the translation.
 
 If an alias is composed of loanwords, the Romanized alias must not be added.
 
@@ -67,13 +66,13 @@ For "[Melt](https://vocadb.net/S/1322)":
   </Alert>
 </BoxGroup>
 
-For "[Alien Alien](https://vocadb.net/S/106773)":
+For "[World's End Dancehall](https://vocadb.net/S/20)":
 
 <Alert variant="correct">
   <table class="table-fixed">
     <tr>
       <th>Non-English</th>
-      <td>エイリアンエイリアン</td>
+      <td>ワールズエンド・ダンスホール</td>
     </tr>
     <tr>
       <th>Romanized</th>
@@ -81,11 +80,14 @@ For "[Alien Alien](https://vocadb.net/S/106773)":
     </tr>
     <tr>
       <th>English</th>
-      <td>Alien Alien</td>
+      <td>World's End Dancehall</td>
     </tr>
   </table>
 </Alert>
 
-## Related pages
+## Related rules
 
-- [Rule: Loanword romanization](/rules/loanword-romanization)
+<BoxGroup>
+  <RuleEmbed ruleId={8} />
+  <RuleEmbed ruleId={43} />
+</BoxGroup>

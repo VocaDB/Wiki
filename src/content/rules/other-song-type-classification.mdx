@@ -20,6 +20,18 @@ mikumod_support: "False"
 relevant_tag_id: 10159
 ---
 
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import { BoxGroup } from "@/components/Box.tsx";
+
 The [`Other` song type](https://vocadb.net/T/10159/other-song-type) is for album tracks that do not belong to any other song type.
 
 - For example, [Commentary](https://vocadb.net/T/422/commentary).
+
+## Related rules
+
+### General song type rules
+
+<BoxGroup>
+  <RuleEmbed ruleId={108} />
+  <RuleEmbed ruleId={125} />
+</BoxGroup>

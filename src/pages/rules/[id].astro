@@ -1,0 +1,46 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import stripMarkdown from "strip-markdown";
+import remarkStringify from "remark-stringify";
+import DocRedirect from "@/layouts/DocRedirect.astro";
+
+export async function getStaticPaths() {
+  const ruleEntries: CollectionEntry<"rules">[] = await getCollection("rules");
+  const paths = [];
+
+  for (const entry of ruleEntries) {
+    paths.push({
+      params: {
+        id: entry.data.id,
+      },
+      props: { entry },
+    });
+  }
+
+  return paths;
+}
+
+const { entry } = Astro.props;
+
+async function stripText(markdownInput: string) {
+  const file = await unified()
+    .use(remarkParse)
+    .use(stripMarkdown)
+    .use(remarkStringify)
+    .process(markdownInput);
+
+  return String(file);
+}
+
+const description = await stripText(entry.data.excerpt || entry.body);
+---
+
+<DocRedirect
+  frontmatter={{
+    title: `Rule: ${entry.data.name}`,
+    description: description,
+  }}
+  canonical={"/rules/" + entry.slug}
+/>

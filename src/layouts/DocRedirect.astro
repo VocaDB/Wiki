@@ -1,0 +1,21 @@
+---
+import Redirect from "./Redirect.astro";
+
+interface FrontMatter {
+  title?: string;
+  description?: string;
+  tags?: string[];
+}
+
+export interface Props {
+  frontmatter?: FrontMatter;
+  canonical: string;
+}
+
+const { frontmatter = {}, canonical } = Astro.props;
+
+const title = frontmatter?.title;
+const description = frontmatter?.description;
+---
+
+<Redirect title={title} description={description} canonical={canonical} />

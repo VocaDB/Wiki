@@ -1,0 +1,69 @@
+---
+import {
+  SITE_TITLE,
+  SITE_DESCRIPTION,
+  SITE_DEFAULT_OG_IMAGE,
+} from "../site_config";
+import "@/styles/globals.css";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  thumbnail?: {
+    src: string;
+    alt: string;
+  };
+  from?: string;
+  canonical?: string;
+}
+
+const {
+  title = SITE_TITLE,
+  description = SITE_DESCRIPTION,
+  thumbnail = {
+    src: SITE_DEFAULT_OG_IMAGE,
+    alt: SITE_TITLE,
+  },
+  from = Astro.request.url,
+  canonical,
+} = Astro.props;
+
+const siteURL = Astro.site;
+const absoluteLocation = siteURL
+  ? new URL(canonical || "", siteURL)
+  : canonical;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={absoluteLocation} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={thumbnail.src} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta http-equiv="refresh" content={`0;url=${canonical}`} />
+    <meta name="robots" content="noindex" />
+  </head>
+
+  <body>
+    <a href={canonical}
+      >Redirecting {
+        from ? (
+          <>
+            from <code>${from}</code>{" "}
+          </>
+        ) : (
+          ""
+        )
+      }to <code>{canonical}</code></a
+    >
+  </body>
+</html>

@@ -1,6 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
 import DocPageLayout from "../../layouts/DocPageLayout.astro";
+import { getAutoDescription } from "@/utils/getAutoDescription.ts";
 
 export async function getStaticPaths() {
   const blogEntries: CollectionEntry<"docs">[] = await getCollection("docs");
@@ -13,11 +14,25 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
+
+let description = await getAutoDescription(entry.data.description || "");
+
+if (
+  !description ||
+  entry.data.title === description ||
+  entry.data.title === entry.data.description
+) {
+  description = (await getAutoDescription(entry.body, 300)) || description;
+}
+
 const { Content, headings } = await entry.render();
 ---
 
 <DocPageLayout
-  frontmatter={entry.data}
+  frontmatter={{
+    ...entry.data,
+    description,
+  }}
   headings={headings}
   filePath={"src/content/docs/" + entry.id}
   pagePath={"docs/" + entry.slug}

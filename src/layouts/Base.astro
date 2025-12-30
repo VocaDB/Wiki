@@ -54,7 +54,13 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:image" content={thumbnail.src} />
     <meta property="og:url" content={Astro.request.url} />
+    <meta property="og:site_name" content={SITE_TITLE} />
+
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:site" content="@VocaDB" />
+    <meta name="twitter:creator" content="@VocaDB" />
     <ClientRouter />
     <script is:inline>
       const setTheme = () => {

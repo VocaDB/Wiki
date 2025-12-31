@@ -15,8 +15,28 @@ rationale:
 status: Active
 rule_context: Romanization
 mikumod_support: "False"
+excerpt: Loanwords are romanized into their original language (e.g. コーヒー → coffee)
 ---
+
+import { BoxGroup } from "@/components/Box";
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 
 Loanwords are romanized into their original language.
 
-- _コーヒー_ would be romanized as 'coffee'.
+## Examples
+
+For "[Romeo and Cinderella](https://vocadb.net/S/1032)",
+
+- "ロミオ" would be romanized as "Romeo".
+- "シンデレラ" would be romanized as "Cinderella".
+
+For "[Two-Sided Lovers](https://vocadb.net/S/1508)", "ラバーズ" would be romanized as "lovers".
+
+For "[Brain Fluid Explosion Girl](https://vocadb.net/S/17189)", "ガール" would be romanized as "girl".
+
+## Related rules
+
+<BoxGroup>
+  <RuleEmbed ruleId={8} />
+  <RuleEmbed ruleId={45} />
+</BoxGroup>

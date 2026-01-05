@@ -86,7 +86,7 @@ const description = await stripText(entry.data.excerpt || entry.body);
     }
   </script>
 
-  <RuleEmbed rule={entry} fields={"All"} />
+  <RuleEmbed rule={entry} fields={"All"} onRulePage={true} />
 
   {content && <content.Content />}
 

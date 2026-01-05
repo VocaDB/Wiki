@@ -1,0 +1,97 @@
+---
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import { FormattedField } from "@/components/markdown/RuleFormattedField";
+import { getCollection, type CollectionEntry } from "astro:content";
+import DocPageLayout from "../../layouts/DocPageLayout.astro";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import stripMarkdown from "strip-markdown";
+import remarkStringify from "remark-stringify";
+import {
+  ruleDataKeyDetailsDictionary,
+  ruleDataKeyDictionary,
+  type RuleFields,
+} from "@/content/config";
+
+export async function getStaticPaths() {
+  const ruleEntries: CollectionEntry<"rules">[] = await getCollection("rules");
+  const paths = [];
+
+  for (const entry of ruleEntries) {
+    paths.push({
+      params: {
+        slug: entry.slug,
+      },
+      props: { entry },
+    });
+  }
+
+  return paths;
+}
+
+const { entry } = Astro.props;
+const { headings } = await entry.render();
+
+headings.push({ depth: 2, slug: "metadata", text: "Metadata" });
+
+async function stripText(markdownInput: string) {
+  const file = await unified()
+    .use(remarkParse)
+    .use(stripMarkdown)
+    .use(remarkStringify)
+    .process(markdownInput);
+
+  return String(file);
+}
+
+let content;
+if (entry.data.excerpt) {
+  content = await entry.render();
+}
+const description = await stripText(entry.data.excerpt || entry.body);
+---
+
+<DocPageLayout
+  frontmatter={{
+    ...entry.data,
+    title: `Rule: ${entry.data.name}`,
+    description: description,
+  }}
+  headings={headings}
+  filePath={"src/content/rules/" + entry.id}
+  pagePath={"rules/" + entry.slug}
+>
+  <RuleEmbed rule={entry} fields={"All"} />
+
+  {content && <content.Content />}
+
+  <section id="metadata">
+    <h2>Metadata</h2>
+
+    <table class="metadata-table">
+      <tbody>
+        {
+          Object.entries(entry.data).map(([fieldKey, fieldValue]) => {
+            if (["excerpt"].includes(fieldKey)) return;
+            return (
+              <tr>
+                <th
+                  class="field-name"
+                  title={ruleDataKeyDetailsDictionary[fieldKey]}
+                >
+                  {ruleDataKeyDictionary[fieldKey] || fieldKey}:
+                </th>
+                <td class="field-value">
+                  <FormattedField
+                    fieldKey={fieldKey as RuleFields}
+                    fieldValue={fieldValue}
+                  />
+                </td>
+              </tr>
+            );
+          })
+        }
+      </tbody>
+    </table>
+  </section>
+</DocPageLayout>

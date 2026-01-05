@@ -7,7 +7,7 @@ tags: ["wikipage", "editing", "albums", "documentation", "vocadb"]
 
 import Navigation from "@/components/markdown/EntryGuidelinesNav.astro";
 import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
-import RuleEmbedGroup from "@/components/markdown/RuleEmbedGroup.astro";
+import { BoxGroup } from "@/components/Box.tsx";
 
 <Navigation />
 
@@ -15,27 +15,26 @@ Album entries can be created from: https://vocadb.net/Album/Create
 
 Before creating the album entry, make sure that the entry belongs to the database:
 
-<RuleEmbedGroup>
+<BoxGroup>
   <RuleEmbed ruleId={47} />
   <RuleEmbed ruleId={48} />
   <RuleEmbed ruleId={49} />
-</RuleEmbedGroup>
+</BoxGroup>
 
 The album entry creation page requires:
 
-- 1) An album name
+1. An album name
 
-<RuleEmbedGroup>
-  <RuleEmbed ruleId={7} />
-  <RuleEmbed ruleId={8} />
+   <BoxGroup>
+     <RuleEmbed ruleId={7} />
+     <RuleEmbed ruleId={8} />
+     <RuleEmbed ruleId={53} />
+     <RuleEmbed ruleId={54} />
+   </BoxGroup>
 
-  <RuleEmbed ruleId={53} />
-  <RuleEmbed ruleId={54} />
-</RuleEmbedGroup>
+2. At least one artist
 
-- 2) At least one artist 
-
-If the artist entry doesn't exist, you will need to [create the artist entry](/docs/artist-entry-creation) first.
+   If the artist entry doesn't exist, you will need to [create the artist entry](/docs/artist-entry-creation) first.
 
 After submitting the album entry, you can start adding more detailed information to it.
 

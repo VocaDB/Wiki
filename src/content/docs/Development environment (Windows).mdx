@@ -13,15 +13,15 @@ tags: ["wikipage", "development", "github", "documentation", "vocadb"]
 - Visual Studio 2019 (free Community version is enough)
   - 16.9 or newer
   - Workloads:
-    - ASP.NET and web development 
+    - ASP.NET and web development
     - .NET desktop development
 - Visual Studio Code
   - Extensions:
     - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-    - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) 
+    - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 - IIS or IIS Express
   - Static files support
-- .NET 7 SDK. or higher
+- .NET 8 SDK. or higher
 - [Node.js](https://nodejs.org/) v12.18.3 (or latest LTS) with NPM.
 
 ## Step-by-step first setup
@@ -37,19 +37,16 @@ tags: ["wikipage", "development", "github", "documentation", "vocadb"]
 3. Open the VocaDB project in Visual Studio.
 4. Prepare the configuration files. See [web.config](#webconfig) section for more information.
 5. Prepare the database. See [Database configuration](#database-configuration) section for more information.
-
    1. Open SQL Server Management Studio and log in to your SQL Server instance.
    2. Create a database with the name `VocaloidSite`.
-      
       1. Right click <kbd>Databases</kbd> on the Object Explorer and press <kbd>New Database...</kbd>.
       2. On <kbd>Databse name:</kbd>, write `VocaloidSite`.
       3. Switch to the General page by clicking <kbd>🔧 Options</kbd> on the right.
       4. On <kbd>Collation:</kbd>, ensure that it has <kbd>CI</kbd> on it. The <kbd>\<default\></kbd> may be appropriate should your default collation has <kbd>CI</kbd> on it ([how to check it](https://learn.microsoft.com/en-us/sql/relational-databases/collations/view-collation-information?view=sql-server-ver16)). If it isn't, you can choose either `SQL_Latin1_General_CP1_CI_AS` or `Latin1_General_CI_AS`.
       5. On <kbd>Compabillity level:</kbd>, ensure that is <kbd>SQL Server 2012 (110)</kbd> or higher (on the number in the brackets).
       6. Press <kbd>OK</kbd> on the bottom to create the database.
-      
-   3. Run the [schema creation script](http://vocaloid.eu/vocadb/empty-mssql.sql) against the database.
 
+   3. Run the [schema creation script](http://vocaloid.eu/vocadb/empty-mssql.sql) against the database.
       1. Either download open the file on SQL Server Management Studio, or right click <kbd>VocaloidSite</kbd>, select <kbd>New Query</kbd>, and paste the whole file to it.
       2. Ensure <kbd>VocaloidSite</kbd> is selected on the Available Databases dropdown.
       3. Press the <kbd>▶ Execute</kbd> button.
@@ -73,13 +70,11 @@ tags: ["wikipage", "development", "github", "documentation", "vocadb"]
       For more information, see [Starting with FluentMigrator](https://fluentmigrator.github.io/articles/quickstart.html?tabs=runner-dotnet-fm).
 
 6. Build the frontend using Node.js. See [Compiling frontend assets](#compiling-frontend-assets) section for more information.
-
    1. Right click `VocaDbWeb` on the Solution Explorer in the right and select the <kbd>Open in Terminal</kbd> option.
    2. Install dependencies by running `npm install` on the Terminal.
    3. Build assets by running `npm run production` on the Terminal.
 
 7. Run the server using Visual Studio.
-
    1. Select the `VocaDbWeb` startup item. Locate the <kbd>⚙ VocaDb...</kbd> button on the top part of the window, and press the dropdown on the right of the button.
    2. Press <kbd>▶ IIS Express</kbd> right beside the previous button to build/compile and run the server.
 
@@ -93,13 +88,13 @@ For the frontend located on `VocaDbWeb`, Prettier and ESLint is used to ensure c
 
 The following extensions are recommended in the `VocaDbWeb` folder.
 
-  - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) by [Dirk Baeumer](https://marketplace.visualstudio.com/publishers/dbaeumer)
-  - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) by [Prettier](https://marketplace.visualstudio.com/publishers/esbenp)
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) by [Dirk Baeumer](https://marketplace.visualstudio.com/publishers/dbaeumer)
+- [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) by [Prettier](https://marketplace.visualstudio.com/publishers/esbenp)
 
 These configuration is recommended for better formatting on Visual Studio Code. Open the Settings screen (by pressing <kbd>F1</kbd> and press <kbd>Preferences: Open Settings (UI)</kbd> or <kbd>File</kbd> (on the top left) > <kbd>Preferences</kbd> > <kbd>Settings</kbd>) and change these settings.
 
 - **Editor: Default Formatter**: <kbd>Prettier - Code formatter <small>esbenp.prettier-vscode</small></kbd>
-- **Editor: Format on Save**: *checked*
+- **Editor: Format on Save**: _checked_
 
 ## web.config
 

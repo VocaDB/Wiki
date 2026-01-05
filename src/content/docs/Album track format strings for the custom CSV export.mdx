@@ -5,44 +5,47 @@ parent: Albums
 tags: ["wikipage", "api", "albums", "documentation", "songs", "vocadb"]
 ---
 
-Default tag format string is 
+Default tag format string is
+
 - `%title%;%title%%featvocalists%;%producers%;%album%;%discnumber%;%track%`
 
 which results in rows such as
+
 - `Nijiiro Utopia;Nijiiro Utopia feat. Hatsune Miku;Kimuta;Sora Iro Melody;1;1`
 
 Instructions:
 
 - All keywords are surrounded by percent signs, for example `%album%`.
-- Field name keywords are case-insensitive. 
-- All entry names are localized unless otherwise mentioned. 
+- Field name keywords are case-insensitive.
+- All entry names are localized unless otherwise mentioned.
 - If the field has no meaningful value, the result will be empty unless otherwise mentioned.
 
-----
+---
 
 ## Fields
-| Field name | Aliases | Meaning | Example |
-| ---------- | ---------- | ---------- | ---------- |
-| album | | Album name | whiteout |
-| albumartist | album artist | Album artist string (producers + vocalists or "various") | 8#Prince feat. various |
-| albummaincircle | | Main circle name of the album, if all producers belong in that circle. If there is no circle or the producers have no common circle, and the album is a split album, the list of producers. If there is no main circle and the album is not a split album, then "various artists" | Plug::8 |
-| artist | track artist | Track artist string which includes producers and vocalists | 8#Prince feat. Hatsune Miku Append (Sweet) |
-| catalognum | | Album catalog number | P8CD-002 |
-| disccount | | Total number of discs on the album | 1 |
-| discnumber | | Disc number of the current track | 1 |
-| featvocalists | | Comma-separated list of track vocalists prefixed by "feat." if there is at least one vocalist, otherwise empty. You can use this to append the list of vocalists to a list of producers | feat. Hatsune Miku Append (Sweet) |
-| genres | | Comma-separated list of genres. Picked from genre tags where underscores are replaced with spaces. If the song has no genre tags, album's tags are used | ElectroPop, Electro-House |
-| lengthseconds | | Song length (duration) in seconds | 628 |
-| producers | | Comma-separated list of track producers | 8#Prince |
-| publishdate | | Song publish date | 14.11.2010 |
-| releasedate | | Album release date | 14.11.2010 |
-| releaseyear | | Album release year | 2010 |
-| releaseevent | | Album release event name | The Voc@loid M@ster 14 |
-| title | | Track title | intro+ |
-| totaltrackcount | | Total number of tracks on the album | 10 |
-| track | tracknumber | Track number | 1 |
-| url | | URL to song | http://vocadb.net/S/108849 |
-| vocalists | | Comma-separated list of track vocalists | Hatsune Miku Append (Sweet) |
+
+| Field name      | Aliases      | Meaning                                                                                                                                                                                                                                                                           | Example                                    |
+| --------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| album           |              | Album name                                                                                                                                                                                                                                                                        | whiteout                                   |
+| albumartist     | album artist | Album artist string (producers + vocalists or "various")                                                                                                                                                                                                                          | 8#Prince feat. various                     |
+| albummaincircle |              | Main circle name of the album, if all producers belong in that circle. If there is no circle or the producers have no common circle, and the album is a split album, the list of producers. If there is no main circle and the album is not a split album, then "various artists" | Plug::8                                    |
+| artist          | track artist | Track artist string which includes producers and vocalists                                                                                                                                                                                                                        | 8#Prince feat. Hatsune Miku Append (Sweet) |
+| catalognum      |              | Album catalog number                                                                                                                                                                                                                                                              | P8CD-002                                   |
+| disccount       |              | Total number of discs on the album                                                                                                                                                                                                                                                | 1                                          |
+| discnumber      |              | Disc number of the current track                                                                                                                                                                                                                                                  | 1                                          |
+| featvocalists   |              | Comma-separated list of track vocalists prefixed by "feat." if there is at least one vocalist, otherwise empty. You can use this to append the list of vocalists to a list of producers                                                                                           | feat. Hatsune Miku Append (Sweet)          |
+| genres          |              | Comma-separated list of genres. Picked from genre tags where underscores are replaced with spaces. If the song has no genre tags, album's tags are used                                                                                                                           | ElectroPop, Electro-House                  |
+| lengthseconds   |              | Song length (duration) in seconds                                                                                                                                                                                                                                                 | 628                                        |
+| producers       |              | Comma-separated list of track producers                                                                                                                                                                                                                                           | 8#Prince                                   |
+| publishdate     |              | Song publish date                                                                                                                                                                                                                                                                 | 14.11.2010                                 |
+| releasedate     |              | Album release date                                                                                                                                                                                                                                                                | 14.11.2010                                 |
+| releaseyear     |              | Album release year                                                                                                                                                                                                                                                                | 2010                                       |
+| releaseevent    |              | Album release event name                                                                                                                                                                                                                                                          | The Voc@loid M@ster 14                     |
+| title           |              | Track title                                                                                                                                                                                                                                                                       | intro+                                     |
+| totaltrackcount |              | Total number of tracks on the album                                                                                                                                                                                                                                               | 10                                         |
+| track           | tracknumber  | Track number                                                                                                                                                                                                                                                                      | 1                                          |
+| url             |              | URL to song                                                                                                                                                                                                                                                                       | http://vocadb.net/S/108849                 |
+| vocalists       |              | Comma-separated list of track vocalists                                                                                                                                                                                                                                           | Hatsune Miku Append (Sweet)                |
 
 ## API endpoint
 

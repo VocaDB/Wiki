@@ -11,11 +11,34 @@ detection_script:
 edit_list:
 date_checked:
 date_created:
-date_modified:
+date_modified: 2025-12-14
 rationale:
 status: Active
 rule_context:
 mikumod_support: "Planned"
+excerpt: The priority of the song type is [Mashup](/rules/mashup-classification)/[Remix](/rules/remix-classification) > [Remaster](/rules/remaster-classification) > [Cover](/rules/cover-classification) > [Music PV](/rules/music-pv-classification)
 ---
 
-- Mashup/Remix/Remaster > Cover > Music PV
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import { BoxGroup } from "@/components/Box.tsx";
+
+The priority of the type of a song entry is as follows.
+
+> [Mashup](/rules/mashup-classification)/[Remix](/rules/remix-classification) > [Remaster](/rules/remaster-classification) > [Cover](/rules/cover-classification) > [Music PV](/rules/music-pv-classification)
+
+This means that the "Mashup" or "Remix" type takes precedence to the "Remaster" type, then the "Remaster" type takes precedents to the "Cover" type, and so on. Use this priority when selecting the type of a song entry.
+
+For example:
+
+- A remix with changed vocals should use the "Remix" type.
+- A remaster with changed instrument track should use the "Remix" type.
+- A music video with changed vocals should use the "Cover" type.
+
+This is because a song entry can only accept one type at the time. When more types apply, [add them as tags](/rules/specify-multiple-song-types).
+
+## Related rules
+
+<BoxGroup>
+  <RuleEmbed ruleId={125} />
+  <RuleEmbed ruleId={126} />
+</BoxGroup>

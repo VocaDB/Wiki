@@ -1,35 +1,55 @@
 ---
+import {
+  ruleDataKeyDictionary,
+  ruleDataKeyDetailsDictionary,
+} from "@/content/config";
 import { getCollection, type CollectionEntry } from "astro:content";
-const ruleEntries: CollectionEntry<"rules">[] = await getCollection("rules");
+import { FormattedField } from "./RuleFormattedField";
+import { type RuleFields } from "@/content/config";
 
+const ruleEntries: CollectionEntry<"rules">[] = await getCollection("rules");
 const ISO_date = (date: Date): string => {
   return date.toISOString().split("T")[0];
 };
+
+const ruleDataBodyKeys: RuleFields[] = [
+  "entry_type",
+  "entry_status",
+  "rule_context",
+  "relevant_tag_id",
+  "mikumod_support",
+  "complete_validation",
+  "automatically_fixed",
+  "edit_list",
+];
+
+const ruleDataHeadingKeys: (keyof typeof ruleDataKeyDetailsDictionary)[] = [
+  "id",
+  "_date",
+  "name",
+  ...ruleDataBodyKeys,
+];
 ---
 
 <div class="table-container">
   <table class="rule-table sortable">
     <thead>
       <tr>
-        <th title="Rule id">ID</th>
-        <th title="Date modified or created">Date</th>
-        <th title="Rule name">Name</th>
-        <th title="Entry type thresold">E.Type</th>
-        <th title="Relevant entry status">E.Status</th>
-        <th title="Rule context">Context</th>
-        <th title="Relevant rule tag">Tag</th>
-        <th title="MikuMod support (mod bot)">MikuModded</th>
-        <th title="Rule check is complete/exhaustive">Complete</th>
-        <th title="Rule violations get automatically fixed">Autofix</th>
-        <th title="Relevant edit list of invalid entries">List</th>
+        {
+          ruleDataHeadingKeys.map((key) => (
+            <th title={ruleDataKeyDetailsDictionary[key]}>
+              {ruleDataKeyDictionary[key]}
+            </th>
+          ))
+        }
       </tr>
     </thead>
     <tbody>
       {
         ruleEntries
-          .filter(rule => rule.data.status === "Active")
+          .filter((rule) => rule.data.status === "Active")
           .sort((a, b) => a.data.id - b.data.id)
-          .map((rule, slug) => (
+          .map((rule) => (
             <tr>
               <td>{rule.data.id}</td>
               <td>
@@ -40,37 +60,15 @@ const ISO_date = (date: Date): string => {
               <td class="rule-name">
                 <a href={`/rules/${rule.slug}`}>{rule.data.name}</a>
               </td>
-              <td>
-                <span class="entry-type">
-                  {Array.isArray(rule.data.entry_type) ?
-                    rule.data.entry_type.join(", ")
-                  : rule.data.entry_type}
-                </span>
-              </td>
-              <td>
-                <span
-                  class={`entry-status-badge entry-status-${rule.data.entry_status.toLowerCase()}`}>
-                  {rule.data.entry_status}
-                </span>
-              </td>
-              <td>{rule.data.rule_context || "-"}</td>
-              <td>
-                {rule.data.relevant_tag_id ?
-                  <a href={`https://vocadb.net/T/${rule.data.relevant_tag_id}`}>
-                    {rule.data.relevant_tag_id}
-                  </a>
-                : "-"}
-              </td>
-              <td>{rule.data.mikumod_support}</td>
-              <td>{rule.data.complete_validation || "-"}</td>
-              <td>{rule.data.automatically_fixed || "-"}</td>
-              <td>
-                {rule.data.edit_list ?
-                  rule.data.edit_list === "TODO" ?
-                    "TODO"
-                  : <a href={rule.data.edit_list}>Link</a>
-                : "-"}
-              </td>
+              {ruleDataBodyKeys.map((key) => (
+                <td>
+                  <FormattedField
+                    fieldKey={key}
+                    fieldValue={rule.data[key]}
+                    short={true}
+                  />
+                </td>
+              ))}
             </tr>
           ))
       }

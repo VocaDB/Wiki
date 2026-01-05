@@ -1,21 +1,22 @@
 ---
 import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
-import { EntryType, type RuleFields } from "@/content/config";
-import { getCollection } from "astro:content";
+import { type EntryType, type RuleFields } from "@/content/config";
+import { getCollection, type CollectionEntry } from "astro:content";
 import DocPageLayout from "../../layouts/DocPageLayout.astro";
-import RuleEmbedGroup from "./RuleEmbedGroup.astro";
+import { BoxGroup } from "@/components/Box.tsx";
 
-let rules = await getCollection("rules");
+let rules: CollectionEntry<"rules">[] = await getCollection("rules");
 
 interface Props {
-  entryType: (typeof EntryType)[number] | "All";
+  entryType: EntryType;
   ruleContext?: string;
   fields?: RuleFields[] | "All";
 }
 
 const { entryType, ruleContext, fields } = Astro.props;
+
 if (entryType !== "All") {
-  rules = rules.filter(rule => {
+  rules = rules.filter((rule) => {
     const ruleEntryType = rule.data.entry_type;
 
     if (ruleEntryType === "All") {
@@ -31,7 +32,7 @@ if (entryType !== "All") {
 }
 
 if (ruleContext) {
-  rules = rules.filter(rule => rule.data.rule_context === ruleContext);
+  rules = rules.filter((rule) => rule.data.rule_context === ruleContext);
 }
 
 const pageTitle =
@@ -39,54 +40,51 @@ const pageTitle =
 
 rules.sort((a, b) => a.data.id - b.data.id);
 
-const rulesForDraft = rules.filter(rule => rule.data.entry_status === "Draft");
+const rulesForDraft = rules.filter(
+  (rule) => rule.data.entry_status === "Draft",
+);
 const rulesForFinished = rules.filter(
-  rule => rule.data.entry_status === "Finished"
+  (rule) => rule.data.entry_status === "Finished",
 );
 const rulesForApproved = rules.filter(
-  rule => rule.data.entry_status === "Approved"
+  (rule) => rule.data.entry_status === "Approved",
 );
 ---
 
 <DocPageLayout
   frontmatter={{ title: pageTitle }}
   headings={[
-    { depth: 1, slug: "draft", text: "Draft +" },
-    { depth: 1, slug: "finished", text: "Finished +" },
-    { depth: 1, slug: "approved", text: "Approved" }
-  ]}>
-  
-  <h2 id="draft">Draft+ entries</h2>
-  <RuleEmbedGroup>
-  {
-    rulesForDraft.map((rule) => (
-      <RuleEmbed
-        rule={rule}
-        fields={fields}
-      />
-    ))
-  }
-  </RuleEmbedGroup>
-  <h2 id="finished">Finished+ entries</h2>
-  <RuleEmbedGroup>
-  {
-    rulesForFinished.map((rule) => (
-      <RuleEmbed
-        rule={rule}
-        fields={fields}
-      />
-    ))
-  }
-  </RuleEmbedGroup>
-  <h2 id="approved">Approved entries</h2>
-  <RuleEmbedGroup>
-  {
-    rulesForApproved.map((rule) => (
-      <RuleEmbed
-        rule={rule}
-        fields={fields}
-      />
-    ))
-  }
-  </RuleEmbedGroup>
+    { depth: 2, slug: "draft", text: "Draft +" },
+    { depth: 2, slug: "finished", text: "Finished +" },
+    { depth: 2, slug: "approved", text: "Approved" },
+  ]}
+>
+  <section id="draft">
+    <h2>Draft+ entries</h2>
+    <BoxGroup>
+      {rulesForDraft.map((rule) => <RuleEmbed rule={rule} fields={fields} />)}
+    </BoxGroup>
+  </section>
+
+  <section id="finished">
+    <h2>Finished+ entries</h2>
+    <BoxGroup>
+      {
+        rulesForFinished.map((rule) => (
+          <RuleEmbed rule={rule} fields={fields} />
+        ))
+      }
+    </BoxGroup>
+  </section>
+
+  <section id="approved">
+    <h2>Approved entries</h2>
+    <BoxGroup>
+      {
+        rulesForApproved.map((rule) => (
+          <RuleEmbed rule={rule} fields={fields} />
+        ))
+      }
+    </BoxGroup>
+  </section>
 </DocPageLayout>

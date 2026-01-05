@@ -24,15 +24,17 @@ export const navbarParents = [
 
 export const headerNavItems = [
   { name: "VocaDB", href: "//vocadb.net" },
+  { name: "Blog", href: "//blog.vocadb.net" },
+  { name: "Patreon", href: "//patreon.com/vocadb" },
   { name: "GitHub", href: "//github.com/VocaDB/Wiki" },
 ];
 
 export const posts = await getDocPaths();
 
-export const getParent = (p: { params?: { slug: string; }; props: any; }) =>
+export const getParent = (p: { params?: { slug: string }; props: any }) =>
   p.props.entry.data.parent;
 
 export const groupedNavbarParents = groupBy(
   posts.filter((p) => getParent(p) !== undefined),
-  (post) => getParent(post)!
+  (post) => getParent(post)!,
 );

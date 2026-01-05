@@ -4,7 +4,10 @@ import animate from "tailwindcss-animate";
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}", "./astro.config.mjs"],
+  content: [
+    "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
+    "./astro.config.mjs",
+  ],
   darkMode: "selector",
   theme: {
     container: {
@@ -70,7 +73,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       fontWeight: {
-        unset: 'unset'
+        unset: "unset",
       },
     },
   },

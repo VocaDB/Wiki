@@ -6,26 +6,28 @@ tags: ["wikipage", "documentation", "user", "vocadb"]
 ---
 
 ## Domains
-* Main domain: https://vocadb.net (www.vocadb.net is an alias)
-* Static files: 
-  * https://static.vocadb.net (primary)
-  * https://vocadb.t3.storage.dev ([Tigris](https://www.tigrisdata.com/) storage bucket)
-* Test instance (future branch): https://beta.vocadb.net
+
+- Main domain: https://vocadb.net (www.vocadb.net is an alias)
+- Static files:
+  - https://static.vocadb.net (primary)
+  - https://vocadb.t3.storage.dev ([Tigris](https://www.tigrisdata.com/) storage bucket)
+- Test instance (future branch): https://beta.vocadb.net
 
 ### SSL domain
 
-**2024-01-27 - Possibly outdated information:**
+SSL is used to secure the connection between the user, VocaDB, and Cloudflare (as a middleman), so that no one else can see the sent or received data. This is useful when authenticating (logging in or registering), though it covers everything on VocaDB.
 
-The SSL site is mostly used for logging in. The site is functional, but most of the embeds there don't work, because embedding HTTP content on a HTTPS domain is not allowed by major browsers. AFAIK NicoNicoDouga has no SSL support for embeds, so making VocaDB fully HTTPS is not possible at the moment.
-
-SSL certificate is PositiveSSL Multi-Domain certificate bought through Namecheap.
+SSL certificates are provided for free by Cloudflare using [the Universal SSL service](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/).
 
 ### Static files
+
 Static files such as images are served from a separate domain to improve cacheability.
 
 ## Login process
+
 There are multiple paths for logging in:
-* Logging in from an arbitrary page on the main site, while the credentials are posted to the SSL site. After logging in the user is redirected back to the main site to the page where they were when logging in.
-* Alternatively, the user may log in from the main site, but choose not to use the SSL domain while logging in. This is mostly for problem cases where the SSL domain is somehow unusable.
-* Logging in from an artibrary page on the SSL site. After logging in, the user is returned to the SSL site, instead of the main site.
-* Logging in with Twitter credentials using OAuth. **(removed)**
+
+- Logging in from an arbitrary page on the main site, while the credentials are posted to the SSL site. After logging in the user is redirected back to the main site to the page where they were when logging in.
+- Alternatively, the user may log in from the main site, but choose not to use the SSL domain while logging in. This is mostly for problem cases where the SSL domain is somehow unusable.
+- Logging in from an artibrary page on the SSL site. After logging in, the user is returned to the SSL site, instead of the main site.
+- Logging in with Twitter credentials using OAuth. **(removed)**

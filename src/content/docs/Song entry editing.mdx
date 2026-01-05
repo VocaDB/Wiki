@@ -7,7 +7,7 @@ tags: ["wikipage", "editing", "songs", "documentation", "vocadb"]
 
 import Navigation from "@/components/markdown/EntryGuidelinesNav.astro";
 import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
-import RuleEmbedGroup from "@/components/markdown/RuleEmbedGroup.astro";
+import { BoxGroup } from "@/components/Box.tsx";
 
 <Navigation />
 
@@ -17,10 +17,10 @@ The edit page also includes buttons for [deleting](/docs/content-removal-guideli
 
 The edit page is split into 4 different tabs:
 
-1) [Basic info](/docs/song-entry-editing#tab-1-basic-info)
-2) [Artists](/docs/song-entry-editing#tab-2-artists)
-3) [Media](/docs/song-entry-editing#tab-3-media)
-4) [Lyrics](/docs/song-entry-editing#tab-4-lyrics)
+1. [Basic info](/docs/song-entry-editing#tab-1-basic-info)
+2. [Artists](/docs/song-entry-editing#tab-2-artists)
+3. [Media](/docs/song-entry-editing#tab-3-media)
+4. [Lyrics](/docs/song-entry-editing#tab-4-lyrics)
 
 ## Tab 1: Basic info
 
@@ -32,11 +32,11 @@ General instructions for entry names (= titles) and aliases are documented [here
 
 Name rules that are specific to song entries:
 
-<RuleEmbedGroup>
+<BoxGroup>
   <RuleEmbed ruleId={101} />
   <RuleEmbed ruleId={102} />
   <RuleEmbed ruleId={29} />
-</RuleEmbedGroup>
+</BoxGroup>
 
 ### Song Description
 
@@ -44,10 +44,10 @@ The song description is for additional and useful information that doesn't fit i
 
 [GitHub-flavored Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) is supported for formatting.
 
-<RuleEmbedGroup>
+<BoxGroup>
   <RuleEmbed ruleId={23} />
   <RuleEmbed ruleId={104} />
-</RuleEmbedGroup>
+</BoxGroup>
 
 [Verified artists](/docs/artist-verification) can submit subjective comments using the [artist's personal description](/docs/song-entry-page#artists-personal-description).
 
@@ -55,127 +55,68 @@ If the original description is non-English, a separate English translation can b
 
 ### Song Type
 
-Song type (`Original song`, `Remix`, `Cover`, ...) is the main categorization of the song entry.
+The song type is the main categorization of the song entry. There are 9 available song types to choose.
 
-<RuleEmbedGroup>
-  <RuleEmbed ruleId={108} />
-  <RuleEmbed ruleId={125} />
-  <RuleEmbed ruleId={126} />
-</RuleEmbedGroup>
+1. [Original song](/rules/original-song-classification)
+2. [Remaster](/rules/remaster-classification)
+3. [Remix](/rules/remix-classification)
+4. [Cover](/rules/cover-classification)
+5. [Instrumental](/rules/instrumental-classification)
+6. [Mashup](/rules/mashup-classification)
+7. [Music PV](/rules/music-pv-classification)
+8. [Drama PV](/rules/drama-pv-classification)
+9. [Other](/rules/other-song-type-classification)
 
 Guidelines for classification:
+
 - If **vocals are different** but the instrumental is identical, it's likely a **cover**.
 - If the **song structure** or **genre** is different, it's likely a **remix**.
 - If both the instrumental and vocals are changed, we mark it as a **remix**, because remixes take priority over covers.
 
-#### Original song
-
-<RuleEmbedGroup>
-  <RuleEmbed ruleId={109} />
-</RuleEmbedGroup>
-
-#### Remaster
-
-<RuleEmbedGroup>
-  <RuleEmbed ruleId={116} />
-  <RuleEmbed ruleId={117} />
-</RuleEmbedGroup>
-
-#### Remix
-
-<RuleEmbedGroup>
-  <RuleEmbed ruleId={112} />
-  <RuleEmbed ruleId={177} />
-
-  <RuleEmbed ruleId={102} />
-  <RuleEmbed ruleId={114} />
-  <RuleEmbed ruleId={113} />
-</RuleEmbedGroup>
-
-#### Cover
-
-<RuleEmbedGroup>
-  <RuleEmbed ruleId={115} />
-  <RuleEmbed ruleId={127} />
-</RuleEmbedGroup>
-
-#### Instrumental
-
-<RuleEmbedGroup>
-  <RuleEmbed ruleId={157} />
-  <RuleEmbed ruleId={111} />
-  <RuleEmbed ruleId={110} />
-  <RuleEmbed ruleId={176} />
-</RuleEmbedGroup>
-
-#### Mashup
-
-<RuleEmbedGroup>
-  <RuleEmbed ruleId={121} />
-  <RuleEmbed ruleId={122} />
-  <RuleEmbed ruleId={123} />
-</RuleEmbedGroup>
-
-#### Music PV
-
-Music PV = "Music video" (PV = Promotional Video)
-
-<RuleEmbedGroup>
-  <RuleEmbed ruleId={118} />
-  <RuleEmbed ruleId={119} />
-  <RuleEmbed ruleId={120} />
-  <RuleEmbed ruleId={178} />
-</RuleEmbedGroup>
-
-Remember to also credit the vocalists for Music PVs. Silent characters (that have no vocals in the PV) **should not be credited as artists**. Model tags (such as [CHAN x CO Miku](https://vocadb.net/T/1641/chan-x-co-miku)) can be used if applicable, regardless whether the character has vocals or not.
-
-<RuleEmbed ruleId={142} />
-
-#### Drama PV
-
-<RuleEmbed ruleId={159} />
-
-#### Other
-
-<RuleEmbed ruleId={124} />
+<BoxGroup>
+  <RuleEmbed ruleId={108} />
+  <RuleEmbed ruleId={125} />
+  <RuleEmbed ruleId={126} />
+</BoxGroup>
 
 ### Original version
 
 If the song type is not `Original song`, a separate field will pop up for specifying the `Original version`.
 
-<RuleEmbedGroup>
+<BoxGroup>
   <RuleEmbed ruleId={105} />
   <RuleEmbed ruleId={106} />
   <RuleEmbed ruleId={130} />
-</RuleEmbedGroup>
+</BoxGroup>
 
 Original song can be searched/selected by:
-- A) Song title
-- B) VocaDB URL
-- C) "id:\{song id\}".
+
+1. Song title
+2. VocaDB URL
+3. `id:\{song id\}`
 
 The "Find originals" button attempts to find original songs based on the song title. The exact logic is available on [GitHub](https://github.com/VocaDB/vocadb/blob/19012a3971bb96d103901bc7ffc4656b0ea10763/VocaDbWeb/Scripts/Stores/Song/SongEditStore.ts#L386).
 
-<RuleEmbedGroup>
+<BoxGroup>
   <RuleEmbed ruleId={128} />
   <RuleEmbed ruleId={156} />
   <RuleEmbed ruleId={129} />
-</RuleEmbedGroup>
+</BoxGroup>
 
 Sometimes the entry tree structure grows unintuitive due to conflicting details. Correct entry tree structure can be formed with the following process:
 
 Example: 10 related entries with various different song types by different artists.
 
-- 1) Order the entries by **publish date**
-- 2) Pick the first entry as the original
-- 3) Pick the next entry and connect it to the current entry tree (by appending it)
-- 4) Repeat steps 2-3 until all of the entries have been added to the entry tree
+1. Order the entries by **publish date**
+2. Pick the first entry as the original
+3. Pick the next entry and connect it to the current entry tree (by appending it)
+4. Repeat steps 2-3 until all of the entries have been added to the entry tree
 
-This means that the `original version` of any entry should not be modified later, assuming no mistakes or missing information. 
+This means that the `original version` of any entry should not be modified later, assuming no mistakes or missing information.
 
 ### Duration
 
-Duration of the song. 
+Duration of the song.
 
 <RuleEmbed ruleId={131} />
 
@@ -197,19 +138,19 @@ Release event(s) of the song, if available. For common [holidays](https://vocadb
 
 ### External Links
 
-Links to related content, for example, off-vocal/karaoke versions on Piapro. 
+Links to related content, for example, off-vocal/karaoke versions on Piapro.
 
 Links to lyrics should be added to the [Lyrics tab](/docs/song-entry-editing#tab-4-lyrics) instead.
 
 Duplicating album and artist links in song entries is **redundant**.
 
-<RuleEmbedGroup>
+<BoxGroup>
   <RuleEmbed ruleId={20} />
   <RuleEmbed ruleId={17} />
   <RuleEmbed ruleId={16} />
   <RuleEmbed ruleId={19} />
   <RuleEmbed ruleId={18} />
-</RuleEmbedGroup>
+</BoxGroup>
 
 - More on [External links](/docs/external-links)
 
@@ -217,7 +158,7 @@ Duplicating album and artist links in song entries is **redundant**.
 
 <RuleEmbed ruleId={107} />
 
-The language of the song vocals. 
+The language of the song vocals.
 
 Changing the language of the original lyrics updates this field as well.
 
@@ -236,14 +177,14 @@ In this tab, you can add or remove artist entries that participated in the song.
 
 Artists can also be added as **custom artists**, which adds an artist credit to the song entry as text without creating an artist entry.
 
-<RuleEmbedGroup>
-  <RuleEmbed ruleId={66} fields={["entry_status"]}/>
-  <RuleEmbed ruleId={67} fields={["entry_status"]}/>
+<BoxGroup>
+  <RuleEmbed ruleId={66} fields={["entry_status"]} />
+  <RuleEmbed ruleId={67} fields={["entry_status"]} />
   <RuleEmbed ruleId={132} />
   <RuleEmbed ruleId={155} />
   <RuleEmbed ruleId={141} />
   <RuleEmbed ruleId={160} />
-</RuleEmbedGroup>
+</BoxGroup>
 
 - Rules for [choosing the correct voicebank credit](/docs/choosing-the-correct-voicebank-credit)
 
@@ -257,11 +198,11 @@ Artist roles describe how different artists participated in creating the song.
 
 The artist's type (from their entry) determines their default roles. For example, artists of the "lyricist" type are marked as the lyricist role by default. When the artist role differs from the artist type, the correct artist role must be specified.
 
-<RuleEmbedGroup>
+<BoxGroup>
   <RuleEmbed ruleId={81} />
   <RuleEmbed ruleId={93} />
   <RuleEmbed ruleId={134} />
-</RuleEmbedGroup>
+</BoxGroup>
 
 #### Animator
 
@@ -313,12 +254,12 @@ Japanese: 作詞
 
 #### Mastering
 
-- Responsible for [mastering](https://en.wikipedia.org/wiki/Mastering_(audio)).
+- Responsible for [mastering](<https://en.wikipedia.org/wiki/Mastering_(audio)>).
 - Corresponding artist type: [Other individual](/docs/artist-entry-editing#Other-individual).
 
 #### Mixer
 
-- Responsible for [mixing](https://en.wikipedia.org/wiki/Audio_mixing_(recorded_music)).
+- Responsible for [mixing](<https://en.wikipedia.org/wiki/Audio_mixing_(recorded_music)>).
 - Corresponding artist type: [Other individual](https://vocadb.net/T/10141/other-individual).
 
 #### Other
@@ -353,37 +294,38 @@ Japanese: 調声
 
 ## Tab 3: Media
 
-Songs may contain any number of embedded media files (Promotional Videos = PVs) on Niconico (NND), YouTube, Bilibili, Vimeo, or audio streams on Piapro or SoundCloud. The supported media services are fully listed [here](/docs/supported-streaming-services).
+Songs may contain any number of links/embeds to a media/PV (promotional video) to any of [the supported media/streaming services](/docs/supported-streaming-services).
 
-All embeds should have the same version of the song (except for unrelated [intros](https://vocadb.net/T/6334/unrelated-intro) and [outros](https://vocadb.net/T/6494/unrelated-outro)). 
+All media/PVs should have [the same version of the audio/song](/rules/same-audio) (except for unrelated [intros](https://vocadb.net/T/6334/unrelated-intro) and [outros](https://vocadb.net/T/6494/unrelated-outro)).
 
-<RuleEmbedGroup>
+<BoxGroup>
   <RuleEmbed ruleId={131} />
   <RuleEmbed ruleId={117} />
   <RuleEmbed ruleId={119} />
   <RuleEmbed ruleId={135} />
-</RuleEmbedGroup>
+</BoxGroup>
 
-### PV types
+### Media/PV types
 
 <RuleEmbed ruleId={133} />
 
 #### Original
 
-<RuleEmbedGroup>
+<BoxGroup>
   <RuleEmbed ruleId={161} />
   <RuleEmbed ruleId={162} />
-  <RuleEmbed ruleId={136} />
-</RuleEmbedGroup>
+</BoxGroup>
 
-If a Nicolog archive of a deleted PV exists, relevant data (duration, publish date, tags, vocalists, author) will be automatically added, as with normal PVs. This can be accomplished by replacing the "nicovideo" in the URL with "nicolog". 
+Usually, the same media/PV is uploaded in multiple services (Niconico, YouTube, etc.). You should check other accounts to see if this is the case.
+
+If a Nicolog archive of a deleted PV exists, relevant data (duration, publish date, tags, vocalists, author) will be automatically added, as with normal PVs. This can be accomplished by replacing the "nicovideo" in the URL with "nicolog".
 
 #### Reprint
 
-<RuleEmbedGroup>
+<BoxGroup>
   <RuleEmbed ruleId={163} />
   <RuleEmbed ruleId={94} />
-</RuleEmbedGroup>
+</BoxGroup>
 
 #### Other
 
@@ -397,7 +339,7 @@ Verified artists can use VocaDB to host their songs. Currently, only files in th
 
 Lyrics can be added, along with romanizations and translations. Multiple translations are supported.
 
-<RuleEmbedGroup>
+<BoxGroup>
   <RuleEmbed ruleId={138} />
   <RuleEmbed ruleId={139} />
   <RuleEmbed ruleId={140} />
@@ -405,13 +347,13 @@ Lyrics can be added, along with romanizations and translations. Multiple transla
   <RuleEmbed ruleId={30} />
   
   <RuleEmbed ruleId={137} />
-</RuleEmbedGroup>
+</BoxGroup>
 
 - Changing the language(s) of the original lyrics also changes the entry language.
 - Sources for lyrics are autofilled based on the source URL.
 - Languages of lyrics are [automatically detected](https://github.com/VocaDB/vocadb/pull/1480).
 
-If you would like to make romanizations of lyrics for VocaDB, please read the [Romanization guidelines](/docs/romanization-guidelines#what-if-i-want-to-romanize-song-lyrics-for-vocadb). 
+If you would like to make romanizations of lyrics for VocaDB, please read the [Romanization guidelines](/docs/romanization-guidelines#what-if-i-want-to-romanize-song-lyrics-for-vocadb).
 
 ## Update Notes
 

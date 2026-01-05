@@ -1,12 +1,12 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import DocPageLayout from "../../layouts/DocPageLayout.astro";
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("docs");
+  const blogEntries: CollectionEntry<"docs">[] = await getCollection("docs");
   return blogEntries.map((entry) => ({
     params: {
-      slug: entry.slug
+      slug: entry.slug,
     },
     props: { entry },
   }));
@@ -16,6 +16,11 @@ const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
 ---
 
-<DocPageLayout frontmatter={entry.data} headings={headings}>
+<DocPageLayout
+  frontmatter={entry.data}
+  headings={headings}
+  filePath={"src/content/docs/" + entry.id}
+  pagePath={"docs/" + entry.slug}
+>
   <Content />
 </DocPageLayout>

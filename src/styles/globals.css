@@ -56,7 +56,7 @@
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
   }
-  
+
   * {
     @apply border-border;
   }
@@ -67,13 +67,8 @@
 }
 
 @layer components {
-
   .prose code::before,
   .prose code::after {
     content: "";
   }
-}
-
-.rule-embed {
-  @apply rounded border shadow my-5 group-[.reg]:my-0 group-[.reg]:shadow-none group-[.reg]:rounded-none group-[.reg]:border-0 group-[.reg]:border-b group-[.reg]:last:border-0;
 }

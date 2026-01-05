@@ -17,5 +17,98 @@ rule_context: Names
 mikumod_support: "True"
 automatically_fixed: "Partially"
 complete_validation: "True"
+excerpt: Missing names should not to be copied from the other name fields.
 ---
-Missing names should not to be copied from the other two fields.
+
+import { Alert } from "@/components/ui/alert";
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import { BoxGroup } from "@/components/Box";
+
+Do not duplicate names by copying one of the other existing names (to fill a missing name field). You can keep the name field empty in that case.
+
+Empty name fields will be handled accordingly by the system.
+
+## Examples
+
+For "[Machine Love](https://vocadb.net/S/600890)", an English song, filling the English name field is enough.
+
+<BoxGroup>
+  <Alert variant="incorrect">
+    <table class="table-fixed">
+      <tr>
+        <th>Non-English</th>
+        <td>Machine Love</td>
+      </tr>
+      <tr>
+        <th>Romanized</th>
+        <td>Machine Love</td>
+      </tr>
+      <tr>
+        <th>English</th>
+        <td>Machine Love</td>
+      </tr>
+    </table>
+  </Alert>
+
+  <Alert variant="correct">
+    <table class="table-fixed">
+      <tr>
+        <th>Non-English</th>
+        <td className="text-muted-foreground">[left empty]</td>
+        </tr>
+      <tr>
+        <th>Romanized</th>
+        <td className="text-muted-foreground">[left empty]</td>
+      </tr>
+      <tr>
+        <th>English</th>
+        <td>Machine Love</td>
+      </tr>
+    </table>
+  </Alert>
+</BoxGroup>
+
+For "[Melt](https://vocadb.net/S/1322)", since the romanization [is same as the English translation](/rules/loanword-romanization), you can leave the romanized name field empty (see [the "Fully loanword names" rule](/rules/fully-loanword-names)).
+
+<BoxGroup>
+  <Alert variant="incorrect">
+    <table class="table-fixed">
+      <tr>
+        <th>Non-English</th>
+        <td>メルト</td>
+      </tr>
+      <tr>
+        <th>Romanized</th>
+        <td>Melt</td>
+      </tr>
+      <tr>
+        <th>English</th>
+        <td>Melt</td>
+      </tr>
+    </table>
+  </Alert>
+
+  <Alert variant="correct">
+    <table class="table-fixed">
+      <tr>
+        <th>Non-English</th>
+        <td>メルト</td>
+        </tr>
+      <tr>
+        <th>Romanized</th>
+        <td className="text-muted-foreground">[left empty]</td>
+      </tr>
+      <tr>
+        <th>English</th>
+        <td>Melt</td>
+      </tr>
+    </table>
+  </Alert>
+</BoxGroup>
+
+## Related rules
+
+<BoxGroup>
+  <RuleEmbed ruleId={5} />
+  <RuleEmbed ruleId={45} />
+</BoxGroup>

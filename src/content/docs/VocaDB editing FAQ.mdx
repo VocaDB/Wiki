@@ -6,17 +6,21 @@ tags: ["wikipage", "editing", "guidelines", "documentation", "vocadb"]
 ---
 
 import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
-import RuleEmbedGroup from "@/components/markdown/RuleEmbedGroup.astro";
+import { BoxGroup } from "@/components/Box.tsx";
 
-This page documents the most fequently asked questions and edit mistakes regarding VocaDB entries.
+This page documents the most frequently asked questions and edit mistakes regarding VocaDB entries.
 
 ## Songs
 
 ### Are instrumental/human-sung songs allowed on VocaDB?
 
+Select songs are allowed as exceptions, as mentioned on this rule.
+
 <RuleEmbed ruleId={12} />
 
 ### Should the original artist be added to covers/remixes?
+
+No.
 
 <RuleEmbed ruleId={132} />
 
@@ -24,21 +28,25 @@ This page documents the most fequently asked questions and edit mistakes regardi
 
 <RuleEmbed ruleId={127} />
 
-### I think that a song is using an append, or another version than indicated, but can't confirm. Which voicebank should I use?
+### I think that a song is using an append, or another version than shown, but can't confirm. Which voicebank should I use?
 
-See the page for [Choosing the correct voicebank credit](https://wiki.vocadb.net/docs/choosing-the-correct-voicebank-credit)
+See the page for [Choosing the correct voicebank credit](https://wiki.vocadb.net/docs/choosing-the-correct-voicebank-credit).
 
 ### Are work in progress (WIP) versions of songs allowed on VocaDB?
+
+No.
 
 <RuleEmbed ruleId={10} />
 
 ### What is the publish date of a song?
 
+The date when the song was first made public.
+
 <RuleEmbed ruleId={100} />
 
 ## Other common edit mistakes
 
-<RuleEmbedGroup>
+<BoxGroup>
   <RuleEmbed ruleId={101} />
   <RuleEmbed ruleId={30} />
   <RuleEmbed ruleId={36} />
@@ -47,17 +55,19 @@ See the page for [Choosing the correct voicebank credit](https://wiki.vocadb.net
   <RuleEmbed ruleId={17} />
   <RuleEmbed ruleId={104} />
   <RuleEmbed ruleId={69} />
-</RuleEmbedGroup>
+</BoxGroup>
 
 ## Albums
 
 ### If an album was released as multiple editions (such as regular/limited), is there need to create separate entries?
 
+Only if it has different tracklist, additional discs, different cover art, or a catalog number.
+
 <RuleEmbed ruleId={54} />
 
 ### Should I create an album entry for a single song?
 
-If there is clear indication that the song was released as a single, then yes, you can use the ["Single" album type](/docs/docs/album-entry-editing#single).
+If it is clear that the song was released as a single (see [this related rule](https://wiki.vocadb.net/rules/no-releaseless-albums)), then yes, you can use the ["Single" album type](/docs/album-entry-editing#single).
 
 ## Voicebanks
 

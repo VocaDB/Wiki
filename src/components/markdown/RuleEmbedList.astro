@@ -1,13 +1,13 @@
 ---
 import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
-import { EntryType, type RuleFields } from "@/content/config";
-import { getCollection } from "astro:content";
-import RuleEmbedGroup from "@/components/markdown/RuleEmbedGroup.astro";
+import { type EntryType, type RuleFields } from "@/content/config";
+import { getCollection, type CollectionEntry } from "astro:content";
+import { BoxGroup } from "@/components/Box.tsx";
 
-let rules = await getCollection("rules");
+let rules: CollectionEntry<"rules">[] = await getCollection("rules");
 
 interface Props {
-  entryType: (typeof EntryType)[number] | "All";
+  entryType: EntryType;
   ruleContext?: string;
   fields?: RuleFields[] | "All";
   excludedIds: number[];
@@ -16,10 +16,10 @@ interface Props {
 const { entryType, ruleContext, fields, excludedIds } = Astro.props;
 
 if (excludedIds) {
-  rules = rules.filter(rule => !excludedIds.includes(rule.data.id));
+  rules = rules.filter((rule) => !excludedIds.includes(rule.data.id));
 }
 if (entryType !== "All") {
-  rules = rules.filter(rule => {
+  rules = rules.filter((rule) => {
     const ruleEntryType = rule.data.entry_type;
 
     if (ruleEntryType === "All") {
@@ -35,19 +35,12 @@ if (entryType !== "All") {
 }
 
 if (ruleContext) {
-  rules = rules.filter(rule => rule.data.rule_context === ruleContext);
+  rules = rules.filter((rule) => rule.data.rule_context === ruleContext);
 }
 
 rules.sort((a, b) => a.data.id - b.data.id);
 ---
 
-<RuleEmbedGroup>
-{
-  rules.map((rule) => (
-    <RuleEmbed
-      rule={rule}
-      fields={fields}
-    />
-  ))
-}
-</RuleEmbedGroup>
+<BoxGroup>
+  {rules.map((rule) => <RuleEmbed rule={rule} fields={fields} />)}
+</BoxGroup>

@@ -16,8 +16,6 @@ tags:
 
 We need help with adding and fixing the translations on [VocaDB](https://vocadb.net/).
 
-## Overview
-
 Main parts of the [VocaDB](https://vocadb.net/) user interface are translatable. This guide is for you If you wish to help translating the interface into your language.
 
 Available language options are:
@@ -35,14 +33,14 @@ Available language options are:
 There are currently two methods to help with the translations:
 Translating the text via "Crowdin" or directly through editing the resource files with GitHub. For the second method you need some technical expertise.
 
-### 1. Translating through Crowdin
+## Translating through Crowdin
 
 Crowdin is a localization management platform for companies and teams.
 
 You can join VocaDB's translation project using [this invite link](https://crowdin.com/project/vocadb/invite?h=8d85a8e422a7f8a6ea089630935c7fd61702299).
 There, you can easily search for missing translations or fix existing ones.
 
-### 2. Editing the resource files
+## Editing the resource files
 
 [VocaDB](https://vocadb.net/) user interface is translated with [.resx resource files](<https://msdn.microsoft.com/en-us/library/ekyft91f(v=vs.100).aspx>). Most of the resources are under these folders:
 [Web\App_GlobalResources](https://github.com/VocaDB/vocadb/tree/main/VocaDbWeb.Resources/App_GlobalResources),
@@ -55,7 +53,7 @@ To edit these files you'll need a resource file editor such as [ResX Resource Ma
 
 Editing the files can be done in one of two possible ways.
 
-#### Forking the repository on GitHub (preferred)
+### Forking the repository on GitHub (preferred)
 
 - [Fork](https://help.github.com/articles/fork-a-repo/) the [repository](https://github.com/VocaDB/vocadb) on [GitHub](https://github.com/VocaDB/vocadb).
 - [Clone](https://help.github.com/articles/cloning-a-repository/) the [repository](https://github.com/VocaDB/vocadb) to your PC.
@@ -63,7 +61,7 @@ Editing the files can be done in one of two possible ways.
   - For example, "AlbumCollectionStatusNames.resx" for German would be named "AlbumCollectionStatusNames.de.resx".
 - Commit your changes and send a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) to the original [repository](https://github.com/VocaDB/vocadb).
 
-#### Downloading the repository (if you're not comfortable with version control)
+### Downloading the repository (if you're not comfortable with version control)
 
 - Download the whole [repository](https://github.com/VocaDB/vocadb/) as a .zip file from [GitHub](https://github.com/VocaDB/vocadb).
 - Copy and rename the resource files as mentioned above, edit the copied files.

@@ -3,15 +3,12 @@ import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 import { FormattedField } from "@/components/markdown/RuleFormattedField";
 import { getCollection, type CollectionEntry } from "astro:content";
 import DocPageLayout from "../../layouts/DocPageLayout.astro";
-import { unified } from "unified";
-import remarkParse from "remark-parse";
-import stripMarkdown from "strip-markdown";
-import remarkStringify from "remark-stringify";
 import {
   ruleDataKeyDetailsDictionary,
   ruleDataKeyDictionary,
   type RuleFields,
 } from "@/content/config";
+import { getAutoDescription } from "@/utils/getAutoDescription.ts";
 
 export async function getStaticPaths() {
   const ruleEntries: CollectionEntry<"rules">[] = await getCollection("rules");
@@ -34,28 +31,18 @@ const { headings } = await entry.render();
 
 headings.push({ depth: 2, slug: "metadata", text: "Metadata" });
 
-async function stripText(markdownInput: string) {
-  const file = await unified()
-    .use(remarkParse)
-    .use(stripMarkdown)
-    .use(remarkStringify)
-    .process(markdownInput);
-
-  return String(file);
-}
-
 let content;
 if (entry.data.excerpt) {
   content = await entry.render();
 }
-const description = await stripText(entry.data.excerpt || entry.body);
+const description = await getAutoDescription(entry.data.excerpt || entry.body);
 ---
 
 <DocPageLayout
   frontmatter={{
     ...entry.data,
     title: `Rule: ${entry.data.name}`,
-    description: description,
+    description,
   }}
   headings={headings}
   filePath={"src/content/rules/" + entry.id}

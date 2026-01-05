@@ -7,28 +7,69 @@ tags: ["wikipage", "documentation", "vocadb"]
 
 import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 
-🚧
+This page documents the most frequently asked questions about using the VocaDB website.
 
-This page documents the most fequently asked questions regarding using the VocaDB website.
+Do you have any other questions? Ask it away on [the Discord server](https://discord.com/invite/3bwXQNXKCz) or [the discussion forum](https://vocadb.net/discussion).
 
-## Trying to login takes me to the home page without actually logging me in / homepage doesn't load
+## VocaDB won't load!
 
-#### If this solution does not work for you, please join the [Discord](https://discord.com/invite/3bwXQNXKCz) and ask for help.
+Also applies to these questions:
 
-### Chrome:
+- I'm stuck in the Miku background and nothing appeared!
+- I got hit with the Cloudflare "Internal server error"!
+
+VocaDB can be slow sometimes due to high traffic. Ensure your internet connection is good and check back later.
+
+Maintenance may also happen from time to time, albeit rarely. Check [the status page](https://vocadb.openstatus.dev/), [the Discord server](https://discord.com/invite/3bwXQNXKCz), or the [Twitter](https://x.com/VocaDB) or [Bluesky](https://bsky.app/profile/vocadb.net) social media accounts for the status of the site.
+
+You can also try clearing your cookies. Read the next FAQ entry for more information.
+
+## Trying to login takes me to the home page without actually logging me in!
+
+Clear your cookies (and site data) and try again.
+
+If this solution does not work for you, please join [the Discord server](https://discord.com/invite/3bwXQNXKCz) and ask for help.
+
+### Clearing cookies on Chrome
+
+For more information, see [this Google Chrome help page](https://support.google.com/chrome/answer/95647)
 
 1. On the VocaDB homepage, click the settings icon in the address bar.
-2. Click "Cookies and site data"
-3. Click "Manage on-device site data"
-4. Click the red trash can icon
-5. Refresh the page
-   ![Chrome guide](public/images/chromecookieclear.webp)
+2. Click "Cookies and site data".
+3. Click "Manage on-device site data".
+4. Click the red trash can icon.
+5. Refresh the page.
 
-### Firefox:
+![Chrome guide](public/images/chromecookieclear.webp)
+
+### Clearing cookies on Firefox
+
+For more information, see [this Mozila Firefox help article](https://support.mozilla.org/en-US/kb/clear-cookies-and-site-data-firefox).
 
 1. On the VocaDB homepage, click the padlock icon in the address bar.
-2. Click "Clear cookies and site data"
+2. Click "Clear cookies and site data".
 3. Press "Remove" when prompted.
 4. Refresh the page.
 
 ![Firefox guide](public/images/firefoxcookieclear.webp)
+
+## Why is this song entry in VocaDB even though it has no Vocaloid?
+
+Songs covered by 5 song entries with vocal synthesis are allowed in VocaDB. Songs included in an album with a vocal synthesis are also allowed.
+
+<RuleEmbed ruleId={12} />
+
+## I uploaded a new image, and it doesn't change!
+
+This happens because of the caching happening on Cloudflare and your browser. Wait around 24 hours for the cache to expire and update the new image.
+
+For more information, see [this GitHub issue](https://github.com/VocaDB/vocadb/issues/1994).
+
+## I don't want my songs on VocaDB. How can I remove them?
+
+Also applies to these questions:
+
+- I don't want this information that is related to my work. How can I remove them?
+- This information about my song is not accurate!
+
+See the [Content removal guidelines](/docs/content-removal-guidelines) for more information.

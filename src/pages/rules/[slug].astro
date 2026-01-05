@@ -18,23 +18,12 @@ export async function getStaticPaths() {
   const paths = [];
 
   for (const entry of ruleEntries) {
-    const pathConfig = {
+    paths.push({
       params: {
         slug: entry.slug,
       },
       props: { entry },
-    };
-
-    paths.push(pathConfig);
-
-    if (typeof entry.data.id === "number") {
-      paths.push({
-        params: {
-          slug: entry.data.id.toString(),
-        },
-        props: { entry },
-      });
-    }
+    });
   }
 
   return paths;
@@ -44,8 +33,6 @@ const { entry } = Astro.props;
 const { headings } = await entry.render();
 
 headings.push({ depth: 2, slug: "metadata", text: "Metadata" });
-
-const isNumericRoute = !isNaN(Number(Astro.params.slug));
 
 async function stripText(markdownInput: string) {
   const file = await unified()
@@ -73,19 +60,7 @@ const description = await stripText(entry.data.excerpt || entry.body);
   headings={headings}
   filePath={"src/content/rules/" + entry.id}
   pagePath={"rules/" + entry.slug}
-  pagefindIgnore={isNumericRoute}
 >
-  <script
-    define:vars={{ slug: entry.slug, currentPath: Astro.params.slug }}
-    is:inline
-  >
-    // Redirect to canonical URL if accessed via numeric ID
-    if (currentPath !== slug && !isNaN(Number(currentPath))) {
-      const newUrl = window.location.pathname.replace(/\/[^\/]+$/, `/${slug}`);
-      window.history.replaceState({}, "", newUrl);
-    }
-  </script>
-
   <RuleEmbed rule={entry} fields={"All"} />
 
   {content && <content.Content />}

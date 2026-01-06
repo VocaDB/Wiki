@@ -4,6 +4,8 @@ import {
   Pencil1Icon,
 } from "@radix-ui/react-icons";
 
+import React from "react";
+
 interface ArticleFooterProps {
   filePath?: string;
   pagePath?: string;
@@ -40,18 +42,18 @@ export const ArticleFooter: React.FC<ArticleFooterProps> = ({
         ],
         [
           "https://github.com/VocaDB/Wiki/issues/new" +
-          (issueBody ? "?body=" + encodeURIComponent(issueBody) : ""),
+            (issueBody ? "?body=" + encodeURIComponent(issueBody) : ""),
           <>
             <ExclamationTriangleIcon className="inline align-[-0.125em]" />{" "}
             Report an issue
           </>,
         ],
       ]
-        .filter((e) => e)
+        .filter((e) => e !== undefined)
         .map((e) => (
           <li>
             <a
-              href={e[0]}
+              href={String(e[0])}
               target="_blank"
               className="hover:underline text-foreground/60 hover:text-foreground/80"
             >

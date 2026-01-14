@@ -75,19 +75,13 @@ export default defineConfig({
       "/rules/no-out-of-scope-song-entries",
     "/rules/song-content-policy-no-song-entries-by-forbidden-artists":
       "/rules/no-song-entries-by-forbidden-artists",
-    "/rules/song-content-policy-song-source-required":
-      "/rules/song-source-required",
 
     "/docs/rule-reference": "/rules",
     "/docs/pinned/rule-reference": "/rules",
 
     "/docs/documentation/vocadb-changelog": "/docs/website-changelog",
-    "/docs/documentation/website-changelog": "/docs/website-changelog",
 
     "/docs/documentation/vocadb-help-wanted": "/docs/vocadb-how-to-help",
-    "/docs/pinned/vocadb-how-to-help": "/docs/vocadb-how-to-help",
-
-    "/docs/guidelines/merging-entries": "/docs/merging-entries",
 
     "/docs/development/development-environment-linux":
       "/docs/development-environment-linux",
@@ -225,8 +219,6 @@ export default defineConfig({
 
     "/wiki/33": "/docs/search-terms-cheat-sheet",
     "/wiki/33/search-terms-cheat-sheet": "/docs/search-terms-cheat-sheet",
-    "/docs/documentation/search-terms-cheat-sheet":
-      "/docs/search-terms-cheat-sheet",
 
     "/wiki/34": "/docs/vocadb-how-to-help",
     "/wiki/34/vocadb-how-to-help": "/docs/vocadb-how-to-help",

@@ -4,6 +4,7 @@ import tsParser from "@typescript-eslint/parser";
 import astro from "eslint-plugin-astro";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import globals from "globals";
+import eslintConfigPrettier from "eslint-config-prettier/flat";
 
 export default [
   js.configs.recommended,
@@ -55,4 +56,6 @@ export default [
   {
     ignores: ["dist/**", "**/sorttable.js", ".astro/**"],
   },
+
+  eslintConfigPrettier,
 ];

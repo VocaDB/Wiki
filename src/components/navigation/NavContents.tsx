@@ -51,9 +51,10 @@ export function NavContents({
                   <div className={mobile ? "" : "text-sm"}>
                     {navbarItem.subcategories.map((c) => (
                       <div key={c}>
-                        <div
+                        <button
+                          type="button"
                           className={cn(
-                            "collapsibleNav group flex flex-row items-center gap-1 peer text-muted-foreground hover:underline cursor-pointer py-1",
+                            "collapsibleNav group flex flex-row w-full items-center gap-1 peer text-muted-foreground hover:underline cursor-pointer py-1",
                             buttonClass,
                           )}
                           data-state={c === expanded ? "open" : "closed"}
@@ -63,10 +64,10 @@ export function NavContents({
                               : setExpanded(c)
                           }
                         >
-                          <p className="flex-1">{c}</p>
+                          <span className="flex-1 text-left">{c}</span>
                           <ChevronDownIcon className="group-data-[state=closed]:block hidden" />
                           <ChevronUpIcon className="group-data-[state=closed]:hidden" />
-                        </div>
+                        </button>
                         <div
                           className={cn(
                             "peer-data-[state=open]:grid hidden text-muted-foreground ml-4",

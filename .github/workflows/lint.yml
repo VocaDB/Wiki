@@ -1,10 +1,11 @@
-name: Check code formatting
+name: Check code quality
 on:
   push:
   pull_request:
 
 jobs:
-  format:
+  lint:
+    name: Run linters
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -12,7 +13,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: 24
+          node-version: 18
       - name: Get npm cache directory
         id: npm-cache-dir
         shell: bash
@@ -26,5 +27,9 @@ jobs:
             ${{ runner.os }}-node-
       - name: Install dependencies
         run: npm ci
-      - name: Check formatting
+      - name: Run ESLint
+        if: ${{ !cancelled() }}
+        run: npx eslint .
+      - name: Run Prettier
+        if: ${{ !cancelled() }}
         run: npx prettier --check .

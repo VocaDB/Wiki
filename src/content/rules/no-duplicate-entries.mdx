@@ -15,8 +15,21 @@ rationale:
 status: Active
 rule_context:
 mikumod_support: "Planned"
+excerpt: Do not create duplicate entries, unless for [separating artist personas](/rules/separate-artist-personas).
 ---
 
-Do not create duplicate entries.
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import { BoxGroup } from "@/components/Box.tsx";
 
-"Duplicate" artist entries are allowed for separate artist personas.
+Do not create duplicate entries of any type. Make sure to check multiple variations of names/aliases of the entry before deciding to create a new entry.
+
+If you created a duplicate, you can either [report the duplicate entries to be merged](/docs/entry-reports#duplicate-entry) or, as [a trusted user](/docs/trusted-users), [merge the entries](/docs/merging-entries) by yourself.
+
+One exception of this rule is when creating [separate artist personas](/rules/separate-artist-personas).
+
+## Related rules
+
+<BoxGroup>
+  <RuleEmbed ruleId={79} />
+  <RuleEmbed ruleId={5} />
+</BoxGroup>

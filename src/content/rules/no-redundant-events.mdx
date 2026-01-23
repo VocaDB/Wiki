@@ -18,6 +18,13 @@ rationale:
 status: Active
 rule_context:
 mikumod_support: "Planned"
+excerpt: If the event is added on the album, do not add the same event on the album songs/tracks.
 ---
 
-Duplicating the album event(s) on its song entries is redundant, unless the song has a separate PV release.
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+
+Do not duplicate the album event(s) on its song entries as it is redundant, unless the song has a separate PV release.
+
+## Related rules
+
+<RuleEmbed ruleId={5} />

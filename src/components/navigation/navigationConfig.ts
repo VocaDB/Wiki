@@ -1,5 +1,5 @@
 import { groupBy } from "@/lib/utils";
-import { getDocPaths } from "@/utils/get_paths";
+import { getCollection } from "astro:content";
 
 export const navbarParents = [
   {
@@ -29,12 +29,22 @@ export const headerNavItems = [
   { name: "GitHub", href: "//github.com/VocaDB/Wiki" },
 ];
 
-export const posts = await getDocPaths();
+const docsCollection = await getCollection("docs");
 
-export const getParent = (p: (typeof posts)[number]) =>
-  p.props.entry.parent;
+export const pages = docsCollection.map((entry) => ({
+  params: { slug: entry.slug },
+  props: {
+    entry: {
+      slug: entry.slug,
+      title: entry.data.title,
+      parent: entry.data.parent,
+    },
+  },
+}));
+
+export const getParent = (p: (typeof pages)[number]) => p.props.entry.parent;
 
 export const groupedNavbarParents = groupBy(
-  posts.filter((p) => getParent(p) !== undefined),
-  (post) => getParent(post)!,
+  pages.filter((p) => getParent(p) !== undefined),
+  (pages) => getParent(pages)!,
 );

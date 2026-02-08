@@ -38,7 +38,7 @@ export function NavContents({
             navbarItem: i,
             title:
               posts.find((p) => p.params.slug === i.title.toLowerCase())?.props
-                .entry.data.title ?? i.title,
+                .entry.title ?? i.title,
           };
         })
         .map(({ navbarItem, title }) => (
@@ -79,7 +79,7 @@ export function NavContents({
                               key={post.params.slug}
                               href={["/docs", post.params.slug].join("/")}
                             >
-                              {post.props.entry.data.title}
+                              {post.props.entry.title}
                             </a>
                           ))}
                         </div>
@@ -98,7 +98,7 @@ export function NavContents({
                     buttonClass,
                   )}
                 >
-                  {post.props.entry.data.title}
+                  {post.props.entry.title}
                 </a>
               ))}
             </div>

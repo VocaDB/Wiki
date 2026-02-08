@@ -19,7 +19,7 @@ export function NavContents({
   mobile = false,
   groupedNavbarParents,
   navbarParents,
-  pages: pages,
+  pages,
 }: NavContentsProps) {
   const [expanded, setExpanded] = useState<string | undefined>();
 
@@ -37,8 +37,7 @@ export function NavContents({
           return {
             navbarItem: i,
             title:
-              pages.find((p) => p.params.slug === i.title.toLowerCase())?.props
-                .entry.title ?? i.title,
+              pages.find(page => page.slug === i.title.toLowerCase())?.title ?? i.title,
           };
         })
         .map(({ navbarItem, title }) => (
@@ -76,10 +75,10 @@ export function NavContents({
                           {groupedNavbarParents[c]?.map((post) => (
                             <a
                               className={cn(linkClass, buttonClass)}
-                              key={post.params.slug}
-                              href={["/docs", post.params.slug].join("/")}
+                              key={post.slug}
+                              href={["/docs", post.slug].join("/")}
                             >
-                              {post.props.entry.title}
+                              {post.title}
                             </a>
                           ))}
                         </div>
@@ -88,17 +87,17 @@ export function NavContents({
                   </div>
                 )}
 
-              {groupedNavbarParents[navbarItem.title]?.map((post) => (
+              {groupedNavbarParents[navbarItem.title]?.map((page) => (
                 <a
-                  href={["/docs", post.params.slug].join("/")}
-                  key={post.params.slug}
+                  href={["/docs", page.slug].join("/")}
+                  key={page.slug}
                   className={cn(
                     "text-muted-foreground",
                     linkClass,
                     buttonClass,
                   )}
                 >
-                  {post.props.entry.title}
+                  {page.title}
                 </a>
               ))}
             </div>

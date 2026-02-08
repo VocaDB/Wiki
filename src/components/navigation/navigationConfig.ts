@@ -32,17 +32,12 @@ export const headerNavItems = [
 const docsCollection = await getCollection("docs");
 
 export const pages = docsCollection.map((entry) => ({
-  params: { slug: entry.slug },
-  props: {
-    entry: {
-      slug: entry.slug,
-      title: entry.data.title,
-      parent: entry.data.parent,
-    },
-  },
+  slug: entry.slug,
+  title: entry.data.title,
+  parent: entry.data.parent,
 }));
 
-export const getParent = (p: (typeof pages)[number]) => p.props.entry.parent;
+export const getParent = (p: (typeof pages)[number]) => p.parent;
 
 export const groupedNavbarParents = groupBy(
   pages.filter((p) => getParent(p) !== undefined),

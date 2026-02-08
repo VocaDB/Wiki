@@ -5,6 +5,7 @@ import Search from "./Search.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 import { headerNavItems } from "./navigationConfig";
 import { groupedNavbarParents, navbarParents, pages } from "./navigationConfig";
+import { NavContents } from "./NavContents";
 ---
 
 <header
@@ -12,12 +13,14 @@ import { groupedNavbarParents, navbarParents, pages } from "./navigationConfig";
 >
   <div class="h-full container flex items-center">
     <div class="md:flex">
-      <MobileNavbar
-        groupedNavbarParents={groupedNavbarParents}
-        navbarParents={navbarParents}
-        pages={pages}
-        client:media="(max-width: 768px)"
-      />
+      <MobileNavbar client:media="(max-width: 768px)">
+        <NavContents
+          groupedNavbarParents={groupedNavbarParents}
+          navbarParents={navbarParents}
+          pages={pages}
+          client:visible
+        />
+      </MobileNavbar>
       <a class="hover:underline mr-6 hidden md:block" href="/">VocaDB Wiki</a>
       <nav class="hidden md:flex items-center gap-6 text-sm">
         {

@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils.ts";
 import type {
   groupedNavbarParents,
   navbarParents,
-  posts,
+  pages,
 } from "./navigationConfig";
 
 // We have to access these navbar configs via astro props because they are not available on the client side
@@ -12,14 +12,14 @@ export interface NavContentsProps {
   mobile?: boolean;
   groupedNavbarParents: typeof groupedNavbarParents;
   navbarParents: typeof navbarParents;
-  posts: typeof posts;
+  pages: typeof pages;
 }
 
 export function NavContents({
   mobile = false,
   groupedNavbarParents,
   navbarParents,
-  posts,
+  pages: pages,
 }: NavContentsProps) {
   const [expanded, setExpanded] = useState<string | undefined>();
 
@@ -37,7 +37,7 @@ export function NavContents({
           return {
             navbarItem: i,
             title:
-              posts.find((p) => p.params.slug === i.title.toLowerCase())?.props
+              pages.find((p) => p.params.slug === i.title.toLowerCase())?.props
                 .entry.title ?? i.title,
           };
         })

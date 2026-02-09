@@ -3,7 +3,11 @@ import { ScrollArea } from "../ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import React from "react";
 
-export default function MobileNavbar({ children }: { children: React.ReactNode }) {
+export default function MobileNavbar({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <Sheet>
       <SheetTrigger
@@ -14,9 +18,7 @@ export default function MobileNavbar({ children }: { children: React.ReactNode }
       </SheetTrigger>
       <SheetContent side="left" className="p-0">
         <ScrollArea className="h-full">
-          <div className="p-6">
-            { children }
-          </div>
+          <div className="p-6">{children}</div>
         </ScrollArea>
       </SheetContent>
     </Sheet>

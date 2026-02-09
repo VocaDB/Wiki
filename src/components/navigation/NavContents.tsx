@@ -37,7 +37,8 @@ export function NavContents({
           return {
             navbarItem: i,
             title:
-              pages.find(page => page.slug === i.title.toLowerCase())?.title ?? i.title,
+              pages.find((page) => page.slug === i.title.toLowerCase())
+                ?.title ?? i.title,
           };
         })
         .map(({ navbarItem, title }) => (

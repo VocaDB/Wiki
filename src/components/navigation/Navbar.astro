@@ -1,7 +1,7 @@
 ---
 import { ScrollArea } from "../ui/scroll-area";
 import { NavContents } from "./NavContents.tsx";
-import { groupedNavbarParents, navbarParents, posts } from "./navigationConfig";
+import { groupedNavbarParents, navbarParents, pages } from "./navigationConfig";
 ---
 
 <ScrollArea client:visible className="pr-6 h-full">
@@ -9,9 +9,9 @@ import { groupedNavbarParents, navbarParents, posts } from "./navigationConfig";
     <NavContents
       groupedNavbarParents={groupedNavbarParents}
       navbarParents={navbarParents}
-      posts={posts}
-      client:visible
+      pages={pages}
       mobile={false}
+      client:visible
     />
   </div>
 </ScrollArea>

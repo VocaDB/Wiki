@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils.ts";
 import type {
   groupedNavbarParents,
   navbarParents,
-  posts,
+  pages,
 } from "./navigationConfig";
 
 // We have to access these navbar configs via astro props because they are not available on the client side
@@ -12,14 +12,14 @@ export interface NavContentsProps {
   mobile?: boolean;
   groupedNavbarParents: typeof groupedNavbarParents;
   navbarParents: typeof navbarParents;
-  posts: typeof posts;
+  pages: typeof pages;
 }
 
 export function NavContents({
   mobile = false,
   groupedNavbarParents,
   navbarParents,
-  posts,
+  pages,
 }: NavContentsProps) {
   const [expanded, setExpanded] = useState<string | undefined>();
 
@@ -37,8 +37,8 @@ export function NavContents({
           return {
             navbarItem: i,
             title:
-              posts.find((p) => p.params.slug === i.title.toLowerCase())?.props
-                .entry.data.title ?? i.title,
+              pages.find((page) => page.slug === i.title.toLowerCase())
+                ?.title ?? i.title,
           };
         })
         .map(({ navbarItem, title }) => (
@@ -76,10 +76,10 @@ export function NavContents({
                           {groupedNavbarParents[c]?.map((post) => (
                             <a
                               className={cn(linkClass, buttonClass)}
-                              key={post.params.slug}
-                              href={["/docs", post.params.slug].join("/")}
+                              key={post.slug}
+                              href={["/docs", post.slug].join("/")}
                             >
-                              {post.props.entry.data.title}
+                              {post.title}
                             </a>
                           ))}
                         </div>
@@ -88,17 +88,17 @@ export function NavContents({
                   </div>
                 )}
 
-              {groupedNavbarParents[navbarItem.title]?.map((post) => (
+              {groupedNavbarParents[navbarItem.title]?.map((page) => (
                 <a
-                  href={["/docs", post.params.slug].join("/")}
-                  key={post.params.slug}
+                  href={["/docs", page.slug].join("/")}
+                  key={page.slug}
                   className={cn(
                     "text-muted-foreground",
                     linkClass,
                     buttonClass,
                   )}
                 >
-                  {post.props.entry.data.title}
+                  {page.title}
                 </a>
               ))}
             </div>

@@ -9,9 +9,10 @@ interface Props {
   ruleName?: string;
   ruleId?: number;
   fields?: RuleFields[] | "All";
+  onRulePage?: boolean;
 }
 
-const { rule: rule, ruleName, ruleId, fields = [] } = Astro.props;
+const { rule: rule, ruleName, ruleId, fields = [], onRulePage } = Astro.props;
 
 let ruleEntry = rule;
 
@@ -61,9 +62,12 @@ const shouldShowGroup = (groupFields: RuleFields[]): boolean => {
 };
 ---
 
-<Box>
+<Box data-pagefind-weight={onRulePage ? undefined : 0.9}>
   <div class="border-b mt-0">
-    <h3 class="m-0 text-base flex">
+    <h3
+      class="m-0 text-base flex"
+      data-pagefind-ignore={onRulePage ? true : undefined}
+    >
       <span class="border-r px-2 py-1 block">
         Rule {ruleData.id}<span class="w-0 collapse inline-block">:{` `}</span>
       </span>

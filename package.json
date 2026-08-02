@@ -65,7 +65,7 @@
     "@types/react-highlight-words": "^0.20.0",
     "oxfmt": "^0.61.0",
     "oxlint": "^1.76.0",
-    "pagefind": "^1.4.0",
+    "pagefind": "1.4.0",
     "tailwind-scrollbar-utilities": "^0.2.0"
   }
 }

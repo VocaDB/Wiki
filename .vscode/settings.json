@@ -1,3 +1,6 @@
 {
-  "eslint.validate": ["astro", "typescript", "typescriptreact", "astro"]
+  "eslint.validate": ["astro", "typescript", "typescriptreact", "astro"],
+  "[javascript][typescript][typescriptreact][json][jsonc][css][mdx]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  }
 }

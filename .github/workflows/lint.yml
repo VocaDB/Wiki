@@ -25,9 +25,10 @@ jobs:
       - name: Run ESLint
         if: ${{ !cancelled() }}
         run: pnpm exec eslint .
-      - name: Run Prettier
+      # *.astro files not formatted until Astro support (oxc#19715)
+      - name: Run oxfmt
         if: ${{ !cancelled() }}
-        run: pnpm exec prettier --check .
+        run: pnpm exec oxfmt --check .
   test:
     name: Test by building
     runs-on: ubuntu-latest

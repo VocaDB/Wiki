@@ -27,3 +27,4 @@ For `/src/content/docs` & `/src/content/rules`
 - `cd wiki`
 - `pnpm install --frozen-lockfile`
 - `pnpm run dev`
+- `pnpm run check` (lint + format + typecheck)

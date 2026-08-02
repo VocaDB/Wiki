@@ -20,8 +20,8 @@ jobs:
           cache: pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      - name: Run ESLint
-        run: pnpm exec eslint --fix .
+      - name: Run oxlint
+        run: pnpm exec oxlint --fix .
       # *.astro files not formatted until Astro support (oxc#19715)
       - name: Run oxfmt
         run: pnpm exec oxfmt .

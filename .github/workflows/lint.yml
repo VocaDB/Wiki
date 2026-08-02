@@ -22,9 +22,9 @@ jobs:
           cache: pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      - name: Run ESLint
+      - name: Run oxlint
         if: ${{ !cancelled() }}
-        run: pnpm exec eslint .
+        run: pnpm exec oxlint .
       # *.astro files not formatted until Astro support (oxc#19715)
       - name: Run oxfmt
         if: ${{ !cancelled() }}

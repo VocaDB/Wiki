@@ -11,7 +11,10 @@
     "astro": "astro",
     "format:check": "oxfmt --check .",
     "format:write": "oxfmt .",
-    "lint": "eslint ."
+    "lint:check": "oxlint .",
+    "lint:write": "oxlint --fix .",
+    "typecheck": "astro check",
+    "check": "pnpm run format:check && pnpm run lint:check && pnpm run typecheck"
   },
   "packageManager": "pnpm@11.18.0",
   "engines": {
@@ -58,17 +61,10 @@
     "unist-util-visit-parents": "^6.0.2"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.2",
     "@tailwindcss/typography": "^0.5.19",
     "@types/react-highlight-words": "^0.20.0",
-    "@typescript-eslint/eslint-plugin": "^8.52.0",
-    "@typescript-eslint/parser": "^8.52.0",
-    "eslint": "^9.39.2",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-astro": "^1.5.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "globals": "^17.8.0",
     "oxfmt": "^0.61.0",
+    "oxlint": "^1.76.0",
     "pagefind": "^1.4.0",
     "tailwind-scrollbar-utilities": "^0.2.0"
   }

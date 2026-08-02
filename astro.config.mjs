@@ -58,12 +58,14 @@ export default defineConfig({
     markdownIntegration(),
   ],
   redirects: {
-    "/rules/matching-primary-name": "/rules/matching-default-language",
-    "/rules/corresponding-primary-name": "/rules/matching-default-language",
+    "/rules/matching-primary-name":
+      "/rules/matching-original-language-title-fields",
+    "/rules/corresponding-primary-name":
+      "/rules/matching-original-language-title-fields",
 
     "/rules/matching-language": "/rules/matching-song-language",
 
-    "/rules/link-categories.mdx": "rules/correct-link-category",
+    "/rules/link-categories.mdx": "/rules/correct-link-category",
     "/docs/mentioned-tags": "/rules/table",
 
     "/rules/song-content-policy-song-source-required":
@@ -104,9 +106,9 @@ export default defineConfig({
     "/wiki/2/vocadb-wiki": "/",
     "/docs/starting/vocadb-wiki": "/",
 
-    "/wiki/3": "/docs/vocadb-api-and-embeds",
-    "/wiki/3/vocadb-api-and-embeds": "/docs/vocadb-api-and-embeds",
-    "/docs/documentation/vocadb-api-and-embeds": "/docs/vocadb-api-and-embeds",
+    "/wiki/3": "/docs/api-and-embeds",
+    "/wiki/3/vocadb-api-and-embeds": "/docs/api-and-embeds",
+    "/docs/documentation/vocadb-api-and-embeds": "/docs/api-and-embeds",
 
     "/wiki/5": "/docs/external-links",
     "/wiki/5/external-links": "/docs/external-links",
@@ -170,11 +172,10 @@ export default defineConfig({
     "/wiki/21": "/docs/song-entry-editing#tab-artists",
     "/wiki/21/artist-roles": "/docs/song-entry-editing#tab-artists",
 
-    "/wiki/22": "/docs/vocadb-domains-and-login-process",
-    "/wiki/22/vocadb-domains-login-process":
-      "/docs/vocadb-domains-and-login-process",
+    "/wiki/22": "/docs/domains-and-login-process",
+    "/wiki/22/vocadb-domains-login-process": "/docs/domains-and-login-process",
     "/docs/documentation/vocadb-domains-and-login-process":
-      "/docs/vocadb-domains-and-login-process",
+      "/docs/domains-and-login-process",
 
     "/wiki/23": "/docs/artist-types",
     "/wiki/23/artist-types": "/docs/artist-types",
@@ -248,7 +249,7 @@ export default defineConfig({
 
     "/wiki/41": "/docs/choosing-the-main-picture-for-artist-entries",
     "/wiki/41/choosing-the-main-picture-for-artist-entries":
-      "/docs/ahoosing-the-main-picture-for-artist-entries",
+      "/docs/choosing-the-main-picture-for-artist-entries",
     "/docs/artists/choosing-the-main-picture-for-artist-entries":
       "/docs/choosing-the-main-picture-for-artist-entries",
 
@@ -268,20 +269,18 @@ export default defineConfig({
     "/wiki/48/touhoudb-what-is-it-for": "/docs/touhoudb-what-is-it-for",
     "/docs/touhoudb/touhoudb-what-is-it-for": "/docs/touhoudb-what-is-it-for",
 
-    "/wiki/49": "/docs/touhoudb---general-guidelines",
-    "/wiki/49/touhoudb-general-guidelines":
-      "/docs/touhoudb---general-guidelines",
+    "/wiki/49": "/docs/touhoudb-general-guidelines",
+    "/wiki/49/touhoudb-general-guidelines": "/docs/touhoudb-general-guidelines",
     "/docs/touhoudb/touhoudb---general-guidelines":
-      "/docs/touhoudb---general-guidelines",
+      "/docs/touhoudb-general-guidelines",
 
     "/wiki/50": "/docs/privacy-and-cookie-policy",
     "/wiki/50/privacy-and-cookie-policy": "/docs/privacy-and-cookie-policy",
     "/docs/footer/privacy-and-cookie-policy": "/docs/privacy-and-cookie-policy",
 
-    "/wiki/51": "/docs/vocadb-feature-requests",
-    "/wiki/51/vocadb-feature-requests": "/docs/vocadb-feature-requests",
-    "/docs/documentation/vocadb-feature-requests":
-      "/docs/vocadb-feature-requests",
+    "/wiki/51": "/docs/feature-requests",
+    "/wiki/51/vocadb-feature-requests": "/docs/feature-requests",
+    "/docs/documentation/vocadb-feature-requests": "/docs/feature-requests",
 
     "/wiki/52": "/docs/terms-of-service",
     "/wiki/52/terms-of-service": "/docs/terms-of-service",
@@ -328,16 +327,15 @@ export default defineConfig({
     "/wiki/62/merging-entries": "/docs/merging-entries",
     "/docs/guidelines/merging-entries": "/docs/merging-entries",
 
-    "/wiki/63": "/docs/vocadb-guidelines-chinese",
+    "/wiki/63": "/docs/vocadb-general-guidelines-chinese",
     "/wiki/63/vocadb-guidelines-中文chinese-translation":
-      "/docs/vocadb-guidelines-chinese",
+      "/docs/vocadb-general-guidelines-chinese",
     "/docs/chinese/vocadb-guidelines-chinese":
-      "/docs/vocadb-guidelines-chinese",
+      "/docs/vocadb-general-guidelines-chinese",
 
-    "/wiki/65": "/docs/vocadb-partner-websites",
-    "/wiki/65/vocadb-partner-websites": "/docs/vocadb-partner-websites",
-    "/docs/documentation/vocadb-partner-websites":
-      "/docs/vocadb-partner-websites",
+    "/wiki/65": "/docs/partner-websites",
+    "/wiki/65/vocadb-partner-websites": "/docs/partner-websites",
+    "/docs/documentation/vocadb-partner-websites": "/docs/partner-websites",
 
     "/wiki/67": "/docs/search-terms-cheat-sheet",
     "/wiki/67/search": "/docs/search-terms-cheat-sheet",

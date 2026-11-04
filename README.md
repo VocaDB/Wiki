@@ -25,5 +25,6 @@ For `/src/content/docs` & `/src/content/rules`
 
 - `git clone https://github.com/VocaDB/Wiki`
 - `cd wiki`
-- `npm ci`
-- `npm run dev`
+- `pnpm install --frozen-lockfile`
+- `pnpm run dev`
+- `pnpm run check` (lint + format + typecheck)

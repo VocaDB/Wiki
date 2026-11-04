@@ -17,9 +17,30 @@ status: Active
 rule_context:
 mikumod_support: "Planned"
 relevant_tag_id: 3282
+excerpt: >
+  For derived songs with out-of-scope original, add the relevant tags ([human original](https://vocadb.net/T/3193)/[instrumental original](https://vocadb.net/T/12491)) and attribute the original by one of the following:
+    - Adding the [cover unifier](/rules/cover-unifiers) on the "Original version" field
+    - Adding the UtaiteDB/TouhouDB entry as an external link
+    - Mentioning it on the description
 ---
 
-If the [human original](https://vocadb.net/T/3193) tag or the [instrumental original](https://vocadb.net/T/12491/instrumental-original) tag is included, the original version should be:
+import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
+import { BoxGroup } from "@/components/Box.tsx";
 
-- specified in the song description AND/OR
-- included as an external link (required for UtaiteDB originals).
+If the original version of a vocal synth song is out of scope of the database, tag it with the following tags for songs with out-of-scope originals:
+
+- [human original](https://vocadb.net/T/3193)
+- [instrumental original](https://vocadb.net/T/12491)
+
+The original song should still be attributed by doing one of the following, in priority from top to bottom:
+
+1. If the [cover unifier](/rules/cover-unifiers) exists, specify it in the "Original version" field.
+2. Add the entry on [UtaiteDB](https://utaitedb.net/S/) or [TouhouDB](https://touhoudb.com/) as an external link.
+3. Mention it in the entry description. At least [the artist should be included](/rules/out-of-scope-artist-crediting-for-derived-songs). If the song title is different to the original, also include the original title.
+
+## Related rules
+
+<BoxGroup>
+  <RuleEmbed ruleId={155} />
+  <RuleEmbed ruleId={105} />
+</BoxGroup>

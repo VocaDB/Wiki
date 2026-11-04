@@ -1,0 +1,214 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": [
+    "typescript",
+    "unicorn",
+    "oxc",
+    "react",
+    "react-perf",
+    "jsx-a11y",
+    "import",
+    "promise",
+    "node",
+    "jsdoc"
+  ],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error",
+    "pedantic": "error",
+    "perf": "error",
+    "style": "error",
+    "restriction": "error",
+    "nursery": "error"
+  },
+  "env": { "browser": true, "node": true, "es2024": true },
+  "globals": { "Astro": "readonly" },
+  "ignorePatterns": ["dist/**", "**/sorttable.js", ".astro/**"],
+  "rules": {
+    // TODO: fix or document a reason for keeping the rule off
+    // 9 errors
+    "eslint/arrow-body-style": "off",
+    // 10 errors
+    "eslint/capitalized-comments": "off",
+    // 10 errors
+    "eslint/curly": "off",
+    // 19 errors
+    "eslint/func-style": "off",
+    // 16 errors
+    "eslint/id-length": "off",
+    // 2 errors
+    "eslint/init-declarations": "off",
+    // 2 errors
+    "eslint/max-lines": "off",
+    // 7 errors
+    "eslint/max-lines-per-function": "off",
+    // 1 error
+    "eslint/max-params": "off",
+    // 4 errors
+    "eslint/max-statements": "off",
+    // 3 errors
+    "eslint/no-console": "off",
+    // 1 error
+    "eslint/no-continue": "off",
+    // 2 errors
+    "eslint/no-duplicate-imports": "off",
+    // 1 error
+    "eslint/no-implicit-globals": "off",
+    // 13 errors
+    "eslint/no-inline-comments": "off",
+    // 36 errors
+    "eslint/no-magic-numbers": "off",
+    // 3 errors
+    "eslint/no-nested-ternary": "off",
+    // 1 error
+    "eslint/no-param-reassign": "off",
+    // 1 error
+    "eslint/no-shadow": "off",
+    // 20 errors
+    "eslint/no-ternary": "off",
+    // 6 errors
+    "eslint/no-undefined": "off",
+    // 1 error
+    "eslint/no-unused-expressions": "off",
+    // 2 errors
+    "eslint/no-use-before-define": "off",
+    // 1 error
+    "eslint/no-useless-rename": "off",
+    // 1 error
+    "eslint/prefer-const": "off",
+    // 4 errors
+    "eslint/prefer-destructuring": "off",
+    // 5 errors
+    "eslint/prefer-template": "off",
+    // 1 error
+    "eslint/require-await": "off",
+    // 2 errors
+    "eslint/require-unicode-regexp": "off",
+    // 72 errors
+    "eslint/sort-imports": "off",
+    // 48 errors
+    "eslint/sort-keys": "off",
+    // 22 errors
+    "import/consistent-type-specifier-style": "off",
+    // 17 errors
+    "import/exports-last": "off",
+    // 20 errors
+    "import/group-exports": "off",
+    // 1 error
+    "import/max-dependencies": "off",
+    // 2 errors
+    "import/no-anonymous-default-export": "off",
+    // 6 errors
+    "import/no-default-export": "off",
+    // 1 error
+    "import/no-duplicates": "off",
+    // 1 error
+    "import/no-named-as-default-member": "off",
+    // 48 errors
+    "import/no-named-export": "off",
+    // 10 errors
+    "import/no-namespace": "off",
+    // 13 errors
+    "import/no-relative-parent-imports": "off",
+    // 2 errors
+    "import/no-unassigned-import": "off",
+    // 10 errors
+    "import/prefer-default-export": "off",
+    // 11 errors
+    "import/unambiguous": "off",
+    // 18 errors
+    "node/no-top-level-await": "off",
+    // 11 errors
+    "oxc/no-async-await": "off",
+    // 2 errors
+    "oxc/no-map-spread": "off",
+    // 9 errors
+    "oxc/no-optional-chaining": "off",
+    // 38 errors
+    "oxc/no-rest-spread-properties": "off",
+    // 3 errors
+    "react-perf/jsx-no-new-function-as-prop": "off",
+    // 40 errors
+    "react/forbid-component-props": "off",
+    // 33 errors
+    "react/function-component-definition": "off",
+    // 1 error
+    "react/jsx-boolean-value": "off",
+    // 2 errors
+    "react/jsx-curly-brace-presence": "off",
+    // 14 errors
+    "react/jsx-filename-extension": "off",
+    // 1 error
+    "react/jsx-key": "off",
+    // 18 errors
+    "react/jsx-max-depth": "off",
+    // 11 errors
+    "react/jsx-no-literals": "off",
+    // 1 error
+    "react/jsx-no-useless-fragment": "off",
+    // 32 errors
+    "react/jsx-props-no-spreading": "off",
+    // 25 errors
+    "react/no-multi-comp": "off",
+    // 1 error
+    "react/no-unknown-property": "off",
+    // 3 errors
+    "react/only-export-components": "off",
+    // 42 errors
+    "react/react-in-jsx-scope": "off",
+    // 1 error
+    "typescript/array-type": "off",
+    // 1 error
+    "typescript/ban-ts-comment": "off",
+    // 1 error
+    "typescript/consistent-indexed-object-style": "off",
+    // 34 errors
+    "typescript/explicit-function-return-type": "off",
+    // 21 errors
+    "typescript/explicit-module-boundary-types": "off",
+    // 2 errors
+    "typescript/method-signature-style": "off",
+    // 1 error
+    "typescript/no-empty-interface": "off",
+    // 1 error
+    "typescript/no-empty-object-type": "off",
+    // 7 errors
+    "typescript/no-explicit-any": "off",
+    // 4 errors
+    "typescript/no-import-type-side-effects": "off",
+    // 2 errors
+    "typescript/no-inferrable-types": "off",
+    // 2 errors
+    "typescript/no-non-null-assertion": "off",
+    // 1 error
+    "typescript/prefer-ts-expect-error": "off",
+    // 1 error
+    "typescript/triple-slash-reference": "off",
+    // 3 errors
+    "unicorn/catch-error-name": "off",
+    // 33 errors
+    "unicorn/filename-case": "off",
+    // 4 errors
+    "unicorn/max-nested-calls": "off",
+    // 3 errors
+    "unicorn/no-array-for-each": "off",
+    // 1 error
+    "unicorn/no-array-reduce": "off",
+    // 1 error
+    "unicorn/no-await-expression-member": "off",
+    // 1 error
+    "unicorn/no-empty-file": "off",
+    // 2 errors
+    "unicorn/no-nested-ternary": "off",
+    // 3 errors
+    "unicorn/no-null": "off",
+    // 4 errors
+    "unicorn/prefer-classlist-toggle": "off",
+    // 8 errors
+    "unicorn/prefer-global-this": "off",
+    // 1 error
+    "unicorn/prefer-set-has": "off",
+    // 1 error
+    "unicorn/prefer-string-slice": "off"
+  }
+}

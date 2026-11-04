@@ -1,6 +1,6 @@
 import { type CollectionEntry, defineCollection, z } from "astro:content";
 
-export const EntryTypeList = [
+const EntryTypeList = [
   "Songs",
   "Albums",
   "Artists",

@@ -1,19 +1,19 @@
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
+import markdownIntegration from "@astropub/md";
+import tailwindcss from "@tailwindcss/vite";
 import pagefind from "astro-pagefind";
 import { defineConfig } from "astro/config";
-import markdownIntegration from "@astropub/md";
 
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
+import { Link2Icon } from "@radix-ui/react-icons";
 import { fromHtmlIsomorphic } from "hast-util-from-html-isomorphic";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkSectionize from "remark-sectionize";
 import rehypePluginMoveIdToSection from "./src/rehype-sectionize";
-import { Link2Icon } from "@radix-ui/react-icons";
-import { renderToStaticMarkup } from "react-dom/server";
-import { createElement } from "react";
 
 const linkIconComponent = renderToStaticMarkup(
   createElement(Link2Icon, {
@@ -30,12 +30,14 @@ export default defineConfig({
   build: {
     format: "file",
   },
+  vite: {
+    plugins: [tailwindcss()],
+  },
   experimental: {
     contentIntellisense: true,
   },
   integrations: [
     react(),
-    tailwind({ applyBaseStyles: false }),
     sitemap(),
     mdx({
       remarkPlugins: [remarkSectionize],

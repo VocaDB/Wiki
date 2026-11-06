@@ -23,7 +23,7 @@ const { toc, isMobile = false, depth = 0, track = false } = Astro.props;
         <a
           href={"#" + heading.slug}
           class:list={[
-            `block py-1 leading-normal hover:underline ps-[calc(1rem*var(--depth)+var(--pad-inline))] pe-[var(--pad-inline)]`,
+            `block py-1 leading-normal hover:underline ps-[calc(1rem*var(--depth)+var(--pad-inline))] pe-(--pad-inline)`,
             isMobile
               ? "[--pad-inline:1rem]"
               : "text-muted-foreground [--pad-inline:0rem]",

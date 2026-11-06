@@ -1,6 +1,6 @@
 ---
-import type { RuleFields } from "@/content/config";
-import { getCollection, getEntry, type CollectionEntry } from "astro:content";
+import type { RuleFields } from "@/content.config";
+import { getCollection, getEntry, render, type CollectionEntry } from "astro:content";
 import { Markdown } from "@astropub/md";
 import { Box } from "@/components/Box";
 
@@ -40,7 +40,7 @@ if (!ruleEntry) {
 }
 
 const ruleData = ruleEntry.data;
-const content = await ruleEntry.render();
+const content = await render(ruleEntry);
 
 /* Skipped fields:
 - name (always displayed)
@@ -68,7 +68,7 @@ const shouldShowGroup = (groupFields: RuleFields[]): boolean => {
         Rule {ruleData.id}<span class="w-0 collapse inline-block">:{` `}</span>
       </span>
       <span class="px-2 py-1 block">
-        <a href={`/rules/${ruleEntry.slug}`}> {ruleData.name}</a>
+        <a href={`/rules/${ruleEntry.id}`}> {ruleData.name}</a>
       </span>
     </h3>
   </div>

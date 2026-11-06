@@ -1,4 +1,6 @@
-import { type CollectionEntry, defineCollection, z } from "astro:content";
+import { glob } from "astro/loaders";
+import { z } from "astro/zod";
+import { type CollectionEntry, defineCollection } from "astro:content";
 
 const EntryTypeList = [
   "Songs",
@@ -12,7 +14,7 @@ const EntryTypeList = [
 export type EntryType = (typeof EntryTypeList)[number] | "All";
 
 const docsCollection = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/docs" }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -22,11 +24,11 @@ const docsCollection = defineCollection({
 });
 
 const ruleCollection = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/rules" }),
   schema: z.object({
     name: z.string(),
-    id: z.number(), // rule id
-    excerpt: z.string().nullable().optional(), // short excerpt/description for the embed and social tags (e.g. Google, Discord)
+    id: z.number(),
+    excerpt: z.string().nullable().optional(),
     entry_type: z
       .union([z.literal("All"), z.array(z.enum(EntryTypeList))])
       .default("All"),
@@ -36,12 +38,12 @@ const ruleCollection = defineCollection({
     fe_validations: z.string().nullable().optional(), // frontend
     be_validations: z.boolean().nullable().optional(), // backend
     occurance: z.number().nullable().optional(), // amount of edit mistakes, based on edit list
-    detection_script: z.string().nullable().optional(), // xyz.py, see mods repo
+    detection_script: z.string().nullable().optional(),
     edit_list: z.string().nullable().optional(), // sheet link
     date_checked: z.date().nullable().optional(), // date sheet last generated
     date_created: z.date().nullable().optional(), // rule creation date
     date_modified: z.date().nullable().optional(), // date of rule modification (excluding wording changes)
-    rationale: z.string().nullable().optional(), // Short explanation why the rule is necessary
+    rationale: z.string().nullable().optional(), // short explanation why the rule is necessary
     rule_context: z
       .enum(["Names", "Content policy", "External links", "Romanization"])
       .nullable()

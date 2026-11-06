@@ -29,15 +29,17 @@ export const headerNavItems = [
   { name: "GitHub", href: "//github.com/VocaDB/Wiki" },
 ];
 
-const docsCollection = await getCollection("docs");
+const docsCollection = (await getCollection("docs")).toSorted((a, b) =>
+  (a.filePath ?? a.id) < (b.filePath ?? b.id) ? -1 : 1,
+);
 
 export const pages = docsCollection.map((entry) => ({
-  slug: entry.slug,
+  slug: entry.id,
   title: entry.data.title,
   parent: entry.data.parent,
 }));
 
-export const getParent = (p: (typeof pages)[number]) => p.parent;
+const getParent = (p: (typeof pages)[number]) => p.parent;
 
 export const groupedNavbarParents = groupBy(
   pages.filter((p) => getParent(p) !== undefined),

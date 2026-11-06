@@ -29,6 +29,9 @@ jobs:
       - name: Run oxfmt
         if: ${{ !cancelled() }}
         run: pnpm exec oxfmt --check .
+      - name: Run fallow
+        if: ${{ !cancelled() }}
+        run: pnpm exec fallow dead-code
   test:
     name: Test by building
     runs-on: ubuntu-latest

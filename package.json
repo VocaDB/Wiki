@@ -14,7 +14,7 @@
     "lint:check": "oxlint .",
     "lint:write": "oxlint --fix .",
     "typecheck": "astro check",
-    "check": "pnpm run format:check && pnpm run lint:check && pnpm run typecheck"
+    "check": "pnpm run format:check && pnpm run lint:check && pnpm run typecheck && fallow dead-code"
   },
   "packageManager": "pnpm@11.18.0",
   "engines": {
@@ -59,6 +59,7 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.20",
     "@types/react-highlight-words": "^0.20.1",
+    "fallow": "^3.39.0",
     "oxfmt": "^0.76.0",
     "oxlint": "^1.76.0",
     "pagefind": "1.4.0"

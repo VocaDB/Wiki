@@ -1,0 +1,22 @@
+{
+  "$schema": "./node_modules/fallow/schema.json",
+  "entry": ["public/sorttable.js"],
+  "ignoreDependencies": [
+    "sharp", // For astro
+  ],
+  "ignoreExports": [
+    { "file": "src/components/ui/**", "exports": ["*"] }, // shadcn/ui components
+    { "file": "src/**/*.astro", "exports": ["Props"] }, // Astro conventions
+  ],
+  "duplicates": {
+    "minOccurrences": 3,
+    "ignore": ["public/**"],
+  },
+  "health": {
+    "ignore": ["public/**"],
+  },
+  "rules": {
+    "test-only-dependencies": "off",
+    "dev-dependencies-in-production": "off",
+  },
+}

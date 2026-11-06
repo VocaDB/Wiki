@@ -35,6 +35,11 @@ const {
   },
   canonical,
 } = Astro.props;
+
+const pageUrl = new URL(
+  Astro.url.pathname.replace(/(?:index)?\.html$/, ""),
+  Astro.site,
+);
 ---
 
 <!doctype html>
@@ -53,7 +58,7 @@ const {
     <meta property="og:type" content="website" />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={thumbnail.src} />
-    <meta property="og:url" content={Astro.request.url} />
+    <meta property="og:url" content={pageUrl} />
     <meta property="og:site_name" content={SITE_TITLE} />
 
     <meta name="twitter:card" content="summary_large_image" />

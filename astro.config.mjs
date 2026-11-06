@@ -1,28 +1,23 @@
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 import pagefind from "astro-pagefind";
 import { defineConfig } from "astro/config";
-import markdownIntegration from "@astropub/md";
 
-import { rehypeHeadingIds } from "@astrojs/markdown-remark";
+import { satteri } from "@astrojs/markdown-satteri";
 import mdx from "@astrojs/mdx";
-import { fromHtmlIsomorphic } from "hast-util-from-html-isomorphic";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import remarkSectionize from "remark-sectionize";
-import rehypePluginMoveIdToSection from "./src/rehype-sectionize";
 import { Link2Icon } from "@radix-ui/react-icons";
-import { renderToStaticMarkup } from "react-dom/server";
 import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { headingSections } from "./src/markdown/headingSections";
+import { wikilinks } from "./src/markdown/wikilinks";
 
-const linkIconComponent = renderToStaticMarkup(
+const linkIcon = renderToStaticMarkup(
   createElement(Link2Icon, {
     class:
       "inline-block h-4 w-4 opacity-0 group-hover:opacity-100 ml-1 align-baseline",
   }),
 );
-const linkIconHast = fromHtmlIsomorphic(linkIconComponent, { fragment: true })
-  .children[0];
 
 // https://astro.build/config
 export default defineConfig({
@@ -30,33 +25,26 @@ export default defineConfig({
   build: {
     format: "file",
   },
+  compressHTML: true,
+  vite: {
+    plugins: [tailwindcss()],
+  },
   experimental: {
     contentIntellisense: true,
   },
-  integrations: [
-    react(),
-    tailwind({ applyBaseStyles: false }),
-    sitemap(),
-    mdx({
-      remarkPlugins: [remarkSectionize],
-      rehypePlugins: [
-        rehypeHeadingIds,
-        [
-          rehypeAutolinkHeadings,
-          {
-            behavior: "wrap",
-            content: linkIconHast,
-            properties: {
-              class: "color-[unset] font-unset no-underline group",
-            },
-          },
-        ],
-        rehypePluginMoveIdToSection,
+  markdown: {
+    processor: satteri({
+      features: { wikilinks: true },
+      mdastPlugins: [wikilinks()],
+      hastPlugins: [
+        headingSections({
+          icon: linkIcon,
+          linkClass: ["color-[unset]", "font-unset", "no-underline", "group"],
+        }),
       ],
     }),
-    pagefind(),
-    markdownIntegration(),
-  ],
+  },
+  integrations: [react(), sitemap(), mdx(), pagefind()],
   redirects: {
     "/rules/matching-primary-name":
       "/rules/matching-original-language-title-fields",

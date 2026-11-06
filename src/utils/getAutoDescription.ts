@@ -1,8 +1,9 @@
-import { unified } from "unified";
-import remarkParse from "remark-parse";
+import { wikilinksToText } from "@/markdown/wikilinks";
 import remarkMdx from "remark-mdx";
-import stripMarkdown from "strip-markdown";
+import remarkParse from "remark-parse";
 import remarkStringify from "remark-stringify";
+import stripMarkdown from "strip-markdown";
+import { unified } from "unified";
 import { visit } from "unist-util-visit";
 
 function removeMdx() {
@@ -50,7 +51,7 @@ export async function getAutoDescription(
     .use(filterLeadSection)
     .use(stripMarkdown)
     .use(remarkStringify)
-    .process(markdownInput);
+    .process(wikilinksToText(markdownInput));
 
   let text = String(file).trim();
 

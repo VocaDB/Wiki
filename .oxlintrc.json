@@ -210,5 +210,14 @@
     "unicorn/prefer-set-has": "off",
     // 1 error
     "unicorn/prefer-string-slice": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["src/markdown/**"],
+      "rules": {
+        "import/no-nodejs-modules": "off",
+        "node/no-sync": "off"
+      }
+    }
+  ]
 }

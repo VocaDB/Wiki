@@ -1,6 +1,7 @@
-import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 
+import { Box } from "@/components/Box";
 import { cn } from "@/lib/utils";
 import {
   CheckIcon,
@@ -8,7 +9,6 @@ import {
   ExclamationTriangleIcon,
   InfoCircledIcon,
 } from "@radix-ui/react-icons";
-import { Box } from "@/components/Box";
 
 const alertVariants = cva("px-4", {
   variants: {
@@ -54,10 +54,7 @@ const AlertDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn(
-      "mb-5 [&>:first-child]:mt-0 [&_p]:leading-relaxed",
-      className,
-    )}
+    className={cn("mb-5 *:first:mt-0 [&_p]:leading-relaxed", className)}
     {...props}
   />
 ));
@@ -114,8 +111,8 @@ const SimpleAlert = React.forwardRef<
 SimpleAlert.displayName = "SimpleAlert";
 
 export {
-  Alert as RawAlert,
-  AlertTitle,
-  AlertDescription,
   SimpleAlert as Alert,
+  AlertDescription,
+  AlertTitle,
+  Alert as RawAlert,
 };

@@ -4,9 +4,17 @@
 
 <script is:inline>
   document.addEventListener("astro:page-load", () => {
+    const sectionIds = new Map();
+    document.querySelectorAll("section").forEach((section) => {
+      const id =
+        section.id ||
+        section.querySelector(":scope > :is(h1, h2, h3, h4, h5, h6)[id]")?.id;
+      if (id) sectionIds.set(section, id);
+    });
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        const id = entry.target.id;
+        const id = sectionIds.get(entry.target);
         const headers = document.querySelectorAll(`.track a[href="#${id}"]`);
         headers.forEach((header) => {
           if (entry.intersectionRatio > 0) {
@@ -18,8 +26,6 @@
       });
     });
 
-    document.querySelectorAll("section[id]").forEach((section) => {
-      observer.observe(section);
-    });
+    sectionIds.forEach((_, section) => observer.observe(section));
   });
 </script>

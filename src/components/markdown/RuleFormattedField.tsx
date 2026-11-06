@@ -1,5 +1,5 @@
+import type { RuleFields } from "@/content.config";
 import React from "react";
-import type { RuleFields } from "@/content/config";
 
 interface FormattedFieldProps {
   fieldKey: RuleFields;

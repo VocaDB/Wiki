@@ -1,7 +1,7 @@
 ---
 import type { RuleFields } from "@/content.config";
 import { getCollection, getEntry, render, type CollectionEntry } from "astro:content";
-import { Markdown } from "@astropub/md";
+import { renderMarkdown } from "@/utils/renderMarkdown";
 import { Box } from "@/components/Box";
 
 interface Props {
@@ -40,6 +40,9 @@ if (!ruleEntry) {
 }
 
 const ruleData = ruleEntry.data;
+const excerptHtml = ruleData.excerpt
+  ? await renderMarkdown(ruleData.excerpt)
+  : undefined;
 const content = await render(ruleEntry);
 
 /* Skipped fields:
@@ -75,8 +78,8 @@ const shouldShowGroup = (groupFields: RuleFields[]): boolean => {
 
   <div class="px-4">
     {
-      ruleData.excerpt ? (
-        <Markdown of={ruleData.excerpt} />
+      excerptHtml ? (
+        <Fragment set:html={excerptHtml} />
       ) : (
         content && <content.Content />
       )

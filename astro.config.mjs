@@ -1,11 +1,10 @@
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
-import markdownIntegration from "@astropub/md";
 import tailwindcss from "@tailwindcss/vite";
 import pagefind from "astro-pagefind";
 import { defineConfig } from "astro/config";
 
-import { rehypeHeadingIds } from "@astrojs/markdown-remark";
+import { rehypeHeadingIds, unified } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import { Link2Icon } from "@radix-ui/react-icons";
 import { fromHtmlIsomorphic } from "hast-util-from-html-isomorphic";
@@ -30,16 +29,15 @@ export default defineConfig({
   build: {
     format: "file",
   },
+  compressHTML: true,
   vite: {
     plugins: [tailwindcss()],
   },
   experimental: {
     contentIntellisense: true,
   },
-  integrations: [
-    react(),
-    sitemap(),
-    mdx({
+  markdown: {
+    processor: unified({
       remarkPlugins: [remarkSectionize],
       rehypePlugins: [
         rehypeHeadingIds,
@@ -56,9 +54,8 @@ export default defineConfig({
         rehypePluginMoveIdToSection,
       ],
     }),
-    pagefind(),
-    markdownIntegration(),
-  ],
+  },
+  integrations: [react(), sitemap(), mdx(), pagefind()],
   redirects: {
     "/rules/matching-primary-name":
       "/rules/matching-original-language-title-fields",

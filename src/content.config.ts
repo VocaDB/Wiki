@@ -1,15 +1,7 @@
+import { EntryTypeList } from "@/utils/entryTypes";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 import { type CollectionEntry, defineCollection } from "astro:content";
-
-const EntryTypeList = [
-  "Songs",
-  "Albums",
-  "Artists",
-  "Events",
-  "Tags",
-  "Songlists",
-] as const;
 
 export type EntryType = (typeof EntryTypeList)[number] | "All";
 

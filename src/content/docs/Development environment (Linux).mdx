@@ -136,7 +136,7 @@ then, **inside** the docker container, connect to the database.
 /opt/mssql-tools/bin/sqlcmd -s localhost -u sa -p "y0urv0c@dbstr0ngp@ssw0rd"
 ```
 
-at this point, you can follow the [method for the native installation](#for-native-installation).
+at this point, you can follow the [[#for-native-installation|method for the native installation]].
 
 to download the schema creation script into the container, you can first download it in the host machine, then [bind mount](https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes) it into the container. then, connect to the docker container again, and run the script against the database.
 
@@ -178,11 +178,11 @@ for more information see [starting with fluentmigrator](https://fluentmigrator.g
 
 ## Minimal configuration
 
-see [minimal configuration](/development/vocadb-development-environment-windows#minimal-configuration).
+see [[Development environment (Windows)#minimal-configuration|minimal configuration]].
 
 ## Compiling assets
 
-see [compiling assets](/development/vocadb-development-environment-windows#compiling-assets).
+see [[Development environment (Windows)#compiling-assets|compiling assets]].
 
 ## Starting the server
 

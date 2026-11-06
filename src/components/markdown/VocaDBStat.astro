@@ -1,0 +1,20 @@
+---
+import { getEntry } from "astro:content";
+import type { StatType } from "@/loaders/vocadbStats";
+
+interface Props {
+  stat: StatType | "date";
+}
+
+const { stat } = Astro.props;
+const entry = await getEntry("stats", stat === "date" ? "songs" : stat);
+
+let text: string | undefined;
+if (entry && stat === "date") {
+  text = entry.data.date.toLocaleString("en-US", { month: "long", year: "numeric" });
+} else if (entry) {
+  text = (Math.floor(entry.data.count / 1000) * 1000).toLocaleString("en-US").replaceAll(",", " ");
+}
+---
+
+{text ?? <slot />}

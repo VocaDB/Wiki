@@ -2,6 +2,7 @@ import { EntryTypeList } from "@/utils/entryTypes";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 import { type CollectionEntry, defineCollection } from "astro:content";
+import { vocadbStatsLoader } from "./loaders/vocadbStats";
 
 export type EntryType = (typeof EntryTypeList)[number] | "All";
 
@@ -51,6 +52,15 @@ const ruleCollection = defineCollection({
   }),
 });
 
+// VocaDB entry counts, fetched at build time
+const statsCollection = defineCollection({
+  loader: vocadbStatsLoader(),
+  schema: z.object({
+    count: z.number(),
+    date: z.date(),
+  }),
+});
+
 export const ruleDataKeyDictionary: Record<string, string> = {
   id: "ID",
   date_created: "Date created",
@@ -93,4 +103,5 @@ export type RuleFields = keyof CollectionEntry<"rules">["data"];
 export const collections = {
   docs: docsCollection,
   rules: ruleCollection,
+  stats: statsCollection,
 };

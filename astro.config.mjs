@@ -4,24 +4,20 @@ import tailwindcss from "@tailwindcss/vite";
 import pagefind from "astro-pagefind";
 import { defineConfig } from "astro/config";
 
-import { rehypeHeadingIds, unified } from "@astrojs/markdown-remark";
+import { satteri } from "@astrojs/markdown-satteri";
 import mdx from "@astrojs/mdx";
 import { Link2Icon } from "@radix-ui/react-icons";
-import { fromHtmlIsomorphic } from "hast-util-from-html-isomorphic";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import remarkSectionize from "remark-sectionize";
-import rehypePluginMoveIdToSection from "./src/rehype-sectionize";
+import { headingSections } from "./src/markdown/headingSections";
+import { wikilinks } from "./src/markdown/wikilinks";
 
-const linkIconComponent = renderToStaticMarkup(
+const linkIcon = renderToStaticMarkup(
   createElement(Link2Icon, {
     class:
       "inline-block h-4 w-4 opacity-0 group-hover:opacity-100 ml-1 align-baseline",
   }),
 );
-const linkIconHast = fromHtmlIsomorphic(linkIconComponent, { fragment: true })
-  .children[0];
 
 // https://astro.build/config
 export default defineConfig({
@@ -37,21 +33,14 @@ export default defineConfig({
     contentIntellisense: true,
   },
   markdown: {
-    processor: unified({
-      remarkPlugins: [remarkSectionize],
-      rehypePlugins: [
-        rehypeHeadingIds,
-        [
-          rehypeAutolinkHeadings,
-          {
-            behavior: "wrap",
-            content: linkIconHast,
-            properties: {
-              class: "color-[unset] font-unset no-underline group",
-            },
-          },
-        ],
-        rehypePluginMoveIdToSection,
+    processor: satteri({
+      features: { wikilinks: true },
+      mdastPlugins: [wikilinks()],
+      hastPlugins: [
+        headingSections({
+          icon: linkIcon,
+          linkClass: ["color-[unset]", "font-unset", "no-underline", "group"],
+        }),
       ],
     }),
   },

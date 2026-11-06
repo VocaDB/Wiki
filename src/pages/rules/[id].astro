@@ -5,6 +5,7 @@ import remarkParse from "remark-parse";
 import stripMarkdown from "strip-markdown";
 import remarkStringify from "remark-stringify";
 import DocRedirect from "@/layouts/DocRedirect.astro";
+import { wikilinksToText } from "@/markdown/wikilinks";
 
 export async function getStaticPaths() {
   const ruleEntries: CollectionEntry<"rules">[] = await getCollection("rules");
@@ -29,7 +30,7 @@ async function stripText(markdownInput: string) {
     .use(remarkParse)
     .use(stripMarkdown)
     .use(remarkStringify)
-    .process(markdownInput);
+    .process(wikilinksToText(markdownInput));
 
   return String(file);
 }

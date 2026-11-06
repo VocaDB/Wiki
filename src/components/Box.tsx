@@ -1,12 +1,12 @@
-import React from "react";
 import { cn } from "@/lib/utils";
+import React from "react";
 
 export const genericBoxClass =
-  "w-full border rounded shadow relative bg-card text-card-foreground";
+  "w-full border rounded shadow-sm relative bg-card text-card-foreground";
 
 const defaultBoxClass = cn(
   genericBoxClass,
-  "my-5 group-[.reg]:my-0 group-[.reg]:shadow-none group-[.reg]:rounded-none group-[.reg]:border-0 group-[.reg]:border-b group-[.reg]:last:border-0",
+  "my-5 group-[.reg]:my-0 group-[.reg]:shadow-none group-[.reg]:rounded-none group-[.reg]:border-0 group-[.reg]:border-b last:group-[.reg]:border-0",
 );
 
 const Box = React.forwardRef<

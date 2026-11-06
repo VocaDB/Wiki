@@ -1,5 +1,5 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, render, type CollectionEntry } from "astro:content";
 import DocPageLayout from "../../layouts/DocPageLayout.astro";
 import { getAutoDescription } from "@/utils/getAutoDescription.ts";
 
@@ -7,7 +7,7 @@ export async function getStaticPaths() {
   const blogEntries: CollectionEntry<"docs">[] = await getCollection("docs");
   return blogEntries.map((entry) => ({
     params: {
-      slug: entry.slug,
+      slug: entry.id,
     },
     props: { entry },
   }));
@@ -22,10 +22,10 @@ if (
   entry.data.title === description ||
   entry.data.title === entry.data.description
 ) {
-  description = (await getAutoDescription(entry.body, 300)) || description;
+  description = (await getAutoDescription(entry.body ?? "", 300)) || description;
 }
 
-const { Content, headings } = await entry.render();
+const { Content, headings } = await render(entry);
 ---
 
 <DocPageLayout
@@ -34,8 +34,8 @@ const { Content, headings } = await entry.render();
     description,
   }}
   headings={headings}
-  filePath={"src/content/docs/" + entry.id}
-  pagePath={"docs/" + entry.slug}
+  filePath={entry.filePath}
+  pagePath={"docs/" + entry.id}
 >
   <Content />
 </DocPageLayout>

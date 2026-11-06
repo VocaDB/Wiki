@@ -13,7 +13,7 @@ export async function getStaticPaths() {
   for (const entry of ruleEntries) {
     paths.push({
       params: {
-        id: entry.data.id,
+        id: String(entry.data.id),
       },
       props: { entry },
     });
@@ -34,7 +34,7 @@ async function stripText(markdownInput: string) {
   return String(file);
 }
 
-const description = await stripText(entry.data.excerpt || entry.body);
+const description = await stripText(entry.data.excerpt || entry.body || "");
 ---
 
 <DocRedirect
@@ -42,5 +42,5 @@ const description = await stripText(entry.data.excerpt || entry.body);
     title: `Rule: ${entry.data.name}`,
     description: description,
   }}
-  canonical={"/rules/" + entry.slug}
+  canonical={"/rules/" + entry.id}
 />

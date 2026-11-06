@@ -1,9 +1,9 @@
 ---
 import Layout from "../layouts/Base.astro";
-import { getEntry } from "astro:content";
+import { getEntry, render } from "astro:content";
 
 const index = await getEntry("docs", "vocadb-wiki");
-const { Content } = await index!.render();
+const { Content } = await render(index!);
 ---
 
 <Layout title="VocaDB Wiki">

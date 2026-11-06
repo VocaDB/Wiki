@@ -1,13 +1,13 @@
 ---
 import RuleEmbed from "@/components/markdown/RuleEmbed.astro";
 import { FormattedField } from "@/components/markdown/RuleFormattedField";
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, render, type CollectionEntry } from "astro:content";
 import DocPageLayout from "../../layouts/DocPageLayout.astro";
 import {
   ruleDataKeyDetailsDictionary,
   ruleDataKeyDictionary,
   type RuleFields,
-} from "@/content/config";
+} from "@/content.config";
 import { getAutoDescription } from "@/utils/getAutoDescription.ts";
 
 export async function getStaticPaths() {
@@ -17,7 +17,7 @@ export async function getStaticPaths() {
   for (const entry of ruleEntries) {
     paths.push({
       params: {
-        slug: entry.slug,
+        slug: entry.id,
       },
       props: { entry },
     });
@@ -27,15 +27,15 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { headings } = await entry.render();
+const { headings } = await render(entry);
 
 headings.push({ depth: 2, slug: "metadata", text: "Metadata" });
 
 let content;
 if (entry.data.excerpt) {
-  content = await entry.render();
+  content = await render(entry);
 }
-const description = await getAutoDescription(entry.data.excerpt || entry.body);
+const description = await getAutoDescription(entry.data.excerpt || entry.body || "");
 ---
 
 <DocPageLayout
@@ -45,8 +45,8 @@ const description = await getAutoDescription(entry.data.excerpt || entry.body);
     description,
   }}
   headings={headings}
-  filePath={"src/content/rules/" + entry.id}
-  pagePath={"rules/" + entry.slug}
+  filePath={entry.filePath}
+  pagePath={"rules/" + entry.id}
 >
   <RuleEmbed rule={entry} fields={"All"} />
 
